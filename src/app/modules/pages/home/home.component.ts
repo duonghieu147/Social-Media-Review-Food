@@ -8,6 +8,8 @@ import * as cmn from 'src/app/constant/common'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isVisible = false;
+
   post:any
   postData: Array<any>=[];
   postList: Array<any>=[];
@@ -82,8 +84,22 @@ export class HomeComponent implements OnInit {
     }
     this.postList = this.postList.concat(list)
     this.postData =this.postData.concat(postData)
-
   }
-  
+  openDialogCreatePost() {
+  }
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+ 
 }
 

@@ -15,19 +15,19 @@
             <div nz-row>
                 <div nz-col nzSpan="6"></div>
                 <div nz-col nzSpan="10">
-                    <!-- <app-posts></app-posts>
-                    <app-posts></app-posts>
-                    <app-posts></app-posts>
-                    <app-posts></app-posts> -->
+                  <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Đăng bài</span></button>
+                  <nz-modal [(nzVisible)]="isVisible"  nzCancelText="Hủy" nzOkText="Đăng" nzTitle="Đăng bài" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" >
+                    <ng-container *nzModalContent >
+                      <app-addpost></app-addpost>
+                    </ng-container>
+                  </nz-modal>
+
                     <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
-                      <!-- <app-card [post]="post"></app-card> -->
                       <app-posts [post]="post"></app-posts>
                   </ng-template>
                 </div>
                 <div nz-col nzSpan="8">
-                    <label nz-radio-button nzValue="large">Bạn Bè 1 </label>
-                    <label nz-radio-button nzValue="large">Bạn Bè 2</label>
-                    <label nz-radio-button nzValue="large">Bạn Bè 3</label>
+                  <app-chat></app-chat>
                 </div>
               </div>
       </nz-content>

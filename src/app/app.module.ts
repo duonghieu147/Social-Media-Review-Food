@@ -43,6 +43,7 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { AddpostComponent } from './shared/components/addpost/addpost.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
+import { ChatComponent } from './shared/components/chat/chat.component';
 
 
 //
@@ -59,7 +60,8 @@ import { NgZorroAntdModule } from './ng-zorro-antd.module';
     SilderbarRightComponent,
     SignupComponent,
     CommentComponent,
-    AddpostComponent
+    AddpostComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

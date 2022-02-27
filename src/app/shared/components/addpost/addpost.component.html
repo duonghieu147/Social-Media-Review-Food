@@ -1,9 +1,30 @@
-<nz-upload
-      [nzHeaders]="{ authorization: 'authorization-text' }"
-      (nzChange)="handleChange($event)"
-    >
-      <button nz-button>
-        <i nz-icon nzType="upload"></i>
-        Click to Upload
-      </button>
-    </nz-upload>
+<form class='form-create-post' nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your description!">
+      <textarea nz-input formControlName="description" placeholder="Controlled autosize" [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your images!">
+      <textarea nz-input formControlName="images" placeholder="Autosize height based on content lines" nzAutosize></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input tags!">
+      <nz-mention [nzSuggestions]="suggestions" nzNotFoundContent="Không_tìm_thấy_tags_bạn_muốn"(nzOnSelect)="onSelect($event)">
+        <input formControlName="tags"
+          placeholder="input here"
+          nzMentionTrigger
+          nz-input
+          [(ngModel)]="inputValue"
+          (ngModelChange)="onChange($event)"
+        />
+      </nz-mention>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">Đăng Bài</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

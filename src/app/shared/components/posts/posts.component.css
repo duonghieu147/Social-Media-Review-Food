@@ -27,6 +27,14 @@
   }
   
   /* comment */
-  .ant-comment-inner{
+  /* .ant-comment-inner{
     width:500px !important;
+  } */
+  p.ng-star-inserted {
+      text-align: center;
   }
+  p.content-post.ng-star-inserted{
+    margin-left: 24px;
+    text-align: left;
+  }
+  

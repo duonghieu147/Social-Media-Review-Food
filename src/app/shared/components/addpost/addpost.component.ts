@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
@@ -9,20 +10,31 @@ import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
   styleUrls: ['./addpost.component.css']
 })
 export class AddpostComponent  {
+  inputValue: string = '';
 
-  constructor(private msg: NzMessageService) {}
+  suggestions = ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご'];
 
-  handleChange(info: NzUploadChangeParam): void {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      this.msg.success(`${info.file.name} file uploaded successfully`);
-      console.log('f file uploaded successfully')
+  validateForm!: FormGroup;
 
-    } else if (info.file.status === 'error') {
-      this.msg.error(`${info.file.name} file upload failed.`);
-      console.log('file upload failed')
-    }
+  submitForm(): void {
+    console.log('submit', this.validateForm.value);
+  }
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      description: [null],
+      images: [null],
+      tags: [null],
+    });
+  }
+
+  onChange(value: string): void {
+    console.log(value);
+  }
+
+  onSelect(suggestion: string): void {
+    console.log(`onSelect ${suggestion}`);
   }
 }

@@ -1,0 +1,8 @@
+.chat{
+    display: flex;
+    flex-direction: column;
+    /* height:200px; */
+}
+.friends{
+    margin-bottom:5px;
+}

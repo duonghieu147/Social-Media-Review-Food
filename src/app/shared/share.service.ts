@@ -67,17 +67,17 @@ export class ShareService {
         );
   }
 
-  getPostById(idPost:number):Observable<any> { 
-    return this.http.get<Config>(postURL+'?postId='+idPost)
-        .pipe(
-            catchError(this.handleError)
-        );
-  }
+//   getPostById(idPost:number):Observable<any> { 
+//     return this.http.get<Config>(postURL+'?postId='+idPost)
+//         .pipe(
+//             catchError(this.handleError)
+//         );
+//   }
 
-  getPostByIdUser(idUser:number):Observable<any> { 
-    return this.http.get<Config>(postURL+'/findbyuserid'+'?postId='+idUser)
-        .pipe(
-            catchError(this.handleError)
-        );
-  }
+//   getPostByIdUser(idUser:number):Observable<any> { 
+//     return this.http.get<Config>(postURL+'/findbyuserid'+'?postId='+idUser)
+//         .pipe(
+//             catchError(this.handleError)
+//         );
+//   }
 }

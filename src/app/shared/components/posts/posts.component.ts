@@ -9,25 +9,49 @@ import { addDays, formatDistance } from 'date-fns';
 export class PostsComponent implements OnInit {
 
   @Input() post: Array<any> = [];
+  isWritenCmt:boolean=false;
+  randomNumberLike:number=0 ;
+  randomNumberCmt:number=0 ;
+  randomNumberShare:number=0 ;
+  isLike:boolean =false;
 
   constructor() { }
   dataPost: any = [];
+  dataRelpy :any = [];
   ngOnInit(): void {
+
     if (this.post[0] == '7') {
       console.log(this.post)
 
     }
+    this.randomNumberLike=this.getRandomNumber(100)
+    this.randomNumberCmt=this.getRandomNumber(100)
+    this.randomNumberShare=this.getRandomNumber(10)
+    this.bindingDataRelpy()
     this.dataPost = {
       idpost: this.post[0],
       author: this.post[2],
       avatar: this.post[1],
       content: this.post[3],
       createdTime:this.post[4],
-      images:this.post[6][0]
+      images:this.post[6][0],
+      datetime: formatDistance(new Date(), addDays(new Date(), 1))
+
     }
     console.log(this.dataPost.images)
   }
 
+  bindingDataRelpy() {
+    var list =[];
+    if(this.post[8]!=null) {
+      for (let index = 0; index < this.post[8].length; index++){
+        list.push([this.post[8][index]])
+      }
+      // this.dataRelpy = this.dataRelpy.concat(list);
+      this.dataRelpy =  list
+      console.log(this.dataRelpy[0][0].ownerName)
+    }
+  }
   data = [
     {
       author: 'Han Solo',
@@ -38,6 +62,7 @@ export class PostsComponent implements OnInit {
       datetime: formatDistance(new Date(), addDays(new Date(), 1))
     },
   ];
+  
 
 
 
@@ -72,4 +97,26 @@ export class PostsComponent implements OnInit {
       }));
     }, 800);
   }
+
+  showWritenCmt(){
+    this.isWritenCmt=!this.isWritenCmt;
+  }
+  actionLikes(){
+    if(this.isLike){
+      this.randomNumberLike=this.randomNumberLike - 1
+      this.isLike=!this.isLike;
+    }else{
+      this.randomNumberLike=this.randomNumberLike + 1
+      this.isLike=!this.isLike;
+    }
+
+  }
+  actionShare(){
+    this.isWritenCmt=!this.isWritenCmt;
+  }
+  getRandomNumber(max:number) {
+    return Math.floor(Math.random() * max);
+  }
+
 }
+ 
