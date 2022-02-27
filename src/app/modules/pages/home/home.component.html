@@ -1,0 +1,35 @@
+
+<nz-layout>
+    <nz-header>
+        <div class="header">
+        </div>
+    </nz-header>
+    <nz-layout>
+      <nz-sider [nzWidth]="300">
+          <div class="silderbar">
+            <app-silderbar-left></app-silderbar-left>
+          </div>
+        <!-- <app-silderbar-left></app-silderbar-left> -->
+      </nz-sider>
+      <nz-content>
+            <div nz-row>
+                <div nz-col nzSpan="6"></div>
+                <div nz-col nzSpan="10">
+                    <!-- <app-posts></app-posts>
+                    <app-posts></app-posts>
+                    <app-posts></app-posts>
+                    <app-posts></app-posts> -->
+                    <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+                      <!-- <app-card [post]="post"></app-card> -->
+                      <app-posts [post]="post"></app-posts>
+                  </ng-template>
+                </div>
+                <div nz-col nzSpan="8">
+                    <label nz-radio-button nzValue="large">Bạn Bè 1 </label>
+                    <label nz-radio-button nzValue="large">Bạn Bè 2</label>
+                    <label nz-radio-button nzValue="large">Bạn Bè 3</label>
+                </div>
+              </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>

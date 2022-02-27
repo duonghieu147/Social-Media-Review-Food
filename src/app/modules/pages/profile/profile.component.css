@@ -1,0 +1,67 @@
+.profile {
+    margin: auto;
+}
+[nz-icon] {
+    margin-right: 6px;
+    font-size: 24px;
+  }
+  
+nz-carousel {
+    height:320px;
+    width: 960px;
+    margin: auto;
+  }
+  
+[nz-carousel-content] {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #364d79;
+    color: #fff;
+    overflow: hidden;
+  }
+  [nz-image] {
+    height:320px;
+    width: 960px;
+    object-fit: cover;
+  }
+  h3 {
+    color: #fff;
+    margin-bottom: 0;
+    user-select: none;
+  }
+
+
+/* headerpage */
+  .content {
+    flex: 1;
+  }
+
+  .content p {
+    margin-bottom: 1em;
+  }
+
+  .content-link a {
+    margin-right: 16px;
+  }
+
+  .content-link a img {
+    margin-right: 8px;
+  }
+
+  .content-image {
+    margin: 0 0 0 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .content-image img {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .content-image {
+      flex: 100%;
+      margin: 24px 0 0;
+    }
+  }

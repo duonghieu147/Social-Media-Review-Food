@@ -1,0 +1,32 @@
+
+.count {
+  padding-left: 8px;
+  cursor: auto;
+  width: 300px;
+}
+.ant-comment-rtl .count {
+  padding-right: 8px;
+  padding-left: 0;
+}
+
+.inf{
+  display: flex;
+}
+.inf-header {
+  text-align:left;
+}
+p.ng-star-inserted {
+  text-align:left;
+}
+.action{
+  display: flex;
+  text-align:center;
+}
+.ant-card-body {
+  padding:0;
+}
+
+/* comment */
+.ant-comment-inner{
+  width:500px !important;
+}
