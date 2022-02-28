@@ -1,0 +1,6 @@
+nz-comment { 
+    background-color: white;
+}
+nz-comment textarea.ant-input {
+    background-color: whitesmoke;
+}

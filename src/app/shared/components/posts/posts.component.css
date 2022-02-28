@@ -41,4 +41,14 @@
     height: 400px;
     object-fit: cover;
 }
-  
+
+nz-card {
+  margin-top:24px;
+}
+nz-comment { 
+  background-color: white;
+}
+nz-comment textarea.ant-input {
+  background-color: whitesmoke;
+  margin-right: 24px;
+}
