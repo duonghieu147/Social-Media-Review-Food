@@ -1,3 +1,7 @@
 [nz-menu] {
     width: 240px;
   }
+
+  i.ant-menu-submenu-arrow.ng-star-inserted {
+    color:white;
+  }

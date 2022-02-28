@@ -44,6 +44,7 @@ import { AddpostComponent } from './shared/components/addpost/addpost.component'
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { ChatComponent } from './shared/components/chat/chat.component';
+import { AddcommentComponent } from './shared/components/addcomment/addcomment.component';
 
 
 //
@@ -61,7 +62,8 @@ import { ChatComponent } from './shared/components/chat/chat.component';
     SignupComponent,
     CommentComponent,
     AddpostComponent,
-    ChatComponent
+    ChatComponent,
+    AddcommentComponent
   ],
   imports: [
     BrowserModule,

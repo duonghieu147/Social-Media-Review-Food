@@ -37,4 +37,8 @@
     margin-left: 24px;
     text-align: left;
   }
+  img.ng-star-inserted {
+    height: 400px;
+    object-fit: cover;
+}
   

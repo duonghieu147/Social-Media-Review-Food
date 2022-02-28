@@ -38,20 +38,21 @@
 
   <!-- Show comment -->
   
-  <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
-    <ng-template #item let-item>
-      <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime">
-        <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]=" item[0].avatar"></nz-avatar>
-        <nz-comment-content>
-          <p>{{ item[0].content }}</p>
-        </nz-comment-content>
-        <nz-comment-action>Reply to</nz-comment-action>
-      </nz-comment>
-    </ng-template>
-  </nz-list>
-
-
-
+  <ng-template [ngIf]="isWritenCmt">
+    <ng-template [ngIf]="dataRelpy.length!= 0">
+      <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+        <ng-template #item let-item>
+          <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime">
+            <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]=" item[0].avatar"></nz-avatar>
+            <nz-comment-content>
+              <p>{{ item[0].content }}</p>
+            </nz-comment-content>
+            <nz-comment-action>Reply to</nz-comment-action>
+          </nz-comment>
+        </ng-template>
+      </nz-list>
+    </ng-template>  
+  </ng-template>
 
   <!-- Show comment -->
   <!-- <nz-list [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
@@ -93,17 +94,5 @@
 
 <!-- <input #ref1 type="text" [(ngModel)]="isWritenCmt" /> -->
 <ng-template [ngIf]="isWritenCmt">
-    <nz-comment>
-        <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
-        <nz-comment-content>
-          <nz-form-item>
-            <textarea [(ngModel)]="inputValue" nz-input rows="4"></textarea>
-          </nz-form-item>
-          <nz-form-item>
-            <button nz-button nzType="primary" [nzLoading]="submitting" [disabled]="!inputValue" (click)="handleSubmit()">
-              Add Comment
-            </button>
-          </nz-form-item>
-        </nz-comment-content>
-      </nz-comment>
+  <app-addcomment></app-addcomment>
 </ng-template>
