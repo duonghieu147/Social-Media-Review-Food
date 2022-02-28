@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   postData: Array<any>=[];
   postList: Array<any>=[];
   page :number=0;
-  limit:number=10;
+  limit:number=1;
 
   constructor(
     public shareService:ShareService

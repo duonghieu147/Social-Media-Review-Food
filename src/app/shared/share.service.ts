@@ -9,10 +9,10 @@ import { Observable, throwError } from 'rxjs';
 const baseUrl = 'https://60faace37ae59c0017166267.mockapi.io/api/v1/';
 const postURL = 'http://localhost:8080/api/post';
 export interface Config {
-    id: string;
-    nasme: string;
-    description: string;
-  }
+  id: string;
+  nasme: string;
+  description: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -37,47 +37,54 @@ export class ShareService {
       'Something bad happened; please try again later.');
   }
 
-  getAllshopping():Observable<any> { 
-    return this.http.get<Config>(baseUrl+'shopping')
-        .pipe(
-            catchError(this.handleError)
-        );
+  getAllshopping(): Observable<any> {
+    return this.http.get<Config>(baseUrl + 'shopping')
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  getAllCmt(idPost:number):Observable<any> { 
-    return this.http.get<Config>(baseUrl+'shopping/'+idPost+'/Comment')
-        .pipe(
-            catchError(this.handleError)
-        );
+  getAllCmt(idPost: number): Observable<any> {
+    return this.http.get<Config>(baseUrl + 'shopping/' + idPost + '/Comment')
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  getRates(idPost:number):Observable<any> { 
-    return this.http.get<Config>(baseUrl+'shopping/'+idPost+'/rates/1')
-        .pipe(
-            catchError(this.handleError)
-        );
+  getRates(idPost: number): Observable<any> {
+    return this.http.get<Config>(baseUrl + 'shopping/' + idPost + '/rates/1')
+      .pipe(
+        catchError(this.handleError)
+      );
   }
-  
+
 
   //API Post
-  getAllPost(page=0,limit=20):Observable<any> { 
-    return this.http.get<Config>(postURL+'/findall'+'?page='+page+'&limit='+limit)
-        .pipe(
-            catchError(this.handleError)
-        );
+  getAllPost(page = 0, limit = 20): Observable<any> {
+    return this.http.get<Config>(postURL + '/findall' + '?page=' + page + '&limit=' + limit)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-//   getPostById(idPost:number):Observable<any> { 
-//     return this.http.get<Config>(postURL+'?postId='+idPost)
-//         .pipe(
-//             catchError(this.handleError)
-//         );
-//   }
+  addComment(postId: number, comment: any) {
+    return this.http.put<any>(postURL + '/addcomment' + '?postId=' + postId, comment)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
-//   getPostByIdUser(idUser:number):Observable<any> { 
-//     return this.http.get<Config>(postURL+'/findbyuserid'+'?postId='+idUser)
-//         .pipe(
-//             catchError(this.handleError)
-//         );
-//   }
+  //   getPostById(idPost:number):Observable<any> { 
+  //     return this.http.get<Config>(postURL+'?postId='+idPost)
+  //         .pipe(
+  //             catchError(this.handleError)
+  //         );
+  //   }
+
+  //   getPostByIdUser(idUser:number):Observable<any> { 
+  //     return this.http.get<Config>(postURL+'/findbyuserid'+'?postId='+idUser)
+  //         .pipe(
+  //             catchError(this.handleError)
+  //         );
+  //   }
 }
