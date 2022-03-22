@@ -24,8 +24,12 @@
     <div class="row-grid">
       <div class="column-grid">
         <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index" >
-
-          <img *ngIf="i<3" alt="example" src={{item}} />
+          <!-- <img *ngIf="i<3" alt="example" src={{item}} /> -->
+          <img  *ngIf="i<3"
+          nz-image
+          nzSrc='{{item}}'
+          alt=""
+        />
         </ng-template>
         
       </div>
