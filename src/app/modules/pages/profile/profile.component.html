@@ -10,7 +10,7 @@
         </nz-breadcrumb> -->
     
         <!--avatar-->
-        <nz-avatar [nzSize]="80" nz-page-header-avatar nzSrc="https://scontent.fdad1-2.fna.fbcdn.net/v/t1.6435-9/166014380_1392790014404846_1341965397669879252_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ZDnawHn2YM8AX_E3-7E&_nc_ht=scontent.fdad1-2.fna&oh=00_AT8FDfSNtuPoxI5dgb7j6isTl51UaR3CEwPgQKPtWjWQQA&oe=6232F916"></nz-avatar>
+        <nz-avatar [nzSize]="80" nz-page-header-avatar nzSrc="https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg"></nz-avatar>
         
         <!--title-->
         <nz-page-header-title>Dương Văn Hiếu</nz-page-header-title>
@@ -66,14 +66,12 @@
         </nz-page-header-content>
         <nz-page-header-footer>
             <nz-tabset [nzSelectedIndex]="1">
-              <nz-tab nzTitle="HomePage"></nz-tab>
-              <nz-tab nzTitle="Product"></nz-tab>
-              <nz-tab nzTitle="Profile"></nz-tab>
+              <nz-tab nzTitle="HomePage" (nzClick)="changeModeProfile('home')"></nz-tab>
+              <nz-tab nzTitle="Product" (nzClick)="changeModeProfile('product')"></nz-tab>
+              <nz-tab nzTitle="Profile" (nzClick)="changeModeProfile('profile')"></nz-tab>
             </nz-tabset>
           </nz-page-header-footer>
       </nz-page-header>
-    
-    
     
     
     <nz-carousel nzAutoPlay>
@@ -85,4 +83,17 @@
         />
         </div>
       </nz-carousel>
+      <div class="profile-content">
+        <div class="post" *ngIf="modepage=='home'">
+          <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+            <app-posts [post]="post"></app-posts>
+          </ng-template>
+        </div>
+        <div *ngIf="modepage=='product'">
+          <!-- <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+            <app-posts [post]="post"></app-posts>
+          </ng-template> -->
+          <div>shopping cart</div>
+        </div>
+      </div> 
 </div>

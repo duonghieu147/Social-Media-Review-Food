@@ -8,6 +8,8 @@ import { Observable, throwError } from 'rxjs';
 
 const baseUrl = 'https://60faace37ae59c0017166267.mockapi.io/api/v1/';
 const postURL = 'http://localhost:8080/api/post';
+const jsonServer = "http://localhost:3000"
+
 export interface Config {
   id: string;
   nasme: string;
@@ -87,4 +89,12 @@ export class ShareService {
   //             catchError(this.handleError)
   //         );
   //   }
+
+  //Json server
+  getItemByShop(shop:string):Observable<any>{
+    return this.http.get<Config>(jsonServer+'/itemshop?shop='+shop)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
 }
