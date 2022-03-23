@@ -1,0 +1,19 @@
+.header{
+    display: flex;
+}
+.logo{
+    width:300px;
+}
+
+span {
+    color: green;
+    font-size: 40px;
+    align-items: center;
+}
+.search {
+    margin: auto;
+    margin-left: 0;
+}
+input.ant-input.ant-input-lg.ng-star-inserted {
+    width:500px;
+}

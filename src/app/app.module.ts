@@ -26,9 +26,13 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 
 
+//Material Module
+// import {MatDialogModule } from '@angular/material/dialog';
+import { MaterialModule } from './material.module';
 
 
-//
+
+//Components
 import { LoginComponent } from './modules/pages/login/login.component';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { ProfileComponent } from './modules/pages/profile/profile.component';
@@ -45,7 +49,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { ChatComponent } from './shared/components/chat/chat.component';
 import { AddcommentComponent } from './shared/components/addcomment/addcomment.component';
-
+import { ItemshopComponent } from './shared/components/itemshop/itemshop.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { DialogItemFoodComponent } from './shared/components/dialog-item-food/dialog-item-food.component';
+import { InformationComponent } from './modules/pages/profile/information/information.component';
 
 //
 @NgModule({
@@ -63,7 +70,12 @@ import { AddcommentComponent } from './shared/components/addcomment/addcomment.c
     CommentComponent,
     AddpostComponent,
     ChatComponent,
-    AddcommentComponent
+    AddcommentComponent,
+    ItemshopComponent,
+    HeaderComponent,
+    DialogItemFoodComponent,
+    InformationComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -90,7 +102,12 @@ import { AddcommentComponent } from './shared/components/addcomment/addcomment.c
     NzListModule,
     NzUploadModule,
     NzModalModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+
+
+    // MatDialogModule,
+    MaterialModule
+    
     
   ],
   providers: [],

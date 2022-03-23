@@ -28,13 +28,16 @@ export class PostsComponent implements OnInit {
     this.randomNumberCmt=this.getRandomNumber(100)
     this.randomNumberShare=this.getRandomNumber(10)
     this.bindingDataRelpy()
+    // if(this.post[6].length!=0) {
+      
+    // }
     this.dataPost = {
       idpost: this.post[0],
       author: this.post[2],
       avatar: this.post[1],
       content: this.post[3],
       createdTime:this.post[4],
-      images:this.post[6][0],
+      images:this.post[6],
       datetime: formatDistance(new Date(), addDays(new Date(), 1))
 
     }
