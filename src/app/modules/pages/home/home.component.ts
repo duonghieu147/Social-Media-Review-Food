@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   postList: Array<any>=[];
   page :number=0;
   limit:number=5;
-
+  inputValue='Search'
   constructor(
     public shareService:ShareService
 

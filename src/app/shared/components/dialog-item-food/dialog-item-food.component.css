@@ -1,0 +1,53 @@
+
+.header {
+  display: flex;
+  justify-content:space-between;
+}
+.action-edit button {
+  width: 80px;
+}
+nz-carousel {
+  height:350px;
+  width: 600px;
+  margin: auto;
+  margin-top: 24px;
+}
+[nz-carousel-content] {
+  text-align: center;
+  /* height: 160px;
+  line-height: 160px; */
+  background: #364d79;
+  color: #fff;
+  overflow: hidden;
+}
+
+[nz-image] {
+  height:350px;
+  width: 600px;
+  object-fit: cover;
+}
+
+.action{
+  display: flex;
+  justify-content: center;
+}
+.mat-button{
+  width:150px;
+
+}
+
+
+/* Rating */
+.rating{
+  display: flex;
+}
+label{
+  width:150px;
+  line-height: 55px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.mat-slider-horizontal {
+  max-width: 300px;
+  width: 100%;
+}

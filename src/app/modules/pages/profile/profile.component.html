@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="profile">
     <nz-page-header class="site-page-header">
         <!--breadcrumb-->
@@ -16,17 +18,17 @@
         <nz-page-header-title>Dương Văn Hiếu</nz-page-header-title>
     
         <!--subtitle-->
-        <nz-page-header-subtitle>HIEUDV</nz-page-header-subtitle>
+        <!-- <nz-page-header-subtitle>HIEUDV</nz-page-header-subtitle> -->
     
         <!--tags-->
         <nz-page-header-tags>
-          <nz-tag [nzColor]="'blue'">Followed</nz-tag>
+          <nz-tag [nzColor]="'blue'">HIEUDV</nz-tag>
         </nz-page-header-tags>
     
         <!--extra-->
         <nz-page-header-extra>
-          <button nz-button>Message</button>
-          <button nz-button nzType="primary">Gallery</button>
+          <button nz-button>Nhắn Tin</button>
+          <button nz-button nzType="primary">follow</button>
           <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
             <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
           </button>
@@ -65,13 +67,13 @@
           </div>
         </nz-page-header-content>
         <nz-page-header-footer>
-            <nz-tabset [nzSelectedIndex]="1">
+            <nz-tabset [nzSelectedIndex]="0" nzSize="large">
               <nz-tab nzTitle="HomePage" (nzClick)="changeModeProfile('home')"></nz-tab>
               <nz-tab nzTitle="Product" (nzClick)="changeModeProfile('product')"></nz-tab>
               <nz-tab nzTitle="Profile" (nzClick)="changeModeProfile('profile')"></nz-tab>
             </nz-tabset>
           </nz-page-header-footer>
-      </nz-page-header>
+    </nz-page-header>
     
     
     <nz-carousel nzAutoPlay>
@@ -82,18 +84,20 @@
           alt=""
         />
         </div>
-      </nz-carousel>
-      <div class="profile-content">
-        <div class="post" *ngIf="modepage=='home'">
-          <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
-            <app-posts [post]="post"></app-posts>
-          </ng-template>
-        </div>
-        <div *ngIf="modepage=='product'">
-          <!-- <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
-            <app-posts [post]="post"></app-posts>
-          </ng-template> -->
-          <div>shopping cart</div>
-        </div>
-      </div> 
+    </nz-carousel>
+    <div class="profile-content">
+      <div class="post" *ngIf="modepage=='home'">
+        <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+          <app-posts [post]="post"></app-posts>
+        </ng-template>
+      </div>
+      <div *ngIf="modepage=='product'">
+        <app-gallery></app-gallery>
+      </div>
+      <div *ngIf="modepage=='profile'">
+        <app-dialog-item-food></app-dialog-item-food>
+        <!-- <app-information></app-information> -->
+      </div>
+    </div> 
+    
 </div>

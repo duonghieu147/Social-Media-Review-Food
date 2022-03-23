@@ -1,1 +1,5 @@
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+ng g c shared/components/header --module app
+
+
+CSS -- ::ng-deep .classname
