@@ -12,12 +12,17 @@ import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 export class AddpostComponent  {
   inputValue: string = '';
 
-  suggestions = ['afc163', 'benjycui', 'yiminghe', 'RaoHai', '中文', 'にほんご'];
+  suggestions = ['Coffee', 'Do uong', 'user 1', 'user 2', 'Nha hang 1', 'Quan'];
 
   validateForm!: FormGroup;
 
   submitForm(): void {
     console.log('submit', this.validateForm.value);
+    var img =[];
+    img.push(this.validateForm.value.images)
+    img.push(this.validateForm.value.images2)
+    img.push(this.validateForm.value.images3)
+    console.log('img', img);
   }
 
   constructor(private fb: FormBuilder) {}
@@ -26,6 +31,8 @@ export class AddpostComponent  {
     this.validateForm = this.fb.group({
       description: [null],
       images: [null],
+      images2: [null],
+      images3: [null],
       tags: [null],
     });
   }
@@ -36,5 +43,8 @@ export class AddpostComponent  {
 
   onSelect(suggestion: string): void {
     console.log(`onSelect ${suggestion}`);
+  }
+  cancel(){
+    console.log('cancel');
   }
 }

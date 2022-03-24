@@ -1,20 +1,30 @@
-<img src="../../../../assets/svg/shop.svg" alt="">
 
+<form class='form-create-post' nz-form [nzLayout]="'inline'" [formGroup]="validateForm" >
 
-
-
-
-<form class='form-create-post' nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-form-control nzErrorTip="Please input your description!">
-      <textarea nz-input formControlName="description" placeholder="Controlled autosize" [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
+      <textarea nz-input formControlName="description" placeholder="Mô tả bài đăng" [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
     </nz-form-control>
   </nz-form-item>
+
   <nz-form-item>
     <nz-form-control nzErrorTip="Please input your images!">
-      <textarea nz-input formControlName="images" placeholder="Autosize height based on content lines" nzAutosize></textarea>
+      <textarea nz-input formControlName="images" placeholder="Chưa hỗ trợ upload vui lòng điền đường link" nzAutosize></textarea>
     </nz-form-control>
   </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your images!">
+      <textarea nz-input formControlName="images2" placeholder="Chưa hỗ trợ upload vui lòng điền đường link" nzAutosize></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your images!">
+      <textarea nz-input formControlName="images3" placeholder="Chưa hỗ trợ upload vui lòng điền đường link" nzAutosize></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
   <nz-form-item>
     <nz-form-control nzErrorTip="Please input tags!">
       <nz-mention [nzSuggestions]="suggestions" nzNotFoundContent="Không_tìm_thấy_tags_bạn_muốn"(nzOnSelect)="onSelect($event)">
@@ -28,9 +38,20 @@
       </nz-mention>
     </nz-form-control>
   </nz-form-item>
+
   <nz-form-item>
+    <p>tags :</p><span>{{inputValue}}</span>
+  </nz-form-item>
+
+  <!-- <nz-form-item>
     <nz-form-control>
       <button nz-button nzType="primary" [disabled]="!validateForm.valid">Đăng Bài</button>
     </nz-form-control>
-  </nz-form-item>
+  </nz-form-item> -->
+
+  <mat-dialog-actions align="end">
+    <button mat-button  color="accent"(click)="cancel()" >Hủy..</button>
+    <button mat-button  [disabled]="!validateForm.valid" color="primary" (click)="submitForm()">Đăng bài</button>
+  </mat-dialog-actions>
+
 </form>

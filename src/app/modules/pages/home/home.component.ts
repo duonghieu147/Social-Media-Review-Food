@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ShareService } from 'src/app/shared/share.service';
 import * as cmn from 'src/app/constant/common'
+import {MatDialog} from '@angular/material/dialog';
+import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
+
 
 @Component({
   selector: 'app-home',
@@ -17,8 +20,8 @@ export class HomeComponent implements OnInit {
   limit:number=5;
   inputValue='Search'
   constructor(
-    public shareService:ShareService
-
+    public shareService:ShareService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -88,18 +91,23 @@ export class HomeComponent implements OnInit {
   openDialogCreatePost() {
   }
   showModal(): void {
-    this.isVisible = true;
+    const dialogRef =this.dialog.open(AddpostComponent,{
+        width: '700px',height:'auto'
+    })
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(`Dialog result: ${result}`);
+    })
   }
 
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
-  }
+  // handleOk(): void {
+  //   console.log('Button ok clicked!');
+  //   this.isVisible = false;
+  // }
 
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
-  }
+  // handleCancel(): void {
+  //   console.log('Button cancel clicked!');
+  //   this.isVisible = false;
+  // }
  
 }
 

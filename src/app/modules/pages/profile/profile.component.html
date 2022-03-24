@@ -92,9 +92,13 @@
         </ng-template>
       </div>
       <div *ngIf="modepage=='product'">
+        <button mat-button  color="primary">Tạo sản phẩm mới</button>
+
         <app-gallery></app-gallery>
       </div>
       <div *ngIf="modepage=='profile'">
+        <button mat-button  color="primary">Chỉnh sửa profile</button>
+
         <app-dialog-item-food></app-dialog-item-food>
         <!-- <app-information></app-information> -->
       </div>
