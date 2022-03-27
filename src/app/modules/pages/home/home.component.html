@@ -16,13 +16,9 @@
             <div nz-row>
                 <div nz-col nzSpan="6"></div>
                 <div nz-col nzSpan="10">
+                  <button mat-button color="primary" (click)="loginUser()">loginUser</button>
+                  <button mat-button  (click)="loginShop()">loginShop</button>
                   <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Đăng bài</span></button>
-                  <nz-modal [(nzVisible)]="isVisible"  nzCancelText="Hủy" nzOkText="Đăng" nzTitle="Đăng bài" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" >
-                    <ng-container *nzModalContent >
-                      <app-addpost></app-addpost>
-                    </ng-container>
-                  </nz-modal>
-
                     <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
                       <app-posts [post]="post"></app-posts>
                   </ng-template>

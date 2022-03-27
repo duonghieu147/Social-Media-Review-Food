@@ -6,6 +6,7 @@ import { ProfileComponent } from './modules/pages/profile/profile.component';
 import { ShoppingComponent } from './modules/pages/shopping/shopping.component';
 import { SignupComponent } from './modules/pages/signup/signup.component';
 import { AddpostComponent } from './shared/components/addpost/addpost.component';
+import { PageNoteFoundComponent } from './shared/components/page-note-found/page-note-found.component';
 import { PostsComponent } from './shared/components/posts/posts.component';
 
 const routes: Routes = [
@@ -13,10 +14,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent, 
+    // children: [
+    //   {
+    //     path: ':id', 
+    //     component: ProfileComponent,
+    //   }
+    // ]
+  },
   { path: 'shopping', component: ShoppingComponent },
   { path: 'post', component: PostsComponent },
   { path: 'addpost', component: AddpostComponent },
+  { path: '**', component: PageNoteFoundComponent },  // Wildcard route for a 404 page
 
 ];
 

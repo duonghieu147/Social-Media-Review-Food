@@ -1,5 +1,10 @@
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+
+
 ng g c shared/components/header --module app
 
+ng g c modules/pages/components --module app
+
+http://localhost:8080/swagger-ui.html#/
 
 CSS -- ::ng-deep .classname

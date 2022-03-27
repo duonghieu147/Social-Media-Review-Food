@@ -1,7 +1,12 @@
-[nz-menu] {
+/* [nz-menu] {
     width: 240px;
   }
 
   i.ant-menu-submenu-arrow.ng-star-inserted {
     color:white;
-  }
+  } */
+.silderbar{
+  width: 300px;
+  background-color: lightblue;
+  color:black;
+}

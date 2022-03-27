@@ -5,6 +5,9 @@ import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 
 
+const defaultUrl = 'http://localhost:8080';
+
+const commentUrl = 'http://localhost:8080/create';
 
 const baseUrl = 'https://60faace37ae59c0017166267.mockapi.io/api/v1/';
 const postURL = 'http://localhost:8080/api/post';
@@ -61,7 +64,7 @@ export class ShareService {
   }
 
 
-  //API Post
+  // API Post
   getAllPost(page = 0, limit = 20): Observable<any> {
     return this.http.get<Config>(postURL + '/findall' + '?page=' + page + '&limit=' + limit)
       .pipe(
@@ -76,23 +79,65 @@ export class ShareService {
       );
   }
 
-  //   getPostById(idPost:number):Observable<any> { 
-  //     return this.http.get<Config>(postURL+'?postId='+idPost)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  //   }
-
-  //   getPostByIdUser(idUser:number):Observable<any> { 
-  //     return this.http.get<Config>(postURL+'/findbyuserid'+'?postId='+idUser)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  //   }
-
   //Json server
   getItemByShop(shop:string):Observable<any>{
     return this.http.get<Config>(jsonServer+'/itemshop?shop='+shop)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+
+  //API Usern Controller
+  getUser(userId:any):Observable<any>{
+    return this.http.get<Config>(defaultUrl+'/api/user?id='+userId)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+  createUser(user:any):Observable<any>{
+    return this.http.post<Config>(defaultUrl+'/api/user',user)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+
+  //API Comment Controller
+  createComment(comment:any):Observable<any>{
+    return this.http.post<Config>(defaultUrl+'/create',comment)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+  disLikeComment(commentId:any):Observable<any>{
+    return this.http.post<Config>(defaultUrl+'/create',commentId)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+  likeComment(commentId:any):Observable<any>{
+    return this.http.post<Config>(defaultUrl+'/create',commentId)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+
+  // Api Food Item Controller
+  getFoodItemById(foodItemId:any):Observable<any>{
+    return this.http.get<Config>(defaultUrl+'/api/fooditem/findbyid?id='+foodItemId)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+  ratingFoodItem(foodItemId:any,rating:any):Observable<any>{
+    return this.http.post<Config>(defaultUrl+'/api/fooditem/rate?id='+foodItemId,rating)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+
+  //Api Food Shop Controller
+  createFoodShop(foodItemId:any,rating:any):Observable<any>{
+    return this.http.put<Config>(defaultUrl+'/create='+foodItemId,rating)
           .pipe(
               catchError(this.handleError)
           );

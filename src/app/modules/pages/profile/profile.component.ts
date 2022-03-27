@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import * as cmn from 'src/app/constant/common'
+import { PostService } from 'src/app/shared/post.service';
 import { ShareService } from 'src/app/shared/share.service';
 
 @Component({
@@ -22,12 +24,17 @@ export class ProfileComponent implements OnInit {
   page :number=0;
   limit:number=5;
   modepage:string = 'home'
-
+  userIdParams: any;
+  isFollow:boolean=false;
+  dataUser:any
 
 
   constructor(
     private iconService: NzIconService,
-    public shareService:ShareService
+    public shareService:ShareService,
+    public PostService:PostService,
+    private route: ActivatedRoute,
+
     ) { 
     this.iconService.fetchFromIconfont({
       scriptUrl: 'https://at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
@@ -35,26 +42,31 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllshopping()
-
+    // this.route.queryParams.subscribe(params => {
+    //   console.log(params)
+    //   this.userIdParams = params['id'];
+    // });
+    this.userIdParams = this.route.snapshot.paramMap.get('id');
+    this.getUser()
+    this.getPostByUserId()
   }
 
   changeModeProfile(mode: string) {
     this.modepage = mode;
     console.log(this.modepage);
   }
+  changeFollow(){
+    this.isFollow=!this.isFollow
+  }
 
-  getAllshopping(){
-    this.shareService.getAllPost(this.page,this.limit).subscribe(
+  getPostByUserId(){
+    this.PostService.getPostByUserId(this.userIdParams,this.limit,this.page).subscribe(
       (data) => {
         if(data.data.length==0){
           return
         }
         else {
-          // console.log(data.data)
           this.bindingPostData(data.data)
-          // console.log(this.postData)
-          // console.log(this.postList)     
         }
       }
     )
@@ -62,12 +74,10 @@ export class ProfileComponent implements OnInit {
 
   bindingPostData(postData:any){
     var list =[];
-    
 
     for (let index = 0; index < postData.length; index++){
       var post=postData[index];
       var shortDescription =cmn.GetShortName(post.description,100);
-
       list.push([post.id,
         post.ownerAvatar,
         post.ownerName,
@@ -77,14 +87,25 @@ export class ProfileComponent implements OnInit {
         post.images,
         post.tags,
         post.commentResponses,
-        shortDescription
-
+        shortDescription,
+        post.like
         ])
     }
     this.postList = this.postList.concat(list)
     this.postData =this.postData.concat(postData)
   }
 
-
-
+  getUser(){
+    this.shareService.getUser(this.userIdParams).subscribe(
+      (data) => {
+        if(data.data.length==0){
+          return
+        }
+        else {
+          console.log(data.data)
+          this.dataUser=data.data
+        }
+      }
+    )
+  }
 }
