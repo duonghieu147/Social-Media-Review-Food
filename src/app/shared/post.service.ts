@@ -36,7 +36,7 @@ export class PostService {
             'Something bad happened; please try again later.');
     }
 
-    
+
     //API POST Controller
     getPostById(postId: any): Observable<any> {
         return this.http.get<Config>(defaultUrl + '/api/post?postId=' + postId)
@@ -51,7 +51,7 @@ export class PostService {
             );
     }
     getPostByUserId(userId: any, limit: any, page: any): Observable<any> { //page start 0
-        return this.http.get<Config>(defaultUrl + '/api/post/findall?limit=' + limit + '&page=' + page + '&userId=' + userId)
+        return this.http.get<Config>(defaultUrl + '/api/post/findbyuserid?limit=' + limit + '&page=' + page + '&userId=' + userId)
             .pipe(
                 catchError(this.handleError)
             );

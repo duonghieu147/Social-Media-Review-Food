@@ -101,57 +101,6 @@ export class ShareService {
           );
   }
 
-  //API POST Controller
-  // getPostById(postId:any):Observable<any>{
-  //   return this.http.get<Config>(defaultUrl+'/api/post?postId='+postId)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-  // getAllPost(limit:any,page:any):Observable<any>{ //page start 0
-  //   return this.http.get<Config>(defaultUrl+'/api/post/findall?limit='+limit+'&page='+page)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-  // getPostByUserId(userId:any,limit:any,page:any):Observable<any>{ //page start 0
-  //   return this.http.get<Config>(defaultUrl+'/api/post/findall?limit='+limit+'&page='+page+'&userId='+userId)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-  // createPost(post:any):Observable<any>{ //Return data = null , status = 1 create, = 2 edit, =3 delete
-  //   return this.http.post<Config>(defaultUrl+'/api/post',post)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-
-  // deletePost(postId:any):Observable<any>{ //Return data = null , status = 1 create, = 2 edit, =3 delete
-  //   return this.http.put<Config>(defaultUrl+'/api/post?postId='+postId,postId)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-  // createCommentPost(postId:any,comment:any):Observable<any>{ 
-  //   return this.http.put<Config>(defaultUrl+'/api/post/addcomment?postId='+postId,comment)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-  // likePost(postId:any):Observable<any>{ 
-  //   return this.http.put<Config>(defaultUrl+'/api/post/like?postId='+postId,postId)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-  // dislikePost(postId:any):Observable<any>{ 
-  //   return this.http.put<Config>(defaultUrl+'/api/post/dislike?postId='+postId,postId)
-  //         .pipe(
-  //             catchError(this.handleError)
-  //         );
-  // }
-
   //API Comment Controller
   createComment(comment:any):Observable<any>{
     return this.http.post<Config>(defaultUrl+'/create',comment)

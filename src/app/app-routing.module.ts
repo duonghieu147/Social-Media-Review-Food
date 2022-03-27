@@ -14,13 +14,13 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent, 
-    children: [
-      {
-        path: ':id', 
-        component: ProfileComponent,
-      }
-    ]
+  { path: 'profile/:id', component: ProfileComponent, 
+    // children: [
+    //   {
+    //     path: ':id', 
+    //     component: ProfileComponent,
+    //   }
+    // ]
   },
   { path: 'shopping', component: ShoppingComponent },
   { path: 'post', component: PostsComponent },
