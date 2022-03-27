@@ -53,6 +53,7 @@ import { ItemshopComponent } from './shared/components/itemshop/itemshop.compone
 import { HeaderComponent } from './shared/components/header/header.component';
 import { DialogItemFoodComponent } from './shared/components/dialog-item-food/dialog-item-food.component';
 import { InformationComponent } from './modules/pages/profile/information/information.component';
+import { PageNoteFoundComponent } from './shared/components/page-note-found/page-note-found.component';
 
 //
 @NgModule({
@@ -75,6 +76,7 @@ import { InformationComponent } from './modules/pages/profile/information/inform
     HeaderComponent,
     DialogItemFoodComponent,
     InformationComponent,
+    PageNoteFoundComponent,
 
   ],
   imports: [
