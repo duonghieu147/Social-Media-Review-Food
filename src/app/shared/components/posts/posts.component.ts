@@ -105,6 +105,7 @@ export class PostsComponent implements OnInit {
 
   showWritenCmt(){
     this.isWritenCmt=!this.isWritenCmt;
+    localStorage.setItem('postId',this.post[0])
   }
   actionLikes(){
     if(this.isLike){
@@ -143,7 +144,7 @@ export class PostsComponent implements OnInit {
           console.log("Like",data.messages[0].code) 
         }
         else {
-          console.log("err like",data.messages[0].code)
+          console.log("err dislike",data.messages[0].code)
         }
       })
   }
