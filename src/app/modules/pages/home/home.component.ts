@@ -3,6 +3,7 @@ import { ShareService } from 'src/app/shared/share.service';
 import * as cmn from 'src/app/constant/common'
 import {MatDialog} from '@angular/material/dialog';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
+import { PostService } from 'src/app/shared/post.service';
 
 
 @Component({
@@ -12,7 +13,6 @@ import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.comp
 })
 export class HomeComponent implements OnInit {
   isVisible = false;
-
   post:any
   postData: Array<any>=[];
   postList: Array<any>=[];
@@ -21,24 +21,21 @@ export class HomeComponent implements OnInit {
   inputValue='Search'
   constructor(
     public shareService:ShareService,
+    public PostService: PostService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.getAllshopping()
-    // this.getAllshopping()
+    this.getAllPost()
   }
-  getAllshopping(){
-    this.shareService.getAllPost(this.page,this.limit).subscribe(
+  getAllPost(){
+    this.PostService.getAllPost(this.limit,this.page,).subscribe(
       (data) => {
         if(data.data.length==0){
           return
         }
         else {
-          // console.log(data.data)
           this.bindingPostData(data.data)
-          // console.log(this.postData)
-          // console.log(this.postList)     
         }
       }
     )
@@ -46,30 +43,9 @@ export class HomeComponent implements OnInit {
 
   bindingPostData(postData:any){
     var list =[];
-    
-
     for (let index = 0; index < postData.length; index++){
       var post=postData[index];
       var shortDescription =cmn.GetShortName(post.description,100);
-      // var images=[];
-      // var tags=[];
-      // var commentResponses=[];
-      // if (post.images != null) {
-      //   for (let index = 0; index < post.images.length; index++){
-      //     images.push(post.images[index]);
-      //   }
-      // }
-      // if (post.tags != null) {
-      //   for (let index = 0; index < post.tags.length; index++){
-      //     tags.push(post.tags[index]);
-      //   }
-      // }
-      // if (post.commentResponses != null) {
-      //   for (let index = 0; index < post.commentResponses.length; index++){
-      //     commentResponses.push(post.commentResponses[index]);
-      //   }
-      // }
-
       list.push([post.id,
         post.ownerAvatar,
         post.ownerName,
@@ -79,10 +55,8 @@ export class HomeComponent implements OnInit {
         post.images,
         post.tags,
         post.commentResponses,
-        shortDescription
-        // images,
-        // tags,
-        // commentResponses,
+        shortDescription,
+        post.like
         ])
     }
     this.postList = this.postList.concat(list)
@@ -108,6 +82,41 @@ export class HomeComponent implements OnInit {
   //   console.log('Button cancel clicked!');
   //   this.isVisible = false;
   // }
- 
+  loginUser(){
+    localStorage.setItem('id','1')
+    localStorage.setItem('name','Thành')
+    localStorage.setItem('firstName','Nguyễn Hữu Đức')
+    localStorage.setItem('lastName','Thành')
+    localStorage.setItem('phoneNumber','0395455399')
+    localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
+    localStorage.setItem('biography','1')
+    localStorage.setItem('address','HCM')
+    localStorage.setItem('types','user')
+  }
+  loginShop(){
+    localStorage.setItem('id','1')
+    localStorage.setItem('name','Coffee')
+    localStorage.setItem('firstName','Fell Coffee')
+    localStorage.setItem('lastName','Fell')
+    localStorage.setItem('phoneNumber','0395455399')
+    localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
+    localStorage.setItem('biography','1')
+    localStorage.setItem('address','HCM')
+    localStorage.setItem('types','shop')
+  }
+  getInformation(){
+    var inf =[]
+    inf.push([
+    localStorage.getItem('id'),
+    localStorage.getItem('name'),
+    localStorage.getItem('firstName'),
+    localStorage.getItem('lastName'),
+    localStorage.getItem('phoneNumber'),
+    localStorage.getItem('avatar'),
+    localStorage.getItem('biography'),
+    localStorage.getItem('address'),
+    localStorage.getItem('types')])
+    return inf
+  }
 }
 

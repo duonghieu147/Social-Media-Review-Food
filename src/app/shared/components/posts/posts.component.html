@@ -1,74 +1,78 @@
-
 <!-- Show Post -->
 <nz-card style="width:633px;" [nzCover]="coverTemplate" [nzActions]="[actionLike, actionComment, actionShare]">
-    <!-- <nz-card-meta
+  <!-- <nz-card-meta
       nzTitle="Card title"
       nzDescription="This is the description"
       [nzAvatar]="avatarTemplate"
     ></nz-card-meta> -->
-  </nz-card>
-  <ng-template #avatarTemplate>
-    <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
-  </ng-template>
-  <ng-template #coverTemplate>
-    <div class="inf">
-      <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
-      <div class="inf-header">
-        <h2>{{dataPost.author}}</h2>
-        <!-- <span>{{dataPost.createdTime}}</span> -->
-        <span>{{dataPost.datetime}}</span>
+</nz-card>
+<ng-template #avatarTemplate>
+  <nz-avatar nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+ </ng-template>
+<ng-template #coverTemplate>
+  <div class="inf">
+    <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
+    <div class="inf-header">
+      <h2>{{dataPost.author}}</h2>
+      <span>{{dataPost.createdTime}}</span>
+      <!-- <span>{{dataPost.datetime}}</span> -->
 
-      </div>
     </div>
-    <p class="content-post">{{dataPost.content}}</p>
-    <div class="row-grid">
-      <div class="column-grid">
-        <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index" >
-          <!-- <img *ngIf="i<3" alt="example" src={{item}} /> -->
-          <img  *ngIf="i<3"
-          nz-image
-          nzSrc='{{item}}'
-          alt=""
-        />
-        </ng-template>
-        
-      </div>
+  </div>
+  <p class="content-post">{{dataPost.content}}</p>
+  <div class="row-grid">
+    <div class="column-grid">
+      <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
+        <!-- <img *ngIf="i<3" alt="example" src={{item}} /> -->
+        <img *ngIf="i<1" nz-image nzSrc='{{item}}' alt="" />
+      </ng-template>
+
     </div>
+  </div>
 
-  </ng-template>
-  <ng-template #actionLike>
-      <p (click)="actionLikes()">
-        {{randomNumberLike}} Like
-      </p>
-  </ng-template>
-  <ng-template #actionComment >
-    <p (click)="showWritenCmt()"> {{randomNumberCmt}} Comment</p>
-  </ng-template>
-  <ng-template #actionShare>
-    {{randomNumberShare}} Share
-  </ng-template>
-  
+</ng-template>
+<ng-template #actionLike>
+  <p (click)="actionLikes()">
+    {{dataPost.like}} Like
+  </p>
+</ng-template>
+<ng-template #actionComment>
+  <!-- <p (click)="showWritenCmt()"> {{dataPost.numbercmt}} Comment</p> -->
+  <!-- <div *ngIf="dataPost.numbercmt">
+    <p (click)="showWritenCmt()"> {{dataPost.numbercmt}} Comment</p>
+  </div> -->
+  <div *ngIf="numberCmt">
+    <p (click)="showWritenCmt()">{{numberCmt}}Comment</p>
+  </div>
+  <div *ngIf="!numberCmt">
+    <p (click)="showWritenCmt()">Comment</p>
+  </div>
+</ng-template>
+<ng-template #actionShare>
+  {{randomNumberShare}} Share
+</ng-template>
 
-  <!-- Show comment -->
-  
-  <ng-template [ngIf]="isWritenCmt">
-    <ng-template [ngIf]="dataRelpy.length!= 0">
-      <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
-        <ng-template #item let-item>
-          <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime">
-            <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]=" item[0].avatar"></nz-avatar>
-            <nz-comment-content>
-              <p>{{ item[0].content }}</p>
-            </nz-comment-content>
-            <nz-comment-action>Reply to</nz-comment-action>
-          </nz-comment>
-        </ng-template>
-      </nz-list>
-    </ng-template>  
-  </ng-template>
 
-  <!-- Show comment -->
-  <!-- <nz-list [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+<!-- Show comment -->
+
+<ng-template [ngIf]="isWritenCmt">
+  <ng-template [ngIf]="dataRelpy.length!= 0">
+    <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+      <ng-template #item let-item>
+        <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime">
+          <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]=" item[0].avatar"></nz-avatar>
+          <nz-comment-content>
+            <p>{{ item[0].content }}</p>
+          </nz-comment-content>
+          <nz-comment-action>Reply to</nz-comment-action>
+        </nz-comment>
+      </ng-template>
+    </nz-list>
+  </ng-template>
+</ng-template>
+
+<!-- Show comment -->
+<!-- <nz-list [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
       <ng-template #item let-item>
         <nz-comment [nzAuthor]="item.author" [nzDatetime]="item.datetime">
           <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.avatar"></nz-avatar>
@@ -79,8 +83,8 @@
         </nz-comment>
       </ng-template>
     </nz-list> -->
-  <!-- Show Reply comment -->
-    <!-- <nz-list *ngIf="dataAdd.length" [nzDataSource]="dataAdd" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+<!-- Show Reply comment -->
+<!-- <nz-list *ngIf="dataAdd.length" [nzDataSource]="dataAdd" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
       <ng-template #item let-item>
         <nz-comment [nzAuthor]="item.author" [nzDatetime]="item.displayTime">
           <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.avatar"></nz-avatar>
@@ -90,8 +94,8 @@
         </nz-comment>
       </ng-template>
     </nz-list> -->
-     <!-- Written comment -->
-    <!-- <nz-comment>
+<!-- Written comment -->
+<!-- <nz-comment>
       <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
       <nz-comment-content>
         <nz-form-item>

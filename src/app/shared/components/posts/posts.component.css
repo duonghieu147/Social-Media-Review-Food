@@ -38,7 +38,8 @@
     text-align: left;
   }
   img.ng-star-inserted {
-    height: 400px;
+    max-height: 400px;
+    max-width: 400px;
     object-fit: cover;
 }
 
@@ -71,4 +72,6 @@ nz-comment textarea.ant-input {
 .column-grid img {
   margin-top: 8px;
   vertical-align: middle;
+  max-height: 400px;
+    max-width: 400px;
 }

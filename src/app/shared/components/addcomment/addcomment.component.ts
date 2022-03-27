@@ -18,8 +18,8 @@ export class AddcommentComponent implements OnInit {
   data: any[] = [];
   submitting = false;
   user = {
-    author: 'Han Solo',
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+    author: localStorage.getItem('name'),
+    avatar: localStorage.getItem('avatar')
   };
   inputValue = '';
 
