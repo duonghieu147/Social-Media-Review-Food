@@ -45,6 +45,21 @@
 
 nz-card {
   margin-top:24px;
+  border-radius: 20px 20px 0 0; 
+  background-color: whitesmoke;
+
+}
+
+nz-avatar {
+  margin:12px 24px 0 12px
+}
+h2,span{
+  margin: 0;
+  padding: 0;
+}
+span {
+  font-size: 10px;
+  font-style: italic;
 }
 nz-comment { 
   background-color: white;
@@ -68,10 +83,46 @@ nz-comment textarea.ant-input {
   flex: 50%;
   padding: 0 4px;
 }
-
+.column-grid.index1 img {
+  max-width: 600px;
+  max-height: 300px;
+}
+.column-grid.index2 img {
+  max-width: 300px;
+  /* max-height: 300px; */
+}
+.column-grid.index3 img {
+  max-width: 300px;
+  max-height: 150px;
+}
+.column-grid.index3 img:nth-child(1) {
+  max-width: 300px;
+  max-height: 300px;
+}
 .column-grid img {
   margin-top: 8px;
   vertical-align: middle;
   max-height: 400px;
-    max-width: 400px;
+  max-width: 300px;
+}
+/* button action */
+mat-dialog-actions.mat-dialog-actions.ng-star-inserted{
+  display: flex;
+  justify-content:space-around;
+  margin-top: 12px;
+}
+
+button.mat-focus-indicator.mat-button.mat-button-base{
+  width: 100%;
+}
+/* comment */
+.showcomment {
+  width: 631px;
+  background-color: whitesmoke;
+}
+nz-comment.ant-comment{
+  border-radius:0 0 20x 20px
+}
+nz-list {
+  background-color: whitesmoke;
 }

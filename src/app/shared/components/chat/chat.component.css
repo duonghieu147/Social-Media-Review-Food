@@ -1,8 +1,50 @@
 .chat{
     display: flex;
     flex-direction: column;
-    /* height:200px; */
+    right: 0;
+    bottom: 0;
+    min-width:300px;
+    border-radius:20px 20px 0 0 ;
+    background-color:lightgray;
 }
 .friends{
     margin-bottom:5px;
+}
+
+.social{
+    display: flex;
+}
+svg {
+    height: 36px;
+    width: 36px;
+}
+.icon-svg {
+    display: flex;
+    margin: 24px;
+}
+
+/*btn action*/
+button.createpost ,button.edit{
+    background: linear-gradient(99.27deg, #FF1CF6 -35.3%, rgba(253, 96, 28, 0.74) 66.33%, #DE2442 138.45%);
+    min-width:200px;
+    height:36px;
+    /* margin-top:24px; */
+  }
+  button.edit{
+    background: #1B1D28;
+    margin-left: 24px;
+    color: white;
+  }
+
+
+  /* friend */
+  .friend{
+      display: flex;
+  }
+  .friend nz-avatar {
+    margin:12px 0 0 24px ;
+  }
+  .friend p {
+    margin-top:12px ;
+    margin-right: 24px;
 }

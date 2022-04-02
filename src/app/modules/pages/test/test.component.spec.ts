@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageNoteFoundComponent } from './page-note-found.component';
+import { TestComponent } from './test.component';
 
-describe('PageNoteFoundComponent', () => {
-  let component: PageNoteFoundComponent;
-  let fixture: ComponentFixture<PageNoteFoundComponent>;
+describe('TestComponent', () => {
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageNoteFoundComponent ]
+      declarations: [ TestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageNoteFoundComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
