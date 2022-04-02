@@ -45,6 +45,17 @@
 
 nz-card {
   margin-top:24px;
+  border-radius: 20px 20px 0 0; 
+  background-color: whitesmoke;
+
+}
+
+nz-avatar {
+  margin:12px 24px 0 12px
+}
+h2,span{
+  margin: 0;
+  padding: 0;
 }
 nz-comment { 
   background-color: white;
@@ -74,4 +85,16 @@ nz-comment textarea.ant-input {
   vertical-align: middle;
   max-height: 400px;
     max-width: 400px;
+}
+
+/* comment */
+.showcomment {
+  width: 631px;
+  background-color: whitesmoke;
+}
+nz-comment.ant-comment{
+  border-radius:0 0 20x 20px
+}
+nz-list {
+  background-color: whitesmoke;
 }

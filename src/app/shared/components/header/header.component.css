@@ -1,21 +1,48 @@
-.header{
+
+.header {
+    height:64px;
+    width: 100%;
     display: flex;
-    position: fixed;
-    z-index: 2;
-}
-.logo{
-    width:300px;
+    background-color: whitesmoke;
+    border-radius:0 0 15px 0;
 }
 
-span {
-    color: green;
-    font-size: 40px;
-    align-items: center;
+.logo{
+    min-width: 300px;
+    text-align: center;  
+    margin-top:12px;
+    display:flex;
 }
-.search {
-    margin: auto;
-    margin-left: 0;
+.logo span { 
+    color: white ;
+    font-size:18px;
+    font-weight:bold;
 }
-input.ant-input.ant-input-lg.ng-star-inserted {
-    width:500px;
+
+.logo p { 
+    color: green ;
+    font-size:24px;
+    font-weight:bold;
 }
+
+.example-form {
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+  }
+  
+  .example-full-width {
+    width: 50%;
+  }
+  .profile {
+      margin-left: 250px;
+  }
+  button{
+      height:36px;
+      margin-top:12px;
+      margin-right: 24px;
+  }
+  .search {
+      margin-left:12px;
+  }

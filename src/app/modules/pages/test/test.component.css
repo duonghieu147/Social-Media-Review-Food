@@ -1,0 +1,24 @@
+*{
+    display: flex;
+}
+svg {
+    height: 48px;
+    width: 48px;
+}
+.icon-svg {
+    display: flex;
+    margin: 24px;
+}
+.icon-svg p {
+    font-size:24px;
+    font-weight:bold;
+    margin-top:12px;
+    margin-left: 24px;
+}
+.icon-svg span {
+    color:dimgray;
+    font-size:24px;
+    font-weight:bold;
+    margin-top:12px;
+    /* margin-left: 24px; */
+}

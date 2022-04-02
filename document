@@ -3,7 +3,7 @@
 
 ng g c shared/components/header --module app
 
-ng g c modules/pages/components --module app
+ng g c modules/pages/test --module app
 
 http://localhost:8080/swagger-ui.html#/
 

@@ -1,16 +1,23 @@
 <div class="header">
-    <div class="logo">
-      <Span>|||||||||</Span>
-    </div>
-    <div class="search">
-      <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-        <input type="text" nz-input  placeholder="input search text" />
-      </nz-input-group>
-      <ng-template #suffixButton>
-        <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
-      </ng-template>
-    </div>
-    <div class="notification">
+  <div class="logo">
+      <p>Fell <span>and </span>rating</p>
+  </div>
+  <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="outline">
+          <input matInput placeholder="" value="">
+      </mat-form-field>
+      <button mat-button class="search">
+        Search
+    </button>
+      <button mat-raised-button class="profile" color="primary">
+          Profile
+      </button>
+      <button mat-raised-button>
+          Logout
+      </button>
+      <button mat-raised-button matBadge="7" color="warn" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+          Thông báo
+      </button>
+  </form>
 
-    </div>
 </div>

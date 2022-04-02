@@ -1,109 +1,95 @@
-<app-header></app-header>
-
+<div class="header">
+  <app-header></app-header>
+</div>
+<div class="silderbar-left">
+  <app-silderbar-left></app-silderbar-left>
+</div>
 <div class="profile">
-    <nz-page-header class="site-page-header">
-        <!--breadcrumb-->
-        <!-- <nz-breadcrumb nz-page-header-breadcrumb>
-          <nz-breadcrumb-item>First-level Menu</nz-breadcrumb-item>
-          <nz-breadcrumb-item>
-            <a>Second-level Menu</a>
-          </nz-breadcrumb-item>
-          <nz-breadcrumb-item>Third-level Menu</nz-breadcrumb-item>
-        </nz-breadcrumb> -->
-    
-        <!--avatar-->
-        <nz-avatar [nzSize]="80" nz-page-header-avatar nzSrc={{dataUser.avatar}}></nz-avatar>
+  <nz-page-header class="site-page-header">
+    <!--avatar-->
+    <nz-avatar [nzSize]="80" nz-page-header-avatar nzSrc={{dataUser.avatar}}></nz-avatar>
+
+    <!--title-->
+    <nz-page-header-title>{{dataUser.firstName}}</nz-page-header-title>
+
+    <!--tags-->
+    <nz-page-header-tags>
+      <nz-tag [nzColor]="'blue'">{{dataUser.lastName}}</nz-tag>
+    </nz-page-header-tags>
+
+    <!--extra-->
+    <nz-page-header-extra>
+      <button mat-button>Nhắn Tin</button>
+      <button *ngIf='!isFollow' mat-raised-button color="primary" (click)="changeFollow()">Follow</button>
+      <button *ngIf='isFollow' mat-raised-button color="accent" (click)="changeFollow()">Followed</button>
+
+      <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
+        <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+      </button>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>Báo cáo</li>
+          <li nz-menu-item>Chặn</li>
+        </ul>
+      </nz-dropdown-menu>
+    </nz-page-header-extra>
+
+    <!--content-->
+    <nz-page-header-content>
+      <div nz-row>
+        <p>100k Follow</p>
+        <p>500 Bạn Bè</p>
         
-        <!--title-->
-        <nz-page-header-title>{{dataUser.firstName}}</nz-page-header-title>
-    
-        <!--subtitle-->
-        <!-- <nz-page-header-subtitle>HIEUDV</nz-page-header-subtitle> -->
-    
-        <!--tags-->
-        <nz-page-header-tags>
-          <nz-tag [nzColor]="'blue'">{{dataUser.lastName}}</nz-tag>
-        </nz-page-header-tags>
-    
-        <!--extra-->
-        <nz-page-header-extra>
-          <button  mat-button>Nhắn Tin</button>
-          <button *ngIf='!isFollow' mat-raised-button color="primary" (click)="changeFollow()">Follow</button>
-          <button *ngIf='isFollow' mat-raised-button color="accent" (click)="changeFollow()">Followed</button>
-
-          <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
-            <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
-          </button>
-          <nz-dropdown-menu #menu="nzDropdownMenu">
-            <ul nz-menu>
-              <li nz-menu-item>Báo cáo</li>
-              <li nz-menu-item>Chặn</li>
-            </ul>
-          </nz-dropdown-menu>
-        </nz-page-header-extra>
-    
-        <!--content-->
-        <nz-page-header-content>
-          <div nz-row>
-            <div class="content">
-                <div class="icons-list">
-                  </div>          
-              <div class="content-link">
-                <a>
-                  <img src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" alt="start" />
-                  Quick Start
-                </a>
-                <a>
-                  <img src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" alt="info" />
-                  Profile
-                </a>
-                <!-- <a>
-                  <img src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" alt="doc" />
-                  Product Doc
-                </a> -->
-              </div>
-            </div>
-            <!-- <div class="content-image">
-              <img src="https://gw.alipayobjects.com/zos/antfincdn/K%24NnlsB%26hz/pageHeader.svg" alt="content" />
-            </div> -->
+      </div>
+      <div nz-row>
+        <div class="content">
+          <div class="icons-list">
           </div>
-        </nz-page-header-content>
-        <nz-page-header-footer>
-            <nz-tabset [nzSelectedIndex]="0" nzSize="large">
-              <nz-tab nzTitle="HomePage" (nzClick)="changeModeProfile('home')"></nz-tab>
-              <nz-tab nzTitle="Product" (nzClick)="changeModeProfile('product')"></nz-tab>
-              <nz-tab nzTitle="Profile" (nzClick)="changeModeProfile('profile')"></nz-tab>
-            </nz-tabset>
-          </nz-page-header-footer>
-    </nz-page-header>
-    
-    
-    <nz-carousel nzAutoPlay>
-        <div nz-carousel-content *ngFor="let index of array">
-          <img
-          nz-image
-          nzSrc='{{ index }}'
-          alt=""
-        />
+          <div class="content-link">
+            <button class="createpost" mat-raised-button>Đăng Bài</button>
+            <button class="edit" mat-raised-button>Chỉnh sửa thông tin </button>
+          </div>
         </div>
-    </nz-carousel>
-    <div class="profile-content">
-      <div class="post" *ngIf="modepage=='home'">
-        <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
-          <app-posts [post]="post"></app-posts>
-        </ng-template>
       </div>
-      <div *ngIf="modepage=='product'">
-        <button mat-button  color="primary">Tạo sản phẩm mới</button>
+    </nz-page-header-content>
+    <!-- <nz-page-header-footer>
+      <nz-tabset [nzSelectedIndex]="0" nzSize="large">
+        <nz-tab nzTitle="Bài Viết" (nzClick)="changeModeProfile('home')"></nz-tab>
+        <nz-tab nzTitle="Sản phẩm" (nzClick)="changeModeProfile('product')"></nz-tab>
+        <nz-tab nzTitle="Thông Tin" (nzClick)="changeModeProfile('profile')"></nz-tab>
+      </nz-tabset>
+    </nz-page-header-footer> -->
+  </nz-page-header>
+  <nz-page-header-footer>
+    <nz-tabset [nzSelectedIndex]="0" nzSize="large">
+      <nz-tab nzTitle="Bài Viết" (nzClick)="changeModeProfile('home')"></nz-tab>
+      <nz-tab nzTitle="Sản phẩm" (nzClick)="changeModeProfile('product')"></nz-tab>
+      <nz-tab nzTitle="Thông Tin" (nzClick)="changeModeProfile('profile')"></nz-tab>
+    </nz-tabset>
+  </nz-page-header-footer>
 
-        <app-gallery></app-gallery>
-      </div>
-      <div *ngIf="modepage=='profile'">
-        <button mat-button  color="primary">Chỉnh sửa profile</button>
+  <nz-carousel nzAutoPlay>
+    <div nz-carousel-content *ngFor="let index of array">
+      <img nz-image nzSrc='{{ index }}' alt="" />
+    </div>
+  </nz-carousel>
+  <div class="profile-content">
+    <div class="post" *ngIf="modepage=='home'">
+      <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+        <app-posts [post]="post"></app-posts>
+      </ng-template>
+    </div>
+    <div *ngIf="modepage=='product'">
+      <button mat-button color="primary">Tạo sản phẩm mới</button>
 
-        <app-dialog-item-food></app-dialog-item-food>
-        <!-- <app-information></app-information> -->
-      </div>
-    </div> 
-    
+      <app-gallery></app-gallery>
+    </div>
+    <div *ngIf="modepage=='profile'">
+      <button mat-button color="primary">Chỉnh sửa profile</button>
+
+      <app-dialog-item-food></app-dialog-item-food>
+      <!-- <app-information></app-information> -->
+    </div>
+  </div>
+
 </div>
