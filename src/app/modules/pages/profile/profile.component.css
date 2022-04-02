@@ -4,6 +4,7 @@
   z-index: 6;
   width: 100%;
   top: 0;
+  
 }
 .silderbar-left {
   position: fixed;
@@ -11,11 +12,12 @@
   height: 100%;
   bottom: 0;
 }
-.profile {
-  /* margin: auto; */
-  margin-top: 64px;
-  margin-left: 400px;
 
+.profile {
+  margin-top: 64px;
+  margin-left: 300px;
+  background-color: lightblue;
+  background-color: rgba(16, 142, 233, 1);
 }
 
 [nz-icon] {
@@ -109,6 +111,13 @@ nz-carousel {
     background: #1B1D28;
     margin-left: 24px;
     color: white;
+  }
+
+  /* silder-right */
+  .silder-right{
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
   }
   @media (max-width: 768px) {
     .content-image {
