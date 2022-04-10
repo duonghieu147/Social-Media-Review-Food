@@ -57,7 +57,7 @@ export class PostService {
             );
     }
     createPost(post: any): Observable<any> { //Return data = null , status = 1 create, = 2 edit, =3 delete
-        return this.http.post<Config>(defaultUrl + '/api/post', post)
+        return this.http.post<Config>(defaultUrl + '/api/post/create', post)
             .pipe(
                 catchError(this.handleError)
             );

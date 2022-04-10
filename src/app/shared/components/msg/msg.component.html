@@ -1,0 +1,31 @@
+<!-- <span class="msg">
+    Username hoặc password không chính xác
+</span> -->
+<div [ngSwitch]="">
+    <div *ngSwitchCase="'Successfully'">
+        <span class="msg">
+            Successfully
+        </span>
+    </div>
+    <div *ngSwitchCase="'Failure'">
+        <span class="msg">
+            Failure
+        </span>
+    </div>
+    <div *ngSwitchCase="'Error'">
+        <span class="msg">
+            Error
+        </span>
+    </div>
+    <div *ngSwitchCase="'Incorrect'">
+        <span class="msg">
+            Username hoặc password không chính xác
+        </span>
+    </div>
+    
+    <div *ngSwitchDefault>
+        <span class="msg">
+            msg common
+        </span>
+    </div>
+</div>

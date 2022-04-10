@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   userIdParams: any;
   isFollow:boolean=false;
   dataUser:any
-
+  typeUser:string|null = 'user';
 
   constructor(
     private iconService: NzIconService,
@@ -46,8 +46,9 @@ export class ProfileComponent implements OnInit {
     //   console.log(params)
     //   this.userIdParams = params['id'];
     // });
+    // this.typeUser = localStorage.getItem('types')
     this.userIdParams = this.route.snapshot.paramMap.get('id');
-    this.getUser()
+    this.getUserById()
     this.getPostByUserId()
   }
 
@@ -95,8 +96,8 @@ export class ProfileComponent implements OnInit {
     this.postData =this.postData.concat(postData)
   }
 
-  getUser(){
-    this.shareService.getUser(this.userIdParams).subscribe(
+  getUserById(){
+    this.shareService.getUserById(this.userIdParams).subscribe(
       (data) => {
         if(data.data.length==0){
           return

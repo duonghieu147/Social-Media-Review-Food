@@ -17,9 +17,9 @@
             <div nz-row>
                 <div nz-col nzSpan="6"></div>
                 <div nz-col nzSpan="10">
-                  <button mat-button color="primary" (click)="loginUser()">loginUser</button>
-                  <button mat-button  (click)="loginShop()">loginShop</button>
-                  <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Đăng bài</span></button>
+                  <!-- <button mat-button color="primary" (click)="loginUser()">loginUser</button>
+                  <button mat-button  (click)="loginShop()">loginShop</button> -->
+                  <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Đăng bài</span></button> -->
                     <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
                       <app-posts [post]="post"></app-posts>
                   </ng-template>

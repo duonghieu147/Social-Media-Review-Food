@@ -62,11 +62,13 @@
     </nz-tabset>
   </nz-page-header-footer>
 
-  <nz-carousel nzAutoPlay>
-    <div nz-carousel-content *ngFor="let index of array">
-      <img nz-image nzSrc='{{ index }}' alt="" />
-    </div>
-  </nz-carousel>
+  <div *ngIf="this.userIdParams =='3'">
+    <nz-carousel nzAutoPlay>
+      <div nz-carousel-content *ngFor="let index of array">
+        <img nz-image nzSrc='{{ index }}' alt="" />
+      </div>
+    </nz-carousel>
+  </div>
   <div class="profile-content">
     <div class="post" *ngIf="modepage=='home'">
       <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">

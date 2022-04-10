@@ -1,6 +1,6 @@
 <div class="header">
   <div class="logo">
-      <p>Fell <span>and </span>rating</p>
+      <p>Review Food</p>
   </div>
   <form class="example-form">
       <mat-form-field class="example-full-width" appearance="outline">
@@ -9,10 +9,10 @@
       <button mat-button class="search">
         Search
     </button>
-      <button mat-raised-button class="profile" color="primary">
+      <!-- <button mat-raised-button class="profile" color="primary">
           Profile
-      </button>
-      <button mat-raised-button>
+      </button> -->
+      <button mat-raised-button class="logout" (click)="logOut()">
           Logout
       </button>
       <button mat-raised-button matBadge="7" color="warn" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">

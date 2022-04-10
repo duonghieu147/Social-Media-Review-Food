@@ -88,7 +88,7 @@ export class ShareService {
   }
 
   //API Usern Controller
-  getUser(userId:any):Observable<any>{
+  getUserById(userId:any):Observable<any>{
     return this.http.get<Config>(defaultUrl+'/api/user?id='+userId)
           .pipe(
               catchError(this.handleError)

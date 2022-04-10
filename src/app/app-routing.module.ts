@@ -15,14 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile/:id', component: ProfileComponent, 
-    // children: [
-    //   {
-    //     path: ':id', 
-    //     component: ProfileComponent,
-    //   }
-    // ]
-  },
+  { path: 'profile/:id', component: ProfileComponent,},
   { path: 'shopping', component: ShoppingComponent },
   { path: 'post', component: PostsComponent },
   { path: 'addpost', component: AddpostComponent },

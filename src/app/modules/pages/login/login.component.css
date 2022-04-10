@@ -1,15 +1,23 @@
-.login-form {
-    max-width: 300px;
-  }
+.container{
+  display: flex;
+  justify-content:center;
+}
+.login{
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
 
-  .login-form-margin {
-    margin-bottom: 16px;
-  }
-
-  .login-form-forgot {
-    float: right;
-  }
-
-  .login-form-button {
-    width: 100%;
-  }
+}
+.mat-form-field{
+  width: 300px;
+}
+.actions {
+  display: flex;
+  justify-content:space-between;
+}
+.actions button {
+  width:100%;
+}
+.actions button:nth-child(2){
+  margin-left:24px;
+}

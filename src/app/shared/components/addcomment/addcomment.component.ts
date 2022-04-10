@@ -10,19 +10,21 @@ PostService
 })
 export class AddcommentComponent implements OnInit {
   dataCmt:any;
+  user:any;
 
   constructor(
     public shareService:ShareService,
     public PostService:PostService,
   ) {}
   ngOnInit(): void {
+    this.user = {
+      author: localStorage.getItem('name'),
+      avatar: localStorage.getItem('avatar')
+    };
   }
   data: any[] = [];
   submitting = false;
-  user = {
-    author: localStorage.getItem('name'),
-    avatar: localStorage.getItem('avatar')
-  };
+  
   inputValue = '';
 
   addComment(): void {

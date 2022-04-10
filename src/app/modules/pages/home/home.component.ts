@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   postData: Array<any>=[];
   postList: Array<any>=[];
   page :number=0;
-  limit:number=15;
+  limit:number=10;
   inputValue='Search'
   constructor(
     public shareService:ShareService,
@@ -82,28 +82,28 @@ export class HomeComponent implements OnInit {
   //   console.log('Button cancel clicked!');
   //   this.isVisible = false;
   // }
-  loginUser(){
-    localStorage.setItem('id','1')
-    localStorage.setItem('name','Thành')
-    localStorage.setItem('firstName','Nguyễn Hữu Đức')
-    localStorage.setItem('lastName','Thành')
-    localStorage.setItem('phoneNumber','0395455399')
-    localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
-    localStorage.setItem('biography','1')
-    localStorage.setItem('address','HCM')
-    localStorage.setItem('types','user')
-  }
-  loginShop(){
-    localStorage.setItem('id','1')
-    localStorage.setItem('name','Coffee')
-    localStorage.setItem('firstName','Fell Coffee')
-    localStorage.setItem('lastName','Fell')
-    localStorage.setItem('phoneNumber','0395455399')
-    localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
-    localStorage.setItem('biography','1')
-    localStorage.setItem('address','HCM')
-    localStorage.setItem('types','shop')
-  }
+  // loginUser(){
+  //   localStorage.setItem('id','1')
+  //   localStorage.setItem('name','Thành')
+  //   localStorage.setItem('firstName','Nguyễn Hữu Đức')
+  //   localStorage.setItem('lastName','Thành')
+  //   localStorage.setItem('phoneNumber','0395455399')
+  //   localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
+  //   localStorage.setItem('biography','1')
+  //   localStorage.setItem('address','HCM')
+  //   localStorage.setItem('types','user')
+  // }
+  // loginShop(){
+  //   localStorage.setItem('id','1')
+  //   localStorage.setItem('name','Coffee')
+  //   localStorage.setItem('firstName','Fell Coffee')
+  //   localStorage.setItem('lastName','Fell')
+  //   localStorage.setItem('phoneNumber','0395455399')
+  //   localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
+  //   localStorage.setItem('biography','1')
+  //   localStorage.setItem('address','HCM')
+  //   localStorage.setItem('types','shop')
+  // }
   getInformation(){
     var inf =[]
     inf.push([

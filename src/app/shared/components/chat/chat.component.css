@@ -32,7 +32,6 @@ button.createpost ,button.edit{
   }
   button.edit{
     background: #1B1D28;
-    margin-left: 24px;
     color: white;
   }
 

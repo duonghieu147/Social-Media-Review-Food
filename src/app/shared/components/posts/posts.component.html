@@ -45,7 +45,7 @@
     <div *ngIf="!numberCmt">
       <button mat-button  color="primary" (click)="showWritenCmt()"> Comment</button>
     </div>  
-    <button mat-button  color="warn">{{randomNumberShare}} Share</button>
+    <button mat-button  color="warn">Share</button>
   </mat-dialog-actions>
 </ng-template>
 <!-- <ng-template #actionLike>
@@ -72,7 +72,8 @@
       <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
         <ng-template #item let-item>
           <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime">
-            <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]=" item[0].avatar"></nz-avatar>
+            <!-- <p>{{item[0].ownerAvatarUrl}}</p> -->
+            <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item[0].ownerAvatarUrl"></nz-avatar>
             <nz-comment-content>
               <p>{{ item[0].content }}</p>
             </nz-comment-content>

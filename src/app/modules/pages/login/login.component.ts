@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MsgComponent } from 'src/app/shared/components/msg/msg.component';
+import { ShareService } from 'src/app/shared/share.service';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +13,92 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   validateForm!: FormGroup;
+  hide = true;
+  myGroup: any;
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+    if (this.myGroup.valid) {
+      console.log('submit', this.myGroup.value);
+      if(this.myGroup.value.username =='thanhnhd1'){
+        this.getDataUserById(1)
+        this.router.navigate(['/home']);
+        this.openSnackBar('Successfully', 'Close');
+      }
+      else if(this.myGroup.value.username =='duonghieu147'){
+        this.getDataUserById(2)
+        this.router.navigate(['/home']);
+        this.openSnackBar('Successfully', 'Close');
+      }
+      else if(this.myGroup.value.username =='fellcoffee'){
+        this.getDataUserById(3)
+        this.router.navigate(['/home']);
+        this.openSnackBar('Successfully', 'Close');
+      }
+      else {
+        this.openSnackBar('Thông tin đăng nhập không chính xác', 'Close')
+
+      }
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
+      this.openSnackBar('Vui lòng nhập đúng trường', 'Close')
     }
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    public shareService: ShareService,
+    private _snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      remember: [true]
+    this.myGroup = new FormGroup({
+      username: new FormControl('', [Validators.required,]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
+
+  }
+  signUp() {
+
+  }
+  signIn() {
+    this.submitForm()
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, { duration: 2500 });
+  }
+  getDataUserById(userId: any) {
+    this.shareService.getUserById(userId).subscribe(
+      (data) => {
+        if(data.data.length==0){
+          return
+        }
+        else {
+          console.log(data.data.id)
+          this.saveInfoUser(data.data)
+        }
+      }
+    )
+  }
+  saveInfoUser(data:any){
+    localStorage.setItem('id',data.id)
+    localStorage.setItem('name',data.firstName)
+    localStorage.setItem('firstName',data.firstName)
+    localStorage.setItem('lastName',data.lastName)
+    localStorage.setItem('phoneNumber',data.phoneNumber)
+    localStorage.setItem('avatar',data.avatar)
+    localStorage.setItem('biography',data.avatar)
+    localStorage.setItem('address',data.address)
+    if(data.id !=3){
+      localStorage.setItem('types','user')
+    }
+    else {
+      if(data.id ==3){
+        localStorage.setItem('types','shop')
+      }
+    }
   }
 
 }
