@@ -4,6 +4,7 @@ import * as cmn from 'src/app/constant/common'
 import {MatDialog} from '@angular/material/dialog';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 import { PostService } from 'src/app/shared/post.service';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 
 
 @Component({
@@ -12,30 +13,35 @@ import { PostService } from 'src/app/shared/post.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isloading = true;
   isVisible = false;
   post:any
   postData: Array<any>=[];
   postList: Array<any>=[];
   page :number=0;
-  limit:number=10;
+  limit:number=5;
   inputValue='Search'
   constructor(
     public shareService:ShareService,
     public PostService: PostService,
     public dialog: MatDialog
   ) { }
-
+  
   ngOnInit(): void {
     this.getAllPost()
   }
   getAllPost(){
+    this.openDialogLoading()
     this.PostService.getAllPost(this.limit,this.page,).subscribe(
       (data) => {
         if(data.data.length==0){
+          this.dialog.closeAll();
           return
         }
         else {
           this.bindingPostData(data.data)
+          this.isloading=false;
+          this.dialog.closeAll();
         }
       }
     )
@@ -82,28 +88,6 @@ export class HomeComponent implements OnInit {
   //   console.log('Button cancel clicked!');
   //   this.isVisible = false;
   // }
-  // loginUser(){
-  //   localStorage.setItem('id','1')
-  //   localStorage.setItem('name','Thành')
-  //   localStorage.setItem('firstName','Nguyễn Hữu Đức')
-  //   localStorage.setItem('lastName','Thành')
-  //   localStorage.setItem('phoneNumber','0395455399')
-  //   localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
-  //   localStorage.setItem('biography','1')
-  //   localStorage.setItem('address','HCM')
-  //   localStorage.setItem('types','user')
-  // }
-  // loginShop(){
-  //   localStorage.setItem('id','1')
-  //   localStorage.setItem('name','Coffee')
-  //   localStorage.setItem('firstName','Fell Coffee')
-  //   localStorage.setItem('lastName','Fell')
-  //   localStorage.setItem('phoneNumber','0395455399')
-  //   localStorage.setItem('avatar','https://recmiennam.com/wp-content/uploads/2019/11/hinh-nen-kakashi-hatake-2.jpg')
-  //   localStorage.setItem('biography','1')
-  //   localStorage.setItem('address','HCM')
-  //   localStorage.setItem('types','shop')
-  // }
   getInformation(){
     var inf =[]
     inf.push([
@@ -117,6 +101,15 @@ export class HomeComponent implements OnInit {
     localStorage.getItem('address'),
     localStorage.getItem('types')])
     return inf
+  }
+
+  loadNextPage() {
+    this.page = this.page + 1;
+    this.getAllPost()
+  }
+  openDialogLoading(){
+    const dialogRef =this.dialog.open(LoadingComponent,{
+  })
   }
 }
 

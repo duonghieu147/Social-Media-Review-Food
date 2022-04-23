@@ -70,6 +70,7 @@ span {
 }
 nz-comment { 
   background-color: white;
+  text-align: left !important;
 }
 nz-comment textarea.ant-input {
   background-color: whitesmoke;
@@ -114,9 +115,17 @@ nz-comment textarea.ant-input {
 }
 /* button action */
 mat-dialog-actions.mat-dialog-actions.ng-star-inserted{
+  /* display: flex; */
+  /* justify-content:space-around; */
+  margin-top: 12px;
+}
+.btn-actions {
   display: flex;
   justify-content:space-around;
-  margin-top: 12px;
+  width: 100%;
+}
+.btn-actions button {
+  width: 100%;
 }
 
 button.mat-focus-indicator.mat-button.mat-button-base{
@@ -132,4 +141,21 @@ nz-comment.ant-comment{
 }
 nz-list {
   background-color: whitesmoke;
+}
+
+/*Tags*/
+.tags{
+  display: flex;
+  margin-left:12px;
+  margin-right: 8px;
+}
+.tags p {
+  color:peru;
+}
+.example-box.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-chip .cdk-drop-list-dragging {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

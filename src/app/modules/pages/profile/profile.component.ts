@@ -4,6 +4,8 @@ import { NzIconService } from 'ng-zorro-antd/icon';
 import * as cmn from 'src/app/constant/common'
 import { PostService } from 'src/app/shared/post.service';
 import { ShareService } from 'src/app/shared/share.service';
+import {MatDialog} from '@angular/material/dialog';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-profile',
@@ -36,6 +38,7 @@ export class ProfileComponent implements OnInit {
     public shareService:ShareService,
     public PostService:PostService,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
 
     ) { 
     this.iconService.fetchFromIconfont({
@@ -63,15 +66,26 @@ export class ProfileComponent implements OnInit {
   changeFollow(){
     this.isFollow=!this.isFollow
   }
-
+  loadNextPage() {
+    this.page = this.page + 1;
+    this.getPostByUserId()
+  }
+  openDialogLoading(){
+    const dialogRef =this.dialog.open(LoadingComponent,{
+  })
+  }
   getPostByUserId(){
+    this.openDialogLoading()
     this.PostService.getPostByUserId(this.userIdParams,this.limit,this.page).subscribe(
       (data) => {
         if(data.data.length==0){
+          this.dialog.closeAll();
           return
         }
         else {
           this.bindingPostData(data.data)
+          this.dialog.closeAll();
+
         }
       }
     )
@@ -128,4 +142,5 @@ export class ProfileComponent implements OnInit {
       }
     )
   }
+  
 }

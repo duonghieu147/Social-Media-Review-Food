@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { addDays, formatDistance } from 'date-fns';
 import { PostService } from '../../post.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-posts',
@@ -18,6 +20,8 @@ export class PostsComponent implements OnInit {
 
   constructor(
     public PostService:PostService,
+    private router: Router
+
   ) { }
   dataPost: any = [];
   dataRelpy :any = [];
@@ -148,6 +152,37 @@ export class PostsComponent implements OnInit {
         }
       })
   }
+  goToProfile(){
+    if(this.dataPost.author =="duonghieu147") {
+      this.router.navigate(['/profile/2']);
+    }
+    else if(this.dataPost.author =="feelcoffee") {
+      this.router.navigate(['/profile/3']);
+    }
+    else if(this.dataPost.author =="thanhnhd1") {
+      this.router.navigate(['/profile/1']);
+    }
+    else {
+      this.router.navigate(['/profile/4']);
+    }
+  }
 
+  //Tags
+
+  vegetables: Vegetable[] = [
+    {name: 'tag1'},
+    {name: 'coffee'},
+    {name: 'duonghieu147'},
+  ];
+
+  drop(event: CdkDragDrop<Vegetable[]>) {
+    moveItemInArray(this.vegetables, event.previousIndex, event.currentIndex);
+  }
+  //Tags
+
+}
+
+export interface Vegetable {
+  name: string;
 }
  

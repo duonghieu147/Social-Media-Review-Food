@@ -36,7 +36,7 @@
   }
 
   nz-content {
-    background: rgba(16, 142, 233, 1);
+    /* background: rgba(16, 142, 233, 1); */
     color: #fff;
     min-height: 120px;
     /* line-height: 120px; */
@@ -45,6 +45,7 @@
 
   nz-layout {
     margin-bottom: 48px;
+    background: rgba(16, 142, 233, 1);
   }
 
   nz-layout nz-layout,
