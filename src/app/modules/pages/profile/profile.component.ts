@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   dataUser:any
   typeUser:string|null = 'user';
   userId :any;
+  isDone = false;
 
   constructor(
     private iconService: NzIconService,
@@ -80,6 +81,7 @@ export class ProfileComponent implements OnInit {
       (data) => {
         if(data.data.length==0){
           this.dialog.closeAll();
+          this.isDone = true;
           return
         }
         else {

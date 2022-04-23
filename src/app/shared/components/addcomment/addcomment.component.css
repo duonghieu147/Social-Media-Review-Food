@@ -1,6 +1,10 @@
 nz-comment { 
     background-color: white;
+    text-align: left !important;
 }
 nz-comment textarea.ant-input {
     background-color: whitesmoke;
+}
+span{
+    color: blue !important;
 }

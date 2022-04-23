@@ -75,7 +75,7 @@
       <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
         <app-posts [post]="post"></app-posts>
       </ng-template>
-      <button mat-button (click)="loadNextPage()">Xem thêm</button>
+      <button *ngIf="!isDone" mat-button (click)="loadNextPage()">Xem thêm</button>
     </div>
     <div *ngIf="modepage=='product'">
       <button *ngIf="userId==userIdParams" mat-button color="primary" >Tạo sản phẩm mới</button>

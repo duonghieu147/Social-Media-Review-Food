@@ -55,3 +55,9 @@ label{
   max-width: 300px;
   width: 100%;
 }
+.mat-dialog-title{
+  color: blue;
+}
+h3{
+  color: #ff4081;
+}

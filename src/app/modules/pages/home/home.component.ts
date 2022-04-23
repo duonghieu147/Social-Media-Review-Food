@@ -14,6 +14,7 @@ import { LoadingComponent } from 'src/app/shared/components/loading/loading.comp
 })
 export class HomeComponent implements OnInit {
   isloading = true;
+  isDone = false;
   isVisible = false;
   post:any
   postData: Array<any>=[];
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
       (data) => {
         if(data.data.length==0){
           this.dialog.closeAll();
+          this.isDone=true
           return
         }
         else {

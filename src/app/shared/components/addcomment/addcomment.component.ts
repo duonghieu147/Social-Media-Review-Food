@@ -45,7 +45,8 @@ export class AddcommentComponent implements OnInit {
           ...this.user,
           content,
           datetime: new Date(),
-          displayTime: formatDistance(new Date(), new Date())
+          displayTime: formatDistance(new Date(), new Date()),
+          ownerAvatarUrl: localStorage.getItem('avatar')
         }
       ].map(e => ({
         ...e,

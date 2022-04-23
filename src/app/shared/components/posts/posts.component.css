@@ -72,6 +72,9 @@ nz-comment {
   background-color: white;
   text-align: left !important;
 }
+span.ant-comment-content-author-name.ng-star-inserted {
+  color:blue !important;
+}
 nz-comment textarea.ant-input {
   background-color: whitesmoke;
   margin-right: 24px;
