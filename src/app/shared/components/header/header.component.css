@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
+*{
+  font-family: 'Pacifico' !important;
+}
 .header {
     height:64px;
     width: 100%;

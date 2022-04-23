@@ -60,9 +60,13 @@ h2,span{
   margin: 0;
   padding: 0;
 }
+h2 {
+  color:blue;
+}
 span {
   font-size: 10px;
   font-style: italic;
+  color: gray;
 }
 nz-comment { 
   background-color: white;
