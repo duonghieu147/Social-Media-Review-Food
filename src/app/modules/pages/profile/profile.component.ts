@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   post:any
   postData: Array<any>=[];
   postList: Array<any>=[];
+  foodItems:any;
   page :number=0;
   limit:number=5;
   modepage:string = 'home'
@@ -28,6 +29,7 @@ export class ProfileComponent implements OnInit {
   isFollow:boolean=false;
   dataUser:any
   typeUser:string|null = 'user';
+  userId :any;
 
   constructor(
     private iconService: NzIconService,
@@ -48,8 +50,10 @@ export class ProfileComponent implements OnInit {
     // });
     // this.typeUser = localStorage.getItem('types')
     this.userIdParams = this.route.snapshot.paramMap.get('id');
-    this.getUserById()
-    this.getPostByUserId()
+    this.userId = localStorage.getItem('id');
+    this.getUserById();
+    this.getPostByUserId();
+    this.getFoodShopById(3);
   }
 
   changeModeProfile(mode: string) {
@@ -105,6 +109,21 @@ export class ProfileComponent implements OnInit {
         else {
           console.log(data.data)
           this.dataUser=data.data
+        }
+      }
+    )
+  }
+
+  //FoodShop 
+  getFoodShopById(foodShopid:any){
+    this.shareService.getFoodShopById(foodShopid).subscribe(
+      (data) => {
+        if(data.messages[0].code=="SUCCESS"){
+          console.log(data.data.foodItems)
+          this.foodItems=data.data.foodItems
+        }
+        else{
+          console.log("error")
         }
       }
     )

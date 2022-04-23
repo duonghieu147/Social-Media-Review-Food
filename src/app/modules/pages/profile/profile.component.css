@@ -1,4 +1,7 @@
-
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+*{
+  font-family: 'Pacifico' !important;
+}
 .header {
   position: fixed;
   z-index: 6;
@@ -27,7 +30,7 @@
 
 nz-page-header{
   border-radius: 0 0 20px 20px;
-  background-color: darkgrey;
+  background-color: #ffff;
 }
 nz-page-header,.profile-content {
   width: 960px;

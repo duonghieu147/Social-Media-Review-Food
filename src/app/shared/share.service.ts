@@ -136,10 +136,24 @@ export class ShareService {
   }
 
   //Api Food Shop Controller
-  createFoodShop(foodItemId:any,rating:any):Observable<any>{
-    return this.http.put<Config>(defaultUrl+'/create='+foodItemId,rating)
+  // createFoodShop(foodItemId:any,rating:any):Observable<any>{
+  //   return this.http.put<Config>(defaultUrl+'/create='+foodItemId,rating)
+  //         .pipe(
+  //             catchError(this.handleError)
+  //         );
+  // }
+  getFoodShopById(foodShopId:any):Observable<any> {
+    return this.http.get<Config>(defaultUrl+'/api/foodshop/findbyid?id='+foodShopId)
+            .pipe(
+              catchError(this.handleError)
+            );
+  }
+
+  addFoodItemToShop(data:any,foodItemId:any):Observable<any>{
+    return this.http.put<Config>(defaultUrl+'/api/foodshop/addfooditem',foodItemId,foodItemId)
           .pipe(
               catchError(this.handleError)
           );
   }
+
 }

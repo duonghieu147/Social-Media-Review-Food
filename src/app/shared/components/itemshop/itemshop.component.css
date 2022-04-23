@@ -1,14 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+*{
+    font-family: 'Pacifico' !important;
+}
 .card{
     background-color: #1c1b29;
     /* border-radius: 20px; */
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
     /* place-items: center center; */
-    font-family: 'Poppins',sans-serif;
+    /* font-family: 'Poppins',sans-serif; */
+    font-family: 'Pacifico';
+
 }
 .container{
     position: relative;
     clip-path: polygon(0 0,100% 0, 100% 85%, 0 100%);
 }
+
 img{
     width: 100%;
     height: 400px;

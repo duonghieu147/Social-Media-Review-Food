@@ -20,8 +20,8 @@
     <!--extra-->
     <nz-page-header-extra>
       <button mat-button>Nhắn Tin</button>
-      <button *ngIf='!isFollow' mat-raised-button color="primary" (click)="changeFollow()">Follow</button>
-      <button *ngIf='isFollow' mat-raised-button color="accent" (click)="changeFollow()">Followed</button>
+      <button *ngIf="userId!=userIdParams && !isFollow" mat-raised-button color="primary" (click)="changeFollow()">Follow</button>
+      <button  *ngIf="userId!=userIdParams && isFollow" mat-raised-button color="accent" (click)="changeFollow()">Followed</button>
 
       <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
         <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
@@ -45,7 +45,7 @@
         <div class="content">
           <div class="icons-list">
           </div>
-          <div class="content-link">
+          <div *ngIf="userId==userIdParams" class="content-link">
             <button class="createpost" mat-raised-button>Đăng Bài</button>
             <button class="edit" mat-raised-button>Chỉnh sửa thông tin </button>
           </div>
@@ -76,12 +76,12 @@
       </ng-template>
     </div>
     <div *ngIf="modepage=='product'">
-      <button mat-button color="primary">Tạo sản phẩm mới</button>
+      <button *ngIf="userId==userIdParams" mat-button color="primary" >Tạo sản phẩm mới</button>
 
       <app-gallery></app-gallery>
     </div>
     <div *ngIf="modepage=='profile'">
-      <button mat-button color="primary">Chỉnh sửa profile</button>
+      <button *ngIf="userId==userIdParams" mat-button color="primary">Chỉnh sửa profile</button>
 
       <app-dialog-item-food></app-dialog-item-food>
       <!-- <app-information></app-information> -->
@@ -89,8 +89,3 @@
   </div>
 
 </div>
-<!-- <div class="silder-right">
-  <div nz-col nzSpan="8">
-    <app-chat></app-chat>
-  </div>
-</div> -->

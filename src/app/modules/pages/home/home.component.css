@@ -1,4 +1,7 @@
-
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+*{
+  font-family: 'Pacifico' !important;
+}
 .header {
   position: fixed;
   z-index: 6;
