@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
   post:any
   postData: Array<any>=[];
   postList: Array<any>=[];
+  foodItemsList: Array<any>=[];
+  foodItemsData: Array<any>=[];
   foodItems:any;
   page :number=0;
   limit:number=5;
@@ -54,6 +56,7 @@ export class ProfileComponent implements OnInit {
     // });
     // this.typeUser = localStorage.getItem('types')
     this.userIdParams = this.route.snapshot.paramMap.get('id');
+    localStorage.setItem('pageCurrent',this.userIdParams)
     this.userId = localStorage.getItem('id');
     this.getUserById();
     this.getPostByUserId();
@@ -135,14 +138,34 @@ export class ProfileComponent implements OnInit {
     this.shareService.getFoodShopById(foodShopid).subscribe(
       (data) => {
         if(data.messages[0].code=="SUCCESS"){
-          console.log(data.data.foodItems)
+          // console.log(data.data.foodItems)
           this.foodItems=data.data.foodItems
+          this.bindingFoodShopData(data.data.foodItems)
+          console.log(this.foodItemsList)
         }
         else{
           console.log("error")
         }
       }
     )
+  }
+  bindingFoodShopData(foodItems:any){
+    var list =[];
+    for (let index =0; index <foodItems.length; index++){
+      var foodItem = foodItems[index];
+      // console.log(foodItem.images)
+      list.push([
+        foodItem.id,
+        foodItem.name,
+        foodItem.images,
+        foodItem.foodItemRating,
+        foodItem.price,
+        foodItem.like,
+        foodItem.comments
+      ])
+    }
+    this.foodItemsList = this.foodItemsList.concat(list)
+    this.foodItemsData = this.foodItemsData.concat(foodItems)
   }
   
 }

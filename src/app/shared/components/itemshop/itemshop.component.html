@@ -1,10 +1,11 @@
 <div class="card card1" (click)="openDialog()">
     <div class="container">
-        <img src="https://images.pexels.com/photos/885021/pexels-photo-885021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="las vegas">
+        <img *ngIf="foodItem[2] ==null" src="https://images.pexels.com/photos/885021/pexels-photo-885021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="las vegas">
+        <img *ngIf="foodItem[2]" src={{foodItem[2][0]}} alt="las vegas">
     </div>
     <div class="details">
-        <h3>Las Vegas</h3>
-        <p>8 Đ</p>
-        <!-- <p>tium dignissimos, minus aperiam adipisci exercitationem.</p> -->
+        <h3>{{foodItem[1]}}</h3>
+        <p *ngIf="!foodItem[3]">Chưa có lượt đánh giá</p>
+        <p *ngIf="foodItem[3]">{{random}}</p>
     </div>
 </div>

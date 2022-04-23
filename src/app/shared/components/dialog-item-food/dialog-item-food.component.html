@@ -1,5 +1,5 @@
 <div class="header">
-  <h2 mat-dialog-title>Tên Sản phẩm</h2>
+  <h2 mat-dialog-title>{{this.foodItem[1]}}</h2>
   <div class="action-edit"*ngIf='isOwner'>
     <button mat-button >Xóa</button>
     <button mat-button  color="primary">Chỉnh Sửa</button>
@@ -7,7 +7,7 @@
 </div>
 <mat-dialog-content class="mat-typography">
     <nz-carousel nzAutoPlay>
-      <div nz-carousel-content *ngFor="let index of array">
+      <div nz-carousel-content *ngFor="let index of this.foodItem[2]">
         <img
         nz-image
         nzSrc='{{ index }}'
@@ -16,7 +16,7 @@
       </div>
   </nz-carousel>
   <div *ngIf="!isRateMode">
-    <h3>Price : 35.000 || Điểm Đánh giá Trung Bình :8.16</h3> 
+    <h3>Price : {{this.price}} || Điểm Đánh giá Trung Bình :{{this.ratingAverage}}</h3> 
   <p>Achieve the maximum speed possible on the Web Platform today, and take it further, via Web
     Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
     data requirements by building data models on RxJS, Immutable.js or another <span>see more</span></p>

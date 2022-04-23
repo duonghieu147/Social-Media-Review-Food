@@ -28,6 +28,8 @@
     color: green ;
     font-size:24px;
     font-weight:bold;
+    margin-left:64px;
+    margin-top: 12px;
 }
 
 .example-form {

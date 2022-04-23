@@ -1,9 +1,11 @@
 <div class="cards">
+    <!-- <app-itemshop></app-itemshop>
     <app-itemshop></app-itemshop>
     <app-itemshop></app-itemshop>
     <app-itemshop></app-itemshop>
     <app-itemshop></app-itemshop>
-    <app-itemshop></app-itemshop>
-    <app-itemshop></app-itemshop>
-
+    <app-itemshop></app-itemshop> -->
+    <ng-template ngFor let-foodItem [ngForOf]="foodItemsList" let-i="'index">
+        <app-itemshop [foodItem]="foodItem"></app-itemshop>
+      </ng-template>
 </div>
