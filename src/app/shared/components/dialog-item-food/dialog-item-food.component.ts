@@ -27,6 +27,7 @@ export class DialogItemFoodComponent implements OnInit {
 
   ngOnInit(): void {
     this.foodItem = this.data
+    console.log(this.foodItem)
     if (this.foodItem[4]==null) {
       this.price=this.getRandomNumber(100000)
     }else {

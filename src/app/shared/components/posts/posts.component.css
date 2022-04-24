@@ -1,6 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
 *{
   font-family: 'Pacifico' !important;
+  padding:0;
+}
+.post-container{
+  margin-top:24px;
+  width:631px;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .count {
     padding-left: 8px;
@@ -47,10 +58,10 @@
 }
 
 nz-card {
-  margin-top:24px;
-  border-radius: 20px 20px 0 0; 
+  /* margin-top:24px; */
+  /* border-radius: 20px 20px 0 0;  */
   background-color: whitesmoke;
-
+  border-radius: 10px 10px 0 0;
 }
 
 nz-avatar {
