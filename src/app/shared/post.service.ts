@@ -6,7 +6,7 @@ import { Observable, throwError } from 'rxjs';
 
 const defaultUrl = 'https://rfood.herokuapp.com';
 
->>>>>>> ui
+// >>>>>>> ui
 
 export interface Config {
     id: string;
