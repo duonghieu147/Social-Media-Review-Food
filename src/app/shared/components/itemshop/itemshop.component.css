@@ -4,6 +4,8 @@
   font-family: 'Dancing Script' !important;
 /* font-family: 'Pacifico' !important; */
 }
+*{font-family: Tahoma, sans-serif !important;
+}
 .card{
     background-color: #1c1b29;
     /* border-radius: 20px; */

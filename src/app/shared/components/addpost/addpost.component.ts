@@ -35,9 +35,10 @@ export class AddpostComponent {
       (data) => {
         if (data) {
           console.log(data)
-          this.dialogRef.close();
           this.openSnackBar('Successfully', 'Close')
+          this.router.navigate(['/home/z']);
           this.router.navigate(['/home']);
+          this.dialogRef.close();
         }
         else {
           this.openSnackBar('Create Post Error', 'Close')

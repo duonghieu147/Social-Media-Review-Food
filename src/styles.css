@@ -3,3 +3,10 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+*{
+    font-family: 'Ubuntu' !important;
+} */
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+*{font-family: Tahoma, sans-serif !important;
+}

@@ -2,6 +2,8 @@
 *{
   font-family: 'Pacifico' !important;
 }
+*{font-family: Tahoma, sans-serif !important;
+}
 .chat{
     display: flex;
     flex-direction: column;

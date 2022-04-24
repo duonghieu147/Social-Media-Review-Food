@@ -2,6 +2,8 @@
 *{
   font-family: 'Pacifico' !important;
 }
+*{font-family: Tahoma, sans-serif !important;
+}
 .header {
     height:64px;
     width: 100%;

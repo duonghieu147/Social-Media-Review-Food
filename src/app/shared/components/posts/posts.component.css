@@ -1,8 +1,16 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
+/* @import url(https://fonts.googleapis.com/css?family=Pacifico);
 *{
   font-family: 'Pacifico' !important;
   font-family: Tahoma, sans-serif  !important;
   padding:0;
+} */
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+/* *{
+    font-family: 'Ubuntu' !important;
+} */
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+*{font-family: Tahoma, sans-serif !important;
 }
 .post-container{
   margin-top:24px;
