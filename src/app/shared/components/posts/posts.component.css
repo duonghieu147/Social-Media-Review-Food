@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
 *{
   font-family: 'Pacifico' !important;
+  font-family: Tahoma, sans-serif  !important;
   padding:0;
 }
 .post-container{
