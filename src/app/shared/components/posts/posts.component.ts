@@ -58,6 +58,7 @@ export class PostsComponent implements OnInit {
       }
       // this.dataRelpy = this.dataRelpy.concat(list);
       this.dataRelpy =  list
+      console.log('dataRelpy', this.dataRelpy);
       // console.log(this.dataRelpy[0][0].ownerName)
     }
   }

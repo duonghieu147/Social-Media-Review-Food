@@ -29,4 +29,18 @@ p.ng-star-inserted {
 /* comment */
 .ant-comment-inner{
   width:500px !important;
+  padding-left: 15px !important;
+}
+
+.ant-comment-avatar {
+  margin: 0;
+}
+
+nz-avatar .ant-avatar-image {
+  padding-left: 10px;
+  margin-top: 0;
+}
+
+::ng-deep .ant-comment-avatar {
+  background: red;
 }
