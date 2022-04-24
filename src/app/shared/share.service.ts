@@ -88,12 +88,22 @@ export class ShareService {
   }
 
   //API Usern Controller
-  getUserById(userId:any):Observable<any>{
-    return this.http.get<Config>(defaultUrl+'/api/user?id='+userId)
+  // getUserById(userId:any):Observable<any>{
+  //   //return this.http.get<Config>(defaultUrl+'/api/user?id='+userId)
+  //   return this.http.get<Config>(defaultUrl+'/api/user?id='+userId)
+  //         .pipe(
+  //             catchError(this.handleError)
+  //         );
+  // }
+
+  getUserById():Observable<any>{
+    //return this.http.get<Config>(defaultUrl+'/api/user?id='+userId)
+    return this.http.get<Config>(defaultUrl+'/api/user?id=1')
           .pipe(
               catchError(this.handleError)
           );
   }
+
   createUser(user:any):Observable<any>{
     return this.http.post<Config>(defaultUrl+'/api/user',user)
           .pipe(
