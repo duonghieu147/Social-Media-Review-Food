@@ -40,6 +40,7 @@ html {
       color: rgba(#fff, 0.35);
       display: block;
       transition: all ease-out 300ms;
+      color:black ;
     }
 
     .nav ul  li.active a {

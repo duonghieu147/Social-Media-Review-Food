@@ -36,7 +36,8 @@ export class GalleryComponent implements OnInit {
         foodItem.foodItemRating,
         foodItem.price,
         foodItem.like,
-        foodItem.comments
+        foodItem.comments,
+        foodItem.description
       ])
     }
     this.foodItemsList = this.foodItemsList.concat(list)

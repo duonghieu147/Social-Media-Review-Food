@@ -57,6 +57,7 @@ import { PageNoteFoundComponent } from './shared/components/page-note-found/page
 import { TestComponent } from './modules/pages/test/test.component';
 import { MsgComponent } from './shared/components/msg/msg.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
+import { AddfooditemComponent } from './shared/components/addfooditem/addfooditem.component';
 
 //
 @NgModule({
@@ -83,6 +84,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     TestComponent,
     MsgComponent,
     LoadingComponent,
+    AddfooditemComponent,
 
   ],
   imports: [

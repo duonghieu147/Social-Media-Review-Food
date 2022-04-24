@@ -13,7 +13,7 @@ const baseUrl = 'https://60faace37ae59c0017166267.mockapi.io/api/v1/';
 const postURL = 'https://rfood.herokuapp.com/api/post';
 const jsonServer = "http://localhost:3000"
 
-export interface Config {
+export interface Config { 
   id: string;
   nasme: string;
   description: string;
@@ -66,14 +66,14 @@ export class ShareService {
 
   // API Post
   getAllPost(page = 0, limit = 20): Observable<any> {
-    return this.http.get<Config>(postURL + '/findall' + '?page=' + page + '&limit=' + limit)
+    return this.http.get<Config>(defaultUrl+'/api/post' + '/findall' + '?page=' + page + '&limit=' + limit)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   addComment(postId: number, comment: any) {
-    return this.http.put<any>(postURL + '/addcomment' + '?postId=' + postId, comment)
+    return this.http.put<any>(defaultUrl+'/api/post' + '/addcomment' + '?postId=' + postId, comment)
       .pipe(
         catchError(this.handleError)
       );
@@ -150,10 +150,12 @@ export class ShareService {
   }
 
   addFoodItemToShop(data:any,foodItemId:any):Observable<any>{
-    return this.http.put<Config>(defaultUrl+'/api/foodshop/addfooditem',foodItemId,foodItemId)
+    return this.http.put<Config>(defaultUrl+'/api/foodshop/addfooditem?foodShopId='+ foodItemId,data)
           .pipe(
               catchError(this.handleError)
           );
   }
+  
+  
 
 }
