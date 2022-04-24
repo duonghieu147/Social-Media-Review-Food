@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const app = express();
+const cors = require('cors');
+
  
 const forceSSL = function () {
   return function (req, res, next) {
