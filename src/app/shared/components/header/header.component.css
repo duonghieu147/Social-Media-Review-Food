@@ -188,4 +188,25 @@
     rgba(14, 191, 210, 1) 37.6%,
     rgba(8, 127, 140, 1) 99.2%
   );
+
+}
+/* .example-full-width .mat-form-field-wrapper {
+    padding-top: 0.6875em !important;
+} */
+/* mat-form-field .mat-form-field-wrapper > .mat-form-field-flex {
+    height: 12px;
+}
+
+host ::ng-deep .this-feels-better div.mat-input-wrapper.mat-form-field-wrapper{
+  padding-bottom: 0;
+} */
+
+::ng-deep .mat-form-field .mat-form-field-wrapper  {
+  padding-top: 0.6875em;
+}
+::ng-deep .mat-form-field .mat-form-field-wrapper .mat-form-field-flex  {
+  height: 2.5em;
+}
+::ng-deep .mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix  {
+  padding: 0;
 }

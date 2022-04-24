@@ -4,9 +4,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 
-const defaultUrl = 'https://rfood.herokuapp.com';
 
-// >>>>>>> ui
+const defaultUrl = 'https://rfood.herokuapp.com';
 
 export interface Config {
     id: string;
