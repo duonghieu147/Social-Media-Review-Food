@@ -6,6 +6,7 @@ import { PostService } from 'src/app/shared/post.service';
 import { ShareService } from 'src/app/shared/share.service';
 import {MatDialog} from '@angular/material/dialog';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { AddfooditemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
 
 @Component({
   selector: 'app-profile',
@@ -168,4 +169,14 @@ export class ProfileComponent implements OnInit {
     this.foodItemsData = this.foodItemsData.concat(foodItems)
   }
   
+
+  //Food Item Controller
+  dialogAddFoodItem(): void {
+    const dialogRef =this.dialog.open(AddfooditemComponent,{
+        width: '700px',height:'auto'
+    })
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log(`Dialog result: ${result}`);
+    })
+  }
 }

@@ -1,7 +1,7 @@
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
 
-ng g c shared/components/loading --module app
+ng g c shared/components/addfooditem --module app
 
 ng g c modules/pages/test --module app
 

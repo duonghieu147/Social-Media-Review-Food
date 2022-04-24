@@ -132,3 +132,20 @@ nz-carousel {
   ::ng-deep.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color:#fff !important;
   }
+  
+  .action-fooditem{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:24px;
+    margin-top:24px;
+  }
+  .action-fooditem .createfood{
+    color:white
+  }
+  .action-fooditem .sort1{
+    color:white
+  }.action-fooditem .sort2{
+    color:yellow
+  }.action-fooditem .sort3{
+    color:#ff4081
+  }
