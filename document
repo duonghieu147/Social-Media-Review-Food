@@ -5,6 +5,6 @@ ng g c shared/components/loading --module app
 
 ng g c modules/pages/test --module app
 
-http://localhost:8080/swagger-ui.html#/
+https://rfood.herokuapp.com/swagger-ui.html#/
 
 CSS -- ::ng-deep .classname
