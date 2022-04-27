@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit {
 
   ) { }
   dataPost: any = [];
-  dataRelpy :any = [];
+  dataReply :any = [];
   ngOnInit(): void {
     this.randomNumberLike=this.post[10]
     if(this.post[8]!=null) {
@@ -36,7 +36,7 @@ export class PostsComponent implements OnInit {
     }
 
     this.randomNumberShare=this.getRandomNumber(10)
-    this.bindingDataRelpy()
+    this.bindingDataReply()
     this.dataPost = {
       idpost: this.post[0],
       author: this.post[2],
@@ -50,15 +50,15 @@ export class PostsComponent implements OnInit {
     console.log(this.dataPost.numbercmt)
   }
 
-  bindingDataRelpy() {
+  bindingDataReply() {
     var list =[];
     if(this.post[8]!=null) {
       for (let index = 0; index < this.post[8].length; index++){
         list.push([this.post[8][index]])
       }
       // this.dataRelpy = this.dataRelpy.concat(list);
-      this.dataRelpy =  list
-      console.log('dataRelpy', this.dataRelpy);
+      this.dataReply =  list
+      console.log('dataReply', this.dataReply);
       // console.log(this.dataRelpy[0][0].ownerName)
     }
   }

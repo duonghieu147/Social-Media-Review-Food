@@ -46,11 +46,14 @@
   }
   
   .example-full-width {
-    width: 50%;
+    width: 80%;
   }
   .logout {
       margin-left: 250px;
   }
+  .select{
+    margin-top: 30px !important; 
+}
   button{
       height:36px;
       margin-top:12px;

@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  provinces: Array<any> = [];
 
   constructor(
+    private locationService: LocationService;
     private router: Router
   ) { }
 
@@ -20,7 +22,7 @@ export class HeaderComponent implements OnInit {
     this.hidden = !this.hidden;
   }
 
-  logOut(){
+  logOut() {
     this.router.navigate(['/login']);
 
   }

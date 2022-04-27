@@ -6,6 +6,22 @@
       <mat-form-field class="example-full-width" appearance="outline">
           <input matInput placeholder="" value="">
       </mat-form-field>
+      <mat-select placeholder="Province" disableOptionCentering panelClass="select">
+    
+        <mat-option *ngFor="let province of provinces" [value]="province.name">
+          {{province.name}}
+        </mat-option>
+      </mat-select>
+      <mat-select placeholder="District" disableOptionCentering panelClass="select">
+        <mat-option *ngFor="let district of districts" [value]="district.name">
+          {{district.name}}
+        </mat-option>
+      </mat-select>
+      <mat-select placeholder="Category" disableOptionCentering panelClass="select">
+        <mat-option *ngFor="let category of categories" [value]="category.name">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
       <button mat-button class="search">
         Search
     </button>
