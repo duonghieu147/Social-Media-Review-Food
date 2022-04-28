@@ -54,6 +54,6 @@ export class HeaderComponent implements OnInit {
     this.foodShopService.findFoodShops(this.query, this.province, this.district, this.categoryId).subscribe(res=>{
       console.log(res)
     })
-    console.log(this.province, this.district, this.categoryId);
+    console.log(this.query,this.province, this.district, this.categoryId);
   }
 }
