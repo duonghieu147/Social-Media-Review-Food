@@ -2,27 +2,26 @@
   <div class="logo">
       <p>Review Food</p>
   </div>
-  <form class="example-form">
+  <div class="example-form">
       <mat-form-field class="example-full-width" appearance="outline">
-          <input matInput placeholder="" value="">
+          <input matInput placeholder="" [(ngModel)]="query">
       </mat-form-field>
-      <mat-select placeholder="Province" disableOptionCentering panelClass="select">
+      <mat-select style="width:100px" placeholder="Province" disableOptionCentering panelClass="select" [(ngModel)]="province" (selectionChange)="onChangeProvince($event.value)">
     
-        <mat-option *ngFor="let province of provinces" [value]="province.name">
+        <mat-option *ngFor="let province of provinces" [value]="province.id">
           {{province.name}}
         </mat-option>
       </mat-select>
-      <mat-select placeholder="District" disableOptionCentering panelClass="select">
-        <mat-option *ngFor="let district of districts" [value]="district.name">
+      <mat-select placeholder="District" disableOptionCentering panelClass="select" [(ngModel)]="district">
+        <mat-option *ngFor="let district of districts" [value]="district.id">
           {{district.name}}
         </mat-option>
       </mat-select>
       <mat-select placeholder="Category" disableOptionCentering panelClass="select">
-        <mat-option *ngFor="let category of categories" [value]="category.name">
-          {{category.name}}
-        </mat-option>
+        <mat-option [value]="0">Food</mat-option>
+        <mat-option [value]="1">Baverage</mat-option>
       </mat-select>
-      <button mat-button class="search">
+      <button mat-button class="search" (click)="onSearch()">
         Search
     </button>
       <!-- <button mat-raised-button class="profile" color="primary">
@@ -31,9 +30,9 @@
       <button mat-raised-button class="logout" (click)="logOut()">
           Logout
       </button>
-      <button mat-raised-button matBadge="7" color="warn" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+      <!-- <button mat-raised-button matBadge="7" color="warn" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
           Thông báo
-      </button>
-  </form>
+      </button> -->
+    </div>
 
 </div>

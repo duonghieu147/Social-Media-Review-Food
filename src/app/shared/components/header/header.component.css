@@ -1,6 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap);
 *{
-  font-family: 'Pacifico' !important;
+  font-family: 'Open Sans' !important;
 }
 .header {
     height:64px;
