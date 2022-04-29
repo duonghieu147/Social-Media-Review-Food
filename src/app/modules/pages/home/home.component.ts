@@ -110,8 +110,8 @@ export class HomeComponent implements OnInit {
     this.getAllPost()
   }
   openDialogLoading(){
-    const dialogRef =this.dialog.open(LoadingComponent,{
-  })
+  //   const dialogRef =this.dialog.open(LoadingComponent,{
+  // })
   }
 }
 

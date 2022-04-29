@@ -1,6 +1,6 @@
 <div class="post-container">
   <!-- Show Post -->
-  <nz-card style="width:631px;" [nzCover]="coverTemplate">
+  <nz-card style="width:100%;" [nzCover]="coverTemplate">
 
   </nz-card>
 
@@ -61,7 +61,7 @@
 
     <mat-dialog-actions class="attribute-action" align="center">
       <div class="btn-actions">
-        <button mat-button color="accent" (click)="actionLikes()"> {{dataPost.like}} Thích</button>
+        <button mat-button color="accent" (click)="actionLikes()"> {{dataPost.like}} Like</button>
         <div *ngIf="numberCmt">
           <button mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}} Comment</button>
         </div>
@@ -78,8 +78,8 @@
   <!-- Show comment -->
   <div class="showcomment">
     <ng-template [ngIf]="isWritenCmt">
-      <ng-template [ngIf]="dataRelpy.length!= 0">
-        <div *ngFor="let item of dataRelpy" class="comemnt-attributes">
+      <ng-template [ngIf]="dataReply.length!= 0">
+        <div *ngFor="let item of dataReply" class="comemnt-attributes">
           <div class="comemnt-avatar">
             <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
               src={{item[0].ownerAvatarUrl}}>
@@ -101,8 +101,8 @@
       </ng-template>
     </ng-template>
     <!-- <ng-template [ngIf]="isWritenCmt">
-    <ng-template [ngIf]="dataRelpy.length!= 0">
-      <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+    <ng-template [ngIf]="dataReply.length!= 0">
+      <nz-list [nzDataSource]="dataReply" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
         <ng-template #item let-item>
           <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime" class="comment-attributes"> -->
     <!-- <p>{{item[0].ownerAvatarUrl}}</p> -->
