@@ -84,8 +84,7 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
     TestComponent,
     MsgComponent,
     LoadingComponent,
-    AddfooditemComponent,
-
+    AddfooditemComponent
   ],
   imports: [
     BrowserModule,
@@ -113,8 +112,6 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
     NzUploadModule,
     NzModalModule,
     NgZorroAntdModule,
-
-
     // MatDialogModule,
     MaterialModule
     
@@ -123,4 +120,5 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

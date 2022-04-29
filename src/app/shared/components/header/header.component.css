@@ -48,15 +48,19 @@
     padding: 10px 0 10px 0;
     margin: 12px 5px 12px 5px;
     border: 1px solid black;
-    background-color: rgb(253, 253, 253);
+    background-color: aliceblue;
     border-radius: 5px;
     width: 15em;
+    color: black;
   }
   .search-input{
-    padding: 10px 0 10px 0;
-    margin: 12px 5px 12px 5px;
+    padding: 10px 0 10px 50px;
+    margin: 12px 5px 12px 3px;
     border-radius: 5px;
     width: 30%;
+    background: url(../../../../assets/svg/icons8-search.svg) no-repeat scroll 7px 7px; 
+    background-color: aliceblue;
+    background-size:20px;
   }
   .logout {
       margin-left: 8em;
@@ -65,8 +69,9 @@
     padding-top: 40;
     margin-top: 50px !important; 
 }
- .mat-select-value{
+ ::ng-deep .mat-select-value{
     border :2px;
+    text-align: center;
 }
   button{
       height:36px;
@@ -209,4 +214,9 @@
     rgba(14, 191, 210, 1) 37.6%,
     rgba(8, 127, 140, 1) 99.2%
   );
+}
+
+::ng-deep .mat-select-panel {
+	min-width: 100% !important;
+    transform: translateX(16px) translateY(36px) !important;
 }
