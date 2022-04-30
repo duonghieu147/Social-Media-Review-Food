@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { addDays, formatDistance } from 'date-fns';
 import { PostService } from '../../post.service';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Comment } from 'src/app/model/comment.interface';
 
 @Component({
   selector: 'app-posts',
@@ -10,6 +11,8 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+
+  comment :Comment[]= [];
 
   @Input() post: Array<any> = [];
   isWritenCmt:boolean=false;
@@ -24,7 +27,6 @@ export class PostsComponent implements OnInit {
 
   ) { }
   dataPost: any = [];
-  dataReply :any = [];
   ngOnInit(): void {
     this.randomNumberLike=this.post[10]
     if(this.post[8]!=null) {
@@ -51,17 +53,14 @@ export class PostsComponent implements OnInit {
   }
 
   bindingDataReply() {
-    var list =[];
     if(this.post[8]!=null) {
-      for (let index = 0; index < this.post[8].length; index++){
-        list.push([this.post[8][index]])
+      this.comment =  this.post[8]
+      console.log('comment', this.comment);
       }
       // this.dataRelpy = this.dataRelpy.concat(list);
-      this.dataReply =  list
-      console.log('dataReply', this.dataReply);
       // console.log(this.dataRelpy[0][0].ownerName)
     }
-  }
+
   // data = [
   //   {
   //     author: localStorage.getItem('name'),

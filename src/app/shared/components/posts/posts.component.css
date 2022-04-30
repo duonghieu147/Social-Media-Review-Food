@@ -150,7 +150,7 @@ button.mat-focus-indicator.mat-button.mat-button-base{
 }
 /* comment */
 .showcomment {
-  width: 631px;
+  width: 100%;
   background-color: whitesmoke;
 }
 nz-comment.ant-comment{
@@ -202,11 +202,15 @@ nz-list {
 }
 
 .comemnt-attributes {
-  display: flex;
+  display: block;
   justify-content: center;
   background-color: white;
   align-items: flex-start;
   padding: 10px;
+}
+
+.main-comment{
+  display: flex;
 }
 
 .comemnt-attributes .comemnt-avatar {
@@ -214,6 +218,7 @@ nz-list {
 }
 
 .comemnt-attributes .comemnt-content {
+  width: 95%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -241,4 +246,10 @@ nz-list {
   justify-content: center;
   height: 100%;
   align-items: center;
+  color:black;
+}
+
+.comment-reply{
+  margin: 10px 0 5px 6%;
+  display: flex;
 }

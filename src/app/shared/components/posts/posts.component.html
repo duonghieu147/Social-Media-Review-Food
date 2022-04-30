@@ -78,23 +78,43 @@
   <!-- Show comment -->
   <div class="showcomment">
     <ng-template [ngIf]="isWritenCmt">
-      <ng-template [ngIf]="dataReply.length!= 0">
-        <div *ngFor="let item of dataReply" class="comemnt-attributes">
-          <div class="comemnt-avatar">
-            <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
-              src={{item[0].ownerAvatarUrl}}>
-          </div>
-          <div style="flex: 1">
-            <div class="comemnt-content">
-              <div class="comemnt-content-name"><b>{{item[0].ownerName}}</b><span> {{item[0].createdTime}}</span></div>
-              <div class="comemnt-content-body">{{item[0].content}}</div>
+      <ng-template [ngIf]="comment.length!= 0">
+        <div *ngFor="let item of comment" class="comemnt-attributes">
+          <div class = "main-comment">
+            <div class="comemnt-avatar">
+              <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
+                src={{item.ownerAvatarUrl}}>
+            </div>
+            <div style="flex: 1">
+              <div class="comemnt-content">
+                <div class="comemnt-content-name"><b>{{item.ownerName}}</b><span> {{item.createdTime}}</span></div>
+                <div class="comemnt-content-body">{{item.content}}</div>
+              </div>
+            </div>
+            <div class="comemnt-more">
+              <div>...</div>
             </div>
           </div>
-          <div class="comemnt-more">
-            <div>...</div>
-          </div>
+          <!-- Show reply comment -->
+          <ng-template [ngIf]="item.commentReply.length != 0">
+            <div *ngFor="let reply of item.commentReply" class="comment-reply">
+              <div class="comemnt-avatar">
+                <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
+                  src={{reply.ownerAvatarUrl}}>
+              </div>
+              <div style="flex: 1">
+                <div class="comemnt-content">
+                  <div class="comemnt-content-name"><b>{{reply.ownerName}}</b><span> {{reply.createdTime}}</span></div>
+                  <div class="comemnt-content-body">{{reply.content}}</div>
+                </div>
+              </div>
+              <div class="comemnt-more">
+                <div>...</div>
+              </div>
+            </div>
+          </ng-template>
         </div>
-        
+
       </ng-template>
       <ng-template [ngIf]="isWritenCmt">
         <app-addcomment></app-addcomment>
