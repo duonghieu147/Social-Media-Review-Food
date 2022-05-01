@@ -1,6 +1,6 @@
 <div class="post-container">
   <!-- Show Post -->
-  <nz-card style="width:100%;" [nzCover]="coverTemplate">
+  <nz-card style="width:100%; border-radius: 6px;" [nzCover]="coverTemplate">
 
   </nz-card>
 
@@ -63,7 +63,7 @@
       <div class="btn-actions">
         <button mat-button color="accent" (click)="actionLikes()"> {{dataPost.like}} Like</button>
         <div *ngIf="numberCmt">
-          <button mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}} Comment</button>
+          <button style="width: 22em;" mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}} Comment</button>
         </div>
         <div *ngIf="!numberCmt">
           <button mat-button color="primary" (click)="showWritenCmt()"> Comment</button>
@@ -79,42 +79,51 @@
   <div class="showcomment">
     <ng-template [ngIf]="isWritenCmt">
       <ng-template [ngIf]="comment.length!= 0">
-        <div *ngFor="let item of comment" class="comemnt-attributes">
-          <div class = "main-comment">
-            <div class="comemnt-avatar">
+        <div *ngFor="let item of comment; let i = index" class="comment-attributes">
+          <div class="main-comment">
+            <div class="comment-avatar">
               <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
                 src={{item.ownerAvatarUrl}}>
             </div>
             <div style="flex: 1">
-              <div class="comemnt-content">
-                <div class="comemnt-content-name"><b>{{item.ownerName}}</b><span> {{item.createdTime}}</span></div>
-                <div class="comemnt-content-body">{{item.content}}</div>
+              <div class="comment-content">
+                <div class="comment-content-name"><b>{{item.ownerName}}</b><span> {{item.createdTime}}</span></div>
+                <div class="comment-content-body">{{item.content}}</div>
               </div>
             </div>
-            <div class="comemnt-more">
+            <div class="comment-more">
               <div>...</div>
             </div>
+          </div>
+          <div class="reply-button">
+            <button mat-button (click)="likeComment(item.id)"> Like</button>
+            <button mat-button (click)="showWriteReply(item.id)"> Reply</button>
           </div>
           <!-- Show reply comment -->
           <ng-template [ngIf]="item.commentReply.length != 0">
             <div *ngFor="let reply of item.commentReply" class="comment-reply">
-              <div class="comemnt-avatar">
+              <div class="comment-avatar">
                 <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
                   src={{reply.ownerAvatarUrl}}>
               </div>
               <div style="flex: 1">
-                <div class="comemnt-content">
-                  <div class="comemnt-content-name"><b>{{reply.ownerName}}</b><span> {{reply.createdTime}}</span></div>
-                  <div class="comemnt-content-body">{{reply.content}}</div>
+                <div class="comment-content">
+                  <div class="comment-content-name"><b>{{reply.ownerName}}</b><span> {{reply.createdTime}}</span>
+                  </div>
+                  <div class="comment-content-body">{{reply.content}}</div>
                 </div>
               </div>
-              <div class="comemnt-more">
+              <div class="comment-more">
                 <div>...</div>
               </div>
             </div>
           </ng-template>
+          <ng-template [ngIf]="item.id === idReplyToShow">
+            <div class = "blank-comment-reply">
+              <app-addcomment></app-addcomment>
+            </div>
+          </ng-template>
         </div>
-
       </ng-template>
       <ng-template [ngIf]="isWritenCmt">
         <app-addcomment></app-addcomment>

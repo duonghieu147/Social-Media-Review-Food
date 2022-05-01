@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
-import { PostService } from 'src/app/shared/post.service';
-import { ShareService } from '../../share.service';
+import { ShareService } from '../../../service/share.service';
 
 @Component({
   selector: 'app-addfooditem',

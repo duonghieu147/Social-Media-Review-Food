@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from 'src/app/model/location.interface';
-import { FoodShopService } from '../../foodshop.service';
-import { LocationService } from '../../location.service';
+import { FoodShopService } from '../../../service/foodshop.service';
+import { LocationService } from '../../../service/location.service';
 
 
 @Component({
