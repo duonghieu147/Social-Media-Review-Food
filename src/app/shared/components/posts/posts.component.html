@@ -35,15 +35,10 @@
       </div>
     </div>
     <div class="row-grid">
-      <!-- <div class="column-grid">
-      <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
-        <img *ngIf="i<4" nz-image nzSrc='{{item}}' alt="" />
-      </ng-template>
-    </div> -->
       <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
         <div *ngIf="dataPost.images && dataPost.images.length ==1" class="column-grid index1">
           <img *ngIf="i<1" nz-image nzSrc='{{item}}' alt="" />
-        </div>
+        </div>       
       </ng-template>
 
       <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
@@ -58,6 +53,40 @@
         </div>
       </ng-template>
     </div>
+
+    <!-- <div class="images-1"  *ngIf="dataPost.images && (dataPost.images.length ==1)">
+      <mat-grid-list cols="1" rowHeight="300px">
+        <mat-grid-tile>
+          <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
+            <img *ngIf="i<1" nz-image nzSrc='{{item}}' alt="" />
+        </ng-template>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <div class="images-2"  *ngIf="dataPost.images && (dataPost.images.length ==2)">
+      <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+          <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
+            <img *ngIf="i<2" nz-image nzSrc='{{item}}' alt="" />
+        </ng-template>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <div class="images-4"  *ngIf="dataPost.images && (dataPost.images.length ==4)">
+      <mat-grid-list cols="2" rowHeight="150px">
+        <mat-grid-tile>
+          <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
+            <img *ngIf="i<4" nz-image nzSrc='{{item}}' alt="" />
+        </ng-template>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div> -->
+
+      
+
+
 
     <mat-dialog-actions class="attribute-action" align="center">
       <div class="btn-actions">

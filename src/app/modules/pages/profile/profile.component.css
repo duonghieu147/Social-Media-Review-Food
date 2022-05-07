@@ -36,6 +36,29 @@ nz-page-header,.profile-content {
   margin: auto;
 }
 
+.profile-inf{
+  display: flex;
+  margin-right: 24px;
+  font-size: 16px;
+  color: white;
+}
+.profile-inf p {
+  margin-right: 24px;
+}
+/* Icons */
+.social{
+  display: flex;
+  /* padding-left: 2.5em; */
+}
+svg {
+  height: 36px;
+  width: 36px;
+}
+.icon-svg {
+  display: flex;
+  margin-right: 24px;
+}
+/* End Icons */
 nz-carousel {
   height:320px;
   width: 960px;
