@@ -58,6 +58,7 @@ import { TestComponent } from './modules/pages/test/test.component';
 import { MsgComponent } from './shared/components/msg/msg.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AddfooditemComponent } from './shared/components/addfooditem/addfooditem.component';
+import { RecordsComponent } from './modules/pages/records/records.component';
 
 //
 @NgModule({
@@ -84,7 +85,8 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
     TestComponent,
     MsgComponent,
     LoadingComponent,
-    AddfooditemComponent
+    AddfooditemComponent,
+    RecordsComponent
   ],
   imports: [
     BrowserModule,

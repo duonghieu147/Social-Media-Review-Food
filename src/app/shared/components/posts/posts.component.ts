@@ -37,7 +37,7 @@ export class PostsComponent implements OnInit {
       this.numberCmt = this.post[8].length
     }
     if (this.post[0] == '7') {
-      console.log(this.post[10])
+      // console.log(this.post[10])
 
     }
 
@@ -53,16 +53,14 @@ export class PostsComponent implements OnInit {
       datetime: formatDistance(new Date(), addDays(new Date(), 1)),
       like: this.post[10],
     }
-    console.log(this.dataPost.numbercmt)
+    // console.log(this.dataPost.numbercmt)
   }
 
   bindingDataReply() {
     if (this.post[8] != null) {
       this.comment = this.post[8]
-      console.log('comment', this.comment);
+      // console.log('comment', this.comment);
     }
-    // this.dataRelpy = this.dataRelpy.concat(list);
-    // console.log(this.dataRelpy[0][0].ownerName)
   }
 
   // data = [
@@ -138,7 +136,6 @@ export class PostsComponent implements OnInit {
     this.postService.likePost(postId).subscribe(
       (data) => {
         if (data.messages[0].code == "SUCCESS") {
-          console.log("Like", data.messages[0].code)
         }
         else {
           console.log("err like", data.messages[0].code)
@@ -149,7 +146,6 @@ export class PostsComponent implements OnInit {
     this.postService.dislikePost(postId).subscribe(
       (data) => {
         if (data.messages[0].code == "SUCCESS") {
-          console.log("Like", data.messages[0].code)
         }
         else {
           console.log("err dislike", data.messages[0].code)

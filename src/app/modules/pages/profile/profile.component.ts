@@ -77,8 +77,9 @@ export class ProfileComponent implements OnInit {
   }
   openDialogLoading(){
     const dialogRef =this.dialog.open(LoadingComponent,{
-  })
+    })
   }
+  
   getPostByUserId(){
     this.openDialogLoading()
     this.postService.getPostByUserId(this.userIdParams,this.limit,this.page).subscribe(

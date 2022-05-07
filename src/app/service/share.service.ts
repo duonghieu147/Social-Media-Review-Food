@@ -5,12 +5,12 @@ import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 
 
-const defaultUrl = 'http://localhost:8080';
-
-const commentUrl = 'http://localhost:8080/create';
+// const defaultUrl = 'http://localhost:8080';
+const defaultUrl = 'https://rfood.herokuapp.com';
+// const commentUrl = 'http://localhost:8080/create';
 
 const baseUrl = 'https://60faace37ae59c0017166267.mockapi.io/api/v1/';
-const postURL = 'http://localhost:8080/api/post';
+// const postURL = 'http://localhost:8080/api/post';
 const jsonServer = "http://localhost:3000"
 
 export interface Config { 

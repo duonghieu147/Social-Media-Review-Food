@@ -5,8 +5,8 @@ import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 
 
-const defaultUrl = 'http://localhost:8080';
-
+// const defaultUrl = 'http://localhost:8080';
+const defaultUrl = 'https://rfood.herokuapp.com';
 export interface Config { 
   id: string;
   nasme: string;
@@ -36,10 +36,36 @@ export class FoodItemService {
       'Something bad happened; please try again later.');
   }
 
+  getFoodItemById(foodItemId:any):Observable<any>{
+    return this.http.get<Config>(defaultUrl+'/api/fooditem/findbyid?id='+ foodItemId)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
+
   addFoodItemToShop(data:any,foodItemId:any):Observable<any>{
     return this.http.put<Config>(defaultUrl+'/api/foodshop/addfooditem?foodShopId='+ foodItemId,data)
           .pipe(
               catchError(this.handleError)
           );
+  }
+
+  createCommentItemFood(postId: any, comment: any): Observable<any> {
+    return this.http.post<Config>(defaultUrl + '/api/fooditem/comment?id=' + postId, comment)
+        .pipe(
+            catchError(this.handleError)
+        );
+  }
+  likeItemFood(postId: any): Observable<any> {
+    return this.http.post<Config>(defaultUrl + '/api/fooditem/like?id=' + postId, postId)
+        .pipe(
+            catchError(this.handleError)
+        );
+  }
+  dislikeItemFood(postId: any): Observable<any> {
+    return this.http.post<Config>(defaultUrl + '/api/fooditem/dislike?id=' + postId, postId)
+        .pipe(
+            catchError(this.handleError)
+        );
   }
 }

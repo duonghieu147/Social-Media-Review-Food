@@ -109,9 +109,10 @@ export class HomeComponent implements OnInit {
     this.page = this.page + 1;
     this.getAllPost()
   }
+  
   openDialogLoading(){
-  //   const dialogRef =this.dialog.open(LoadingComponent,{
-  // })
+    const dialogRef =this.dialog.open(LoadingComponent,{
+    })
   }
 }
 
