@@ -108,8 +108,8 @@
           <div class="icons-list">
           </div>
           <div *ngIf="userId==userIdParams" class="content-link">
-            <button class="createpost" mat-raised-button>Đăng Bài</button>
-            <button class="edit" mat-raised-button>Chỉnh sửa thông tin </button>
+            <button class="createpost" mat-raised-button (click)="showModal()">Đăng Bài</button>
+            <button class="edit" mat-raised-button>Đổi Avatar </button>
           </div>
         </div>
       </div>
@@ -152,13 +152,8 @@
       <app-gallery></app-gallery>
     </div>
     <div *ngIf="modepage=='profile'">
-      <button *ngIf="userId==userIdParams" mat-button color="primary">Chỉnh sửa profile</button>
-
-      <!-- <app-dialog-item-food></app-dialog-item-food> -->
-      <!-- <ng-template ngFor let-foodItem [ngForOf]="foodItemsList" let-i="'index">
-        <app-dialog-item-food [foodItem]="foodItem"></app-dialog-item-food>
-      </ng-template> -->
-      <!-- <app-information></app-information> -->
+      <button *ngIf="userId==userIdParams" mat-button color="primary" (click)="openDialogEditProfile()" >Chỉnh sửa profile</button>
+      <app-information></app-information>
     </div>
   </div>
 

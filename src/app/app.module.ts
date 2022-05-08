@@ -59,6 +59,7 @@ import { MsgComponent } from './shared/components/msg/msg.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AddfooditemComponent } from './shared/components/addfooditem/addfooditem.component';
 import { RecordsComponent } from './modules/pages/records/records.component';
+import { EditprofileComponent } from './modules/pages/profile/editprofile/editprofile.component';
 
 //
 @NgModule({
@@ -86,7 +87,8 @@ import { RecordsComponent } from './modules/pages/records/records.component';
     MsgComponent,
     LoadingComponent,
     AddfooditemComponent,
-    RecordsComponent
+    RecordsComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,
