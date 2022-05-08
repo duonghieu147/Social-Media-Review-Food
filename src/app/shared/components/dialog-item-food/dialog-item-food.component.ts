@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommentService } from 'src/app/service/comment.service';
 import { FoodItemService } from 'src/app/service/foodItem.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialog-item-food',
@@ -37,6 +38,8 @@ export class DialogItemFoodComponent implements OnInit {
   constructor(    private route: ActivatedRoute,
     public commentService: CommentService,
     public FoodItemService :FoodItemService,
+    private _snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     
 
     @Inject(MAT_DIALOG_DATA) public data: {foodItems: any}
@@ -47,16 +50,15 @@ export class DialogItemFoodComponent implements OnInit {
     this.getFoodItemById(this.foodItem[0])
     localStorage.setItem('foodItemId',this.foodItem[0])
     if (this.foodItem[4]==null) {
-      this.price=this.getRandomNumber(100000)
+      this.price='Chưa Cật Nhật Giá'
     }else {
-      this.price = this.foodItem[4]
+      this.price = (+this.foodItem[4])
     }
     if (this.foodItem[3]==null) {
       this.ratingAverage = 0
     }
     else {
-      // this.ratingAverage = this.foodItem[3].overall
-      this.ratingAverage = (+this.foodItem[3].quality + this.foodItem[3].price +this.foodItem[3].decoration + 0)/3
+      this.ratingAverage = ((+this.foodItem[3].quality + this.foodItem[3].price +this.foodItem[3].decoration + this.foodItem[3].overall)/4).toFixed(2)
     }
 
     console.log('click foodItem',this.data)
@@ -69,10 +71,9 @@ export class DialogItemFoodComponent implements OnInit {
     this.FoodItemService.getFoodItemById(FoodItem).subscribe(
       (data) =>{
         if (data.messages[0].code == "SUCCESS") {
-          console.log(data.data.comments)
+          // console.log(data.data.comments)
           this.comment=data.data.comments
-          console.log(this.comment[0])
-
+          // console.log(this.comment[0])
         }
         else {
           console.log("err dislike", data.messages[0].code)
@@ -96,7 +97,7 @@ export class DialogItemFoodComponent implements OnInit {
   value1 = 0
   value2 = 0
   value3 = 0
-
+  value4 = 0
   tickInterval = 1;
 
   getSliderTickInterval(): number | 'auto' {
@@ -109,11 +110,32 @@ export class DialogItemFoodComponent implements OnInit {
   getRandomNumber(max:number) {
     return Math.floor(Math.random() * max);
   }
+  ratingFoodItem(value1: any,value2: any,value3: any,value4: any) {
+    this.FoodItemService.ratingItemFood(this.foodItem[0],{
+      decoration:value1,
+      overall:value2,
+      price:value3,
+      quality:value4
+    }).subscribe(
+      (data) =>{
+        if (data.messages[0].code == "SUCCESS") {
+          this.openSnackBar('Rating Successfully', 'Close');
+        }
+        else {
+          console.log("err rating", data.messages[0].code)
+          this.openSnackBar('Error Rating', 'Close');
+        }
+      }
+    )
+    this.value1= value1
+    this.value2= value2
+    this.value3= value3
+    this.value4= value4
 
+  }
   changeModeComment() {
     this.isModeComment= !this.isModeComment;
   }
-
 
   //comment
   // likeComment(commentId: any) {
@@ -128,5 +150,9 @@ export class DialogItemFoodComponent implements OnInit {
   //   this.isShowCommentReply= !this.isShowCommentReply;
   //   this.idReplyToShow = commentId;
   // }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, { duration: 2500 });
+  }
 
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
-
+import { Rating } from '../model/fooditem.interface';
 
 // const defaultUrl = 'http://localhost:8080';
 const defaultUrl = 'https://rfood.herokuapp.com';
@@ -64,6 +64,13 @@ export class FoodItemService {
   }
   dislikeItemFood(postId: any): Observable<any> {
     return this.http.post<Config>(defaultUrl + '/api/fooditem/dislike?id=' + postId, postId)
+        .pipe(
+            catchError(this.handleError)
+        );
+  }
+
+  ratingItemFood(postId: any,rating:Rating): Observable<any> {
+    return this.http.post<Config>(defaultUrl + '/api/fooditem/rate?id=' + postId, rating)
         .pipe(
             catchError(this.handleError)
         );

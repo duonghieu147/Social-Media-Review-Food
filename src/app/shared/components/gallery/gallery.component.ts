@@ -23,7 +23,7 @@ export class GalleryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFoodShopById(3);
+    this.getFoodShopById(2);
   }
 
   bindingFoodShopData(foodItems:any){

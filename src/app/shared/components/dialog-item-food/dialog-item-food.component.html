@@ -72,12 +72,29 @@
         aria-labelledby="example-name-label">
     </mat-slider>
     </div>
+
+    <div class="rating 4">
+      <label class="rating-tile" >OverView</label>
+      <label class="rating-value">{{value4}}</label>
+    <mat-slider
+        class="example-margin"
+        [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumbLabel]="thumbLabel"
+        [tickInterval]="getSliderTickInterval()"
+        [(ngModel)]="value4"
+        aria-labelledby="example-name-label">
+    </mat-slider>
+    </div>
   </div>
 
 
 
 
-  <div class="comment"  *ngIf="isModeComment">
+  <div class="comment"  *ngIf="!isRateMode && isModeComment">
     <ng-template [ngIf]="comment.length!= 0">
       <div *ngFor="let item of comment; let i = index" class="comment-attributes">
         <div class="main-comment">
@@ -145,7 +162,7 @@
 
 <mat-dialog-actions *ngIf="isRateMode" align="center">
   <button mat-button  color="accent" (click)="changeModeRate()">Back</button>
-  <button mat-button  color="primary">Lưu Đánh Giá</button>
+  <button mat-button  color="primary" (click)="ratingFoodItem(value1,value2,value3,value4)">Lưu Đánh Giá</button>
 </mat-dialog-actions>
 
 

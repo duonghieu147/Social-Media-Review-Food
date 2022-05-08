@@ -51,17 +51,12 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.route.queryParams.subscribe(params => {
-    //   console.log(params)
-    //   this.userIdParams = params['id'];
-    // });
-    // this.typeUser = localStorage.getItem('types')
     this.userIdParams = this.route.snapshot.paramMap.get('id');
     localStorage.setItem('pageCurrent',this.userIdParams)
     this.userId = localStorage.getItem('id');
     this.getUserById();
     this.getPostByUserId();
-    this.getFoodShopById(3);
+    this.getFoodShopById(2);
   }
 
   changeModeProfile(mode: string) {
