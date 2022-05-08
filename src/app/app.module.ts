@@ -58,6 +58,7 @@ import { TestComponent } from './modules/pages/test/test.component';
 import { MsgComponent } from './shared/components/msg/msg.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { AddfooditemComponent } from './shared/components/addfooditem/addfooditem.component';
+import { RecordsComponent } from './modules/pages/records/records.component';
 
 //
 @NgModule({
@@ -85,7 +86,7 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
     MsgComponent,
     LoadingComponent,
     AddfooditemComponent,
-
+    RecordsComponent
   ],
   imports: [
     BrowserModule,
@@ -113,8 +114,6 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
     NzUploadModule,
     NzModalModule,
     NgZorroAntdModule,
-
-
     // MatDialogModule,
     MaterialModule
     
@@ -123,4 +122,5 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

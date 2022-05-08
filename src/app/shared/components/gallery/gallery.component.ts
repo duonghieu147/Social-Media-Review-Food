@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareService } from '../../share.service';
+import { ShareService } from '../../../service/share.service';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-gallery',
@@ -12,6 +13,7 @@ export class GalleryComponent implements OnInit {
   foodItemsList: Array<any>=[];
   foodItemsData: Array<any>=[];
   foodItems:any;
+  isloading: boolean =true;
 
   constructor(
     public shareService:ShareService,
@@ -21,14 +23,14 @@ export class GalleryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFoodShopById(3);
+    this.getFoodShopById(2);
   }
 
   bindingFoodShopData(foodItems:any){
     var list =[];
     for (let index =0; index <foodItems.length; index++){
       var foodItem = foodItems[index];
-      // console.log(foodItem.images)
+      console.log(foodItem.comments)
       list.push([
         foodItem.id,
         foodItem.name,
@@ -37,7 +39,7 @@ export class GalleryComponent implements OnInit {
         foodItem.price,
         foodItem.like,
         foodItem.comments,
-        foodItem.description
+        foodItem.description,
       ])
     }
     this.foodItemsList = this.foodItemsList.concat(list)
@@ -45,18 +47,25 @@ export class GalleryComponent implements OnInit {
   }
 
   getFoodShopById(foodShopid:any){
+    this.openDialogLoading()
     this.shareService.getFoodShopById(foodShopid).subscribe(
       (data) => {
         if(data.messages[0].code=="SUCCESS"){
-          // console.log(data.data.foodItems)
           this.foodItems=data.data.foodItems
+          console.log(this.foodItems)
           this.bindingFoodShopData(data.data.foodItems)
-          console.log(this.foodItemsList)
+          this.isloading=false;
+          this.dialog.closeAll();
         }
         else{
           console.log("error")
         }
       }
     )
+  }
+
+  openDialogLoading(){
+    const dialogRef =this.dialog.open(LoadingComponent,{
+    })
   }
 }

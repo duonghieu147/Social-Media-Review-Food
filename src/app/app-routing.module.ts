@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/pages/home/home.component';
 import { LoginComponent } from './modules/pages/login/login.component';
 import { ProfileComponent } from './modules/pages/profile/profile.component';
+import { RecordsComponent } from './modules/pages/records/records.component';
 import { ShoppingComponent } from './modules/pages/shopping/shopping.component';
 import { SignupComponent } from './modules/pages/signup/signup.component';
 import { TestComponent } from './modules/pages/test/test.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'shopping', component: ShoppingComponent },
   { path: 'post', component: PostsComponent },
   { path: 'addpost', component: AddpostComponent },
+  { path: 'records', component: RecordsComponent },
   { path: 'test', component: TestComponent },
   { path: '**', component: PageNoteFoundComponent },  // Wildcard route for a 404 page
 

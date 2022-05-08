@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MsgComponent } from 'src/app/shared/components/msg/msg.component';
-import { ShareService } from 'src/app/shared/share.service';
+import { ShareService } from 'src/app/service/share.service';
+
 
 @Component({
   selector: 'app-login',
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
   }
   signUp() {
-
+    this.router.navigate(['/signup']);
   }
   signIn() {
     this.submitForm()

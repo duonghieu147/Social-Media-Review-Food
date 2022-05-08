@@ -1,36 +1,32 @@
 <div class="header">
-  <app-header></app-header>
+    <app-header></app-header>
 </div>
 <div class="silderbar-left">
-  <app-silderbar-left></app-silderbar-left>
+    <app-silderbar-left></app-silderbar-left>
 </div>
-<nz-layout>
-
-    <!-- <app-header></app-header> -->
-    <nz-layout>
-      <!-- <nz-sider [nzWidth]="300">
+<!-- <app-header></app-header> -->
+<nz-layout style="background-color: rgb(255, 255, 255);">
+    <!-- <nz-sider [nzWidth]="300">
           <div class="silderbar">
             <app-silderbar-left></app-silderbar-left>
           </div>
       </nz-sider> -->
-      <nz-content>
-            <div nz-row>
-                <div nz-col nzSpan="6"></div>
-                <div nz-col nzSpan="10">
-                  <!-- <button mat-button color="primary" (click)="loginUser()">loginUser</button>
+    <nz-content>
+        <div nz-row>
+            <div nz-col nzSpan="5"></div>
+            <div nz-col nzSpan="14">
+                <!-- <button mat-button color="primary" (click)="loginUser()">loginUser</button>
                   <button mat-button  (click)="loginShop()">loginShop</button> -->
-                  <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Đăng bài</span></button> -->
-                    <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
-                      <app-posts [post]="post"></app-posts>
-                  </ng-template>
-                  <button *ngIf="!isDone" mat-button (click)="loadNextPage()">Xem thêm</button>
-                  
-                </div>
-                <div nz-col nzSpan="8">
-                  <app-chat></app-chat>
-                </div>
-              </div>
-      </nz-content>
-    </nz-layout>
-  </nz-layout>
-  
+                <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Đăng bài</span></button> -->
+                <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+                    <app-posts [post]="post"></app-posts>
+                </ng-template>
+                <button class ="load-more-button" *ngIf="!isDone" mat-button (click)="loadNextPage()">Xem thêm</button>
+
+            </div>
+            <div nz-col nzSpan="5">
+                <!-- <app-chat></app-chat> -->
+            </div>
+        </div>
+    </nz-content>
+</nz-layout>

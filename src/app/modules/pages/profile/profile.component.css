@@ -1,6 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap);
 *{
-  font-family: 'Pacifico' !important;
+  font-family: 'Open Sans' !important;
 }
 *{font-family: Tahoma, sans-serif !important;
 }
@@ -21,8 +21,7 @@
 .profile {
   margin-top: 64px;
   margin-left: 300px;
-  background-color: lightblue;
-  background-color: rgba(16, 142, 233, 1);
+  background-color: rgb(247, 247, 247);
 }
 
 [nz-icon] {
@@ -35,10 +34,33 @@ nz-page-header{
   background-color: #ffff;
 }
 nz-page-header,.profile-content {
-  width: 960px;
+  width: 80%;
   margin: auto;
 }
 
+.profile-inf{
+  display: flex;
+  margin-right: 24px;
+  font-size: 16px;
+  color: white;
+}
+.profile-inf p {
+  margin-right: 24px;
+}
+/* Icons */
+.social{
+  display: flex;
+  /* padding-left: 2.5em; */
+}
+svg {
+  height: 36px;
+  width: 36px;
+}
+.icon-svg {
+  display: flex;
+  margin-right: 24px;
+}
+/* End Icons */
 nz-carousel {
   height:320px;
   width: 960px;
@@ -132,7 +154,7 @@ nz-carousel {
   }
 
   ::ng-deep.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color:#fff !important;
+    color:rgb(20, 17, 17) !important;
   }
   
   .action-fooditem{
@@ -142,12 +164,28 @@ nz-carousel {
     margin-top:24px;
   }
   .action-fooditem .createfood{
-    color:white
-  }
+    color:#107ebe
+  } 
   .action-fooditem .sort1{
-    color:white
+    color:#107ebe
   }.action-fooditem .sort2{
-    color:yellow
+    color:black
   }.action-fooditem .sort3{
     color:#ff4081
   }
+  .site-page-header{
+    background-color: #107ebe;
+  }
+
+  ::ng-deep .post-container{
+    width: 100%;
+    margin-left: 5%;
+    padding-left: 20px;
+  }
+  .load-more-button{
+    background-color: #3ba0e9;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 46%;
+    margin-right: 50%;
+}
