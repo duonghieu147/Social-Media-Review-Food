@@ -95,7 +95,7 @@
 
 
   <div class="comment"  *ngIf="!isRateMode && isModeComment">
-    <ng-template [ngIf]="comment.length!= 0">
+    <ng-template [ngIf]="comment!= null">
       <div *ngFor="let item of comment; let i = index" class="comment-attributes">
         <div class="main-comment">
           <div class="comment-avatar">
