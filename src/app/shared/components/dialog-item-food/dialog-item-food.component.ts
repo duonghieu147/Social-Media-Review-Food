@@ -71,7 +71,7 @@ export class DialogItemFoodComponent implements OnInit {
     this.FoodItemService.getFoodItemById(FoodItem).subscribe(
       (data) =>{
         if (data.messages[0].code == "SUCCESS") {
-          // console.log(data.data.comments)
+          console.log(data.data.comments)
           this.comment=data.data.comments
           // console.log(this.comment[0])
         }
