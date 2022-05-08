@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node server.js",
+    "build": "ng build --aot --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,6 +28,7 @@
     "@mikepol/ng-photo-grid": "^1.0.3",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.1",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
