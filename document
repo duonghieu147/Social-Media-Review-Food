@@ -3,7 +3,7 @@
 
 ng g c shared/components/addfooditem --module app
 
-ng g c modules/pages/records --module app
+ng g c modules/pages/profile/editprofile --module app
 
 https://rfood.herokuapp.com/swagger-ui.html#/
 

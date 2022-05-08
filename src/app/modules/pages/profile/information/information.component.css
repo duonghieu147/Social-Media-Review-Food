@@ -1,0 +1,33 @@
+.information{
+  margin-top:24px;
+  /* height:500px; */
+  width:90%;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 8px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.filter{
+	display: flex;
+	margin-left:24px;
+	margin-top: 24px;
+}
+.filter h2 {
+	margin-right: 16px;
+}
+
+/* Icons */
+.social{
+    display: flex;
+	flex-direction: column;
+}
+svg {
+    height: 36px;
+    width: 36px;
+}
+.icon-svg {
+    display: flex;
+    margin: 24px;
+}
