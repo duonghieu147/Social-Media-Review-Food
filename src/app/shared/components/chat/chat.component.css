@@ -2,14 +2,17 @@
 *{
   font-family: 'Pacifico' !important;
 }
+*{font-family: Tahoma, sans-serif !important;
+}
 .chat{
     display: flex;
     flex-direction: column;
     right: 0;
     bottom: 0;
-    min-width:300px;
-    border-radius:20px 20px 0 0 ;
+    min-width:320px;
+    border-radius:20px 20px 20px 20px ;
     background-color:lightgray;
+    position: fixed;
 }
 .friends{
     margin-bottom:5px;
@@ -17,6 +20,7 @@
 
 .social{
     display: flex;
+    padding-left: 2.5em;
 }
 svg {
     height: 36px;
@@ -50,4 +54,8 @@ button.createpost ,button.edit{
   .friend p {
     margin-top:12px ;
     margin-right: 24px;
+}
+.load-more-button{
+  background-color: aqua;
+  color: rgb(252, 252, 252);
 }

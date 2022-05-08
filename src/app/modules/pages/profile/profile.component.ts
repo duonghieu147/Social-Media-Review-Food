@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import * as cmn from 'src/app/constant/common'
-import { PostService } from 'src/app/shared/post.service';
-import { ShareService } from 'src/app/shared/share.service';
 import {MatDialog} from '@angular/material/dialog';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 import { AddfooditemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
+import { ShareService } from 'src/app/service/share.service';
+import { PostService } from 'src/app/service/post.service';
 
 @Component({
   selector: 'app-profile',
@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private iconService: NzIconService,
     public shareService:ShareService,
-    public PostService:PostService,
+    public postService:PostService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
 
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
   }
   getPostByUserId(){
     this.openDialogLoading()
-    this.PostService.getPostByUserId(this.userIdParams,this.limit,this.page).subscribe(
+    this.postService.getPostByUserId(this.userIdParams,this.limit,this.page).subscribe(
       (data) => {
         if(data.data.length==0){
           this.dialog.closeAll();

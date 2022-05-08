@@ -10,12 +10,7 @@
     <nz-avatar [nzSize]="80" nz-page-header-avatar nzSrc={{dataUser.avatar}}></nz-avatar>
 
     <!--title-->
-    <nz-page-header-title>{{dataUser.firstName}}</nz-page-header-title>
-
-    <!--tags-->
-    <nz-page-header-tags>
-      <nz-tag [nzColor]="'blue'">{{dataUser.lastName}}</nz-tag>
-    </nz-page-header-tags>
+    <nz-page-header-title>{{dataUser.firstName}} {{dataUser.lastName}}</nz-page-header-title>
     
 
     <!--extra-->
@@ -75,7 +70,7 @@
       <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
         <app-posts [post]="post"></app-posts>
       </ng-template>
-      <button *ngIf="!isDone" mat-button (click)="loadNextPage()">Xem thêm</button>
+      <button class ="load-more-button" *ngIf="!isDone" mat-button (click)="loadNextPage()">Xem thêm</button>
     </div>
     <div *ngIf="modepage=='product'">
       <div class="action-fooditem">

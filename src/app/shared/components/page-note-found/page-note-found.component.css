@@ -4,6 +4,8 @@
   /* font-family: Tahoma, sans-serif  !important; */
 
 }
+*{font-family: Tahoma, sans-serif !important;
+}
 body {
     display: flex;
     flex-flow: row wrap;

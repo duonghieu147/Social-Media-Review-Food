@@ -1,14 +1,22 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
+/* @import url(https://fonts.googleapis.com/css?family=Pacifico);
 *{
   font-family: 'Pacifico' !important;
   font-family: Tahoma, sans-serif  !important;
   padding:0;
+} */
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+/* *{
+    font-family: 'Ubuntu' !important;
+} */
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+*{font-family: Tahoma, sans-serif !important;
 }
 .post-container{
   margin-top:24px;
-  width:631px;
+  width:90%;
   background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 8px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
@@ -94,7 +102,6 @@ nz-comment textarea.ant-input {
   margin-right: 24px;
 }
 
-
 /* css gallery  */
 
 .row-grid {
@@ -150,8 +157,9 @@ button.mat-focus-indicator.mat-button.mat-button-base{
 }
 /* comment */
 .showcomment {
-  width: 631px;
+  width: 100%;
   background-color: whitesmoke;
+  border-radius: 5px;
 }
 nz-comment.ant-comment{
   border-radius:0 0 20x 20px
@@ -191,7 +199,7 @@ nz-list {
 }
 
 .comment-content {
-  padding-left: 10px;
+  padding-top: 3px 0 3px 14px;
 }
 ::ng-deep .ant-comment-content {
   padding-left: 12px;
@@ -201,19 +209,24 @@ nz-list {
   padding: 0;
 }
 
-.comemnt-attributes {
-  display: flex;
+.comment-attributes {
+  display: block;
   justify-content: center;
   background-color: white;
   align-items: flex-start;
   padding: 10px;
 }
 
-.comemnt-attributes .comemnt-avatar {
+.main-comment{
+  display: flex;
+}
+
+.comment-attributes .comment-avatar {
   padding: 0 20px 20px;
 }
 
-.comemnt-attributes .comemnt-content {
+.comment-attributes .comment-content {
+  width: fit-content;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -224,21 +237,42 @@ nz-list {
   padding: 12px;
 }
 
-.comemnt-attributes .comemnt-content .comemnt-content-name {
+.comment-attributes .comment-content .comment-content-name {
   color: black;
   font-size: 12px;
 }
 
-.comemnt-attributes .comemnt-content .comemnt-content-body {
+.comment-attributes .comment-content .comment-content-body {
   font-size: 14px;
   color: rgb(136, 24, 24);
   word-break: break-all;
   text-align: left;
 }
 
-.comemnt-attributes .comemnt-more {
+.comment-attributes .comment-more {
   display: flex;
   justify-content: center;
   height: 100%;
   align-items: center;
+  color:black;
+}
+
+.comment-reply{
+  margin: 10px 0 5px 6%;
+  display: flex;
+}
+
+.reply-button{
+  display: flex;
+  width: 50px;
+  height: 25px;
+  color: rgb(37, 34, 34);
+   margin: 0 0 0 7.5%; 
+   border-radius: 18px;
+  padding: 2px 0 -4px 0;
+}
+
+.blank-comment-reply{
+  margin: 10px 0 5px 5%;
+  height: 81px;
 }

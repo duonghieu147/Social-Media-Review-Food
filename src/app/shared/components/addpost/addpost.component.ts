@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
-import { PostService } from 'src/app/shared/post.service';
+import { PostService } from 'src/app/service/post.service';
 
 @Component({
   selector: 'app-addpost',
@@ -27,7 +27,7 @@ export class AddpostComponent {
     img.push(this.validateForm.value.images2)
     img.push(this.validateForm.value.images3)
     console.log('img', img);
-    this.PostService.createPost({
+    this.postService.createPost({
       "description": this.validateForm.value.description,
       "userId": localStorage.getItem("id"),
       "images": img,
@@ -35,9 +35,10 @@ export class AddpostComponent {
       (data) => {
         if (data) {
           console.log(data)
-          this.dialogRef.close();
           this.openSnackBar('Successfully', 'Close')
+          this.router.navigate(['/home/z']);
           this.router.navigate(['/home']);
+          this.dialogRef.close();
         }
         else {
           this.openSnackBar('Create Post Error', 'Close')
@@ -47,7 +48,7 @@ export class AddpostComponent {
 
   constructor(
     private _snackBar: MatSnackBar,
-    public PostService: PostService,
+    public postService: PostService,
     private fb: FormBuilder,
     private router: Router,
     public dialogRef: MatDialogRef<AddpostComponent>) { }

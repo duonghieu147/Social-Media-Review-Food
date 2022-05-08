@@ -1,17 +1,17 @@
 <nz-list *ngIf="data.length" [nzDataSource]="data" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
 
   <ng-template #item let-item>
-    <div class="comemnt-attributes">
-      <div class="comemnt-avatar">
+    <div class="comment-attributes">
+      <div class="comment-avatar">
         <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;" src={{item.ownerAvatarUrl}}>
       </div>
       <div style="flex: 1">
-        <div class="comemnt-content">
-          <div class="comemnt-content-name"><b>{{item.author}}</b> <span> {{item.displayTime}}</span> </div>
-          <div class="comemnt-content-body">{{item.content}}</div>
+        <div class="comment-content">
+          <div class="comment-content-name"><b>{{item.author}}</b> <span> {{item.displayTime}}</span> </div>
+          <div class="comment-content-body">{{item.content}}</div>
         </div>
       </div>
-      <div class="comemnt-more">
+      <div class="comment-more">
         <div>...</div>
       </div>
     </div>
@@ -25,16 +25,16 @@
     </nz-comment> -->
   </ng-template>
 </nz-list>
-<nz-comment>
+<nz-comment style="display: flex;">
   <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
-  <nz-comment-content>
+  <nz-comment-content style="display:flex;" >
     <nz-form-item>
-      <div style="background-color: #f0f2f5; width: 100%; border-radius: 18px; padding: 10px; margin-top: -11px;"
+      <div style=" width: 50em; background-color: #f0f2f5; border-radius: 18px; padding: 10px; margin: 0px 20px 10px 0; "
         #topicTitle contentEditable="true" [textContent]="inputValue" (input)="inputValue=topicTitle.innerText"></div>
     </nz-form-item>
     <nz-form-item>
-      <button nz-button nzType="primary" [nzLoading]="submitting" [disabled]="!inputValue" (click)="addComment()">
-        Add Comment
+      <button style="border-radius:18px;width: 100px; height: 40px;" nz-button nzType="primary" [nzLoading]="submitting" [disabled]="!inputValue" (click)="addComment()">
+        Add
       </button>
     </nz-form-item>
   </nz-comment-content>

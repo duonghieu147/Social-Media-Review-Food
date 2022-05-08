@@ -8,17 +8,24 @@ nz-comment textarea.ant-input {
 span{
     color: blue !important;
 }
-
+::ng-deep nz-comment.ant-comment{
+  border-radius: 5px;
+}
 ::ng-deep nz-comment.ant-comment > .ant-comment-inner {
-    padding: 10px 18px 34px 30px;
+    padding: 10px 18px 5px 30px;
+    display:flex;
+    border-radius: 5px;
 }
 
 ::ng-deep nz-comment.ant-comment > .ant-comment-inner > .ant-comment-content {
-    padding: 7px;
+  padding: 7px;
+}
+::ng-deep nz-comment.ant-comment > .ant-comment-inner > .ant-comment-avatar {
+  margin-top: 12px;
 }
 
 
-.comemnt-attributes {
+.comment-attributes {
     display: flex;
     justify-content: center;
     background-color: white;
@@ -26,11 +33,11 @@ span{
     padding: 10px;
   }
   
-  .comemnt-attributes .comemnt-avatar {
+  .comment-attributes .comment-avatar {
     padding: 0 20px 20px;
   }
   
-  .comemnt-attributes .comemnt-content {
+  .comment-attributes .comment-content {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -41,19 +48,19 @@ span{
     padding: 12px;
   }
   
-  .comemnt-attributes .comemnt-content .comemnt-content-name {
+  .comment-attributes .comment-content .comment-content-name {
     color: black;
     font-size: 12px;
   }
   
-  .comemnt-attributes .comemnt-content .comemnt-content-body {
+  .comment-attributes .comment-content .comment-content-body {
     font-size: 14px;
     color: rgb(136, 24, 24);
     word-break: break-all;
     text-align: left;
   }
   
-  .comemnt-attributes .comemnt-more {
+  .comment-attributes .comment-more {
     display: flex;
     justify-content: center;
     height: 100%;
