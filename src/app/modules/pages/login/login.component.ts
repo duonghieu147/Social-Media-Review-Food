@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 
 @Component({
@@ -15,29 +17,44 @@ export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
   hide = true;
   myGroup: any;
+  errorMessage = '';
+  roles: string[] = [];
 
   submitForm(): void {
     if (this.myGroup.valid) {
-      console.log('submit', this.myGroup.value);
-      if(this.myGroup.value.username =='thanhnhd1'){
-        this.getDataUserById(1)
-        this.router.navigate(['/home']);
-        this.openSnackBar('Successfully', 'Close');
-      }
-      else if(this.myGroup.value.username =='duonghieu147'){
-        this.getDataUserById(2)
-        this.router.navigate(['/home']);
-        this.openSnackBar('Successfully', 'Close');
-      }
-      else if(this.myGroup.value.username =='fellcoffee'){
-        this.getDataUserById(3)
-        this.router.navigate(['/home']);
-        this.openSnackBar('Successfully', 'Close');
-      }
-      else {
-        this.openSnackBar('Thông tin đăng nhập không chính xác', 'Close')
+      this.authService.login(this.myGroup.value).subscribe(
+        data => {
+          this.tokenStorage.saveToken(data.token);
+          this.tokenStorage.saveUser(data);
+          this.roles = this.tokenStorage.getUser().roles;
+          this.getDataUserById(data.id)
+          this.router.navigate(['/home']);
+          this.openSnackBar('Successfully', 'Close');
+        },
+        err => {
+          this.errorMessage = err.error.message;
+        }
+      );
+      // console.log('submit', this.myGroup.value);
+      // if(this.myGroup.value.username =='thanhnhd1'){
+      //   this.getDataUserById(1)
+      //   this.router.navigate(['/home']);
+      //   this.openSnackBar('Successfully', 'Close');
+      // }
+      // else if(this.myGroup.value.username =='duonghieu147'){
+      //   this.getDataUserById(2)
+      //   this.router.navigate(['/home']);
+      //   this.openSnackBar('Successfully', 'Close');
+      // }
+      // else if(this.myGroup.value.username =='fellcoffee'){
+      //   this.getDataUserById(3)
+      //   this.router.navigate(['/home']);
+      //   this.openSnackBar('Successfully', 'Close');
+      // }
+      // else {
+      //   this.openSnackBar('Thông tin đăng nhập không chính xác', 'Close')
 
-      }
+      // }
     } else {
       this.openSnackBar('Vui lòng nhập đúng trường', 'Close')
     }
@@ -49,7 +66,9 @@ export class LoginComponent implements OnInit {
     public snackBar: MatSnackBar,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService
   ) { }
 
   ngOnInit(): void {
@@ -99,6 +118,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('types','shop')
       }
     }
+  }
+  reloadPage() {
+    window.location.reload();
   }
 
 }
