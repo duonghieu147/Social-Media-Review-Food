@@ -147,9 +147,9 @@
               </div>
             </div>
           </ng-template>
-          <ng-template [ngIf]="item.id === idReplyToShow">
+          <ng-template [ngIf]="item.id === idReplyToShow && isWritenCmt">
             <div class = "blank-comment-reply">
-              <app-addcomment></app-addcomment>
+              <app-addcomment [id]="item.id"></app-addcomment>
             </div>
           </ng-template>
         </div>

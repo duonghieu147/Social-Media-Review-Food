@@ -11,14 +11,15 @@ import { ShareService } from '../../../service/share.service';
 })
 export class AddcommentComponent implements OnInit {
   @Input() iscommentPost: Boolean = true ;
+  @Input() id: number = 0;
 
   dataCmt:any;
   user:any;
   
   constructor(
     public shareService:ShareService,
-    public PostService:PostService,
-    public FoodItemService :FoodItemService,
+    public postService:PostService,
+    public foodItemService :FoodItemService,
   ) {}
   ngOnInit(): void {
     console.log('this.iscommentPost ',this.iscommentPost == false )
@@ -41,6 +42,7 @@ export class AddcommentComponent implements OnInit {
       this.dataCmt= {
         userId:localStorage.getItem('id'),
         content:content,
+        parentId : this.id
       }
       if (this.iscommentPost === true) {
         this.createCommentPost(localStorage.getItem('postId'),this.dataCmt)
@@ -67,7 +69,7 @@ export class AddcommentComponent implements OnInit {
   }
   createCommentPost(postId:any,comment:any){
     console.log(comment)
-    this.PostService.createCommentPost(postId,comment).subscribe(
+    this.postService.createCommentPost(postId,comment).subscribe(
       (data) => {
         console.log(data)
       }
@@ -76,7 +78,7 @@ export class AddcommentComponent implements OnInit {
 
   createCommentItemFood(postId:any,comment:any){
     console.log(comment)
-    this.FoodItemService.createCommentItemFood(postId,comment).subscribe(
+    this.foodItemService.createCommentItemFood(postId,comment).subscribe(
       (data) => {
         console.log(data)
       }

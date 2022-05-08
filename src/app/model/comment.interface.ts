@@ -7,4 +7,5 @@ export interface Comment {
     commentReply : Comment[];
     like: number;
     updated: boolean;
+    parentId:number;
   }
