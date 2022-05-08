@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDistance } from 'date-fns';
-import { PostService } from '../../post.service';
-import { ShareService } from '../../share.service';
+import { PostService } from '../../../service/post.service';
+import { ShareService } from '../../../service/share.service';
 PostService
 @Component({
   selector: 'app-addcomment',

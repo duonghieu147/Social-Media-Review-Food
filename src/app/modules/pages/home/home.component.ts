@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareService } from 'src/app/shared/share.service';
 import * as cmn from 'src/app/constant/common'
 import {MatDialog} from '@angular/material/dialog';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
-import { PostService } from 'src/app/shared/post.service';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { ShareService } from 'src/app/service/share.service';
+import { PostService } from 'src/app/service/post.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   inputValue='Search'
   constructor(
     public shareService:ShareService,
-    public PostService: PostService,
+    public postService: PostService,
     public dialog: MatDialog
   ) { }
   
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
   getAllPost(){
     this.openDialogLoading()
-    this.PostService.getAllPost(this.limit,this.page,).subscribe(
+    this.postService.getAllPost(this.limit,this.page,).subscribe(
       (data) => {
         if(data.data.length==0){
           this.dialog.closeAll();
@@ -110,8 +110,8 @@ export class HomeComponent implements OnInit {
     this.getAllPost()
   }
   openDialogLoading(){
-    const dialogRef =this.dialog.open(LoadingComponent,{
-  })
+  //   const dialogRef =this.dialog.open(LoadingComponent,{
+  // })
   }
 }
 

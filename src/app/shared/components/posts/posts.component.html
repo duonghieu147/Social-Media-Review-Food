@@ -1,22 +1,22 @@
 <div class="post-container">
   <!-- Show Post -->
-<nz-card style="width:631px;" [nzCover]="coverTemplate" >
+  <nz-card style="width:100%; border-radius: 6px;" [nzCover]="coverTemplate">
 
-</nz-card>
+  </nz-card>
 
-<ng-template #coverTemplate>
-  <div class="inf">
-    <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
-    <div class="inf-header">
-      <h2 (click)="goToProfile()">{{dataPost.author}}</h2>
-      <span>{{dataPost.createdTime}}</span>
-      <!-- <span>{{dataPost.datetime}}</span> -->
+  <ng-template #coverTemplate>
+    <div class="inf">
+      <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
+      <div class="inf-header">
+        <h2 (click)="goToProfile()">{{dataPost.author}}</h2>
+        <span>{{dataPost.createdTime}}</span>
+        <!-- <span>{{dataPost.datetime}}</span> -->
+      </div>
     </div>
-  </div>
-  <p class="content-post">{{dataPost.content}}</p>
-  <div class="tags">
-    <p class="tags">Tags :</p>
-    <!-- <mat-chip-list
+    <p class="content-post">{{dataPost.content}}</p>
+    <div class="tags">
+      <p class="tags">Tags :</p>
+      <!-- <mat-chip-list
   class="example-chip"
   cdkDropList 
   cdkDropListOrientation="horizontal"
@@ -28,61 +28,115 @@
     {{vegetable.name}}
   </mat-chip>
 </mat-chip-list> -->
-    <div *ngFor="let vegetable of vegetables">
-      <nz-page-header-tags>
-        <nz-tag [nzColor]="'blue'">{{vegetable.name}}</nz-tag>
-      </nz-page-header-tags>
+      <div *ngFor="let vegetable of vegetables">
+        <nz-page-header-tags>
+          <nz-tag [nzColor]="'blue'">{{vegetable.name}}</nz-tag>
+        </nz-page-header-tags>
+      </div>
     </div>
-  </div>
-  <div class="row-grid">
-    <!-- <div class="column-grid">
+    <div class="row-grid">
+      <!-- <div class="column-grid">
       <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
         <img *ngIf="i<4" nz-image nzSrc='{{item}}' alt="" />
       </ng-template>
     </div> -->
       <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
-        <div  *ngIf="dataPost.images && dataPost.images.length ==1" class="column-grid index1">
+        <div *ngIf="dataPost.images && dataPost.images.length ==1" class="column-grid index1">
           <img *ngIf="i<1" nz-image nzSrc='{{item}}' alt="" />
         </div>
       </ng-template>
 
       <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
-        <div  *ngIf="dataPost.images && dataPost.images.length ==2" class="column-grid index2">
+        <div *ngIf="dataPost.images && dataPost.images.length ==2" class="column-grid index2">
           <img *ngIf="i<2" nz-image nzSrc='{{item}}' alt="" />
         </div>
       </ng-template>
 
       <ng-template ngFor let-item [ngForOf]="dataPost.images" let-i="index">
-        <div  *ngIf="dataPost.images && dataPost.images.length >=3" class="column-grid index3">
+        <div *ngIf="dataPost.images && dataPost.images.length >=3" class="column-grid index3">
           <img *ngIf="i<3" nz-image nzSrc='{{item}}' alt="" />
         </div>
       </ng-template>
-  </div>
-  
-  <mat-dialog-actions  align="center" >
-    <div class="btn-actions">
-      <button mat-button  color="accent" (click)="actionLikes()"> {{dataPost.like}} Thích</button>
-    <div *ngIf="numberCmt">
-      <button mat-button  color="primary" (click)="showWritenCmt()">{{numberCmt}} Comment</button>
     </div>
-    <div *ngIf="!numberCmt">
-      <button mat-button  color="primary" (click)="showWritenCmt()"> Comment</button>
-    </div>  
-    <button mat-button  color="warn">Share</button>
-    </div> 
-  </mat-dialog-actions>
-</ng-template>
 
-<!-- Show comment -->
-<div class="showcomment">
-  <ng-template [ngIf]="isWritenCmt">
-    <ng-template [ngIf]="dataRelpy.length!= 0">
-      <nz-list [nzDataSource]="dataRelpy" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+    <mat-dialog-actions class="attribute-action" align="center">
+      <div class="btn-actions">
+        <button mat-button color="accent" (click)="actionLikes()"> {{dataPost.like}} Like</button>
+        <div *ngIf="numberCmt">
+          <button style="width: 22em;" mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}} Comment</button>
+        </div>
+        <div *ngIf="!numberCmt">
+          <button mat-button color="primary" (click)="showWritenCmt()"> Comment</button>
+        </div>
+        <button mat-button color="warn">Share</button>
+      </div>
+    </mat-dialog-actions>
+  </ng-template>
+
+
+
+  <!-- Show comment -->
+  <div class="showcomment">
+    <ng-template [ngIf]="isWritenCmt">
+      <ng-template [ngIf]="comment.length!= 0">
+        <div *ngFor="let item of comment; let i = index" class="comment-attributes">
+          <div class="main-comment">
+            <div class="comment-avatar">
+              <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
+                src={{item.ownerAvatarUrl}}>
+            </div>
+            <div style="flex: 1">
+              <div class="comment-content">
+                <div class="comment-content-name"><b>{{item.ownerName}}</b><span> {{item.createdTime}}</span></div>
+                <div class="comment-content-body">{{item.content}}</div>
+              </div>
+            </div>
+            <div class="comment-more">
+              <div>...</div>
+            </div>
+          </div>
+          <div class="reply-button">
+            <button mat-button (click)="likeComment(item.id)"> Like</button>
+            <button mat-button (click)="showWriteReply(item.id)"> Reply</button>
+          </div>
+          <!-- Show reply comment -->
+          <ng-template [ngIf]="item.commentReply.length != 0">
+            <div *ngFor="let reply of item.commentReply" class="comment-reply">
+              <div class="comment-avatar">
+                <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
+                  src={{reply.ownerAvatarUrl}}>
+              </div>
+              <div style="flex: 1">
+                <div class="comment-content">
+                  <div class="comment-content-name"><b>{{reply.ownerName}}</b><span> {{reply.createdTime}}</span>
+                  </div>
+                  <div class="comment-content-body">{{reply.content}}</div>
+                </div>
+              </div>
+              <div class="comment-more">
+                <div>...</div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="item.id === idReplyToShow">
+            <div class = "blank-comment-reply">
+              <app-addcomment></app-addcomment>
+            </div>
+          </ng-template>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="isWritenCmt">
+        <app-addcomment></app-addcomment>
+      </ng-template>
+    </ng-template>
+    <!-- <ng-template [ngIf]="isWritenCmt">
+    <ng-template [ngIf]="dataReply.length!= 0">
+      <nz-list [nzDataSource]="dataReply" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
         <ng-template #item let-item>
-          <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime">
-            <!-- <p>{{item[0].ownerAvatarUrl}}</p> -->
-            <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item[0].ownerAvatarUrl"></nz-avatar>
-            <nz-comment-content>
+          <nz-comment [nzAuthor]="item[0].ownerName" [nzDatetime]="item.datetime" class="comment-attributes"> -->
+    <!-- <p>{{item[0].ownerAvatarUrl}}</p> -->
+    <!-- <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item[0].ownerAvatarUrl" class="comment-avatar"></nz-avatar>
+            <nz-comment-content class="comment-content">
               <p>{{ item[0].content }}</p>
             </nz-comment-content>
             <nz-comment-action>Reply to</nz-comment-action>
@@ -90,11 +144,15 @@
         </ng-template>
       </nz-list>
     </ng-template>
-  </ng-template>
-  <!-- <input #ref1 type="text" [(ngModel)]="isWritenCmt" /> -->
-  <ng-template [ngIf]="isWritenCmt">
+  </ng-template> -->
+    <!-- <input #ref1 type="text" [(ngModel)]="isWritenCmt" /> -->
+    <!-- <ng-template [ngIf]="isWritenCmt">
     <app-addcomment></app-addcomment>
-  </ng-template>
-</div>
+  </ng-template> -->
+
+
+  </div>
+
+
 
 </div>
