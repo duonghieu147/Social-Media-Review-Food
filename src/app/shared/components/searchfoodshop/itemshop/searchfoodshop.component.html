@@ -1,0 +1,29 @@
+<div class="search-container">
+    <div class="title">
+        1000 kết quả tìm kiếm cho "đẹp try"
+    </div>
+    <ng-template [ngIf]="searchResult.length!= 0">
+        <div *ngFor="let item of searchResult">
+            <div class="search-result">
+                <div class="search-image">
+                    <img src="https://jes.edu.vn/wp-content/uploads/2017/10/h%C3%ACnh-%E1%BA%A3nh.jpg"
+                        alt="Food shop image">
+                </div>
+                <div class="search-description">
+                    <div class="name info-common">Nguyễn Hữu Đức Thành</div>
+                    <div class="info-common"><i class='fa-solid fa-location-dot'
+                            style='color:#030303; margin:0 5px 0 2px;'></i>
+                        808 Đoàn Văn Bơ, Phường 18, quận 4, HCM</div>
+                    <div class="info-common"><i class='fa fa-star' style='color: #f3da35; margin-right:2px'></i> 9.5
+                    </div>
+                    <div class="info-common"><i class='fas fa-clock' style='color: #086d86 ;margin-right:2px'></i> 5:00
+                        - 10:00
+                    </div>
+                    <div class="info-common"><i class='fas fa-pen' style='color: #00a035 ; margin-right:2px'></i> Nhà
+                        này có
+                        người deep try</div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>
