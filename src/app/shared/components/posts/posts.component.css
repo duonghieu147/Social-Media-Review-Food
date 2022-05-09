@@ -243,7 +243,7 @@ nz-list {
 
 .comment-attributes .comment-content .comment-content-body {
   font-size: 14px;
-  color: rgb(136, 24, 24);
+  color: rgb(20, 18, 18);
   word-break: break-all;
   text-align: left;
 }
@@ -264,7 +264,7 @@ nz-list {
 .reply-button{
   display: flex;
   width: 50px;
-  height: 25px;
+  height: 30px;
   color: rgb(37, 34, 34);
    margin: 0 0 0 7.5%; 
    border-radius: 18px;

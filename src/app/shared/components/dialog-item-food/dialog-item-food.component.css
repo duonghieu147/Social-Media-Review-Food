@@ -67,6 +67,9 @@ h3{
 /* Comment*/
 .comment {
   align-items: center;
+  border-top: 1px solid rgb(53, 51, 51);
+  padding-top: 10px;
+  max-width: 30em !important;
 }
 nz-comment { 
   background-color: white;
@@ -76,7 +79,7 @@ nz-comment textarea.ant-input {
   background-color: whitesmoke;
 }
 span{
-  color: blue !important;
+  color: rgb(52, 52, 59) !important;
 }
 ::ng-deep nz-comment.ant-comment{
 border-radius: 5px;
@@ -120,6 +123,7 @@ margin-top: 12px;
   border-radius: 18px;
   flex: 1;
   padding: 12px;
+  margin-right: 12px;
 }
 
 .comment-attributes .comment-content .comment-content-name {
@@ -129,7 +133,7 @@ margin-top: 12px;
 
 .comment-attributes .comment-content .comment-content-body {
   font-size: 14px;
-  color: rgb(136, 24, 24);
+  color: rgb(20, 18, 18);
   word-break: break-all;
   text-align: left;
 }
@@ -140,7 +144,8 @@ margin-top: 12px;
   height: 100%;
   align-items: center;
 }
-/* .write-cmt{
-  width: 500px !important;
-} */
+
+.write-cmt{
+  width: 30em !important;
+}
 /* End Comment*/

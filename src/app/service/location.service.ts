@@ -6,8 +6,8 @@ import { Location } from '../model/location.interface';
 import { BaseResponse } from '../model/response.interface';
 
 
-// const defaultUrl = 'http://localhost:8080';
-const defaultUrl = 'https://rfood.herokuapp.com';
+ const defaultUrl = 'http://localhost:8080';
+//const defaultUrl = 'https://rfood.herokuapp.com';
 @Injectable({
     providedIn: 'root'
 })

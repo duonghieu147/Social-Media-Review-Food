@@ -1,9 +1,15 @@
+<div class="header">
+    <app-header></app-header>
+</div>
+<div class="silderbar-left">
+    <app-silderbar-left></app-silderbar-left>
+</div>
 <div class="search-container">
     <div class="title">
         1000 kết quả tìm kiếm cho "đẹp try"
     </div>
-    <ng-template [ngIf]="searchResult.length!= 0">
-        <div *ngFor="let item of searchResult">
+    <ng-template [ngIf]="foodShop.length!= 0">
+        <div *ngFor="let item of foodShop">
             <div class="search-result">
                 <div class="search-image">
                     <img src="https://jes.edu.vn/wp-content/uploads/2017/10/h%C3%ACnh-%E1%BA%A3nh.jpg"

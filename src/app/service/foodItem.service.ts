@@ -5,8 +5,8 @@ import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 import { Rating } from '../model/fooditem.interface';
 
-// const defaultUrl = 'http://localhost:8080';
-const defaultUrl = 'https://rfood.herokuapp.com';
+ const defaultUrl = 'http://localhost:8080';
+//const defaultUrl = 'https://rfood.herokuapp.com';
 export interface Config { 
   id: string;
   nasme: string;

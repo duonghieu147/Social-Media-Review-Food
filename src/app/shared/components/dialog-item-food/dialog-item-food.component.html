@@ -104,7 +104,7 @@
           </div>
           <div style="flex: 1">
             <div class="comment-content">
-              <div class="comment-content-name"><b>{{item.ownerName}}</b><span> {{item.createdTime}}</span></div>
+              <div class="comment-content-name"><b>{{item.ownerName}}</b><span style="margin-left: 8px"> {{item.createdTime}}</span></div>
               <div class="comment-content-body">{{item.content}}</div>
             </div>
           </div>
@@ -142,7 +142,7 @@
         </ng-template> -->
       </div>
     </ng-template>
-    <div class="write-cmt">
+    <div class="write-cmt" >
       <app-addcomment [iscommentPost]='false'></app-addcomment>
     </div>
     </div>

@@ -60,6 +60,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 import { AddfooditemComponent } from './shared/components/addfooditem/addfooditem.component';
 import { RecordsComponent } from './modules/pages/records/records.component';
 import { EditprofileComponent } from './modules/pages/profile/editprofile/editprofile.component';
+import { SearchFoodShop} from './shared/components/searchfoodshop/searchfoodshop.component';
 
 //
 @NgModule({
@@ -88,7 +89,8 @@ import { EditprofileComponent } from './modules/pages/profile/editprofile/editpr
     LoadingComponent,
     AddfooditemComponent,
     RecordsComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    SearchFoodShop
   ],
   imports: [
     BrowserModule,
@@ -118,8 +120,7 @@ import { EditprofileComponent } from './modules/pages/profile/editprofile/editpr
     NgZorroAntdModule,
     // MatDialogModule,
     MaterialModule
-    
-    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,16 +14,16 @@ export class HeaderComponent implements OnInit {
   provinces: Location[] = [];
   districts: Location[] = [];
 
-  query:string  = ''; 
-  district: number = -1; 
+  query: string = '';
+  district: number = -1;
   province: number = -1;
-  categoryId: number= -1;
+  categoryId: number = -1;
 
   constructor(
     private locationService: LocationService,
     private foodShopService: FoodShopService,
     private router: Router
-  ) { 
+  ) {
   }
 
   ngOnInit(): void {
@@ -50,10 +50,10 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  onSearch() {
-    this.foodShopService.findFoodShops(this.query, this.province, this.district, this.categoryId).subscribe(res=>{
-      console.log(res)
-    })
-    console.log(this.query,this.province, this.district, this.categoryId);
+  onSearch(query: string, provinceId: number, districtId: number, categoryId: number) {
+    this.router.navigate(
+      ['/search'],
+      { queryParams: { query: query, provinceId: provinceId, districtId: districtId, categoryId: categoryId } }
+    );
   }
 }

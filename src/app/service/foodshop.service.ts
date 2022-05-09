@@ -6,8 +6,8 @@ import { FoodShop } from '../model/foodshop.interface';
 import { BaseResponse } from '../model/response.interface';
 
 
-// const defaultUrl = 'http://localhost:8080';
-const defaultUrl = 'https://rfood.herokuapp.com';
+const defaultUrl = 'http://localhost:8080';
+//const defaultUrl = 'https://rfood.herokuapp.com';
 @Injectable({
     providedIn: 'root'
 })
@@ -32,7 +32,7 @@ export class FoodShopService {
     }
 
     findFoodShops(query: string, province: number, district: number, categoryId: number): Observable<FoodShop[]> {
-        return this.http.get<BaseResponse<FoodShop[]>>(defaultUrl + '/api/foodshop/search?query='+query+'&provinceId='+province+'&districtId='+district+'&categoryId='+categoryId)
+        return this.http.get<BaseResponse<FoodShop[]>>(defaultUrl + '/api/foodshop/search?query=' + query + '&provinceId=' + province + '&districtId=' + district + '&categoryId=' + categoryId)
             .pipe(
                 map((res: BaseResponse<FoodShop[]>) => {
                     console.log(res)
