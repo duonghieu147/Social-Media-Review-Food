@@ -22,7 +22,8 @@ export class PostsComponent implements OnInit {
   randomNumberShare: number = 0;
   isLike: boolean = false;
   isShowCommentReply = false;
-  idReplyToShow : number = 0;
+  idReplyToShow: number = 0;
+
 
   constructor(
     public postService: PostService,
@@ -50,6 +51,7 @@ export class PostsComponent implements OnInit {
       content: this.post[3],
       createdTime: this.post[4],
       images: this.post[6],
+      tags:this.post[7],
       datetime: formatDistance(new Date(), addDays(new Date(), 1)),
       like: this.post[10],
     }
@@ -62,52 +64,6 @@ export class PostsComponent implements OnInit {
       // console.log('comment', this.comment);
     }
   }
-
-  // data = [
-  //   {
-  //     author: localStorage.getItem('name'),
-  //     avatar: localStorage.getItem('avatar'),
-  //     content:
-  //       'We supply a series of design principles, practical patterns and high quality design resources' +
-  //       '(Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-  //     datetime: formatDistance(new Date(), addDays(new Date(), 1))
-  //   },
-  // ];
-
-
-
-
-  // add comment
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // dataAdd: any[] = [];
-  // submitting = false;
-  // user = {
-  //   author: localStorage.getItem('name'),
-  //   avatar: localStorage.getItem('avatar'),
-  // };
-  // inputValue = '';
-
-  // handleSubmit(): void {
-  //   this.submitting = true;
-  //   const content = this.inputValue;
-  //   this.inputValue = '';
-  //   console.log(new Date())
-  //   setTimeout(() => {
-  //     this.submitting = false;
-  //     this.dataAdd = [
-  //       ...this.dataAdd,
-  //       {
-  //         ...this.user,
-  //         content,
-  //         datetime: new Date(),
-  //         displayTime: formatDistance(new Date(), new Date())
-  //       }
-  //     ].map(e => ({
-  //       ...e,
-  //       displayTime: formatDistance(new Date(), e.datetime)
-  //     }));
-  //   }, 800);
-  // }
 
   showWritenCmt() {
     this.isWritenCmt = !this.isWritenCmt;
@@ -153,18 +109,7 @@ export class PostsComponent implements OnInit {
       })
   }
   goToProfile() {
-    if (this.dataPost.author == "duonghieu147") {
-      this.router.navigate(['/profile/2']);
-    }
-    else if (this.dataPost.author == "feelcoffee") {
-      this.router.navigate(['/profile/3']);
-    }
-    else if (this.dataPost.author == "thanhnhd1") {
-      this.router.navigate(['/profile/1']);
-    }
-    else {
-      this.router.navigate(['/profile/4']);
-    }
+    this.router.navigate(['/profile/' + localStorage.getItem("id")]);
   }
 
   //Tags
@@ -190,8 +135,8 @@ export class PostsComponent implements OnInit {
     this.commentService.dislike(commentId);
   }
 
-  showWriteReply(commentId :any){
-    this.isShowCommentReply= !this.isShowCommentReply;
+  showWriteReply(commentId: any) {
+    this.isShowCommentReply = !this.isShowCommentReply;
     this.idReplyToShow = commentId;
   }
 }

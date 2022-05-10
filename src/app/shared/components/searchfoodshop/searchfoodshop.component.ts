@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FoodShop } from 'src/app/model/foodshop.interface';
+import { ListDTO } from 'src/app/model/listdto.interface';
 import { FoodShopService } from 'src/app/service/foodshop.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class SearchFoodShop implements OnInit {
   categoryId: number | null = 0;
 
 
-  foodShop: FoodShop[] = []
+  foodShop: FoodShop[] =[];
 
   constructor(public foodShopService: FoodShopService, private route: ActivatedRoute) { }
 
@@ -35,6 +36,7 @@ export class SearchFoodShop implements OnInit {
   searchFoodShop(query: any, provinceId: any, districtId: any, categoryId: any) {
     this.foodShopService.findFoodShops(query, provinceId, districtId, categoryId).subscribe((res: FoodShop[]) => {
       this.foodShop = res;
+      
     })
   }
 }

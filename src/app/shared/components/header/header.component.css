@@ -1,225 +1,192 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap);
-*{
+
+* {
   font-family: 'Open Sans' !important;
 }
-*{font-family: Tahoma, sans-serif !important;
+
+* {
+  font-family: Tahoma, sans-serif !important;
 }
+
 .header {
-    height:64px;
-    width: 100%;
-    display: flex;
-    /* border-radius:0 0 15px 0; */
-    /* background-color: #1fc8db;
+  height: 64px;
+  width: 100%;
+  display: flex;
+  /* border-radius:0 0 15px 0; */
+  /* background-color: #1fc8db;
     background-image: linear-gradient(140deg, #EADEDB 0%, #BC70A4 0%, #BFD); */
-    background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.logo{
-    min-width: 300px;
-    text-align: center;  
-    margin-top:12px;
-    display:flex;
-}
-.logo span { 
-    color: white ;
-    font-size:18px;
-    font-weight:bold;
+.logo {
+  min-width: 300px;
+  text-align: center;
+  margin-top: 12px;
+  display: flex;
 }
 
-.logo p { 
-    font-family: 'Pacifico';
-    color: green ;
-    font-size:24px;
-    font-weight:bold;
-    margin-left:64px;
-    margin-top: 12px;
+.logo span {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo p {
+  font-family: 'Pacifico';
+  color: green;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 64px;
+  margin-top: 12px;
 }
 
 .example-form {
-    /* min-width: 150px;
+  /* min-width: 150px;
     max-width: 100%; */
-    width: 100%;
-    display: flex;
-  }
-  .mat-sl{
-    padding: 10px 0 10px 0;
-    margin: 12px 5px 12px 5px;
-    border: 1px solid black;
-    background-color: aliceblue;
-    border-radius: 5px;
-    width: 15em;
-    color: black;
-  }
-  .search-input{
-    padding: 10px 0 10px 50px;
-    margin: 12px 5px 12px 3px;
-    border-radius: 5px;
-    width: 30%;
-    background: url(../../../../assets/svg/icons8-search.svg) no-repeat scroll 7px 7px; 
-    background-color: aliceblue;
-    background-size:20px;
-  }
-  .logout {
-      margin-left: 8em;
-  }
-  .select{
-    padding-top: 40;
-    margin-top: 50px !important; 
+  width: 100%;
+  display: flex;
 }
- ::ng-deep .mat-select-value{
-    border :2px;
-    text-align: center;
+
+.mat-sl {
+  padding: 10px 0 10px 0;
+  margin: 12px 5px 12px 5px;
+  border: 1px solid black;
+  background-color: aliceblue;
+  border-radius: 5px;
+  width: 15em;
+  color: black;
 }
-  button{
-      height:36px;
-      margin-top:12px;
-      margin-right: 24px;
-  }
-  .search {
-      margin-left:12px;
-      border: 1px solid black;
-      width : 30px;
-      background-color: rgb(253, 253, 253);
-      border-radius: 50px;
-  }
+
+.search-input {
+  padding: 10px 0 10px 50px;
+  margin: 12px 5px 12px 3px;
+  border-radius: 5px;
+  width: 30%;
+  background: url(../../../../assets/svg/icons8-search.svg) no-repeat scroll 7px 7px;
+  background-color: aliceblue;
+  background-size: 20px;
+}
+
+.logout {
+  margin-left: 8em;
+}
+
+.select {
+  padding-top: 40;
+  margin-top: 50px !important;
+}
+
+::ng-deep .mat-select-value {
+  border: 2px;
+  text-align: center;
+}
+
+button {
+  height: 36px;
+  margin-top: 12px;
+  margin-right: 24px;
+}
+
+.search {
+  margin-left: 12px;
+  border: 1px solid black;
+  width: 30px;
+  background-color: rgb(253, 253, 253);
+  border-radius: 50px;
+}
+
 .header {
-    background-image: linear-gradient(
-    68.4deg,
-    rgb(250, 250, 250) -0.4%,
-    rgb(226, 237, 238) 100.2%
-  );
-  background-image: linear-gradient(
-    64.3deg,
-    rgba(254, 122, 152, 0.81) 17.7%,
-    rgba(255, 206, 134, 1) 64.7%,
-    rgba(172, 253, 163, 0.64) 112.1%
-  );
-  background-image: linear-gradient(
-    129.1deg,
-    rgba(243, 199, 83, 1) 26.8%,
-    rgba(18, 235, 207, 1) 114.1%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 92.3% 71.5%,
-    rgba(83, 138, 214, 1) 0%,
-    rgba(134, 231, 214, 1) 90%
-  );
-  background-image: linear-gradient(
-    64.5deg,
-    rgba(245, 116, 185, 1) 14.7%,
-    rgba(89, 97, 223, 1) 88.7%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 10.2% 55.8%,
-    rgba(252, 37, 103, 1) 0%,
-    rgba(250, 38, 151, 1) 46.2%,
-    rgba(186, 8, 181, 1) 90.1%
-  );
-  background-image: linear-gradient(
-    359.8deg,
-    rgba(252, 255, 222, 1) 2.2%,
-    rgba(182, 241, 171, 1) 99.3%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 7.2% 13.6%,
-    rgba(37, 249, 245, 1) 0%,
-    rgba(8, 70, 218, 1) 90%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(255, 229, 168, 1) 0%,
-    rgba(251, 174, 222, 1) 100.7%
-  );
-  background-image: linear-gradient(
-    114.2deg,
-    rgba(121, 194, 243, 1) 22.6%,
-    rgba(255, 180, 239, 1) 67.7%
-  );
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 157, 129, 1) 24.3%,
-    rgba(255, 78, 78, 1) 78.3%
-  );
-  background-image: linear-gradient(
-    89.9deg,
-    rgba(178, 253, 238, 0.96) -8.1%,
-    rgba(207, 244, 254, 1) 26.3%,
-    rgba(207, 244, 254, 0.48) 47.5%,
-    rgba(254, 219, 243, 0.63) 61.5%,
-    rgba(254, 219, 243, 1) 78.7%,
-    rgba(254, 207, 210, 1) 109.2%
-  );
-  background-image: linear-gradient(
-    109.6deg,
-    rgba(33, 25, 180, 1) 11.2%,
-    rgba(253, 29, 29, 1) 55.2%,
-    rgba(252, 176, 69, 1) 91.1%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(130, 205, 221, 1) 0%,
-    rgba(255, 247, 153, 1) 90%
-  );
-  background-image: linear-gradient(
-    109.5deg,
-    rgba(76, 221, 242, 1) 11.2%,
-    rgba(92, 121, 255, 1) 91.1%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(253, 101, 133, 1) 0%,
-    rgba(255, 211, 165, 1) 90%
-  );
-  background-image: radial-gradient(
-    circle 654px at 0.6% 48%,
-    rgba(12, 170, 255, 1) 0%,
-    rgba(151, 255, 129, 1) 86.3%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 0.1% 53.8%,
-    rgba(255, 182, 172, 1) 0%,
-    rgba(255, 123, 172, 1) 100.2%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 5.3% 17.2%,
-    rgba(255, 208, 253, 1) 0%,
-    rgba(255, 237, 216, 1) 90%
-  );
-  background-image: linear-gradient(
-    109.6deg,
-    rgba(98, 210, 141, 0.88) 11.2%,
-    rgba(234, 245, 45, 0.79) 88%
-  );
-  background-image: linear-gradient(
-    109.6deg,
-    rgba(227, 236, 62, 0.68) 11.2%,
-    rgba(230, 29, 58, 0.78) 91.3%
-  );
-  background-image: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    rgba(222, 168, 248, 1) 0%,
-    rgba(168, 222, 248, 1) 21.8%,
-    rgba(189, 250, 205, 1) 35.6%,
-    rgba(243, 250, 189, 1) 52.9%,
-    rgba(250, 227, 189, 1) 66.8%,
-    rgba(248, 172, 172, 1) 90%,
-    rgba(254, 211, 252, 1) 99.7%
-  );
-  background-image: linear-gradient(
-    110.9deg,
-    rgba(44, 221, 239, 1) 1.1%,
-    rgba(14, 191, 210, 1) 37.6%,
-    rgba(8, 127, 140, 1) 99.2%
-  );
+  background-image: linear-gradient(68.4deg,
+      rgb(250, 250, 250) -0.4%,
+      rgb(226, 237, 238) 100.2%);
+  background-image: linear-gradient(64.3deg,
+      rgba(254, 122, 152, 0.81) 17.7%,
+      rgba(255, 206, 134, 1) 64.7%,
+      rgba(172, 253, 163, 0.64) 112.1%);
+  background-image: linear-gradient(129.1deg,
+      rgba(243, 199, 83, 1) 26.8%,
+      rgba(18, 235, 207, 1) 114.1%);
+  background-image: radial-gradient(circle farthest-corner at 92.3% 71.5%,
+      rgba(83, 138, 214, 1) 0%,
+      rgba(134, 231, 214, 1) 90%);
+  background-image: linear-gradient(64.5deg,
+      rgba(245, 116, 185, 1) 14.7%,
+      rgba(89, 97, 223, 1) 88.7%);
+  background-image: radial-gradient(circle farthest-corner at 10.2% 55.8%,
+      rgba(252, 37, 103, 1) 0%,
+      rgba(250, 38, 151, 1) 46.2%,
+      rgba(186, 8, 181, 1) 90.1%);
+  background-image: linear-gradient(359.8deg,
+      rgba(252, 255, 222, 1) 2.2%,
+      rgba(182, 241, 171, 1) 99.3%);
+  background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%,
+      rgba(37, 249, 245, 1) 0%,
+      rgba(8, 70, 218, 1) 90%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%,
+      rgba(255, 229, 168, 1) 0%,
+      rgba(251, 174, 222, 1) 100.7%);
+  background-image: linear-gradient(114.2deg,
+      rgba(121, 194, 243, 1) 22.6%,
+      rgba(255, 180, 239, 1) 67.7%);
+  background-image: linear-gradient(90deg,
+      rgba(255, 157, 129, 1) 24.3%,
+      rgba(255, 78, 78, 1) 78.3%);
+  background-image: linear-gradient(89.9deg,
+      rgba(178, 253, 238, 0.96) -8.1%,
+      rgba(207, 244, 254, 1) 26.3%,
+      rgba(207, 244, 254, 0.48) 47.5%,
+      rgba(254, 219, 243, 0.63) 61.5%,
+      rgba(254, 219, 243, 1) 78.7%,
+      rgba(254, 207, 210, 1) 109.2%);
+  background-image: linear-gradient(109.6deg,
+      rgba(33, 25, 180, 1) 11.2%,
+      rgba(253, 29, 29, 1) 55.2%,
+      rgba(252, 176, 69, 1) 91.1%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%,
+      rgba(130, 205, 221, 1) 0%,
+      rgba(255, 247, 153, 1) 90%);
+  background-image: linear-gradient(109.5deg,
+      rgba(76, 221, 242, 1) 11.2%,
+      rgba(92, 121, 255, 1) 91.1%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%,
+      rgba(253, 101, 133, 1) 0%,
+      rgba(255, 211, 165, 1) 90%);
+  background-image: radial-gradient(circle 654px at 0.6% 48%,
+      rgba(12, 170, 255, 1) 0%,
+      rgba(151, 255, 129, 1) 86.3%);
+  background-image: radial-gradient(circle farthest-corner at 0.1% 53.8%,
+      rgba(255, 182, 172, 1) 0%,
+      rgba(255, 123, 172, 1) 100.2%);
+  background-image: radial-gradient(circle farthest-corner at 5.3% 17.2%,
+      rgba(255, 208, 253, 1) 0%,
+      rgba(255, 237, 216, 1) 90%);
+  background-image: linear-gradient(109.6deg,
+      rgba(98, 210, 141, 0.88) 11.2%,
+      rgba(234, 245, 45, 0.79) 88%);
+  background-image: linear-gradient(109.6deg,
+      rgba(227, 236, 62, 0.68) 11.2%,
+      rgba(230, 29, 58, 0.78) 91.3%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%,
+      rgba(222, 168, 248, 1) 0%,
+      rgba(168, 222, 248, 1) 21.8%,
+      rgba(189, 250, 205, 1) 35.6%,
+      rgba(243, 250, 189, 1) 52.9%,
+      rgba(250, 227, 189, 1) 66.8%,
+      rgba(248, 172, 172, 1) 90%,
+      rgba(254, 211, 252, 1) 99.7%);
+  background-image: linear-gradient(110.9deg,
+      rgba(44, 221, 239, 1) 1.1%,
+      rgba(14, 191, 210, 1) 37.6%,
+      rgba(8, 127, 140, 1) 99.2%);
 
 }
 
 ::ng-deep .mat-select-panel {
-	min-width: 100% !important;
-    transform: translateX(16px) translateY(36px) !important;
+  min-width: 100% !important;
+  transform: translateX(16px) translateY(36px) !important;
 }

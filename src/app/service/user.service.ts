@@ -2,9 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
-import { FoodShop } from '../model/foodshop.interface';
-import { ListDTO } from '../model/listdto.interface';
 import { BaseResponse } from '../model/response.interface';
+import { User } from '../model/user.interface';
 
 
 const defaultUrl = 'http://localhost:8080';
@@ -13,7 +12,7 @@ const defaultUrl = 'http://localhost:8080';
     providedIn: 'root'
 })
 
-export class FoodShopService {
+export class UserService {
 
     constructor(private http: HttpClient) { }
 
@@ -32,13 +31,13 @@ export class FoodShopService {
             'Something bad happened; please try again later.');
     }
 
-    findFoodShops(query: string, province: number, district: number, categoryId: number): Observable<FoodShop[]> {
-        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search?query=' + query + '&provinceId=' + province + '&districtId=' + district + '&categoryId=' + categoryId)
+    findById(id:any): Observable<User> {
+        return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id='+id)
             .pipe(
-                map((res: BaseResponse<ListDTO<FoodShop>>) => {
+                map((res: BaseResponse<User>) => {
+                    console.log(res)
                     if (res.data) {
-                        console.log(res.data.items)
-                        return res.data.items;
+                        return res.data;
                     } else {
                         throw "error";
                     }
@@ -46,5 +45,4 @@ export class FoodShopService {
                 catchError(this.handleError)
             );
     }
-
 }

@@ -1,5 +1,5 @@
 export interface ListDTO<T> {
-    data: T[];
+    items: T[];
     total: number;
     count:number;
   }

@@ -15,7 +15,7 @@
     </div>
     <p class="content-post">{{dataPost.content}}</p>
     <div class="tags">
-      <p class="tags">Tags :</p>
+      <p class="tags">Tags: </p>
       <!-- <mat-chip-list
   class="example-chip"
   cdkDropList 
@@ -28,9 +28,9 @@
     {{vegetable.name}}
   </mat-chip>
 </mat-chip-list> -->
-      <div *ngFor="let vegetable of vegetables">
+      <div *ngFor="let tag of dataPost.tags">
         <nz-page-header-tags>
-          <nz-tag [nzColor]="'blue'">{{vegetable.name}}</nz-tag>
+          <nz-tag [nzColor]="'blue'">{{tag}}</nz-tag>
         </nz-page-header-tags>
       </div>
     </div>

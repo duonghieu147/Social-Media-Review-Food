@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
   getAllPost(){
     this.openDialogLoading()
-    this.postService.getAllPost(this.limit,this.page,).subscribe(
+    this.postService.getAllPost(this.limit,this.page).subscribe(
       (data) => {
         if(data.data.length==0){
           this.dialog.closeAll();

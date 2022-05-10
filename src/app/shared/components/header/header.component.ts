@@ -56,4 +56,9 @@ export class HeaderComponent implements OnInit {
       { queryParams: { query: query, provinceId: provinceId, districtId: districtId, categoryId: categoryId } }
     );
   }
+  home() {
+    this.router.navigate(
+      ['']
+    );
+  }
 }

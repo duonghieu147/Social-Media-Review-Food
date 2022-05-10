@@ -35,7 +35,6 @@ export class LocationService {
         return this.http.get<BaseResponse<Location[]>>(defaultUrl + '/api/location/provinces')
             .pipe(
                 map((res: BaseResponse<Location[]>) => {
-                    console.log(res)
                     if (res.data) {
                         return res.data;
                     } else {
@@ -50,7 +49,6 @@ export class LocationService {
         return this.http.get<BaseResponse<Location[]>>(defaultUrl + '/api/location/districts?provinceId=' + provinceId)
             .pipe(
                 map((res: BaseResponse<Location[]>) => {
-                    console.log(res)
                     if (res.data) {
                         return res.data;
                     } else {

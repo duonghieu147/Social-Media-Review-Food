@@ -1,9 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap);
+
 
 * {
     font-family: Tahoma, sans-serif !important;
 }
+
+
+
 
 .header {
     position: fixed;
@@ -19,15 +22,21 @@
     bottom: 0;
 }
 
+
+
+.search-container {
+    margin-bottom: 20px;
+}
+
 .title {
     width: 100%;
-    font-size: large;
+    font-size: 25px;
     margin: 15px 20px 15px 0px;
     color: rgb(11, 32, 129);
 }
 
 .search-result {
-    width: 80%;
+    width: 90%;
     border-radius: 4px;
     border: 1px solid rgb(252, 251, 251);
     display: flex;
@@ -35,6 +44,7 @@
     transition: all 0.2s cubic-bezier(.25, .8, .25, 1);
     height: auto;
     padding-bottom: 10px;
+    margin: 20px;
 }
 
 .search-result:hover {
@@ -59,6 +69,7 @@ img {
 
 .search-description {
     padding: 20px 20px 10px 20px;
+    color: black;
 }
 
 .info-common {
@@ -72,4 +83,89 @@ img {
 
 .name:hover {
     color: rgb(4, 18, 95);
+}
+
+
+
+nz-header,
+nz-footer {
+    background: #7dbcea;
+    color: #fff;
+}
+
+nz-footer {
+    line-height: 1.5;
+}
+
+nz-sider {
+    background: #3ba0e9;
+    color: #fff;
+    line-height: 120px;
+}
+
+nz-content {
+    /* background: rgba(16, 142, 233, 1); */
+    color: #fff;
+    min-height: 120px;
+    /* line-height: 120px; */
+    margin-top: 64px;
+}
+
+nz-layout {
+    margin-bottom: 48px;
+    background: rgba(16, 142, 233, 1);
+}
+
+nz-layout nz-layout,
+nz-layout:last-child {
+    margin: 0;
+}
+
+/* .silderbar{
+    position: fixed;
+  }
+  .header {
+    position: fixed;
+  } */
+nz-header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+nz-sider {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    background-color: #fff;
+}
+
+
+.silderbar {
+    margin-top: 64px;
+}
+
+.silderbar-right {
+    z-index: 3;
+}
+
+.ant-col.ant-col-8 {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ant-col.ant-col-8 label {
+    margin: 5px 0;
+}
+
+.load-more-button {
+    background-color: #3ba0e9;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 40%;
+    margin-right: 50%;
 }

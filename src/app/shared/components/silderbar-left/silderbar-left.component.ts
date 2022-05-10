@@ -8,14 +8,18 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 })
 export class SilderbarLeftComponent implements OnInit {
   isCollapsed = false;
-  urlProfile = '/profile/'+localStorage.getItem('id')
+  urlProfile = '/profile/' + localStorage.getItem('id')
   constructor() { }
 
   ngOnInit(): void {
-    // this.urlProfile = '/profile/'+localStorage.getItem('id')
   }
   toggleCollapsed(): void {
     this.isCollapsed = !this.isCollapsed;
+  }
+  selectedNavItem: string = '';
+
+  navClick(navId: any) {
+    this.selectedNavItem = navId;
   }
 
 }
