@@ -1,20 +1,20 @@
 <div class="container">
     <div class="login" [formGroup]="myGroup">
-        <h1>Login</h1>
+        <h1>Đăng Nhập</h1>
         <br><br/>
         <mat-form-field appearance="fill">
-            <mat-label>Username </mat-label>
+            <mat-label>Tài khoản</mat-label>
             <input matInput type="text" class="example-right-align" placeholder="" formControlName="username">
             <!-- <span matPrefix>$&nbsp;</span>
             <span matSuffix>.00</span> -->
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
+            <mat-label>Mật khẩu</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
-                <p>hidden</p>
+                <p>Hiện</p>
                 <!-- <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
             </button>
         </mat-form-field>

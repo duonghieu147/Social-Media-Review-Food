@@ -61,6 +61,7 @@ import { AddfooditemComponent } from './shared/components/addfooditem/addfoodite
 import { RecordsComponent } from './modules/pages/records/records.component';
 import { EditprofileComponent } from './modules/pages/profile/editprofile/editprofile.component';
 import { SearchFoodShop} from './shared/components/searchfoodshop/searchfoodshop.component';
+import { ChangepasswordComponent } from './modules/pages/profile/changepassword/changepassword.component';
 
 //
 @NgModule({
@@ -91,6 +92,7 @@ import { SearchFoodShop} from './shared/components/searchfoodshop/searchfoodshop
     RecordsComponent,
     EditprofileComponent,
     SearchFoodShop
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,
