@@ -91,7 +91,7 @@ import { ChangepasswordComponent } from './modules/pages/profile/changepassword/
     AddfooditemComponent,
     RecordsComponent,
     EditprofileComponent,
-    SearchFoodShop
+    SearchFoodShop,
     ChangepasswordComponent
   ],
   imports: [
