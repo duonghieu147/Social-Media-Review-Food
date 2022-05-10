@@ -1,11 +1,36 @@
-[nz-form] {
-    max-width: 600px;
-  }
-
-  .phone-select {
-    width: 70px;
-  }
-
-  .register-are {
-    margin-bottom: 8px;
-  }
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+*{
+  font-family: 'Pacifico' !important;
+}
+*{font-family: Tahoma, sans-serif !important;
+}
+.container{
+  display: flex;
+  justify-content:center;
+}
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-top: 200px;
+  padding:48px 48px ;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.mat-form-field{
+  width: 100%;
+}
+.actions {
+  display: flex;
+  justify-content:space-between;
+}
+.actions button {
+  width:100%;
+}
+.actions button:nth-child(2){
+  margin-left:24px;
+}
