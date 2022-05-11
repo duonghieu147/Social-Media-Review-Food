@@ -5,11 +5,6 @@
     <app-silderbar-left></app-silderbar-left>
 </div>
 <nz-layout style="background-color: rgb(255, 255, 255);">
-    <!-- <nz-sider [nzWidth]="300">
-          <div class="silderbar">
-            <app-silderbar-left></app-silderbar-left>
-          </div>
-      </nz-sider> -->
     <nz-content>
         <div nz-row>
             <div nz-col nzSpan="5"></div>
@@ -34,7 +29,7 @@
                                         {{item.rating.overall}}
                                     </div>
                                     <div class="info-common"><i class='fas fa-clock'
-                                            style='color: #086d86 ;margin-right:2px'></i>{{item.time}}
+                                            style='color: #086d86 ;margin-right:7px'></i>{{item.time}}
                                     </div>
                                     <div class="info-common"><i class='fab fa-accusoft'
                                             style='color: #00a035 ; margin-right:2px'></i>{{item.description}}</div>
@@ -43,7 +38,7 @@
                         </div>
                     </ng-template>
                 </div>
-                <button class="load-more-button" mat-button>Xem thêm</button>
+                <button class="load-more-button" (click)="loadNextPage()" mat-button>Xem thêm</button>
             </div>
             <div nz-col nzSpan="5" style="text-align: center">
                 <app-chat></app-chat>

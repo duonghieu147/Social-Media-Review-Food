@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.roles = this.tokenStorage.getUser().roles;
+          console.log(this.roles)
           this.getDataUserById(data.id)
           this.router.navigate(['/home']);
           this.openSnackBar('Successfully', 'Close');
@@ -35,26 +36,6 @@ export class LoginComponent implements OnInit {
           this.errorMessage = err.error.message;
         }
       );
-      // console.log('submit', this.myGroup.value);
-      // if(this.myGroup.value.username =='thanhnhd1'){
-      //   this.getDataUserById(1)
-      //   this.router.navigate(['/home']);
-      //   this.openSnackBar('Successfully', 'Close');
-      // }
-      // else if(this.myGroup.value.username =='duonghieu147'){
-      //   this.getDataUserById(2)
-      //   this.router.navigate(['/home']);
-      //   this.openSnackBar('Successfully', 'Close');
-      // }
-      // else if(this.myGroup.value.username =='fellcoffee'){
-      //   this.getDataUserById(3)
-      //   this.router.navigate(['/home']);
-      //   this.openSnackBar('Successfully', 'Close');
-      // }
-      // else {
-      //   this.openSnackBar('Thông tin đăng nhập không chính xác', 'Close')
-
-      // }
     } else {
       this.openSnackBar('Vui lòng nhập đúng trường', 'Close')
     }
@@ -95,7 +76,6 @@ export class LoginComponent implements OnInit {
           return
         }
         else {
-          console.log(data.data.id)
           this.saveInfoUser(data.data)
         }
       }
@@ -104,8 +84,7 @@ export class LoginComponent implements OnInit {
   saveInfoUser(data:any){
     localStorage.setItem('id',data.id)
     localStorage.setItem('name',data.firstName)
-    localStorage.setItem('firstName',data.firstName)
-    localStorage.setItem('lastName',data.lastName)
+    localStorage.setItem('displayName',data.displayName)
     localStorage.setItem('phoneNumber',data.phoneNumber)
     localStorage.setItem('avatar',data.avatar)
     localStorage.setItem('biography',data.avatar)

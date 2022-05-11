@@ -35,7 +35,7 @@ export class UserService {
         return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id='+id)
             .pipe(
                 map((res: BaseResponse<User>) => {
-                    console.log(res)
+                    console.log("dasfasf "+res)
                     if (res.data) {
                         return res.data;
                     } else {

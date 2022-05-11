@@ -40,8 +40,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/login']);
-
   }
 
   onChangeProvince(id: number) {

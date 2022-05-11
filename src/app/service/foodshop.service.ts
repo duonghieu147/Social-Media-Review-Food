@@ -32,8 +32,8 @@ export class FoodShopService {
             'Something bad happened; please try again later.');
     }
 
-    findFoodShops(query: string, province: number, district: number, categoryId: number): Observable<FoodShop[]> {
-        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search?query=' + query + '&provinceId=' + province + '&districtId=' + district + '&categoryId=' + categoryId)
+    findFoodShops(query: string, province: number, district: number, categoryId: number, page: number, limit: number): Observable<FoodShop[]> {
+        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search?query=' + query + '&provinceId=' + province + '&districtId=' + district + '&categoryId=' + categoryId + '&page=' + page + '&limit=' + limit)
             .pipe(
                 map((res: BaseResponse<ListDTO<FoodShop>>) => {
                     if (res.data) {
