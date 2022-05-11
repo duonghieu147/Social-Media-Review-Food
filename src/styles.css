@@ -1,12 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~ng-zorro-antd/ng-zorro-antd.min.css";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0 }
 /* @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
 *{
     font-family: 'Ubuntu' !important;
 } */
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
-*{font-family: Tahoma, sans-serif !important;
-}
+/* @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow); */

@@ -4,9 +4,9 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 import { Rating } from '../model/fooditem.interface';
+import { environment } from 'src/environments/environment';
 
- const defaultUrl = 'http://localhost:8080';
-//const defaultUrl = 'https://rfood.herokuapp.com';
+const defaultUrl = `${environment.API_PATH}`;
 export interface Config { 
   id: string;
   nasme: string;

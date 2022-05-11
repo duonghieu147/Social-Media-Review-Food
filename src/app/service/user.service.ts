@@ -2,12 +2,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 import { BaseResponse } from '../model/response.interface';
 import { User } from '../model/user.interface';
 
 
-const defaultUrl = 'http://localhost:8080';
-//const defaultUrl = 'https://rfood.herokuapp.com';
+const defaultUrl = `${environment.API_PATH}`;
 @Injectable({
     providedIn: 'root'
 })

@@ -3,9 +3,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
- const defaultUrl = 'http://localhost:8080';
-//const defaultUrl = 'https://rfood.herokuapp.com';
+const defaultUrl = `${environment.API_PATH}`;
 // >>>>>>> ui
 
 export interface Config {

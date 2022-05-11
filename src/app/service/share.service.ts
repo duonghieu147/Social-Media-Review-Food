@@ -2,11 +2,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 
 
-const defaultUrl = 'http://localhost:8080';
-//const defaultUrl = 'https://rfood.herokuapp.com';
-// const commentUrl = 'http://localhost:8080/create';
+const defaultUrl = `${environment.API_PATH}`;
 
 const baseUrl = 'https://60faace37ae59c0017166267.mockapi.io/api/v1/';
 const postURL = 'http://localhost:8080/api/post';
