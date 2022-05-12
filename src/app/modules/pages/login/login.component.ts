@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
           this.roles = this.tokenStorage.getUser().roles;
           console.log(this.roles)
           this.getDataUserById(data.id)
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/post']);
           this.openSnackBar('Successfully', 'Close');
         },
         err => {

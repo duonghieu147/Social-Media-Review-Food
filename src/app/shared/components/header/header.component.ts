@@ -52,8 +52,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearch(query: string, provinceId: number, districtId: number, categoryId: number) {
+    console.log("1231")
     this.router.navigate(
-      ['/search'],
+      ['/home/search'],
       { queryParams: { query: query, provinceId: provinceId, districtId: districtId, categoryId: categoryId } }
     );
   }

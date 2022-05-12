@@ -14,7 +14,7 @@ import { PostsComponent } from './shared/components/posts/posts.component';
 import { SearchFoodShop } from './shared/components/searchfoodshop/searchfoodshop.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'home/post', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     {
