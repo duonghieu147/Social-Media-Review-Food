@@ -4,18 +4,6 @@
 }
 *{font-family: Tahoma, sans-serif !important;
 }
-.header {
-  position: fixed;
-  z-index: 6;
-  width: 100%;
-  top: 0;
-}
-.silderbar-left {
-  position: fixed;
-  z-index: 5;
-  height: 100%;
-  bottom: 0;
-}
 
 :host {
     text-align: center;

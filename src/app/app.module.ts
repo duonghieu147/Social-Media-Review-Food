@@ -62,6 +62,7 @@ import { RecordsComponent } from './modules/pages/records/records.component';
 import { EditprofileComponent } from './modules/pages/profile/editprofile/editprofile.component';
 import { SearchFoodShop} from './shared/components/searchfoodshop/searchfoodshop.component';
 import { ChangepasswordComponent } from './modules/pages/profile/changepassword/changepassword.component';
+import { FirstPage } from './modules/pages/firstpage/firstpage.component';
 
 //
 @NgModule({
@@ -92,7 +93,8 @@ import { ChangepasswordComponent } from './modules/pages/profile/changepassword/
     RecordsComponent,
     EditprofileComponent,
     SearchFoodShop,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    FirstPage
   ],
   imports: [
     BrowserModule,
