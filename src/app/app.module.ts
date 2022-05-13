@@ -63,6 +63,8 @@ import { EditprofileComponent } from './modules/pages/profile/editprofile/editpr
 import { SearchFoodShop} from './shared/components/searchfoodshop/searchfoodshop.component';
 import { ChangepasswordComponent } from './modules/pages/profile/changepassword/changepassword.component';
 import { FirstPage } from './modules/pages/firstpage/firstpage.component';
+import { WatchComponent } from './modules/pages/watch/watch.component';
+import { VideoComponent } from './modules/pages/watch/video/video.component';
 
 //
 @NgModule({
@@ -94,7 +96,9 @@ import { FirstPage } from './modules/pages/firstpage/firstpage.component';
     EditprofileComponent,
     SearchFoodShop,
     ChangepasswordComponent,
-    FirstPage
+    FirstPage,
+    WatchComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

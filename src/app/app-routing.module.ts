@@ -8,6 +8,7 @@ import { RecordsComponent } from './modules/pages/records/records.component';
 import { ShoppingComponent } from './modules/pages/shopping/shopping.component';
 import { SignupComponent } from './modules/pages/signup/signup.component';
 import { TestComponent } from './modules/pages/test/test.component';
+import { WatchComponent } from './modules/pages/watch/watch.component';
 import { AddpostComponent } from './shared/components/addpost/addpost.component';
 import { PageNoteFoundComponent } from './shared/components/page-note-found/page-note-found.component';
 import { PostsComponent } from './shared/components/posts/posts.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
     { path: 'records', component: RecordsComponent },
     { path: 'test', component: TestComponent },
     { path: 'search', component: SearchFoodShop },
+    { path: 'watch', component: WatchComponent },
     { path: '**', component: PageNoteFoundComponent },  // Wildcard route for a 404 page
 
 ];
