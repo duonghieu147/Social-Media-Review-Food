@@ -274,3 +274,78 @@ nz-list {
   margin: 10px 0 5px 5%;
   height: 81px;
 }
+
+*{
+  box-sizing:border-box;
+}
+
+.image{
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+  border: 0.5px solid rgb(212, 210, 210);
+}
+.one{
+  width:100%;
+  padding: 10px;
+   
+}
+.one > .image{
+  padding-top:50%;
+}
+
+.two{
+  display:flex;
+  width: 100%;
+  padding: 10px;
+}
+.two > .image{
+  padding-left:calc(50% - 2px);
+  padding-top: 50%;
+}
+.three{
+  display:flex;
+  width: 100%;
+  padding: 10px;
+}
+.three .image{
+  padding-top:50%;
+  width:100%;
+}
+.three > .image{
+  width:50%;
+}
+.three .right{
+  width:50%;
+}
+
+.four{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.four .image{
+  width:50%;
+  padding-top:50%;
+}
+
+.five{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.five .image{
+  padding-top:50%;
+}
+
+.five .image:nth-child(1),
+.five .image:nth-child(2){
+  width:50%;
+}
+
+.five .image:nth-child(3),
+.five .image:nth-child(4),
+.five .image:nth-child(5){
+  width:33.33%;
+  padding-top:33.33%;
+}

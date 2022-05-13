@@ -23,15 +23,16 @@ export class SearchFoodShop implements OnInit {
 
   ngOnInit(): void {
     
-    this.route.queryParamMap
+    this.route.queryParams
       .subscribe((params) => {
-        this.query = params.get('query');
-        this.provinceId = params.get('provinceId') ? Number(params.get('provinceId')) : null;
-        this.districtId = params.get('districtId') ? Number(params.get('districtId')) : null;
-        this.categoryId = params.get('categoryId') ? Number(params.get('categoryId')) : null;
+        console.log(params)
+        this.query = params['query'] || '';
+        this.provinceId = params['provinceId'] ? Number(params['provinceId']) : null;
+        this.districtId = params['districtId'] ? Number(params['districtId']) : null;
+        this.categoryId = params['categoryId'] ? Number(params['categoryId']) : null;
+        this.searchFoodShop(this.query, this.provinceId, this.districtId, this.categoryId, this.page, this.limit);
       }
       );
-    this.searchFoodShop(this.query, this.provinceId, this.districtId, this.categoryId, this.page, this.limit);
   }
 
 

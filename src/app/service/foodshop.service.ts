@@ -33,7 +33,22 @@ export class FoodShopService {
     }
 
     findFoodShops(query: string, province: number, district: number, categoryId: number, page: number, limit: number): Observable<FoodShop[]> {
-        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search?query=' + query + '&provinceId=' + province + '&districtId=' + district + '&categoryId=' + categoryId + '&page=' + page + '&limit=' + limit)
+        let params = {};
+        if (query != '') {
+            params['query'] = query;
+        }
+        if (province > 0) {
+            params['provinceId'] = province;
+        }
+        if (district > 0) {
+            params['districtId'] = district;
+        }
+        if (categoryId > 0) {
+            params['categoryId'] = categoryId;
+        }
+        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search',{
+            params:params
+        })
             .pipe(
                 map((res: BaseResponse<ListDTO<FoodShop>>) => {
                     if (res.data) {
