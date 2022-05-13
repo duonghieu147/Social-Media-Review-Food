@@ -1,11 +1,11 @@
 <aside class="sidebar">
   <nav class="nav">
     <ul>
-      <li routerLinkActive="active"><a  routerLink='/home/post' >Trang chủ</a></li>
-      <li routerLinkActive="active"><a routerLink="{{urlProfile}}" >Trang cá nhân</a></li>
-      <li routerLinkActive="active"><a routerLink='/friend'>Bạn Bè</a></li>
-      <li routerLinkActive="active"><a routerLink='/group'>Nhóm</a></li>
-      <li routerLinkActive="active"><a routerLink='/foodshop/all'>Cửa hàng</a></li>
+      <li  [ngClass]="(selectedNavItem == 'home')? 'active': ''" ><a (click)="navClick('home')" id="world" href="#">Trang chủ</a></li>
+      <li [ngClass]="(selectedNavItem == 'profile')? 'active': ''"><a (click)="navClick('profile')" id="profile" href={{urlProfile}}>Trang cá nhân</a></li>
+      <li [ngClass]="(selectedNavItem == 'friend')? 'active': ''"><a (click)="navClick('friend')" id="friend" href="#">Bạn Bè</a></li>
+      <li [ngClass]="(selectedNavItem == 'shop')? 'active': ''"><a (click)="navClick('shop')" id="shop" href="/foodshop/all">Cửa hàng</a></li>
+      <li [ngClass]="(selectedNavItem == 'group')? 'active': ''"><a (click)="navClick('group')" id="group" href="/watch">Watch</a></li>
     </ul>
   </nav>
 </aside>

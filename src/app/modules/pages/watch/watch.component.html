@@ -1,0 +1,128 @@
+<div class="action__create">
+    <button mat-raised-button color="primary" (click)="create()" class="btn__create">Tạo Video</button>
+    <input class="inputCamera" hidden="true" type="file" #inputCamera accept="video/*" capture (change)="onChangeInput()"/>
+</div>
+<!-- <video id="video" #video></video> -->
+<div class="app__videos">
+
+    <!-- Create video  -->
+    <div class="app__videos__create" [hidden] = 'isHidden'>
+        <!-- video start -->
+        <div class="video__container">
+            <div class="video" (click)="actionVideo($event)" >
+                <video id="video" class="video__player" #video></video>
+            </div>
+        </div>
+        <!-- sidebar -->
+        <div class="videoSidebar">
+            <div class="videoSidebar__button">
+                <span class="material-icons">favorite_border</span>
+                <p>12</p>
+            </div>
+            <div class="videoSidebar__button">
+                <span class="material-icons">chat</span>
+                <p>3</p>
+            </div>
+            <div class="videoSidebar__button">
+                <span class="material-icons">share</span>
+                <p>1</p>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="videoFooter">
+            <div class="videoFooter__text">
+                <h3>Sss</h3>
+                <p class="videoFooter__description">Best Video Ever</p>
+                <div class="videoFooter__ticker">
+                    <span class="material-icons videoFooter__icon">music_note</span>
+                    <marquee>Song Name</marquee>
+                </div>
+            </div>
+            <img class="videoFooter__record"
+                src="https://scontent.fhan3-4.fna.fbcdn.net/v/t1.6435-9/166014380_1392790014404846_1341965397669879252_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=capBI25qGwgAX_HO9l5&_nc_ht=scontent.fhan3-4.fna&oh=00_AT_ryWa51AQi-T_GuC6js3Ciw-zMOppbOORVHfBbC-3hpQ&oe=62A1B716"
+                alt="">
+        </div>
+        <!-- video end -->
+    </div>
+    <!-- End Create video -->
+
+    <div>
+        <!-- video start -->
+        <div class="video__container">
+            <div class="video" (click)="actionVideo($event)" >
+                <video src="
+                https://v16-webapp.tiktok.com/28ab3dc4f9fea500a409fa23502c42f9/627e3ae4/video/tos/alisg/tos-alisg-pve-0037/9e17421163d84e548f552c33c6cea560/?a=1988&br=2084&bt=1042&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=eXd.6Hk_Myq8Zn7.qwe2NDYaml7Gb&l=202205130458090102451540990B1119D3&lr=tiktok&mime_type=video_mp4&net=0&pl=0&qs=0&rc=M3ZzZjQ6ZmpxPDMzODgzNEApZjRlaDdmaGU6Nzs8Zzw7ZmdjMS9ocjQwaXJgLS1kLy1zczA1MmNjMy8tMTQuYC8uYTI6Yw%3D%3D&vl=&vr=" class="video__player"></video>
+            </div>
+        </div>
+        <!-- sidebar -->
+        <div class="videoSidebar">
+            <div class="videoSidebar__button">
+                <span class="material-icons">favorite_border</span>
+                <p>12</p>
+            </div>
+            <div class="videoSidebar__button">
+                <span class="material-icons">chat</span>
+                <p>3</p>
+            </div>
+            <div class="videoSidebar__button">
+                <span class="material-icons">share</span>
+                <p>1</p>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="videoFooter">
+            <div class="videoFooter__text">
+                <h3>Sss</h3>
+                <p class="videoFooter__description">Best Video Ever</p>
+                <div class="videoFooter__ticker">
+                    <span class="material-icons videoFooter__icon">music_note</span>
+                    <marquee>Song Name</marquee>
+                </div>
+            </div>
+            <img class="videoFooter__record"
+                src="https://scontent.fhan3-4.fna.fbcdn.net/v/t1.6435-9/166014380_1392790014404846_1341965397669879252_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=capBI25qGwgAX_HO9l5&_nc_ht=scontent.fhan3-4.fna&oh=00_AT_ryWa51AQi-T_GuC6js3Ciw-zMOppbOORVHfBbC-3hpQ&oe=62A1B716"
+                alt="">
+        </div>
+        <!-- video end -->
+    </div>
+
+    <div>
+        <!-- video start -->
+        <div class="video__container">
+            <div class="video">
+                <video (click)="actionVideo($event)" src="
+                https://v16-webapp.tiktok.com/5385cbed372210b27d2204fe4bfc9620/627e3aac/video/tos/useast2a/tos-useast2a-pve-0037c001-aiso/f53e0e63d9c849fc9a7760ff40519d8f/?a=1988&br=2484&bt=1242&cd=0%7C0%7C0%7C0&ch=0&cr=0&cs=0&dr=0&ds=3&er=&ft=eXd.6Hk_Myq8ZZ1.qwe2Nbvhml7Gb&l=202205130500490102452431181911A671&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&qs=0&rc=amx1bDU6Zng2PDMzZjczM0ApZTlmNWU8OztpN2k3OzM7ZWc1XzBvcjRfX2hgLS1kMWNzcy40M2I1MS0vX2BfYDI0MzA6Yw%3D%3D&vl=&vr=" class="video__player"></video>
+            </div>
+        </div>
+        <!-- sidebar -->
+        <div class="videoSidebar">
+            <div class="videoSidebar__button">
+                <span class="material-icons">favorite_border</span>
+                <p>12</p>
+            </div>
+            <div class="videoSidebar__button">
+                <span class="material-icons">chat</span>
+                <p>3</p>
+            </div>
+            <div class="videoSidebar__button">
+                <span class="material-icons">share</span>
+                <p>1</p>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="videoFooter">
+            <div class="videoFooter__text">
+                <h3>Sss</h3>
+                <p class="videoFooter__description">Best Video Ever</p>
+                <div class="videoFooter__ticker">
+                    <span class="material-icons videoFooter__icon">music_note</span>
+                    <marquee>Song Name</marquee>
+                </div>
+            </div>
+            <img class="videoFooter__record"
+                src="https://scontent.fhan3-4.fna.fbcdn.net/v/t1.6435-9/166014380_1392790014404846_1341965397669879252_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=capBI25qGwgAX_HO9l5&_nc_ht=scontent.fhan3-4.fna&oh=00_AT_ryWa51AQi-T_GuC6js3Ciw-zMOppbOORVHfBbC-3hpQ&oe=62A1B716"
+                alt="">
+        </div>
+        <!-- video end -->
+    </div>
+</div>
