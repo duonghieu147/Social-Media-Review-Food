@@ -6,10 +6,16 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./watch.component.css']
 })
 export class WatchComponent implements OnInit {
-  // @ViewChild('inputCamera') inputCamera: ElementRef;
+  @ViewChild('inputCamera') inputCamera: ElementRef;
+  @ViewChild('video') video: ElementRef;
+  isHidden: boolean=true;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  create() {
+    this.inputCamera.nativeElement.value = null;
+    this.inputCamera.nativeElement.click();
   }
   actionVideo(event :any) {
     const video = event.target
@@ -26,7 +32,19 @@ export class WatchComponent implements OnInit {
     }
   }
   onChangeInput(){
-    document.querySelector('input')
-    alert(document.querySelectorAll('input'));
+    const file = this.inputCamera.nativeElement.files[0];
+    console.log(this.inputCamera.nativeElement.files[0]);
+    const videourl = URL.createObjectURL(file);
+    this.video.nativeElement.src= videourl 
+    this.isHidden = false;
+    // const inputFile = document.getElementById("file");
+    // const video = document.getElementById("video");
+    
+    // inputFile.addEventListener("change", function(){
+    //     const file = inputFile.files[0];
+    //     const videourl = URL.createObjectURL(file);
+    //     video.setAttribute("src", videourl);
+    //     video.play();
+    // })
   }
 }
