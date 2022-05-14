@@ -75,7 +75,7 @@ svg {
 /* End Icons */
 nz-carousel {
   height: 320px;
-  width: 960px;
+  width: 90%;
   margin: auto;
   margin-top: 48px;
   margin-bottom: 48px;
@@ -106,7 +106,7 @@ h3 {
 
 /* Nav */
 ::ng-deep.ant-tabs-tab-btn {
-  width: 250px !important;
+  width: 90% !important;
   text-align: center !important;
 }
 
@@ -206,7 +206,7 @@ button.edit {
 ::ng-deep .post-container {
   width: 100%;
   margin-left: 5%;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 .load-more-button {
@@ -225,6 +225,14 @@ button.edit {
   .profile{
     margin-left: 24px;
   }
+  nz-carousel{
+    height:280px;
+  }
+  .action-fooditem .sort3,.sort1,.sort2 {
+    padding:0;
+    font-size:12px;
+    width:auto !important;
+  }
 }
 @media only screen and (max-width: 675px) {
   .silderbar-left {
@@ -233,5 +241,14 @@ button.edit {
   }
   .profile{
     margin-left: 24px;
+  }
+
+  nz-carousel{
+    height:280px;
+  }
+  .action-fooditem .sort3,.sort1,.sort2 {
+    padding:0;
+    font-size:12px;
+    width:auto !important;
   }
 }
