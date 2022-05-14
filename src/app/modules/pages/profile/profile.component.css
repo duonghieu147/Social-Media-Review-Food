@@ -216,3 +216,22 @@ button.edit {
   margin-left: 46%;
   margin-right: 50%;
 }
+
+@media only screen and (max-width: 425px) {
+  .silderbar-left {
+    width:0px;
+    display:none;
+  }
+  .profile{
+    margin-left: 24px;
+  }
+}
+@media only screen and (max-width: 675px) {
+  .silderbar-left {
+    width:0px;
+    display:none;
+  }
+  .profile{
+    margin-left: 24px;
+  }
+}

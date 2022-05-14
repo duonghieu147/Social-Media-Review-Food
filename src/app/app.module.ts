@@ -65,6 +65,7 @@ import { ChangepasswordComponent } from './modules/pages/profile/changepassword/
 import { FirstPage } from './modules/pages/firstpage/firstpage.component';
 import { WatchComponent } from './modules/pages/watch/watch.component';
 import { VideoComponent } from './modules/pages/watch/video/video.component';
+import { UpdateProfileComponent } from './modules/pages/profile/update-profile/update-profile.component';
 
 //
 @NgModule({
@@ -98,7 +99,8 @@ import { VideoComponent } from './modules/pages/watch/video/video.component';
     ChangepasswordComponent,
     FirstPage,
     WatchComponent,
-    VideoComponent
+    VideoComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

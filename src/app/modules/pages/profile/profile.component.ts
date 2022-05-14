@@ -9,6 +9,7 @@ import { ShareService } from 'src/app/service/share.service';
 import { PostService } from 'src/app/service/post.service';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @Component({
   selector: 'app-profile',
@@ -187,8 +188,8 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialogEditProfile():void {
-    const dialogRef =this.dialog.open(EditprofileComponent,{
-      width: '600px',height:'auto'
+    const dialogRef =this.dialog.open(UpdateProfileComponent,{
+      width: 'auto',height:'auto'
   })
   dialogRef.afterClosed().subscribe(result =>{
     console.log(`Dialog result: ${result}`);

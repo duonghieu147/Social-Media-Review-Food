@@ -6,37 +6,33 @@ import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.component.html',
+  styleUrls: ['./update-profile.component.css']
 })
-export class LoginComponent implements OnInit {
+export class UpdateProfileComponent implements OnInit {
 
   validateForm!: FormGroup;
   hide = true;
   myGroup: any;
   errorMessage = '';
   roles: string[] = [];
-  isDisabled: boolean= true;
-
+  isDisabled: boolean = true;
   submitForm(): void {
     if (this.myGroup.valid) {
-      this.authService.login(this.myGroup.value).subscribe(
-        data => {
-          this.tokenStorage.saveToken(data.token);
-          this.tokenStorage.saveUser(data);
-          this.roles = this.tokenStorage.getUser().roles;
-          console.log(this.roles)
-          this.getDataUserById(data.id)
-          this.router.navigate(['/home/post']);
-          this.openSnackBar('Successfully', 'Close');
-        },
-        err => {
-          this.errorMessage = err.error.message;
-        }
-      );
+      console.log('update profile');
+      console.log(this.myGroup.value)
+      // this.authService.register(this.myGroup.value).subscribe(
+      //   data => {
+      //     console.log(data)
+      //     this.router.navigate(['/login']);
+      //     this.openSnackBar('Successfully', 'Close');
+      //   },
+      //   err => {
+      //     this.errorMessage = err.error.message;
+      //   }
+      // );
     } else {
       this.openSnackBar('Vui lòng nhập đúng trường', 'Close')
     }
@@ -55,16 +51,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.myGroup = new FormGroup({
-      username: new FormControl('', [Validators.required,]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      email: new FormControl('', [Validators.required,Validators.email]),
+      firstName: new FormControl('', [Validators.required,]),
+      lastName: new FormControl('', [Validators.required,]),
+      phone: new FormControl('', [Validators.required,Validators.maxLength(11),]),
+      address: new FormControl('', [Validators.required,]),
+      avatar: new FormControl('', [Validators.required,]),
     });
-
   }
-  signUp() {
-    this.router.navigate(['/signup']);
+  checkValue( ) {
+    if(this.myGroup.valid) {
+      this.isDisabled = false;
+    }
   }
-  signIn() {
+  updateProfile() {
     this.submitForm()
+  }
+  back() {
+    const idUser = localStorage.getItem('id')
+    this.router.navigate(['/home/post/'+idUser]);
   }
 
   openSnackBar(message: string, action: string) {
@@ -77,6 +82,7 @@ export class LoginComponent implements OnInit {
           return
         }
         else {
+          console.log(data.data.id)
           this.saveInfoUser(data.data)
         }
       }
@@ -85,7 +91,8 @@ export class LoginComponent implements OnInit {
   saveInfoUser(data:any){
     localStorage.setItem('id',data.id)
     localStorage.setItem('name',data.firstName)
-    localStorage.setItem('displayName',data.displayName)
+    localStorage.setItem('firstName',data.firstName)
+    localStorage.setItem('lastName',data.lastName)
     localStorage.setItem('phoneNumber',data.phoneNumber)
     localStorage.setItem('avatar',data.avatar)
     localStorage.setItem('biography',data.avatar)
@@ -102,9 +109,6 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
-  checkValue( ) {
-    if(this.myGroup.valid) {
-      this.isDisabled = false;
-    }
-  }
+
 }
+

@@ -18,23 +18,21 @@ export class SignupComponent implements OnInit {
   myGroup: any;
   errorMessage = '';
   roles: string[] = [];
-
+  isDisabled: boolean = true;
   submitForm(): void {
     if (this.myGroup.valid) {
       console.log('đăng ký')
-      // this.authService.login(this.myGroup.value).subscribe(
-      //   data => {
-      //     this.tokenStorage.saveToken(data.token);
-      //     this.tokenStorage.saveUser(data);
-      //     this.roles = this.tokenStorage.getUser().roles;
-      //     this.getDataUserById(data.id)
-      //     this.router.navigate(['/home']);
-      //     this.openSnackBar('Successfully', 'Close');
-      //   },
-      //   err => {
-      //     this.errorMessage = err.error.message;
-      //   }
-      // );
+      console.log(this.myGroup.value)
+      this.authService.register(this.myGroup.value).subscribe(
+        data => {
+          console.log(data)
+          this.router.navigate(['/login']);
+          this.openSnackBar('Successfully', 'Close');
+        },
+        err => {
+          this.errorMessage = err.error.message;
+        }
+      );
     } else {
       this.openSnackBar('Vui lòng nhập đúng trường', 'Close')
     }
@@ -53,12 +51,22 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.myGroup = new FormGroup({
-      username: new FormControl('', [Validators.required,]),
+      userName: new FormControl('', [Validators.required,]),
+      email: new FormControl('', [Validators.required,Validators.email]),
+      firstName: new FormControl('', [Validators.required,]),
+      lastName: new FormControl('', [Validators.required,]),
+      phone: new FormControl('', [Validators.required,Validators.maxLength(11),]),
+      address: new FormControl('', [Validators.required,]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      rePassword: new FormControl('', [Validators.required, Validators.minLength(6)])
-
+      rePassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      role: new FormControl('', [Validators.required,]),
+      avatar: new FormControl('', [Validators.required,]),
     });
-
+  }
+  checkValue( ) {
+    if(this.myGroup.valid) {
+      this.isDisabled = false;
+    }
   }
   signUp() {
     this.submitForm()

@@ -168,3 +168,16 @@ html {
       rgba(14, 191, 210, 1) 37.6%,
       rgba(8, 127, 140, 1) 99.2%);
 }
+
+@media only screen and (max-width: 425px) {
+  .sidebar {
+    width:0px;
+    display:none;
+  }
+}
+@media only screen and (max-width: 675px) {
+  .sidebar {
+    width:0px;
+    display:none;
+  }
+}
