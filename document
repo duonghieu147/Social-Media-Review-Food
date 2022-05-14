@@ -4,6 +4,8 @@
 ng g c shared/components/addfooditem --module app
 
 ng g c modules/pages/watch/video --module app
+ng g c modules/pages/profile/update-profile --module app
+
 
 https://rfood.herokuapp.com/swagger-ui.html#/
 

@@ -1,27 +1,70 @@
 <div class="container">
-  <div class="login" [formGroup]="myGroup">
-      <h1>Đăng Ký</h1>
-      <br><br/>
-      <mat-form-field appearance="fill">
-          <mat-label>Tài khoản</mat-label>
-          <input matInput type="text" class="example-right-align" placeholder="" formControlName="username">
-          <!-- <span matPrefix>$&nbsp;</span>
+  <div class="login" [formGroup]="myGroup" (change)="checkValue()">
+    <h1>Đăng Ký</h1>
+    <br><br />
+    <mat-form-field appearance="fill">
+      <mat-label>Tài khoản</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="" formControlName="userName">
+      <!-- <span matPrefix>$&nbsp;</span>
           <span matSuffix>.00</span> -->
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-          <mat-label>Mật khẩu</mat-label>
-          <input matInput type="password" formControlName="password">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Nhập lại Mật khẩu</mat-label>
-        <input matInput type="password" formControlName="rePassword">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="" formControlName="email">
     </mat-form-field>
 
-      <div class="actions">
-        <button mat-raised-button  (click)="signIn()">Đăng Nhập</button>
-          <button mat-raised-button color="primary" (click)="signUp()">Đăng Ký</button>
-      </div>
+    <div class="info-name">
+      <mat-form-field appearance="fill">
+        <mat-label>Họ</mat-label>
+        <input matInput type="text" class="example-right-align" placeholder="" formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tên</mat-label>
+        <input matInput type="text" class="example-right-align" placeholder="" formControlName="lastName">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Avatar</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="" formControlName="avatar">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Số điện thoại</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="" formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Địa chỉ</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="" formControlName="address">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mật khẩu</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nhập lại Mật khẩu</mat-label>
+      <input matInput type="password" formControlName="rePassword">
+    </mat-form-field>
+
+    <div class="role-option">
+      <label>
+        <input type="radio" value="1" formControlName="role">
+        <span>viewer</span>
+      </label>
+      <label>
+        <input type="radio" value="3" formControlName="role">
+        <span>nhà hàng</span>
+      </label>
+    </div>
+
+
+    <div class="actions">
+      <button mat-raised-button (click)="signIn()" >Đăng Nhập</button>
+      <button mat-raised-button color="primary" (click)="signUp()" [disabled]="isDisabled">Đăng Ký</button>
+    </div>
   </div>
 </div>

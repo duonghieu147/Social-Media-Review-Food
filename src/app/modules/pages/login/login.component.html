@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="login" [formGroup]="myGroup">
+    <div class="login" [formGroup]="myGroup" (change)="checkValue()">
         <h1>Đăng Nhập</h1>
         <br><br/>
         <mat-form-field appearance="fill">
@@ -21,7 +21,7 @@
 
         <div class="actions">
             <button mat-raised-button (click)="signUp()">Đăng Ký</button>
-            <button mat-raised-button color="primary" (click)="signIn()">Đăng Nhập</button>
+            <button mat-raised-button color="primary" (click)="signIn()" [disabled]="isDisabled">Đăng Nhập</button>
         </div>
     </div>
 </div>
