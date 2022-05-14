@@ -66,8 +66,8 @@ import { WatchComponent } from './modules/pages/watch/watch.component';
 import { VideoComponent } from './modules/pages/watch/video/video.component';
 import { UpdateProfileComponent } from './modules/pages/profile/update-profile/update-profile.component';
 import { AddFoodItemComponent } from './shared/components/addfooditem/addfooditem.component';
-import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodshop.component';
 import { FormControlComponent } from './modules/pages/form-control/form-control.component';
+import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodshop.component';
 
 //
 @NgModule({
@@ -103,7 +103,7 @@ import { FormControlComponent } from './modules/pages/form-control/form-control.
     WatchComponent,
     VideoComponent,
     AddFoodShopComponent,
-    FormControlComponent
+    FormControlComponent,
     UpdateProfileComponent
   ],
   imports: [
