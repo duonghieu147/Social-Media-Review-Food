@@ -3,10 +3,10 @@
         <div nz-row>
             <div nz-col nzSpan="5"></div>
             <div nz-col nzSpan="14">
+                <div class="title">
+                    Tìm thấy <span style="font-weight: bold">{{foodShop.length}}</span> kết quả.
+                </div>
                 <div class="search-container">
-                    <div class="title">
-                        Tìm thấy <span style="font-weight: bold">{{foodShop.length}}</span> kết quả.
-                    </div>
                     <ng-template [ngIf]="foodShop.length > 0">
                         <div *ngFor="let item of foodShop">
                             <div (click)="onClickResult(item.userId)" class="search-result">
@@ -32,7 +32,9 @@
                         </div>
                     </ng-template>
                 </div>
-                <button class="load-more-button" (click)="loadNextPage()" mat-button>Xem thêm</button>
+                <ng-template [ngIf]="foodShop.length > limit">
+                    <button class="load-more-button" (click)="loadNextPage()" mat-button>Xem thêm</button>
+                </ng-template>
             </div>
             <div nz-col nzSpan="5" style="text-align: center">
                 <app-chat></app-chat>
