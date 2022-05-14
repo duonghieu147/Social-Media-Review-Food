@@ -13,8 +13,9 @@
   width: 80px;
 }
 nz-carousel {
-  height:350px;
-  width: 600px;
+  max-height:300px;
+  height: 80%;
+  width: 80%;
   margin: auto;
   margin-top: 24px;
 }
@@ -28,8 +29,8 @@ nz-carousel {
 }
 
 [nz-image] {
-  height:350px;
-  width: 600px;
+  height:100%;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -38,8 +39,7 @@ nz-carousel {
   justify-content: center;
 }
 .mat-button{
-  width:150px;
-
+  width:100%;
 }
 
 
@@ -146,6 +146,36 @@ margin-top: 12px;
 }
 
 .write-cmt{
-  width: 30em !important;
+  width: 450px !important;
 }
 /* End Comment*/
+@media only screen and (max-width: 425px) {
+  .mat-button{
+    font-size:12px;
+    width:100%;
+    padding:0;
+  }
+  .mat-dialog-actions {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .write-cmt{
+    width: 250px !important;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .mat-button{
+    font-size:12px;
+    width:100%;
+    padding:0;
+  }
+  .mat-dialog-actions {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .write-cmt{
+    width: 350px !important;
+  }
+}

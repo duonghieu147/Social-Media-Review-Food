@@ -20,7 +20,7 @@ random:any
   }
   openDialog(){
     const dialogRef = this.dialog.open(DialogItemFoodComponent,
-      {  width: '700px',height:'auto',data:this.foodItem}
+      {  width: 'auto',height:'auto',data:this.foodItem}
   );
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

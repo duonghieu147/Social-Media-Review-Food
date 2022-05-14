@@ -150,11 +150,12 @@ button.edit {
   width: 200px;
   height: 36px;
   margin-top: 24px;
+  margin-right: 24px;
 }
 
 button.edit {
   background: #1B1D28;
-  margin-left: 24px;
+  /* margin-left: 24px; */
   color: white;
 }
 
