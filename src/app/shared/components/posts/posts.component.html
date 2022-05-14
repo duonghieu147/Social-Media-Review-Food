@@ -78,7 +78,7 @@
             <div class="btn-actions">
                 <button mat-button color="accent" (click)="actionLikes()"> {{dataPost.like}} Like</button>
                 <div *ngIf="numberCmt">
-                    <button style="width: 22em;" mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}}
+                    <button style="width: 22em;"class='comment' mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}}
                         Comment</button>
                 </div>
                 <div *ngIf="!numberCmt">
