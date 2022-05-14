@@ -24,7 +24,7 @@ export class AddcommentComponent implements OnInit {
   ngOnInit(): void {
     console.log('this.iscommentPost ',this.iscommentPost == false )
     this.user = {
-      author: localStorage.getItem('name'),
+      author: localStorage.getItem('displayName'),
       avatar: localStorage.getItem('avatar')
     };
   }
