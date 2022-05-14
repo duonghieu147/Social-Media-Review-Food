@@ -5,6 +5,7 @@ import { catchError, map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { FoodShop } from '../model/foodshop.interface';
 import { ListDTO } from '../model/listdto.interface';
+import { FoodShopRequest } from '../model/request/foodshop';
 import { BaseResponse } from '../model/response.interface';
 
 
@@ -46,8 +47,8 @@ export class FoodShopService {
         if (categoryId > 0) {
             params['categoryId'] = categoryId;
         }
-        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search',{
-            params:params
+        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search', {
+            params: params
         })
             .pipe(
                 map((res: BaseResponse<ListDTO<FoodShop>>) => {
@@ -62,4 +63,7 @@ export class FoodShopService {
             );
     }
 
+    createFoodShop(body: FoodShopRequest) {
+        return this.http.post<BaseResponse<FoodShopRequest>>(defaultUrl + '/api/foodshop', body);
+    }
 }

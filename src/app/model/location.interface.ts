@@ -3,4 +3,4 @@ export interface Location {
     name: string;
     level: number,
     parentId: number;
-  }
+  } 

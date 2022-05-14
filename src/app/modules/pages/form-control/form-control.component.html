@@ -1,0 +1,100 @@
+<div class="form-group">
+  <ng-content select="[header]"></ng-content>
+  <ng-content select="[body]"></ng-content>
+  <!-- <div class="invalid"
+    role="alert">
+    <ng-container *ngIf="labelError == 'title'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.minlength">Tiêu đề ít hơn
+        {{ formControlItem.errors.minlength.requiredLength }} ký tự, vui lòng chỉnh sửa</div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.maxlength">Tiêu đề quá
+        {{ formControlItem.errors.maxlength.requiredLength }} ký tự, vui lòng chỉnh sửa</div>
+      <div class="invalid-feedback"
+        *ngIf="formControlItem.errors.no_special || formControlItem.errors.vnText || formControlItem.errors.no_emoji">
+        Tiêu đề có chứa ký tự đặc biệt</div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.all_space">Tiêu đề không được để trống</div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng điền tiêu đề tin mua bán</div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'price'">
+      <div class="invalid-feedback"
+        *ngIf="formControlItem.errors.required || formControlItem.errors.min || formControlItem.errors.no_text">
+        Vui lòng điền giá tin mua bán
+      </div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.max">Giá sản phẩm vượt quá giá trị cho phép</div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'category'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng lựa chọn danh mục của tin mua bán
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'description'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng điền mô tả cho tin mua bán
+      </div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.no_emoji">Vui lòng điền mô tả không chứa ký tự đặc
+        biệt
+      </div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.maxlength">Mô tả quá
+        {{ formControlItem.errors.maxlength.requiredLength }} ký tự, vui lòng chỉnh sửa
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'city'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">
+        Vui lòng chọn Tỉnh/thành phố của mặt hàng đang rao
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'district'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">
+        Vui lòng chọn Quận/ huyện của mặt hàng đang rao
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'name'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.no_emoji">
+        Vui lòng điền họ tên không chứa ký tự đặc biệt
+      </div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.no_special || formControlItem.errors.vnText">
+        Họ tên có chứa ký tự đặc biệt
+      </div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.all_space">Họ tên không được để trống</div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng điền họ tên phù hợp</div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'industry'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng chọn ngành nghề phù hợp</div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'email'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng điền email phù hợp</div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.email">Vui lòng điền email phù hợp</div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'phoneNumber'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng điền số điện thoại phù hợp</div>
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.phoneNumber">Vui lòng điền số điện thoại phù hợp</div>
+    </ng-container>
+
+    <ng-container *ngIf="labelError == 'address'">
+      <div class="invalid-feedback" *ngIf="formControlItem.errors.required">Vui lòng điền địa chỉ phù hợp</div>
+    </ng-container>
+
+    <ng-container *ngIf="formalName && notification[formalName]">
+      <ng-container *ngFor="let error of notification[formalName]['errors']">
+        <ng-container *ngIf="error.name === 'required'">
+          <div class="invalid-feedback" *ngIf="formControlItem.errors.required">{{error.value}}</div>
+        </ng-container>
+        <ng-container *ngIf="error.name === 'max'">
+          <div class="invalid-feedback" *ngIf="formControlItem.errors.max">{{error.value}}</div>
+        </ng-container>
+        <ng-container *ngIf="error.name === 'min'">
+          <div class="invalid-feedback" *ngIf="formControlItem.errors.min">{{error.value}}</div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+  </div> -->
+  <ng-content></ng-content>
+  <ng-content select="[noti]"></ng-content>
+</div>

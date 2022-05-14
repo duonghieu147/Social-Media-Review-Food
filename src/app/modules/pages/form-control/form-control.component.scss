@@ -1,0 +1,23 @@
+.form-group {
+    position: relative;
+}
+
+.invalid {
+    width: 100%;
+    color: #dc3545;
+    height: 10px;
+}
+
+.invalid .invalid-feedback {
+    display: block !important;
+}
+
+.form-group:focus-within .invalid {
+    display: none;
+}
+
+.invalid-feedback {
+    position: absolute;
+    width: 100%;
+    background: #ffffff;
+}

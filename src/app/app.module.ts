@@ -57,7 +57,6 @@ import { PageNoteFoundComponent } from './shared/components/page-note-found/page
 import { TestComponent } from './modules/pages/test/test.component';
 import { MsgComponent } from './shared/components/msg/msg.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
-import { AddfooditemComponent } from './shared/components/addfooditem/addfooditem.component';
 import { RecordsComponent } from './modules/pages/records/records.component';
 import { EditprofileComponent } from './modules/pages/profile/editprofile/editprofile.component';
 import { SearchFoodShop} from './shared/components/searchfoodshop/searchfoodshop.component';
@@ -66,6 +65,9 @@ import { FirstPage } from './modules/pages/firstpage/firstpage.component';
 import { WatchComponent } from './modules/pages/watch/watch.component';
 import { VideoComponent } from './modules/pages/watch/video/video.component';
 import { UpdateProfileComponent } from './modules/pages/profile/update-profile/update-profile.component';
+import { AddFoodItemComponent } from './shared/components/addfooditem/addfooditem.component';
+import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodshop.component';
+import { FormControlComponent } from './modules/pages/form-control/form-control.component';
 
 //
 @NgModule({
@@ -92,7 +94,7 @@ import { UpdateProfileComponent } from './modules/pages/profile/update-profile/u
     TestComponent,
     MsgComponent,
     LoadingComponent,
-    AddfooditemComponent,
+    AddFoodItemComponent,
     RecordsComponent,
     EditprofileComponent,
     SearchFoodShop,
@@ -100,6 +102,8 @@ import { UpdateProfileComponent } from './modules/pages/profile/update-profile/u
     FirstPage,
     WatchComponent,
     VideoComponent,
+    AddFoodShopComponent,
+    FormControlComponent
     UpdateProfileComponent
   ],
   imports: [

@@ -9,7 +9,7 @@
                     </div>
                     <ng-template [ngIf]="foodShop.length > 0">
                         <div *ngFor="let item of foodShop">
-                            <div class="search-result">
+                            <div (click)="onClickResult(item.userId)" class="search-result">
                                 <div class="search-image">
                                     <img src="{{item.avatar}}" alt="Food shop image">
                                 </div>

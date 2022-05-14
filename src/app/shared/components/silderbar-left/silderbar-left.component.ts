@@ -8,7 +8,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 })
 export class SilderbarLeftComponent implements OnInit {
   isCollapsed = false;
-  urlProfile = '/profile/' + localStorage.getItem('id')
+  urlProfile = '/profile/';
   constructor() { }
 
   ngOnInit(): void {
@@ -18,8 +18,11 @@ export class SilderbarLeftComponent implements OnInit {
   }
   selectedNavItem: string = '';
 
-  navClick(navId: any) {
-    this.selectedNavItem = navId;
+  navClick(navName: any) {
+    this.selectedNavItem = navName;
+    if(navName==="profile"){
+      this.urlProfile +=localStorage.getItem('id')
+    }
   }
 
 }

@@ -11,4 +11,5 @@ export interface FoodShop {
     time: string;
     avatar: string;
     description:string;
+    userId:number;
   }

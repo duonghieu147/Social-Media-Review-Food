@@ -14,6 +14,8 @@ const defaultUrl = `${environment.API_PATH}`;
 
 export class LocationService {
 
+    provinces =[];
+
     constructor(private http: HttpClient) { }
 
     private handleError(error: HttpErrorResponse) {

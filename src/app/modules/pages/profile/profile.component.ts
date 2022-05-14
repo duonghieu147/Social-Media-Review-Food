@@ -4,12 +4,12 @@ import { NzIconService } from 'ng-zorro-antd/icon';
 import * as cmn from 'src/app/constant/common'
 import {MatDialog} from '@angular/material/dialog';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
-import { AddfooditemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
 import { ShareService } from 'src/app/service/share.service';
 import { PostService } from 'src/app/service/post.service';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AddFoodItemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
 
 @Component({
   selector: 'app-profile',
@@ -179,7 +179,7 @@ export class ProfileComponent implements OnInit {
 
   //Food Item Controller
   dialogAddFoodItem(): void {
-    const dialogRef =this.dialog.open(AddfooditemComponent,{
+    const dialogRef =this.dialog.open(AddFoodItemComponent,{
         width: '700px',height:'auto'
     })
     dialogRef.afterClosed().subscribe(result =>{

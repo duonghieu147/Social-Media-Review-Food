@@ -19,10 +19,11 @@ export class SearchFoodShop implements OnInit {
 
   foodShop: FoodShop[] = [];
 
-  constructor(public foodShopService: FoodShopService, private route: ActivatedRoute) { }
+  constructor(public foodShopService: FoodShopService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    
+
     this.route.queryParams
       .subscribe((params) => {
         console.log(params)
@@ -46,5 +47,11 @@ export class SearchFoodShop implements OnInit {
   loadNextPage() {
     this.page = this.page + 1;
     this.searchFoodShop(this.query, this.provinceId, this.districtId, this.categoryId, this.page, this.limit);
+  }
+
+  onClickResult(userId: any) {
+    this.router.navigate(
+      ['/profile/' + userId]
+    );
   }
 }

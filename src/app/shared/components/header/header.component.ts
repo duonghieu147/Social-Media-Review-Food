@@ -52,7 +52,6 @@ export class HeaderComponent implements OnInit {
     }
 
     onSearch(query: string, provinceId: number, districtId: number, categoryId: number) {
-        console.log("1231")
         let params: any = {};
         if (query!='') {
             params['query'] = query;

@@ -13,7 +13,7 @@ import { ShareService } from '../../../service/share.service';
   templateUrl: './addfooditem.component.html',
   styleUrls: ['./addfooditem.component.css']
 })
-export class AddfooditemComponent  {
+export class AddFoodItemComponent  {
 
   inputValue: string = '';
 
@@ -53,7 +53,7 @@ export class AddfooditemComponent  {
     public shareService: ShareService,
     private fb: FormBuilder,
     private router: Router,
-    public dialogRef: MatDialogRef<AddfooditemComponent>) { }
+    public dialogRef: MatDialogRef<AddFoodItemComponent>) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

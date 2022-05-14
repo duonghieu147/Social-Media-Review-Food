@@ -1,0 +1,169 @@
+<div style="margin-left: 20.83%; width :58.34% ;background-color: #EFF0F5 ; padding: 20px; border-radius: 5px;"
+    class="container-fluid">
+    <div class="header-name">
+        Tạo cửa hàng
+    </div>
+    <ng-container *ngIf="submitForm">
+        <form class="default-form" [formGroup]="submitForm">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bl-module">
+                        <app-form-control [formControlItem]="name" labelError="name" id="name">
+                            <div header>
+                                <label for="name">
+                                    Tên cửa hàng <i>*</i>
+                                </label>
+                                <input class="form-control" type="text" formControlName="name" maxlength="1000"
+                                    placeholder="Nhập tên cửa hàng">
+                            </div>
+                        </app-form-control>
+
+                        <app-form-control [formControlItem]="description" labelError="description" id="description">
+                            <div header>
+                                <label for="description">
+                                    Mô tả <i>*</i>
+                                </label>
+                                <textarea style="margin-bottom: 5px;" class="form-control" name="description"
+                                    formControlName="description" rows="5" cols="50" maxlength="2000"
+                                    placeholder="Nhập mô tả sản phẩm"></textarea>
+                            </div>
+                            <app-form-control [formControlItem]="open" labelError="open" id="open">
+                                <div header>
+                                    <label for="open">
+                                        Giờ mở cửa <i>*</i>
+                                    </label>
+                                    <br>
+                                    <small class="mb-3">
+                                        Định dạng số, theo khung 24h. Ví dụ : 10
+                                    </small>
+                                    <input class="form-control" formControlName="open" placeholder="Nhập giờ mửa cửa">
+                                </div>
+                            </app-form-control>
+                            <app-form-control [formControlItem]="close" labelError="close" id="close">
+                                <div header>
+                                    <label for="close">
+                                        Giờ đóng cửa <i>*</i>
+                                    </label>
+                                    <br>
+                                    <small class="mb-3">
+                                        Định dạng số, theo khung 24h. Ví dụ : 10
+                                    </small>
+                                    <input class="form-control" formControlName="close" placeholder="Nhập giờ đóng cửa">
+                                </div>
+                            </app-form-control>
+
+                        </app-form-control>
+                        <app-form-control [formControlItem]="location" labelError="location" id="location">
+                            <div header>
+                                <label for="location">
+                                    Địa chỉ <i>*</i>
+                                </label>
+                                <br>
+                                <small class="mb-3">
+                                    Địa chỉ chi tiết
+                                </small>
+                                <input class="form-control" formControlName="location"
+                                    placeholder="Nhập địa chỉ chi tiết">
+                            </div>
+                        </app-form-control>
+
+                    </div>
+                    <div class="bl-module">
+                        <h3 class="mb-2">Ảnh sản phẩm <i>*</i></h3>
+                        <small class="mb-3">
+                            Tối đa 10 ảnh. Dung lượng tối đa 1 Mb. Định dạng .jpg, .png
+                        </small>
+                        <div class="img-list">
+                            <ul style="padding-left: 0; display: flex;">
+                                <li class="li-style-none" *ngFor="let url of images; index as i">
+                                    <img style="width: 120px;height: 120px;" [src]="url" alt="product-image">
+                                        <a class="func-remove" (click)="removeImage(i)">
+                                            <div class="icz icz-trash"></div>
+                                        </a>
+                                </li>
+                                <li class="li-style-none">
+                                    <a class="img-upload">
+                                        <i class="fa-solid fa-circle-plus icon-plus"></i>
+                                        <input style="width: 120px; height: 120px; opacity: 0; position: absolute;"
+                                            type="file" accept="image/png, image/jpeg, image/jpg" id="images"
+                                            name="images" multiple (change)="onSelectFile($event)">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bl-module">
+                        <h3 class="mb-2">Ảnh đại diện <i>*</i></h3>
+                        <div class="img-list">
+                            <ul style="padding-left: 0;">
+                                <li class="li-style-none">
+                                    <a class="img-upload">
+                                        <ng-container *ngIf="!avatarImage">
+                                            <i class="fa-solid fa-circle-plus icon-plus"></i>
+                                            <input style="width: 120px; height: 120px; opacity: 0; position: absolute;"
+                                                type="file" accept="image/png, image/jpeg, image/jpg" id="images"
+                                                name="images" multiple (change)="onSelectAvatarImage($event)">
+                                        </ng-container>
+                                        <img style="width: 120px;height: 120px;" *ngIf="avatarImage" [src]="avatarImage">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bl-module">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <h3 class="mb-2">Địa điểm <i>*</i></h3>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <app-form-control [formControlItem]="provinceId" labelError="city" id="provinceId">
+                                    <label header class="fs--m" for="provinceId">Tỉnh/Thành</label>
+                                    <div body class="wrap-select">
+                                        <mat-select class="form-control" formControlName="provinceId" disableOptionCentering
+                                            (selectionChange)="onChangeProvince($event.value)">
+                                            <mat-option value="">Chọn Tỉnh/ Thành phố</mat-option>
+                                            <mat-option *ngFor="let provinceItem of provinces"
+                                                [value]="provinceItem.id">
+                                                {{ provinceItem.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </app-form-control>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <app-form-control [formControlItem]="districtId" labelError="district" id="districtId">
+                                    <label header class="fs--m" for="districtId">Quận/Huyện</label>
+                                    <div body class="wrap-select">
+                                        <mat-select class="form-control" disableOptionCentering formControlName="districtId">
+                                            <mat-option value="">Chọn Quận/ Huyện</mat-option>
+                                            <mat-option *ngFor="let districtItem of districts"
+                                                [value]="districtItem.id">
+                                                {{ districtItem.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </app-form-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bl-module">
+                        <h3 class="mb-2">Danh mục <i>*</i></h3>
+                        <app-form-control [formControlItem]="categoryId" labelError="category" id="categoryId">
+                            <div body class="wrap-select">
+                                <mat-select class="form-control" formControlName="categoryId" disableOptionCentering
+                                    placeholder="Lựa chọn danh mục">
+                                    <mat-option [value]="0">Food</mat-option>
+                                    <mat-option [value]="1">Beverage</mat-option>
+                                </mat-select>
+                            </div>
+                        </app-form-control>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+
+    <button type="button" (click)="onSubmit()" class="btn btn-default btn--m btn-primary ml-2">
+        <ng-container>Tạo cửa hàng</ng-container>
+    </button>
+</div>
