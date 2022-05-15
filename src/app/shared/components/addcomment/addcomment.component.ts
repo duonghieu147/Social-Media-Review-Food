@@ -11,7 +11,7 @@ import { ShareService } from '../../../service/share.service';
 })
 export class AddcommentComponent implements OnInit {
   @Input() iscommentPost: Boolean = true ;
-  @Input() id: number = 0;
+  @Input() id: number = null;
 
   dataCmt:any;
   user:any;
@@ -40,7 +40,7 @@ export class AddcommentComponent implements OnInit {
     setTimeout(() => {
       this.submitting = false;
       this.dataCmt= {
-        userId:localStorage.getItem('id'),
+        userId:parseInt(localStorage.getItem('id')),
         content:content,
         parentId : this.id
       }
@@ -68,7 +68,7 @@ export class AddcommentComponent implements OnInit {
     console.log(this.data)
   }
   createCommentPost(postId:any,comment:any){
-    console.log(comment)
+    console.log(postId)
     this.postService.createCommentPost(postId,comment).subscribe(
       (data) => {
         console.log(data)
