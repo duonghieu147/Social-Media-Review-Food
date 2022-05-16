@@ -12,7 +12,7 @@ nz-comment textarea.ant-input {
 }
 
 span {
-  color: blue !important;
+  color: rgb(125, 125, 128) !important;
 }
 
 ::ng-deep nz-comment.ant-comment {
@@ -23,7 +23,7 @@ span {
   padding: 10px 18px 5px 30px;
   display: flex;
   border-radius: 5px;
-  width:95%;
+  width:fit-content;
 }
 
 ::ng-deep nz-comment.ant-comment>.ant-comment-inner>.ant-comment-content {
@@ -56,6 +56,7 @@ span {
   border-radius: 18px;
   flex: 1;
   padding: 12px;
+  width: fit-content;
 }
 
 .comment-attributes .comment-content .comment-content-name {
@@ -87,4 +88,14 @@ nz-form-item.ant-row.ant-form-item {
   border-radius: 18px;
   padding: 10px;
   margin: 0px 20px 10px 0;
+}
+
+.reply-button{
+  display: flex;
+  width: 50px;
+  height: 30px;
+  color: rgb(37, 34, 34);
+   margin: 0 0 0 7.5%; 
+   border-radius: 18px;
+  padding: 2px 0 -4px 0;
 }

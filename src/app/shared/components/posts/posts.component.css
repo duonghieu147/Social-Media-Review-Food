@@ -272,7 +272,7 @@ nz-list {
 
 .blank-comment-reply{
   margin: 10px 0 5px 5%;
-  height: 81px;
+  /* height: 81px; */
 }
 
 *{
