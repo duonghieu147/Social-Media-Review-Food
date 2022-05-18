@@ -34,7 +34,11 @@ const routes: Routes = [
             {
                 path: 'addfoodshop',
                 component: AddFoodShopComponent,
-        
+
+            },
+            {
+                path: 'done',
+                component: HomeComponent
             }
 
         ]

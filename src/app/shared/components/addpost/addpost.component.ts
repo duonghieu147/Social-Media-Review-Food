@@ -16,28 +16,40 @@ import { PostService } from 'src/app/service/post.service';
 export class AddpostComponent {
   inputValue: string = '';
 
-  suggestions = ['Coffee', 'Do uong', 'user 1', 'user 2', 'Nha hang 1', 'Quan'];
+  suggestions = ['Coffee', 'Douong', 'highland', 'duonghieu147 ', 'reivew', 'sanpham'];
 
   validateForm!: FormGroup;
+  tags: any;
 
   submitForm(): void {
     console.log('submit', this.validateForm.value.description);
     var img = [];
-    img.push(this.validateForm.value.images)
-    img.push(this.validateForm.value.images2)
-    img.push(this.validateForm.value.images3)
-    console.log('img', img);
+    if(this.validateForm.value.images!= null) {
+      if(this.validateForm.value.images.trim() !='') {
+        img.push(this.validateForm.value.images)
+      }
+    }
+    if(this.validateForm.value.images2!= null) {
+      if(this.validateForm.value.images2.trim() !='') {
+        img.push(this.validateForm.value.images2)
+      }
+    }
+    if(this.validateForm.value.images3!= null) {
+      if(this.validateForm.value.images3.trim() !='') {
+        img.push(this.validateForm.value.images3)
+      }
+    }
     this.postService.createPost({
       "description": this.validateForm.value.description,
       "userId": localStorage.getItem("id"),
       "images": img,
+      "tags":this.tags
     }).subscribe(
       (data) => {
         if (data) {
           console.log(data)
           this.openSnackBar('Successfully', 'Close')
-          this.router.navigate(['/home/z']);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/done']);
           this.dialogRef.close();
         }
         else {
@@ -65,6 +77,8 @@ export class AddpostComponent {
 
   onChange(value: string): void {
     console.log(value);
+    this.tags = value.trim().split(" ")
+    console.log(this.tags)
   }
 
   onSelect(suggestion: string): void {
