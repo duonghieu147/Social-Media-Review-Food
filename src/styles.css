@@ -8,3 +8,4 @@ body { margin: 0 }
     font-family: 'Ubuntu' !important;
 } */
 /* @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow); */
+@import '~ngx-sharebuttons/button/themes/default';

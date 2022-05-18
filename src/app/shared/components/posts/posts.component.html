@@ -78,13 +78,22 @@
             <div class="btn-actions">
                 <button mat-button color="accent" (click)="actionLikes()"> {{dataPost.like}} Like</button>
                 <div *ngIf="numberCmt">
-                    <button style="width: 22em;"class='comment' mat-button color="primary" (click)="showWritenCmt()">{{numberCmt}}
+                    <button style="width: 22em;" class='comment' mat-button color="primary"
+                        (click)="showWritenCmt()">{{numberCmt}}
                         Comment</button>
                 </div>
                 <div *ngIf="!numberCmt">
                     <button mat-button color="primary" (click)="showWritenCmt()"> Comment</button>
                 </div>
-                <button mat-button color="warn">Share</button>
+                <!-- <div class="share">
+                    <button mat-button color="warn">Share</button>
+                    <share-buttons [theme]="'modern-dark'"
+                    [include]="['facebook','twitter','linkedin','telegram','messenger','whatsapp','xing','line','sms','email','print','copy']"
+                    [show]="0" [url]="'https://twitter.com/'" [autoSetMeta]="false">
+                Share</share-buttons>
+                </div> -->
+                <share-button button="facebook" text="Share" [showText]="true" [url]="'https://rvfood.herokuapp.com/home/post'"></share-button>
+                
             </div>
         </mat-dialog-actions>
     </ng-template>
