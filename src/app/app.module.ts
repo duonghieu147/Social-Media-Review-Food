@@ -68,7 +68,8 @@ import { UpdateProfileComponent } from './modules/pages/profile/update-profile/u
 import { AddFoodItemComponent } from './shared/components/addfooditem/addfooditem.component';
 import { FormControlComponent } from './modules/pages/form-control/form-control.component';
 import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodshop.component';
-
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 //
 @NgModule({
   declarations: [
@@ -133,7 +134,11 @@ import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodsho
     NzModalModule,
     NgZorroAntdModule,
     // MatDialogModule,
-    MaterialModule
+    MaterialModule,
+    ShareButtonsModule.withConfig({
+      debug: true,
+    }),
+    ShareIconsModule,
   
   ],
   providers: [],

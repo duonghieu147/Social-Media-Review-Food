@@ -149,6 +149,15 @@ mat-dialog-actions.mat-dialog-actions.ng-star-inserted{
 .btn-actions button {
   width: 100%;
 }
+share-button {
+  width: 100%;
+}
+::ng-deep.sb-text.ng-star-inserted {
+  color: blue !important;
+}
+::ng-deepsvg.svg-inline--fa.fa-facebook-f.fa-fw{
+  color: blue !important;
+}
 
 button.mat-focus-indicator.mat-button.mat-button-base{
   width: 100%;
