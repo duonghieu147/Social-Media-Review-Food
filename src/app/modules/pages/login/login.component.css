@@ -1,7 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-*{
-  font-family: 'Pacifico' !important;
-}
 *{font-family: Tahoma, sans-serif !important;
 }
 .container{
@@ -9,6 +5,7 @@
   justify-content:center;
 }
 .login{
+  
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -20,6 +17,7 @@
   -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
+  background-color: rgb(204 255 255);
 }
 .mat-form-field{
   width: 100%;
@@ -33,4 +31,9 @@
 }
 .actions button:nth-child(2){
   margin-left:24px;
+}
+h1{
+  text-align: center;
+  font-size: 28px;
+  font-weight: bolder;
 }

@@ -1,12 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-*{
-  font-family: 'Pacifico' !important;
-}
 *{font-family: Tahoma, sans-serif !important;
 }
 .container{
   display: flex;
-  justify-content:center;
+  background-color: rgb(255, 255, 255);
+  color: #000;
 }
 .login{
   display: flex;
@@ -20,6 +17,15 @@
   -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+}
+.form-signup{
+  justify-content:center;
+  width: 60%;
+  margin-left: 25%;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  background-color: rgb(204 255 255);
+  border-radius: 7px;
 }
 .mat-form-field{
   width: 100%;
@@ -35,18 +41,24 @@
 .actions button:nth-child(2){
   margin-left:24px;
 }
-
+h1{
+  text-align: center;
+  font-size: 28px;
+  font-weight: bolder;
+  margin-bottom: 50px;
+}
 .info-name{
   display: flex;
 }
 .role-option{
-  display: flex;
+  display: block;
 
 }
 .role-option input {
   margin-left:8px;
 }
 .role-option span {
-  margin-left: 8px;
+  margin-left: 12px;
   font-size: 14px;
+  padding-bottom: 2px;
 }

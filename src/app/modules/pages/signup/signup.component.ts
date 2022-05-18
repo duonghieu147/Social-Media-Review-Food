@@ -17,7 +17,6 @@ export class SignupComponent implements OnInit {
   hide = true;
   myGroup: any;
   errorMessage = '';
-  roles: string[] = [];
   isDisabled: boolean = true;
   submitForm(): void {
     if (this.myGroup.valid) {
