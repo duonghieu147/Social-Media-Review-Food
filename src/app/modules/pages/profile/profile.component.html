@@ -118,13 +118,13 @@
   </nz-page-header>
   <nz-page-header-footer>
     <nz-tabset [nzSelectedIndex]="0" nzSize="large">
-      <nz-tab nzTitle="Bài Viết" (nzClick)="changeModeProfile('home')"></nz-tab>
-      <nz-tab *ngIf="this.userIdParams=='3'" nzTitle="Sản phẩm" (nzClick)="changeModeProfile('product')"></nz-tab>
+      <nz-tab  nzTitle="Bài Viết" (nzClick)="changeModeProfile('home')"></nz-tab>
+      <nz-tab *ngIf="this.isShopManager" nzTitle="Sản phẩm" (nzClick)="changeModeProfile('product')"></nz-tab>
       <nz-tab nzTitle="Thông Tin" (nzClick)="changeModeProfile('profile')"></nz-tab>
     </nz-tabset>
   </nz-page-header-footer>
 
-  <div *ngIf="this.userIdParams =='3'">
+  <div *ngIf="this.isShopManager">
     <nz-carousel nzAutoPlay>
       <div nz-carousel-content *ngFor="let index of array">
         <img nz-image nzSrc='{{ index }}' alt="" />
@@ -141,7 +141,7 @@
     <div *ngIf="modepage=='product'">
       <div class="action-fooditem">
         <div>
-          <button *ngIf="userId==userIdParams" class="createfood" mat-button color="primary" (click)="dialogAddFoodItem()">Tạo sản phẩm mới</button>
+          <button *ngIf="this.isShopManager" class="createfood" mat-button color="primary" (click)="dialogAddFoodItem()">Tạo sản phẩm mới</button>
         </div>
         <div class="sort">
           <button mat-button color="primary" class="sort1" (click)="dialogAddFoodItem()">Chất Lượng</button>

@@ -3,5 +3,5 @@ export interface LoginResponse {
     type: string;
     id: number,
     username: string,
-    roles: []
+    roles: String[]
 }

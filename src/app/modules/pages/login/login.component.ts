@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   myGroup: any;
   errorMessage = '';
-  roles: string[] = [];
-  isDisabled: boolean= true;
+  roles: String[] = [];
+  isDisabled: boolean = true;
 
   submitForm(): void {
     if (this.myGroup.valid) {
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
   getDataUserById(userId: any) {
     this.shareService.getUserById(userId).subscribe(
       (data) => {
-        if(data.data.length==0){
+        if (data.data.length == 0) {
           return
         }
         else {
@@ -82,28 +82,20 @@ export class LoginComponent implements OnInit {
       }
     )
   }
-  saveInfoUser(data:any){
-    localStorage.setItem('id',data.id)
-    localStorage.setItem('name',data.firstName)
-    localStorage.setItem('displayName',data.displayName)
-    localStorage.setItem('phoneNumber',data.phoneNumber)
-    localStorage.setItem('avatar',data.avatar)
-    localStorage.setItem('biography',data.avatar)
-    localStorage.setItem('address',data.address)
-    if(data.id !=3){
-      localStorage.setItem('types','user')
-    }
-    else {
-      if(data.id ==3){
-        localStorage.setItem('types','shop')
-      }
-    }
+  saveInfoUser(data: any) {
+    localStorage.setItem('id', data.id)
+    localStorage.setItem('name', data.firstName)
+    localStorage.setItem('displayName', data.displayName)
+    localStorage.setItem('phoneNumber', data.phoneNumber)
+    localStorage.setItem('avatar', data.avatar)
+    localStorage.setItem('biography', data.avatar)
+    localStorage.setItem('address', data.address)
   }
   reloadPage() {
     window.location.reload();
   }
-  checkValue( ) {
-    if(this.myGroup.valid) {
+  checkValue() {
+    if (this.myGroup.valid) {
       this.isDisabled = false;
     }
   }

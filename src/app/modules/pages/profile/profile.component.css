@@ -252,4 +252,8 @@ button.edit {
     font-size:12px;
     width:auto !important;
   }
+  .post-section{
+    margin-right: 100px;
+    padding: 30%;
+  }
 }

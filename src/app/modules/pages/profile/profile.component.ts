@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NzIconService } from 'ng-zorro-antd/icon';
-import * as cmn from 'src/app/constant/common'
-import {MatDialog} from '@angular/material/dialog';
-import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
-import { ShareService } from 'src/app/service/share.service';
+import * as cmn from 'src/app/constant/common';
 import { PostService } from 'src/app/service/post.service';
-import { EditprofileComponent } from './editprofile/editprofile.component';
-import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ShareService } from 'src/app/service/share.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { AddFoodItemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
+import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @Component({
   selector: 'app-profile',
@@ -19,35 +19,37 @@ import { AddFoodItemComponent } from 'src/app/shared/components/addfooditem/addf
 export class ProfileComponent implements OnInit {
   array = [
     'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    'https://images.pexels.com/photos/326279/pexels-photo-326279.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 
+    'https://images.pexels.com/photos/326279/pexels-photo-326279.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     'https://images.pexels.com/photos/4051008/pexels-photo-4051008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   ];
 
-  post:any
-  postData: Array<any>=[];
-  postList: Array<any>=[];
-  foodItemsList: Array<any>=[];
-  foodItemsData: Array<any>=[];
-  foodItems:any;
-  page :number=0;
-  limit:number=5;
-  modepage:string = 'home'
+  post: any
+  postData: Array<any> = [];
+  postList: Array<any> = [];
+  foodItemsList: Array<any> = [];
+  foodItemsData: Array<any> = [];
+  foodItems: any;
+  page: number = 0;
+  limit: number = 5;
+  modepage: string = 'home'
   userIdParams: any;
-  isFollow:boolean=false;
-  dataUser:any
-  typeUser:string|null = 'user';
-  userId :any;
+  isFollow: boolean = false;
+  dataUser: any
+  typeUser: string | null = 'user';
+  userId: any;
   isDone = false;
+  isShopManager = false;
 
   constructor(
     private iconService: NzIconService,
-    public shareService:ShareService,
-    public postService:PostService,
+    public shareService: ShareService,
+    public postService: PostService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    public tokenStorageService: TokenStorageService
 
-    ) { 
+  ) {
     this.iconService.fetchFromIconfont({
       scriptUrl: 'https://at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
     });
@@ -55,42 +57,46 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userIdParams = this.route.snapshot.paramMap.get('id');
-    localStorage.setItem('pageCurrent',this.userIdParams)
+    localStorage.setItem('pageCurrent', this.userIdParams)
     this.userId = localStorage.getItem('id');
     this.getUserById();
     this.getPostByUserId();
-    this.getFoodShopById(2);
+    if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
+      this.isShopManager = true;
+      this.getFoodShopById(this.userId);
+    }
+
   }
   showModal(): void {
-    const dialogRef =this.dialog.open(AddpostComponent,{
-        width: '700px',height:'auto'
+    const dialogRef = this.dialog.open(AddpostComponent, {
+      width: '700px', height: 'auto'
     })
-    dialogRef.afterClosed().subscribe(result =>{
+    dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
   }
-  
+
   changeModeProfile(mode: string) {
     this.modepage = mode;
     console.log(this.modepage);
   }
-  changeFollow(){
-    this.isFollow=!this.isFollow
+  changeFollow() {
+    this.isFollow = !this.isFollow
   }
   loadNextPage() {
     this.page = this.page + 1;
     this.getPostByUserId()
   }
-  openDialogLoading(){
-    const dialogRef =this.dialog.open(LoadingComponent,{
+  openDialogLoading() {
+    const dialogRef = this.dialog.open(LoadingComponent, {
     })
   }
-  
-  getPostByUserId(){
+
+  getPostByUserId() {
     this.openDialogLoading()
-    this.postService.getPostByUserId(this.userIdParams,this.limit,this.page).subscribe(
+    this.postService.getPostByUserId(this.userIdParams, this.limit, this.page).subscribe(
       (data) => {
-        if(data.data.length==0){
+        if (data.data.length == 0) {
           this.dialog.closeAll();
           this.isDone = true;
           return
@@ -104,62 +110,62 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  bindingPostData(postData:any){
-    var list =[];
+  bindingPostData(postData: any) {
+    var list = [];
 
-    for (let index = 0; index < postData.length; index++){
-      var post=postData[index];
-      var shortDescription =cmn.GetShortName(post.description,100);
+    for (let index = 0; index < postData.length; index++) {
+      var post = postData[index];
+      var shortDescription = cmn.GetShortName(post.description, 100);
       list.push([post.id,
-        post.ownerAvatar,
-        post.ownerName,
-        post.description,
-        post.createdTime,
-        post.status,
-        post.images,
-        post.tags,
-        post.commentResponses,
+      post.ownerAvatar,
+      post.ownerName,
+      post.description,
+      post.createdTime,
+      post.status,
+      post.images,
+      post.tags,
+      post.commentResponses,
         shortDescription,
-        post.like
-        ])
+      post.like
+      ])
     }
     this.postList = this.postList.concat(list)
-    this.postData =this.postData.concat(postData)
+    this.postData = this.postData.concat(postData)
   }
 
-  getUserById(){
+  getUserById() {
     this.shareService.getUserById(this.userIdParams).subscribe(
       (data) => {
-        if(data.data.length==0){
+        if (data.data.length == 0) {
           return
         }
         else {
           console.log(data.data)
-          this.dataUser=data.data
+          this.dataUser = data.data
         }
       }
     )
   }
 
   //FoodShop 
-  getFoodShopById(foodShopid:any){
+  getFoodShopById(foodShopid: any) {
     this.shareService.getFoodShopById(foodShopid).subscribe(
       (data) => {
-        if(data.messages[0].code=="SUCCESS"){
+        if (data.messages[0].code == "SUCCESS") {
           // console.log(data.data.foodItems)
-          this.foodItems=data.data.foodItems
+          this.foodItems = data.data.foodItems
           this.bindingFoodShopData(data.data.foodItems)
           console.log(this.foodItemsList)
         }
-        else{
+        else {
           console.log("error")
         }
       }
     )
   }
-  bindingFoodShopData(foodItems:any){
-    var list =[];
-    for (let index =0; index <foodItems.length; index++){
+  bindingFoodShopData(foodItems: any) {
+    var list = [];
+    for (let index = 0; index < foodItems.length; index++) {
       var foodItem = foodItems[index];
       // console.log(foodItem.images)
       list.push([
@@ -175,24 +181,24 @@ export class ProfileComponent implements OnInit {
     this.foodItemsList = this.foodItemsList.concat(list)
     this.foodItemsData = this.foodItemsData.concat(foodItems)
   }
-  
+
 
   //Food Item Controller
   dialogAddFoodItem(): void {
-    const dialogRef =this.dialog.open(AddFoodItemComponent,{
-        width: '700px',height:'auto'
+    const dialogRef = this.dialog.open(AddFoodItemComponent, {
+      width: '700px', height: 'auto'
     })
-    dialogRef.afterClosed().subscribe(result =>{
+    dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
   }
 
-  openDialogEditProfile():void {
-    const dialogRef =this.dialog.open(UpdateProfileComponent,{
-      width: 'auto',height:'auto'
-  })
-  dialogRef.afterClosed().subscribe(result =>{
-    console.log(`Dialog result: ${result}`);
+  openDialogEditProfile(): void {
+    const dialogRef = this.dialog.open(UpdateProfileComponent, {
+      width: 'auto', height: 'auto'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     })
   }
 }

@@ -1,24 +1,38 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+
 /* *{
   font-family: 'Dancing Script' !important;
 } */
-*{font-family: Tahoma, sans-serif !important;
+* {
+  font-family: Tahoma, sans-serif !important;
 }
+
 .header {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
 }
+
+.mat-typography {
+  display: block;
+  width: 50em;
+  height: 700px;
+
+}
+
 .action-edit button {
   width: 80px;
 }
+
 nz-carousel {
-  max-height:300px;
-  height: 80%;
-  width: 80%;
+  align-items: center;
+  max-height: 400px;
+  height: 100%;
+  width: 100%;
   margin: auto;
   margin-top: 24px;
 }
+
 [nz-carousel-content] {
   text-align: center;
   /* height: 160px;
@@ -29,38 +43,43 @@ nz-carousel {
 }
 
 [nz-image] {
-  height:100%;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.action{
+.action {
   display: flex;
   justify-content: center;
 }
-.mat-button{
-  width:100%;
+
+.mat-button {
+  width: 100%;
 }
 
 
 /* Rating */
-.rating{
+.rating {
   display: flex;
 }
-label{
-  width:150px;
+
+label {
+  width: 150px;
   line-height: 55px;
   font-size: 18px;
   font-weight: bold;
 }
+
 .mat-slider-horizontal {
   max-width: 300px;
   width: 100%;
 }
-.mat-dialog-title{
+
+.mat-dialog-title {
   color: blue;
 }
-h3{
+
+h3 {
   color: #ff4081;
 }
 
@@ -71,32 +90,42 @@ h3{
   padding-top: 10px;
   max-width: 30em !important;
 }
-nz-comment { 
+
+nz-comment {
   background-color: white;
   text-align: left !important;
 }
+
 nz-comment textarea.ant-input {
   background-color: whitesmoke;
 }
-span{
+
+span {
   color: rgb(52, 52, 59) !important;
 }
-::ng-deep nz-comment.ant-comment{
-border-radius: 5px;
-}
-::ng-deep nz-comment.ant-comment > .ant-comment-inner {
-  padding: 10px 18px 5px 30px;
-  display:flex;
+
+::ng-deep nz-comment.ant-comment {
   border-radius: 5px;
 }
 
-::ng-deep nz-comment.ant-comment > .ant-comment-inner > .ant-comment-content {
-padding: 7px;
-}
-::ng-deep nz-comment.ant-comment > .ant-comment-inner > .ant-comment-avatar {
-margin-top: 12px;
+::ng-deep nz-comment.ant-comment>.ant-comment-inner {
+  padding: 10px 18px 5px 30px;
+  display: flex;
+  border-radius: 5px;
 }
 
+::ng-deep nz-comment.ant-comment>.ant-comment-inner>.ant-comment-content {
+  padding: 7px;
+}
+
+::ng-deep nz-comment.ant-comment>.ant-comment-inner>.ant-comment-avatar {
+  margin-top: 12px;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  flex-wrap: nowrap;
+}
 
 .comment-attributes {
   display: flex;
@@ -145,37 +174,42 @@ margin-top: 12px;
   align-items: center;
 }
 
-.write-cmt{
+.write-cmt {
   width: 450px !important;
 }
+
 /* End Comment*/
 @media only screen and (max-width: 425px) {
-  .mat-button{
-    font-size:12px;
-    width:100%;
-    padding:0;
+  .mat-button {
+    font-size: 12px;
+    width: 100%;
+    padding: 0;
   }
+
   .mat-dialog-actions {
     display: flex;
     flex-wrap: nowrap;
   }
-  .write-cmt{
+
+  .write-cmt {
     width: 250px !important;
   }
 
 }
 
 @media only screen and (max-width: 600px) {
-  .mat-button{
-    font-size:12px;
-    width:100%;
-    padding:0;
+  .mat-button {
+    font-size: 12px;
+    width: 100%;
+    padding: 0;
   }
+
   .mat-dialog-actions {
     display: flex;
     flex-wrap: nowrap;
   }
-  .write-cmt{
+
+  .write-cmt {
     width: 350px !important;
   }
 }

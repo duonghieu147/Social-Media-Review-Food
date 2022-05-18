@@ -1,110 +1,76 @@
 <div class="header">
   <h2 mat-dialog-title>{{this.foodItem[1]}}</h2>
-  <div class="action-edit"*ngIf='isOwner'>
-    <button mat-button >Xóa</button>
-    <button mat-button  color="primary">Chỉnh Sửa</button>
+  <div class="action-edit" *ngIf='isOwner'>
+    <button mat-button color="primary">Xóa</button>
+    <button mat-button color="primary">Chỉnh Sửa</button>
   </div>
 </div>
 <mat-dialog-content class="mat-typography">
-    <nz-carousel nzAutoPlay>
-      <div nz-carousel-content *ngFor="let index of this.foodItem[2]">
-        <img
-        nz-image
-        nzSrc='{{ index }}'
-        alt=""
-      />
-      </div>
+  <nz-carousel nzAutoPlay>
+    <div nz-carousel-content *ngFor="let index of this.foodItem[2]">
+      <img nz-image nzSrc='{{ index }}' alt="" />
+    </div>
   </nz-carousel>
-  <div *ngIf="!isRateMode && !isModeComment">
-    <h3>Price : {{this.price}} || Điểm Đánh giá Trung Bình :{{this.ratingAverage}}</h3> 
-  <p *ngIf="!this.foodItem[7]">Achieve the maximum speed possible on the Web Platform today, and take it further, via Web
-    Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
-    data requirements by building data models on RxJS, Immutable.js or another <span>see more</span></p>
+  <div style="  border-top: 1px solid rgb(98 87 87 / 68%); padding-top : 5px" *ngIf="!isRateMode && !isModeComment">
+    <h3>Price : {{this.price}} </h3>
+    <h3>Điểm Đánh giá Trung Bình :{{this.ratingAverage}}</h3>
+    <p *ngIf="!this.foodItem[7]">Achieve the maximum speed possible on the Web Platform today, and take it further, via
+      Web
+      Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
+      data requirements by building data models on RxJS, Immutable.js or another <span>see more</span></p>
     <p *ngIf="this.foodItem[7]">{{this.foodItem[7]}}</p>
   </div>
-  <div class="ratings"  *ngIf="isRateMode">
+  <div class="ratings" *ngIf="isRateMode">
     <div class="rating 1">
-        <label class="rating-tile" >Giá Cả</label>
-        <label class="rating-value">{{value1}}</label>
-      <mat-slider
-          class="example-margin"
-          [disabled]="disabled"
-          [invert]="invert"
-          [max]="max"
-          [min]="min"
-          [step]="step"
-          [thumbLabel]="thumbLabel"
-          [tickInterval]="getSliderTickInterval()"
-          [(ngModel)]="value1"
-          aria-labelledby="example-name-label">
+      <label class="rating-tile">Giá Cả</label>
+      <label class="rating-value">{{value1}}</label>
+      <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value1"
+        aria-labelledby="example-name-label">
       </mat-slider>
     </div>
     <div class="rating 2">
-        <label class="rating-tile" >Chất Lượng</label>
-        <label class="rating-value">{{value2}}</label>
-      <mat-slider
-          class="example-margin"
-          [disabled]="disabled"
-          [invert]="invert"
-          [max]="max"
-          [min]="min"
-          [step]="step"
-          [thumbLabel]="thumbLabel"
-          [tickInterval]="getSliderTickInterval()"
-          [(ngModel)]="value2"
-          aria-labelledby="example-name-label">
+      <label class="rating-tile">Chất Lượng</label>
+      <label class="rating-value">{{value2}}</label>
+      <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value2"
+        aria-labelledby="example-name-label">
       </mat-slider>
     </div>
 
     <div class="rating 3">
-      <label class="rating-tile" >Không Gian</label>
+      <label class="rating-tile">Không Gian</label>
       <label class="rating-value">{{value3}}</label>
-    <mat-slider
-        class="example-margin"
-        [disabled]="disabled"
-        [invert]="invert"
-        [max]="max"
-        [min]="min"
-        [step]="step"
-        [thumbLabel]="thumbLabel"
-        [tickInterval]="getSliderTickInterval()"
-        [(ngModel)]="value3"
+      <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value3"
         aria-labelledby="example-name-label">
-    </mat-slider>
+      </mat-slider>
     </div>
 
     <div class="rating 4">
-      <label class="rating-tile" >OverView</label>
+      <label class="rating-tile">OverView</label>
       <label class="rating-value">{{value4}}</label>
-    <mat-slider
-        class="example-margin"
-        [disabled]="disabled"
-        [invert]="invert"
-        [max]="max"
-        [min]="min"
-        [step]="step"
-        [thumbLabel]="thumbLabel"
-        [tickInterval]="getSliderTickInterval()"
-        [(ngModel)]="value4"
+      <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
+        [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value4"
         aria-labelledby="example-name-label">
-    </mat-slider>
+      </mat-slider>
     </div>
   </div>
 
 
 
 
-  <div class="comment"  *ngIf="!isRateMode && isModeComment">
+  <div class="comment" *ngIf="!isRateMode && isModeComment">
     <ng-template [ngIf]="comment!= null">
       <div *ngFor="let item of comment; let i = index" class="comment-attributes">
         <div class="main-comment">
           <div class="comment-avatar">
-            <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
-              src={{item.ownerAvatarUrl}}>
+            <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;" src={{item.ownerAvatarUrl}}>
           </div>
           <div style="flex: 1">
             <div class="comment-content">
-              <div class="comment-content-name"><b>{{item.ownerName}}</b><span style="margin-left: 8px"> {{item.createdTime}}</span></div>
+              <div class="comment-content-name"><b>{{item.ownerName}}</b><span style="margin-left: 8px">
+                  {{item.createdTime}}</span></div>
               <div class="comment-content-body">{{item.content}}</div>
             </div>
           </div>
@@ -112,58 +78,23 @@
             <div>...</div>
           </div>
         </div>
-        <!-- <div class="reply-button">
-          <button mat-button (click)="likeComment(item.id)"> Like</button>
-          <button mat-button (click)="showWriteReply(item.id)"> Reply</button>
-        </div> -->
-        <!-- Show reply comment -->
-        <!-- <ng-template [ngIf]="item.commentReply.length != 0">
-          <div *ngFor="let reply of item.commentReply" class="comment-reply">
-            <div class="comment-avatar">
-              <img style="object-fit: cover; width: 32px; height: 32px; border-radius: 32px;"
-                src={{reply.ownerAvatarUrl}}>
-            </div>
-            <div style="flex: 1">
-              <div class="comment-content">
-                <div class="comment-content-name"><b>{{reply.ownerName}}</b><span> {{reply.createdTime}}</span>
-                </div>
-                <div class="comment-content-body">{{reply.content}}</div>
-              </div>
-            </div>
-            <div class="comment-more">
-              <div>...</div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template [ngIf]="item.id === idReplyToShow">
-          <div class = "blank-comment-reply">
-            <app-addcomment></app-addcomment>
-          </div>
-        </ng-template> -->
       </div>
     </ng-template>
-    <div class="write-cmt" >
+    <div class="write-cmt">
       <app-addcomment [iscommentPost]='false'></app-addcomment>
     </div>
-    </div>
-  
-
-
-
-
-
-    
+  </div>
 </mat-dialog-content>
-<mat-dialog-actions *ngIf="!isRateMode" align="center">
-  <button mat-button  color="accent">Thích</button>
-  <button mat-button  color="primary" (click)="changeModeComment()">Comment</button>
-  <button mat-button  color="warn" (click)="changeModeRate()">Đánh Giá</button>
-</mat-dialog-actions>
 
-<mat-dialog-actions *ngIf="isRateMode" align="center">
-  <button mat-button  color="accent" (click)="changeModeRate()">Back</button>
-  <button mat-button  color="primary" (click)="ratingFoodItem(value1,value2,value3,value4)">Lưu Đánh Giá</button>
-</mat-dialog-actions>
+<div style="border-top: 1px solid rgb(98 87 87 / 68%);">
+  <mat-dialog-actions *ngIf="!isRateMode" align="center">
+    <button mat-button color="accent">Thích</button>
+    <button mat-button color="primary" (click)="changeModeComment()">Comment</button>
+    <button mat-button color="warn" (click)="changeModeRate()">Đánh Giá</button>
+  </mat-dialog-actions>
 
-
-
+  <mat-dialog-actions *ngIf="isRateMode" align="center">
+    <button mat-button color="accent" (click)="changeModeRate()">Back</button>
+    <button mat-button color="primary" (click)="ratingFoodItem(value1,value2,value3,value4)">Lưu Đánh Giá</button>
+  </mat-dialog-actions>
+</div>
