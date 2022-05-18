@@ -32,7 +32,7 @@ export class AuthService {
             lastName: signupRequest.lastName,
             phoneNumber: signupRequest.phone,
             address: signupRequest.address,
-            role: signupRequest.role,
+            role: [signupRequest.role],
             avatar: signupRequest.avatar,
         }, httpOptions);
     }

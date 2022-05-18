@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-signup',
@@ -21,16 +23,21 @@ export class SignupComponent implements OnInit {
   isDisabled: boolean = true;
   submitForm(): void {
     if (this.myGroup.valid) {
-      console.log('đăng ký')
+      
       console.log(this.myGroup.value)
+      this.openDialogLoading()
       this.authService.register(this.myGroup.value).subscribe(
         data => {
           console.log(data)
+          this.dialog.closeAll();
           this.router.navigate(['/login']);
           this.openSnackBar('Successfully', 'Close');
         },
         err => {
           this.errorMessage = err.error.message;
+          this.dialog.closeAll();
+          this.openSnackBar('Đăng ký thật bại', 'Close');
+
         }
       );
     } else {
@@ -46,7 +53,9 @@ export class SignupComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    public dialog: MatDialog
+
   ) { }
 
   ngOnInit(): void {
@@ -74,6 +83,7 @@ export class SignupComponent implements OnInit {
   signIn() {
     this.router.navigate(['/login']);
   }
+  
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, { duration: 2500 });
@@ -111,6 +121,11 @@ export class SignupComponent implements OnInit {
   }
   reloadPage() {
     window.location.reload();
+  }
+
+  openDialogLoading(){
+    const dialogRef =this.dialog.open(LoadingComponent,{
+    })
   }
 
 }
