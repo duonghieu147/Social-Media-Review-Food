@@ -23,8 +23,11 @@ export class SearchFoodShop implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-
-    this.route.queryParams
+    if (localStorage.getItem('isLogin') !='true') {
+      this.router.navigate(['/login']);
+    }
+    else {
+      this.route.queryParams
       .subscribe((params) => {
         console.log(params)
         this.query = params['query'] || '';
@@ -34,6 +37,7 @@ export class SearchFoodShop implements OnInit {
         this.searchFoodShop(this.query, this.provinceId, this.districtId, this.categoryId, this.page, this.limit);
       }
       );
+    }
   }
 
 

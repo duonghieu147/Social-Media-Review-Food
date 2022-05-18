@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import * as cmn from 'src/app/constant/common';
 import { PostService } from 'src/app/service/post.service';
@@ -47,7 +47,9 @@ export class ProfileComponent implements OnInit {
     public postService: PostService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    public tokenStorageService: TokenStorageService
+    public tokenStorageService: TokenStorageService,
+    private router: Router,
+
 
   ) {
     this.iconService.fetchFromIconfont({
@@ -56,16 +58,21 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userIdParams = this.route.snapshot.paramMap.get('id');
-    localStorage.setItem('pageCurrent', this.userIdParams)
-    this.userId = localStorage.getItem('id');
-    this.getUserById();
-    this.getPostByUserId();
-    if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
-      this.isShopManager = true;
-      this.getFoodShopById(this.userId);
+    if (localStorage.getItem('isLogin') !='true') {
+      this.router.navigate(['/login']);
     }
-
+    else{
+      this.userIdParams = this.route.snapshot.paramMap.get('id');
+      localStorage.setItem('pageCurrent', this.userIdParams)
+      this.userId = localStorage.getItem('id');
+      this.getUserById();
+      this.getPostByUserId();
+      if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
+        this.isShopManager = true;
+        this.getFoodShopById(this.userId);
+      }
+    }
+    
   }
   showModal(): void {
     const dialogRef = this.dialog.open(AddpostComponent, {
