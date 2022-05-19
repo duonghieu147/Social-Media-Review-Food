@@ -109,7 +109,7 @@ export class PostsComponent implements OnInit {
       })
   }
   goToProfile() {
-    this.router.navigate(['/profile/' + localStorage.getItem("id")]);
+    this.router.navigate(['/profile/' + localStorage.getItem("pageCurrent")]);
   }
 
   //Tags

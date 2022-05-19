@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
-
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -46,18 +46,21 @@ export class UpdateProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+
   ) { }
 
   ngOnInit(): void {
     this.myGroup = new FormGroup({
-      email: new FormControl('', [Validators.required,Validators.email]),
+      email: new FormControl(this.data.user.email, [Validators.required,Validators.email]),
       firstName: new FormControl('', [Validators.required,]),
       lastName: new FormControl('', [Validators.required,]),
-      phone: new FormControl('', [Validators.required,Validators.maxLength(11),]),
-      address: new FormControl('', [Validators.required,]),
-      avatar: new FormControl('', [Validators.required,]),
+      phone: new FormControl(this.data.user.phoneNumber, [Validators.required,Validators.maxLength(11),]),
+      address: new FormControl(this.data.user.address, [Validators.required,]),
+      avatar: new FormControl(this.data.user.avatar, [Validators.required,]),
     });
+    console.log('ss',this.data.user)
   }
   checkValue( ) {
     if(this.myGroup.valid) {
