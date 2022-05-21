@@ -149,7 +149,7 @@
           <button mat-button color="primary" class="sort3" (click)="dialogAddFoodItem()">Không gian</button>
         </div>
       </div>
-      <app-gallery></app-gallery>
+      <app-gallery [shopId]="this.shopId"></app-gallery>
     </div>
     <div *ngIf="modepage=='profile'">
       <button *ngIf="userId==userIdParams" mat-button color="primary" (click)="openDialogEditProfile()" >Chỉnh sửa profile</button>

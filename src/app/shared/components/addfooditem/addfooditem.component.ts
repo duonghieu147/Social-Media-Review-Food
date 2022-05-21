@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,11 +15,8 @@ import { ShareService } from '../../../service/share.service';
 })
 export class AddFoodItemComponent  {
 
-  inputValue: string = '';
-
-  suggestions = ['Coffee', 'Do uong', 'user 1', 'user 2', 'Nha hang 1', 'Quan'];
-
   validateForm!: FormGroup;
+  shopId: any;
 
   submitForm(): void {
     console.log('submit', this.validateForm.value);
@@ -31,19 +28,20 @@ export class AddFoodItemComponent  {
     this.shareService.addFoodItemToShop({
       "name": this.validateForm.value.name,
       "description": this.validateForm.value.description,
-      "userId": localStorage.getItem("id"),
+      // "userId": this.data.shopId,
       "images": img,
       "price": this.validateForm.value.price
-    },3).subscribe(
+    },this.data.shopId).subscribe(
       (data) => {
         if (data) {
           console.log(data)
           this.dialogRef.close();
           this.openSnackBar('Successfully', 'Close')
-          this.router.navigate(['/profile/3']);
+          this.router.navigate(['/profile/'+this.data.userId]);
+          //  localStorage.setItem('modepage','product');
         }
         else {
-          this.openSnackBar('Create Post Error', 'Close')
+          this.openSnackBar('Create Item Error', 'Close')
         }}
      )
   }
@@ -53,9 +51,12 @@ export class AddFoodItemComponent  {
     public shareService: ShareService,
     private fb: FormBuilder,
     private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+
     public dialogRef: MatDialogRef<AddFoodItemComponent>) { }
 
   ngOnInit(): void {
+    this.shopId = this.data.shopId
     this.validateForm = this.fb.group({
       name:[null],
       description: [null],
@@ -63,17 +64,9 @@ export class AddFoodItemComponent  {
       images2: [null],
       images3: [null],
       price: [null],
-      // tags: [null],
     });
   }
 
-  onChange(value: string): void {
-    console.log(value);
-  }
-
-  onSelect(suggestion: string): void {
-    console.log(`onSelect ${suggestion}`);
-  }
   cancel() {
     this.dialogRef.close();
     console.log('cancel');

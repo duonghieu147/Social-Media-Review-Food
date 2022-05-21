@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
     ngOnInit(): void {
 
         this.locationService.findAllProvince().subscribe((provinces: Location[]) => {
-            console.log(provinces)
             this.provinces = provinces;
         })
     }
