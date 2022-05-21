@@ -1,4 +1,4 @@
-<div class="cards">
+<div class="cards" *ngIf="foodItemsList.length">
     <ng-template ngFor let-foodItem [ngForOf]="foodItemsList" let-i="'index">
         <app-itemshop [foodItem]="foodItem"></app-itemshop>
       </ng-template>
