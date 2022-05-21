@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.interface';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
@@ -15,7 +16,8 @@ export class ChatComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private userService: UserService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,4 +40,9 @@ export class ChatComponent implements OnInit {
       }
     });
   }
+  onclick(){
+      this.router.navigate(['/profile/'+this.tokenStorage.getUser().id]);
+
+  }
+
 }

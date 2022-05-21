@@ -9,6 +9,7 @@ export class FoodShopRequest {
     open: number;
     close: number;
     userId: number
+    avartar:string;
     constructor(
         name: String,
         images: String[],
@@ -19,8 +20,8 @@ export class FoodShopRequest {
         provinceId: number,
         open: number,
         close: number,
-        userId: number) {
-
+        userId: number,
+        avatar:string) {
         this.name = name;
         this.images = images;
         this.location = location;
@@ -31,6 +32,7 @@ export class FoodShopRequest {
         this.open = open;
         this.close = close;
         this.userId = userId;
+        this.avartar=avatar;
 
     }
 }

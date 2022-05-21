@@ -69,7 +69,7 @@
 
                     </div>
                     <div class="bl-module">
-                        <h3 class="mb-2">Ảnh sản phẩm <i>*</i></h3>
+                        <h3 class="mb-2">Ảnh bìa cửa hàng <i>*</i></h3>
                         <small class="mb-3">
                             Tối đa 10 ảnh. Dung lượng tối đa 1 Mb. Định dạng .jpg, .png
                         </small>
@@ -102,7 +102,7 @@
                                             <i class="fa-solid fa-circle-plus icon-plus"></i>
                                             <input style="width: 120px; height: 120px; opacity: 0; position: absolute;"
                                                 type="file" accept="image/png, image/jpeg, image/jpg" id="images"
-                                                name="images" multiple (change)="onSelectAvatarImage($event)">
+                                                name="images" (change)="onSelectAvatarImage($event)">
                                         </ng-container>
                                         <img style="width: 120px;height: 120px;" *ngIf="avatarImage" [src]="avatarImage">
                                     </a>

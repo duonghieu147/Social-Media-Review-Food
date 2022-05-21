@@ -66,4 +66,11 @@ export class FoodShopService {
     createFoodShop(body: FoodShopRequest) {
         return this.http.post<BaseResponse<FoodShopRequest>>(defaultUrl + '/api/foodshop', body);
     }
+
+    getFoodShopByUserId(userId: any): Observable<any> {
+        return this.http.get(defaultUrl + '/api/foodshop/findbyuserid?userId=' + userId)
+          .pipe(
+            catchError(this.handleError)
+          );
+      }
 }

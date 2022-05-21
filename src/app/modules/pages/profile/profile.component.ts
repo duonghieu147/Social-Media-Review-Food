@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import * as cmn from 'src/app/constant/common';
+import { FoodShopService } from 'src/app/service/foodshop.service';
 import { PostService } from 'src/app/service/post.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
@@ -17,13 +18,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  array = [
-    'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    'https://images.pexels.com/photos/326279/pexels-photo-326279.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    'https://images.pexels.com/photos/4051008/pexels-photo-4051008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-  ];
-
+  slideImage: string[];
   post: any
   postData: Array<any> = [];
   postList: Array<any> = [];
@@ -49,8 +44,7 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog,
     public tokenStorageService: TokenStorageService,
     private router: Router,
-
-
+    private foodShopService: FoodShopService
   ) {
     this.iconService.fetchFromIconfont({
       scriptUrl: 'https://at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
@@ -58,10 +52,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('isLogin') !='true') {
+    if (localStorage.getItem('isLogin') != 'true') {
       this.router.navigate(['/login']);
     }
-    else{
+    else {
       this.userIdParams = this.route.snapshot.paramMap.get('id');
       localStorage.setItem('pageCurrent', this.userIdParams)
       this.userId = localStorage.getItem('id');
@@ -69,10 +63,10 @@ export class ProfileComponent implements OnInit {
       this.getPostByUserId();
       if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
         this.isShopManager = true;
-        this.getFoodShopById(this.userId);
+        this.getFoodShopByUserId(this.userId);
       }
     }
-    
+
   }
   showModal(): void {
     const dialogRef = this.dialog.open(AddpostComponent, {
@@ -155,13 +149,14 @@ export class ProfileComponent implements OnInit {
   }
 
   //FoodShop 
-  getFoodShopById(foodShopid: any) {
-    this.shareService.getFoodShopById(foodShopid).subscribe(
+  getFoodShopByUserId(userId: any) {
+    this.foodShopService.getFoodShopByUserId(userId).subscribe(
       (data) => {
         if (data.messages[0].code == "SUCCESS") {
           // console.log(data.data.foodItems)
           this.foodItems = data.data.foodItems
           this.bindingFoodShopData(data.data.foodItems)
+          this.slideImage = data.data.images;
           console.log(this.foodItemsList)
         }
         else {
@@ -172,21 +167,23 @@ export class ProfileComponent implements OnInit {
   }
   bindingFoodShopData(foodItems: any) {
     var list = [];
-    for (let index = 0; index < foodItems.length; index++) {
-      var foodItem = foodItems[index];
-      // console.log(foodItem.images)
-      list.push([
-        foodItem.id,
-        foodItem.name,
-        foodItem.images,
-        foodItem.foodItemRating,
-        foodItem.price,
-        foodItem.like,
-        foodItem.comments
-      ])
+    if (foodItems != null) {
+      for (let index = 0; index < foodItems.length; index++) {
+        var foodItem = foodItems[index];
+        // console.log(foodItem.images)
+        list.push([
+          foodItem.id,
+          foodItem.name,
+          foodItem.images,
+          foodItem.foodItemRating,
+          foodItem.price,
+          foodItem.like,
+          foodItem.comments
+        ])
+      }
+      this.foodItemsList = this.foodItemsList.concat(list)
+      this.foodItemsData = this.foodItemsData.concat(foodItems)
     }
-    this.foodItemsList = this.foodItemsList.concat(list)
-    this.foodItemsData = this.foodItemsData.concat(foodItems)
   }
 
 

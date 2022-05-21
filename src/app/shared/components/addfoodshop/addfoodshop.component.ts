@@ -6,6 +6,8 @@ import { Location } from 'src/app/model/location.interface';
 import { FoodShopRequest } from 'src/app/model/request/foodshop';
 import { FoodShopService } from 'src/app/service/foodshop.service';
 import { LocationService } from 'src/app/service/location.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { UploadFilesService } from 'src/app/service/upload-file.service';
 import { ShareService } from '../../../service/share.service';
 
 
@@ -18,8 +20,11 @@ export class AddFoodShopComponent {
     provinces: Location[] = [];
     districts: Location[] = [];
     submitForm: FormGroup;
-    images = [];
+    images: string[] = [];
     avatarImage: SafeUrl;
+    avatarImages: string[] = [];
+    avatarUrl: string;
+    imageUrls: string[];
     get name() {
         return this.submitForm.get("name");
     }
@@ -62,12 +67,13 @@ export class AddFoodShopComponent {
         private router: Router,
         private locationService: LocationService,
         private foodShopService: FoodShopService,
-        private domSanitizer: DomSanitizer) { }
+        private domSanitizer: DomSanitizer,
+        private uploadService: UploadFilesService,
+        private tokenStorage: TokenStorageService) { }
 
     ngOnInit(): void {
         this.formInitialization();
         this.locationService.findAllProvince().subscribe((value: Location[]) => {
-            console.log(value)
             this.provinces = value;
         })
     };
@@ -79,17 +85,44 @@ export class AddFoodShopComponent {
         })
     }
 
+    getImagesUrl() {
+        return this.uploadService.upload(this.images).subscribe((res: string[]) => {
+            this.imageUrls = res;
+        })
+    }
+    getAvatarUrl() {
+        return this.uploadService.upload(this.avatarImages).subscribe((res: string[]) => {
+            if (res.length > 0 && res) {
+                this.avatarUrl = res[0];
+            }
+        })
+    }
+
     onSubmit() {
+        this.getImagesUrl();
+        this.getAvatarUrl();
         this.createFoodShop();
     }
 
     createFoodShop() {
         let body = this.submitForm.getRawValue();
-        let data = new FoodShopRequest(body.name,body.images,body.location,body.categoryId,body.description,body.districtId,body.provinceId,body.open,body.close,parseInt(localStorage.getItem("id")));
-        this.createListing(data);
+        let data = new FoodShopRequest(body.name === "" ? null : body.name,
+            this.imageUrls,
+            body.location === "" ? null : body.location,
+            body.categoryId === "" ? null : body.categoryId,
+            body.description === "" ? null : body.description,
+            body.districtId === "" ? null : body.districtId,
+            body.provinceId === "" ? null : body.provinceId,
+            body.open === "" ? null : body.open,
+            body.close === "" ? null : body.close,
+            parseInt(localStorage.getItem("id")),
+            this.avatarUrl);
+        this.createShop(data);
     }
-    createListing(data) {
-        this.foodShopService.createFoodShop(data);
+    createShop(data: FoodShopRequest) {
+        this.foodShopService.createFoodShop(data).subscribe((res: any) => {
+            this.router.navigate(['/profile/'+this.tokenStorage.getUser().id])
+        })
     }
 
     formInitialization() {
@@ -152,11 +185,15 @@ export class AddFoodShopComponent {
             }
         }
     }
-    
+
     onSelectAvatarImage(event) {
         let files = event.target.files;
         this.avatarImage = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(files[0]));
-        console.log(this.avatarImage);
+        if (files) {
+            this.readFile(files[0], this.avatarImages)
+
+        }
+
     }
     removeImage(index: any) {
         //this.imageService.removeImage(index, [this.images, this.existingImages, this.imageIDs]);
