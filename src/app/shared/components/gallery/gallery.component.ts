@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ShareService } from '../../../service/share.service';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import { LoadingComponent } from '../loading/loading.component';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
+  @Input() shopId: string;
   foodItemsList: Array<any>=[];
   foodItemsData: Array<any>=[];
   foodItems:any;
@@ -23,7 +24,7 @@ export class GalleryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFoodShopById(2);
+    this.getFoodShopById(this.shopId);
   }
 
   bindingFoodShopData(foodItems:any){

@@ -24,10 +24,12 @@ export class ProfileComponent implements OnInit {
   postList: Array<any> = [];
   foodItemsList: Array<any> = [];
   foodItemsData: Array<any> = [];
+  foodShopData :Array<any> = [];
   foodItems: any;
+  shopId: string;
   page: number = 0;
   limit: number = 5;
-  modepage: string = 'home'
+  modepage: string = ''
   userIdParams: any;
   isFollow: boolean = false;
   dataUser: any
@@ -53,6 +55,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('modepage')){
+      localStorage.setItem('modepage','home');
+      this.modepage =localStorage.getItem('modepage')
+    }
+
     if (localStorage.getItem('isLogin') != 'true') {
       this.router.navigate(['/login']);
     }
@@ -79,8 +86,8 @@ export class ProfileComponent implements OnInit {
   }
 
   changeModeProfile(mode: string) {
-    this.modepage = mode;
-    console.log(this.modepage);
+    localStorage.setItem('modepage',mode);
+    this.modepage =localStorage.getItem('modepage')
   }
   changeFollow() {
     this.isFollow = !this.isFollow
@@ -90,7 +97,7 @@ export class ProfileComponent implements OnInit {
     this.getPostByUserId()
   }
   openDialogLoading() {
-    const dialogRef = this.dialog.open(LoadingComponent, {
+    this.dialog.open(LoadingComponent, {
     })
   }
 
@@ -155,11 +162,11 @@ export class ProfileComponent implements OnInit {
     this.foodShopService.getFoodShopByUserId(userId).subscribe(
       (data) => {
         if (data.messages[0].code == "SUCCESS") {
-          // console.log(data.data.foodItems)
+          // console.log(data.data.id)
           this.foodItems = data.data.foodItems
-          this.bindingFoodShopData(data.data.foodItems)
+          this.shopId = data.data.id
+          this.bindingFoodShopData(data.data)
           this.slideImage = data.data.images;
-          console.log(this.foodItemsList)
         }
         else {
           console.log("error")
@@ -167,24 +174,23 @@ export class ProfileComponent implements OnInit {
       }
     )
   }
-  bindingFoodShopData(foodItems: any) {
+
+  bindingFoodShopData(shopData: any) {
     var list = [];
-    if (foodItems != null) {
-      for (let index = 0; index < foodItems.length; index++) {
-        var foodItem = foodItems[index];
-        // console.log(foodItem.images)
+    if (shopData != null) {
+      for (let index = 0; index < shopData.length; index++) {
+        var shop = shopData[index];
         list.push([
-          foodItem.id,
-          foodItem.name,
-          foodItem.images,
-          foodItem.foodItemRating,
-          foodItem.price,
-          foodItem.like,
-          foodItem.comments
+          shop.id,
+          shop.name,
+          shop.displayName,
+          shop.phoneNumber,
+          shop.avatar,
+          shop.biography,
+          shop.address,
         ])
       }
-      this.foodItemsList = this.foodItemsList.concat(list)
-      this.foodItemsData = this.foodItemsData.concat(foodItems)
+      this.foodShopData = this.foodShopData.concat(shop)
     }
   }
 
@@ -192,7 +198,12 @@ export class ProfileComponent implements OnInit {
   //Food Item Controller
   dialogAddFoodItem(): void {
     const dialogRef = this.dialog.open(AddFoodItemComponent, {
-      width: '700px', height: 'auto'
+      width: '700px', height: 'auto',
+      data :{shopId:this.shopId,
+        userId:this.userId,
+      }
+
+
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -202,7 +213,7 @@ export class ProfileComponent implements OnInit {
   openDialogEditProfile(): void {
     const dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: 'auto', height: 'auto',
-      data :{user:this.dataUser}
+      data :{user:this.dataUser,}
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

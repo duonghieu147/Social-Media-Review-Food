@@ -1,9 +1,10 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommentService } from 'src/app/service/comment.service';
 import { FoodItemService } from 'src/app/service/foodItem.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-dialog-item-food',
@@ -35,17 +36,19 @@ export class DialogItemFoodComponent implements OnInit {
   foodItem:any;
   price: any;
   ratingAverage: any;
+  countImg:number = 0;
+  endLoading: boolean = true;
   constructor(    private route: ActivatedRoute,
     public commentService: CommentService,
     public FoodItemService :FoodItemService,
     private _snackBar: MatSnackBar,
     public snackBar: MatSnackBar,
-    
-
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: {foodItems: any}
     ) { }
 
   ngOnInit(): void {
+    // this.openDialogLoading()
     this.foodItem = this.data
     this.getFoodItemById(this.foodItem[0])
     localStorage.setItem('foodItemId',this.foodItem[0])
@@ -65,15 +68,15 @@ export class DialogItemFoodComponent implements OnInit {
     if (localStorage.getItem('pageCurrent') ==localStorage.getItem('id')){ 
       this.isOwner= true
     }
+
   }
 
   getFoodItemById(FoodItem:any) {
     this.FoodItemService.getFoodItemById(FoodItem).subscribe(
       (data) =>{
         if (data.messages[0].code == "SUCCESS") {
-          console.log(data.data.comments)
+          // console.log(data.data.comments)
           this.comment=data.data.comments
-          // console.log(this.comment[0])
         }
         else {
           console.log("err dislike", data.messages[0].code)
@@ -137,21 +140,23 @@ export class DialogItemFoodComponent implements OnInit {
     this.isModeComment= !this.isModeComment;
   }
 
-  //comment
-  // likeComment(commentId: any) {
-  //   this.commentService.like(commentId);
-  // }
-
-  // dislikeComment(commentId: any) {
-  //   this.commentService.dislike(commentId);
-  // }
-
-  // showWriteReply(commentId :any){
-  //   this.isShowCommentReply= !this.isShowCommentReply;
-  //   this.idReplyToShow = commentId;
-  // }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, { duration: 2500 });
   }
+  loadImage():void {
+    console.log('loading image...');
+    if(this.countImg == this.foodItem[2].length) {
+      this.endLoading = true;
+      // this.dialog.closeAll();
+    }
+    else { 
+      this.countImg++;
+    }
+  }
+
+  // openDialogLoading() {
+  //   this.dialog.open(LoadingComponent, {
+  //   })
+  // }
 }
