@@ -52,10 +52,14 @@ export class GalleryComponent implements OnInit {
     this.shareService.getFoodShopById(foodShopid).subscribe(
       (data) => {
         if(data.messages[0].code=="SUCCESS"){
-          this.foodItems=data.data.foodItems
-          console.log(this.foodItems)
-          this.bindingFoodShopData(data.data.foodItems)
-          this.isloading=false;
+          if(data.data.foodItems) {
+            this.foodItems=data.data.foodItems
+            this.bindingFoodShopData(data.data.foodItems)
+            this.isloading=false;
+            this.dialog.closeAll();
+          }
+          else
+          console.log("shop chưa có sản phẩm")
           this.dialog.closeAll();
         }
         else{

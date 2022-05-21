@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
       this.getPostByUserId();
       if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
         this.isShopManager = true;
-        this.getFoodShopByUserId(this.userId);
+        this.getFoodShopByUserId(this.userIdParams);
       }
     }
 
