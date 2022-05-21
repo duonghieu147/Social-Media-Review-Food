@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
       this.openDialogLoading()
       this.authService.login(this.myGroup.value).subscribe(
         data => {
+          localStorage.setItem('loginUserId',data.id + '');
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.roles = this.tokenStorage.getUser().roles;

@@ -3,7 +3,7 @@
  <button mat-button color="primary" (click)="changePassword()">Đổi mật khẩu</button>
   <div class="filter">
     <h2>Tên :</h2>
-    <h2> Dương Văn Hiếu</h2>
+    <h2> {{dataUser.displayName}}</h2>
   </div>
   <div class="filter">
     <h2>Ngày Sinh :</h2>
@@ -11,15 +11,15 @@
   </div>
   <div class="filter">
     <h2>Email :</h2>
-    <h2>duonghieu42998@gmail.com</h2>
+    <h2>{{dataUser.email}}</h2>
   </div>
   <div class="filter">
     <h2>Địa Chỉ :</h2>
-    <h2>Ktx Khu A ĐHQG Thành Phố HCM , Linh Trung, Thủ Đức</h2>
+    <h2>{{dataUser.address}}</h2>
   </div>
   <div class="filter">
     <h2>Số điện thoại :</h2>
-    <h2>0395455399</h2>
+    <h2>{{dataUser.phoneNumber}}</h2>
   </div>
   <div class="filter">
     <h1>Social :</h1>

@@ -35,6 +35,7 @@ export class ProfileComponent implements OnInit {
   userId: any;
   isDone = false;
   isShopManager = false;
+  information:any
 
   constructor(
     private iconService: NzIconService,
@@ -143,6 +144,7 @@ export class ProfileComponent implements OnInit {
         else {
           console.log(data.data)
           this.dataUser = data.data
+
         }
       }
     )
@@ -199,7 +201,8 @@ export class ProfileComponent implements OnInit {
 
   openDialogEditProfile(): void {
     const dialogRef = this.dialog.open(UpdateProfileComponent, {
-      width: 'auto', height: 'auto'
+      width: 'auto', height: 'auto',
+      data :{user:this.dataUser}
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
