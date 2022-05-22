@@ -63,7 +63,7 @@ export class FoodShopService {
             );
     }
 
-    createFoodShop(body: FoodShopRequest) {
+    createFoodShop(body: FoodShopRequest):Observable<any>{
         return this.http.post<BaseResponse<FoodShopRequest>>(defaultUrl + '/api/foodshop', body);
     }
 

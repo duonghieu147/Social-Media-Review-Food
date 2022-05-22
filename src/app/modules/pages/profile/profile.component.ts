@@ -65,9 +65,9 @@ export class ProfileComponent implements OnInit {
     }
     else {
       this.userIdParams = this.route.snapshot.paramMap.get('id');
+      this.getUserById();
       localStorage.setItem('pageCurrent', this.userIdParams)
       this.userId = localStorage.getItem('id');
-      this.getUserById();
       this.getPostByUserId();
       if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
         this.isShopManager = true;
@@ -146,11 +146,16 @@ export class ProfileComponent implements OnInit {
     this.shareService.getUserById(this.userIdParams).subscribe(
       (data) => {
         if (data.data.length == 0) {
+          console.log("go here")
           return
         }
         else {
-          console.log(data.data)
+          console.log("go here 1")
           this.dataUser = data.data
+          console.log(this.dataUser.id)
+          console.log(this.dataUser.displayName)
+          console.log(this.dataUser.avatar)
+          console.log(this.dataUser.roles[0].name)
 
         }
       }

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { finalize, switchMap } from 'rxjs/operators';
 import { PostService } from 'src/app/service/post.service';
 import { UploadFilesService } from 'src/app/service/upload-file.service';
+import { LoadingComponent } from '../loading/loading.component';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class AddpostComponent {
     tags: any;
     images: string[] = [];
     imageUrls: string[] = [];
+    isLoading: boolean = true;
     get description() {
         return this.validateForm.get("description");
     }
@@ -28,26 +31,31 @@ export class AddpostComponent {
         return this.validateForm.get("tags");
     }
     submitForm(): void {
-        this.getImagesUrl()
-        console.log('submit', this.imageUrls);
-        this.postService.createPost({
-            "description": this.validateForm.value.description,
-            "userId": localStorage.getItem("id"),
-            "images": this.imageUrls,
-            "tags": this.validateForm.value.tag
-        }).subscribe(
-            (data) => {
-                if (data) {
-                    console.log(data)
-                    this.openSnackBar('Successfully', 'Close')
-                    this.router.navigate(['/home/done']);
-                    this.dialogRef.close();
-                }
-                else {
-                    this.openSnackBar('Create Post Error', 'Close')
-                }
+        this.openDialogLoading();
+        this.uploadService.upload(this.images).pipe(
+            switchMap((images: string[]) => {
+                return this.postService.createPost({
+                    "description": this.validateForm.value.description,
+                    "userId": localStorage.getItem("id"),
+                    "images": images,
+                    "tags": this.validateForm.value.tag
+                })
+            }),
+            finalize(() => {
+                this.isLoading = false;
+                this.dialog.closeAll();
+            })
+        ).subscribe((data) => {
+            if (data) {
+                console.log(data)
+                this.openSnackBar('Successfully', 'Close')
+                this.router.navigate(['/home/done']);
+                this.dialogRef.close();
             }
-        )
+            else {
+                this.openSnackBar('Create Post Error', 'Close')
+            }
+        });
     }
 
     constructor(
@@ -56,7 +64,8 @@ export class AddpostComponent {
         private fb: FormBuilder,
         private router: Router,
         public dialogRef: MatDialogRef<AddpostComponent>,
-        private uploadService: UploadFilesService) { }
+        private uploadService: UploadFilesService,
+        public dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.formInitialization()
@@ -108,6 +117,11 @@ export class AddpostComponent {
     getImagesUrl() {
         return this.uploadService.upload(this.images).subscribe((res: string[]) => {
             this.imageUrls = res;
+        })
+    }
+
+    openDialogLoading() {
+        const dialogRef = this.dialog.open(LoadingComponent, {
         })
     }
 

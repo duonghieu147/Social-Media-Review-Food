@@ -37,10 +37,6 @@ export class PostsComponent implements OnInit {
     if (this.post[8] != null) {
       this.numberCmt = this.post[8].length
     }
-    if (this.post[0] == '7') {
-      // console.log(this.post[10])
-
-    }
 
     this.randomNumberShare = this.getRandomNumber(10)
     this.bindingDataReply()
@@ -54,8 +50,8 @@ export class PostsComponent implements OnInit {
       tags:this.post[7],
       datetime: formatDistance(new Date(), addDays(new Date(), 1)),
       like: this.post[10],
+      userId:this.post[11]
     }
-    // console.log(this.dataPost.numbercmt)
   }
 
   bindingDataReply() {
@@ -109,7 +105,7 @@ export class PostsComponent implements OnInit {
       })
   }
   goToProfile() {
-    this.router.navigate(['/profile/' + localStorage.getItem("pageCurrent")]);
+    this.router.navigate(['/profile/' +this.dataPost.userId ]);
   }
 
   //Tags

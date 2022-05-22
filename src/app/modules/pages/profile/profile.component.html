@@ -119,12 +119,12 @@
   <nz-page-header-footer>
     <nz-tabset [nzSelectedIndex]="0" nzSize="large">
       <nz-tab  nzTitle="Bài viết" (nzClick)="changeModeProfile('home')"></nz-tab>
-      <nz-tab nzTitle="Sản phẩm" (nzClick)="changeModeProfile('product')"></nz-tab>
+      <nz-tab *ngIf="dataUser.roles[0].name == 'SHOP_MANAGER'" nzTitle="Sản phẩm" (nzClick)="changeModeProfile('product')"></nz-tab>
       <nz-tab nzTitle="Thông tin" (nzClick)="changeModeProfile('profile')"></nz-tab>
     </nz-tabset>
   </nz-page-header-footer>
 
-  <div>
+  <div *ngIf="dataUser.roles[0].name=='SHOP_MANAGER'">
     <nz-carousel nzAutoPlay>
       <div nz-carousel-content *ngFor="let index of slideImage">
         <img nz-image nzSrc='{{ index }}' alt="" />
@@ -133,7 +133,7 @@
   </div>
   <div class="profile-content">
     <div class="post" *ngIf="modepage=='home'">
-      <ng-template ngFor let-post [ngForOf]="postList" let-i="'index">
+      <ng-template *ngFor let-post [ngForOf]="postList" let-i="'index">
         <app-posts [post]="post"></app-posts>
       </ng-template>
       <button class ="load-more-button" *ngIf="!isDone" mat-button (click)="loadNextPage()">Xem thêm</button>
