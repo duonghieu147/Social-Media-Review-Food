@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   shopId: string;
   page: number = 0;
   limit: number = 5;
-  modepage: string = ''
+  modepage: string = 'home'
   userIdParams: any;
   isFollow: boolean = false;
   dataUser: any
@@ -55,11 +55,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('modepage')){
-      localStorage.setItem('modepage','home');
-      this.modepage =localStorage.getItem('modepage')
-    }
-
     if (localStorage.getItem('isLogin') != 'true') {
       this.router.navigate(['/login']);
     }
@@ -73,6 +68,10 @@ export class ProfileComponent implements OnInit {
         this.isShopManager = true;
         this.getFoodShopByUserId(this.userIdParams);
       }
+    }
+    if (!localStorage.getItem('modepage')){
+      localStorage.setItem('modepage','home');
+      this.modepage =localStorage.getItem('modepage')
     }
 
   }
