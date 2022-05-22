@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
@@ -20,9 +21,12 @@ export class SignupComponent implements OnInit {
   myGroup: any;
   errorMessage = '';
   isDisabled: boolean = true;
+  image: string;
+  avatarImages: string[] = [];
+  avatarImage: SafeUrl;
   submitForm(): void {
     if (this.myGroup.valid) {
-      
+
       console.log(this.myGroup.value)
       this.openDialogLoading()
       this.authService.register(this.myGroup.value).subscribe(
@@ -53,26 +57,26 @@ export class SignupComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private domSanitizer: DomSanitizer
 
   ) { }
 
   ngOnInit(): void {
     this.myGroup = new FormGroup({
       userName: new FormControl('', [Validators.required,]),
-      email: new FormControl('', [Validators.required,Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       firstName: new FormControl('', [Validators.required,]),
       lastName: new FormControl('', [Validators.required,]),
-      phone: new FormControl('', [Validators.required,Validators.maxLength(11),]),
+      phone: new FormControl('', [Validators.required, Validators.maxLength(11),]),
       address: new FormControl('', [Validators.required,]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       rePassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      role: new FormControl('', [Validators.required,]),
-      avatar: new FormControl('', [Validators.required,]),
+      role: new FormControl('', [Validators.required,])
     });
   }
-  checkValue( ) {
-    if(this.myGroup.valid) {
+  checkValue() {
+    if (this.myGroup.valid) {
       this.isDisabled = false;
     }
   }
@@ -82,7 +86,7 @@ export class SignupComponent implements OnInit {
   signIn() {
     this.router.navigate(['/login']);
   }
-  
+
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, { duration: 2500 });
@@ -90,7 +94,7 @@ export class SignupComponent implements OnInit {
   getDataUserById(userId: any) {
     this.shareService.getUserById(userId).subscribe(
       (data) => {
-        if(data.data.length==0){
+        if (data.data.length == 0) {
           return
         }
         else {
@@ -100,21 +104,21 @@ export class SignupComponent implements OnInit {
       }
     )
   }
-  saveInfoUser(data:any){
-    localStorage.setItem('id',data.id)
-    localStorage.setItem('name',data.firstName)
-    localStorage.setItem('firstName',data.firstName)
-    localStorage.setItem('lastName',data.lastName)
-    localStorage.setItem('phoneNumber',data.phoneNumber)
-    localStorage.setItem('avatar',data.avatar)
-    localStorage.setItem('biography',data.avatar)
-    localStorage.setItem('address',data.address)
-    if(data.id !=3){
-      localStorage.setItem('types','user')
+  saveInfoUser(data: any) {
+    localStorage.setItem('id', data.id)
+    localStorage.setItem('name', data.firstName)
+    localStorage.setItem('firstName', data.firstName)
+    localStorage.setItem('lastName', data.lastName)
+    localStorage.setItem('phoneNumber', data.phoneNumber)
+    localStorage.setItem('avatar', data.avatar)
+    localStorage.setItem('biography', data.avatar)
+    localStorage.setItem('address', data.address)
+    if (data.id != 3) {
+      localStorage.setItem('types', 'user')
     }
     else {
-      if(data.id ==3){
-        localStorage.setItem('types','shop')
+      if (data.id == 3) {
+        localStorage.setItem('types', 'shop')
       }
     }
   }
@@ -122,9 +126,27 @@ export class SignupComponent implements OnInit {
     window.location.reload();
   }
 
-  openDialogLoading(){
-    const dialogRef =this.dialog.open(LoadingComponent,{
+  openDialogLoading() {
+    const dialogRef = this.dialog.open(LoadingComponent, {
     })
   }
+
+  onSelectAvatarImage(event) {
+    let files = event.target.files;
+    this.avatarImage = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(files[0]));
+    if (files) {
+      this.readFile(files[0], this.avatarImages)
+
+    }
+
+  }
+
+  readFile(file, listFile) {
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+        listFile.push(event.target.result);
+    };
+    reader.readAsDataURL(file);
+}
 
 }

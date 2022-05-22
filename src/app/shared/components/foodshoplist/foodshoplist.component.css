@@ -1,0 +1,165 @@
+.header {
+    position: fixed;
+    z-index: 6;
+    width: 100%;
+    top: 0;
+}
+
+.silderbar-left {
+    position: fixed;
+    z-index: 5;
+    height: 100%;
+    bottom: 0;
+}
+
+
+
+.search-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #EFF0F5;
+    border-radius: 4px;
+}
+
+.title {
+    width: 100%;
+    font-size: 25px;
+    margin: 15px 20px 15px 0px;
+    color: rgb(11, 32, 129);
+}
+
+.search-result {
+    width: 95%;
+    border-radius: 4px;
+    border: 1px solid rgb(252, 251, 251);
+    display: flex;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 5px 10px rgba(0, 0, 0, 0.22);
+    transition: all 0.2s cubic-bezier(.25, .8, .25, 1);
+    height: auto;
+    padding-bottom: 10px;
+    margin: 20px;
+    background-color: rgb(248, 247, 247);
+}
+
+.search-result:hover {
+    box-shadow: 0 14px 28px rgba(20, 20, 20, 0.25), 0 10px 10px rgba(27, 27, 27, 0.22);
+}
+
+.search-image {
+    width: 10em;
+    height: auto;
+    padding: 20px 20px 10px 20px;
+    object-fit: scale-down;
+    border-radius: 2px;
+}
+
+img {
+    max-width: 95%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 2px solid rgb(66, 177, 214);
+}
+
+.search-description {
+    padding: 20px 20px 10px 20px;
+    color: black;
+}
+
+.info-common {
+    padding-bottom: 8px;
+}
+
+.name {
+    color: rgb(22, 50, 102);
+    font-size: large;
+}
+
+.name:hover {
+    color: rgb(4, 18, 95);
+}
+
+
+
+nz-header,
+nz-footer {
+    background: #7dbcea;
+    color: #fff;
+}
+
+nz-footer {
+    line-height: 1.5;
+}
+
+nz-sider {
+    background: #3ba0e9;
+    color: #fff;
+    line-height: 120px;
+}
+
+nz-content {
+    /* background: rgba(16, 142, 233, 1); */
+    color: #fff;
+    min-height: 120px;
+    /* line-height: 120px; */
+    margin-top: 64px;
+}
+
+nz-layout {
+    margin-bottom: 48px;
+    background: rgba(16, 142, 233, 1);
+}
+
+nz-layout nz-layout,
+nz-layout:last-child {
+    margin: 0;
+}
+
+/* .silderbar{
+    position: fixed;
+  }
+  .header {
+    position: fixed;
+  } */
+nz-header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+nz-sider {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    background-color: #fff;
+}
+
+
+.silderbar {
+    margin-top: 64px;
+}
+
+.silderbar-right {
+    z-index: 3;
+}
+
+.ant-col.ant-col-8 {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ant-col.ant-col-8 label {
+    margin: 5px 0;
+}
+
+.load-more-button {
+    background-color: #3ba0e9;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 40%;
+    margin-right: 50%;
+}

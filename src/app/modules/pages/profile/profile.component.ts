@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   shopId: string;
   page: number = 0;
   limit: number = 5;
-  modepage: string = ''
+  modepage: string = 'home'
   userIdParams: any;
   isFollow: boolean = false;
   dataUser: any
@@ -146,17 +146,10 @@ export class ProfileComponent implements OnInit {
     this.shareService.getUserById(this.userIdParams).subscribe(
       (data) => {
         if (data.data.length == 0) {
-          console.log("go here")
           return
         }
         else {
-          console.log("go here 1")
           this.dataUser = data.data
-          console.log(this.dataUser.id)
-          console.log(this.dataUser.displayName)
-          console.log(this.dataUser.avatar)
-          console.log(this.dataUser.roles[0].name)
-
         }
       }
     )
