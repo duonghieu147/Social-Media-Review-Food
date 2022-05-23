@@ -77,7 +77,8 @@ nz-carousel {
   height: 320px;
   width: 90%;
   margin: auto;
-  margin-top: 48px;
+  margin-top: 48
+  px;
   margin-bottom: 48px;
   border-radius: 20px;
 
@@ -106,7 +107,7 @@ h3 {
 
 /* Nav */
 ::ng-deep.ant-tabs-tab-btn {
-  width: 90% !important;
+  width: 18em !important;
   text-align: center !important;
 }
 
@@ -182,10 +183,17 @@ button.edit {
   justify-content: space-between;
   margin-bottom: 24px;
   margin-top: 24px;
+  border-top: 1px solid rgb(209, 211, 202);
+  border-bottom: 1px solid rgb(209, 211, 202);
 }
 
 .action-fooditem .createfood {
-  color: #107ebe
+  color: #107ebe;
+  background-color: rgb(164, 235, 238);
+  border-radius: 5px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 0px 8px 0px 8px;
 }
 
 .action-fooditem .sort1 {
@@ -256,4 +264,5 @@ button.edit {
     margin-right: 100px;
     padding: 30%;
   }
+
 }

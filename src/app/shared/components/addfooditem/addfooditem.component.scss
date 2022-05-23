@@ -1,0 +1,259 @@
+.container-fluid {
+  margin: 5% 10% 0 0;
+}
+
+.module-sell-post .context-sell-post .bl-upload .image-upload-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: -16px;
+  margin-left: -16px;
+  padding-left: 16px;
+}
+
+.content {
+  position: relative;
+  height: 160px;
+  width: 120px;
+  border-radius: 8px;
+  background-color: black;
+  overflow: hidden;
+}
+
+.content .wrap-edit {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.content .wrap-edit [class^="icn"] {
+  display: block;
+  font-size: 1.25rem;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+.content .wrap-edit span {
+  display: block;
+  font-size: 0.688em;
+}
+
+.content .func-remove {
+  border-radius: 50%;
+  color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.content .func-remove [class^="icn"] {
+  font-size: 1.25rem;
+  padding: 2px;
+}
+
+.content {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+#hiding-input {
+  color: transparent !important;
+  text-shadow: 0 0 0 black;
+  caret-color: transparent;
+  opacity: 0 !important;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 21px;
+
+  &:focus {
+    color: transparent;
+    caret-color: transparent;
+    text-shadow: 0px 0px 0px black;
+  }
+}
+
+.price-display {
+  position: relative;
+  top: -2px;
+  font-size: 16.5px;
+}
+
+.virtual-cursor {
+  visibility: hidden;
+  position: relative;
+  left: 0px;
+  top: -3px;
+  font-weight: 100;
+  font-size: 20px;
+  color: #2e3d48;
+}
+
+.fake-input:focus-within {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-control:focus~.virtual-cursor {
+  visibility: visible;
+  display: inline-block;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    color: transparent;
+  }
+
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+
+  from,
+  to {
+    color: transparent;
+  }
+
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes blink {
+
+  from,
+  to {
+    color: transparent;
+  }
+
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes blink {
+
+  from,
+  to {
+    color: transparent;
+  }
+
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes blink {
+
+  from,
+  to {
+    color: transparent;
+  }
+
+  50% {
+    color: black;
+  }
+}
+
+
+
+::ng-deep .mat-select-value {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.mat-select-disabled {
+  background: #ddd;
+}
+
+i {
+  color: red;
+}
+
+small {
+  color: #9a9b9c;
+}
+
+.header-name{
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+.img-upload{
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+  border: 1px dashed #979797;
+  border-radius: 5px;
+  
+}
+.icon-plus{
+  display: inline-block;
+    height: 36px;
+    width: 36px;
+    padding: 6px;
+    color: #2b50da;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+.li-style-none{
+  list-style: none;
+}
