@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { finalize, switchMap } from 'rxjs/operators';
 import { Location } from 'src/app/model/location.interface';
 import { FoodShopRequest } from 'src/app/model/request/foodshop';
 import { FoodShopService } from 'src/app/service/foodshop.service';
@@ -9,6 +12,7 @@ import { LocationService } from 'src/app/service/location.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UploadFilesService } from 'src/app/service/upload-file.service';
 import { ShareService } from '../../../service/share.service';
+import { LoadingComponent } from '../loading/loading.component';
 
 
 @Component({
@@ -25,6 +29,7 @@ export class AddFoodShopComponent {
     avatarImages: string[] = [];
     avatarUrl: string;
     imageUrls: string[];
+    isLoading: boolean = true;
     get name() {
         return this.submitForm.get("name");
     }
@@ -69,7 +74,9 @@ export class AddFoodShopComponent {
         private foodShopService: FoodShopService,
         private domSanitizer: DomSanitizer,
         private uploadService: UploadFilesService,
-        private tokenStorage: TokenStorageService) { }
+        private tokenStorage: TokenStorageService,
+        public dialog: MatDialog,
+        private _snackBar: MatSnackBar) { }
 
     ngOnInit(): void {
         this.formInitialization();
@@ -99,31 +106,55 @@ export class AddFoodShopComponent {
     }
 
     onSubmit() {
-        this.getImagesUrl();
-        this.getAvatarUrl();
-        this.createFoodShop();
+        this.openDialogLoading();
+        this.uploadService.upload(this.images).pipe(
+            switchMap((images: string[]) => {
+                let body = this.submitForm.getRawValue();
+                let data = new FoodShopRequest(body.name === "" ? null : body.name,
+                    images,
+                    body.location === "" ? null : body.location,
+                    body.categoryId === "" ? null : body.categoryId,
+                    body.description === "" ? null : body.description,
+                    body.districtId === "" ? null : body.districtId,
+                    body.provinceId === "" ? null : body.provinceId,
+                    body.open === "" ? null : body.open,
+                    body.close === "" ? null : body.close,
+                    parseInt(localStorage.getItem("id")),
+                    this.avatarUrl);
+                return this.foodShopService.createFoodShop(data);
+            }),
+            finalize(() => {
+                this.isLoading = false;
+                this.dialog.closeAll();
+            })
+            ).subscribe((data) => {
+                console.log(data)
+                this.openSnackBar('Successfully', 'Close')
+                this.router.navigate(['/profile/' + this.tokenStorage.getUser().id])
+            });
+
     }
 
-    createFoodShop() {
-        let body = this.submitForm.getRawValue();
-        let data = new FoodShopRequest(body.name === "" ? null : body.name,
-            this.imageUrls,
-            body.location === "" ? null : body.location,
-            body.categoryId === "" ? null : body.categoryId,
-            body.description === "" ? null : body.description,
-            body.districtId === "" ? null : body.districtId,
-            body.provinceId === "" ? null : body.provinceId,
-            body.open === "" ? null : body.open,
-            body.close === "" ? null : body.close,
-            parseInt(localStorage.getItem("id")),
-            this.avatarUrl);
-        this.createShop(data);
-    }
-    createShop(data: FoodShopRequest) {
-        this.foodShopService.createFoodShop(data).subscribe((res: any) => {
-            this.router.navigate(['/profile/'+this.tokenStorage.getUser().id])
-        })
-    }
+    // createFoodShop(images: string[]) {
+    //     let body = this.submitForm.getRawValue();
+    //     let data = new FoodShopRequest(body.name === "" ? null : body.name,
+    //         images,
+    //         body.location === "" ? null : body.location,
+    //         body.categoryId === "" ? null : body.categoryId,
+    //         body.description === "" ? null : body.description,
+    //         body.districtId === "" ? null : body.districtId,
+    //         body.provinceId === "" ? null : body.provinceId,
+    //         body.open === "" ? null : body.open,
+    //         body.close === "" ? null : body.close,
+    //         parseInt(localStorage.getItem("id")),
+    //         this.avatarUrl);
+    //     this.createShop(data);
+    // }
+    // createShop(data: FoodShopRequest) {
+    //     this.foodShopService.createFoodShop(data).subscribe((res: any) => {
+    //         this.router.navigate(['/profile/' + this.tokenStorage.getUser().id])
+    //     })
+    // }
 
     formInitialization() {
         this.submitForm = this.fb.group({
@@ -205,6 +236,15 @@ export class AddFoodShopComponent {
             listFile.push(event.target.result);
         };
         reader.readAsDataURL(file);
+    }
+
+    openDialogLoading() {
+        const dialogRef = this.dialog.open(LoadingComponent, {
+        })
+    }
+
+    openSnackBar(message: string, action: string) {
+        this._snackBar.open(message, action, { duration: 2500 });
     }
 
 }

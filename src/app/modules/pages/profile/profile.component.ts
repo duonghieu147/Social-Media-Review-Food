@@ -60,9 +60,9 @@ export class ProfileComponent implements OnInit {
     }
     else {
       this.userIdParams = this.route.snapshot.paramMap.get('id');
+      this.getUserById();
       localStorage.setItem('pageCurrent', this.userIdParams)
       this.userId = localStorage.getItem('id');
-      this.getUserById();
       this.getPostByUserId();
       if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
         this.isShopManager = true;
@@ -148,9 +148,7 @@ export class ProfileComponent implements OnInit {
           return
         }
         else {
-          console.log(data.data)
           this.dataUser = data.data
-
         }
       }
     )

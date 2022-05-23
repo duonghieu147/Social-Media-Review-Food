@@ -70,6 +70,7 @@ import { FormControlComponent } from './modules/pages/form-control/form-control.
 import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodshop.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { FoodShopListComponent } from './shared/components/foodshoplist/foodshoplist.component';
 //
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     VideoComponent,
     AddFoodShopComponent,
     FormControlComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    FoodShopListComponent
   ],
   imports: [
     BrowserModule,

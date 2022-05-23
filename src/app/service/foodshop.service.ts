@@ -47,6 +47,12 @@ export class FoodShopService {
         if (categoryId > 0) {
             params['categoryId'] = categoryId;
         }
+        if(page!=null){
+            params['page'] = page;
+        }
+        if(limit!=null){
+            params['limit'] = limit;
+        }
         return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search', {
             params: params
         })
@@ -63,7 +69,31 @@ export class FoodShopService {
             );
     }
 
-    createFoodShop(body: FoodShopRequest) {
+    findAll( page: number, limit: number): Observable<FoodShop[]> {
+        let params = {};
+        if(page!=null){
+            params['page'] = page;
+        }
+        if(limit!=null){
+            params['limit'] = limit;
+        }
+        return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/all', {
+            params: params
+        })
+            .pipe(
+                map((res: BaseResponse<ListDTO<FoodShop>>) => {
+                    if (res.data) {
+                        console.log(res.data.items)
+                        return res.data.items;
+                    } else {
+                        throw "error";
+                    }
+                }),
+                catchError(this.handleError)
+            );
+    }
+
+    createFoodShop(body: FoodShopRequest):Observable<any>{
         return this.http.post<BaseResponse<FoodShopRequest>>(defaultUrl + '/api/foodshop', body);
     }
 

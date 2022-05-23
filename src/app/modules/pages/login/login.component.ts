@@ -100,6 +100,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('avatar', data.avatar)
     localStorage.setItem('biography', data.avatar)
     localStorage.setItem('address', data.address)
+    localStorage.setItem('hasFoodshop', data.hasFoodshop)
   }
   reloadPage() {
     window.location.reload();

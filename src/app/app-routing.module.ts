@@ -11,6 +11,7 @@ import { TestComponent } from './modules/pages/test/test.component';
 import { WatchComponent } from './modules/pages/watch/watch.component';
 import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodshop.component';
 import { AddpostComponent } from './shared/components/addpost/addpost.component';
+import { FoodShopListComponent } from './shared/components/foodshoplist/foodshoplist.component';
 import { PageNoteFoundComponent } from './shared/components/page-note-found/page-note-found.component';
 import { PostsComponent } from './shared/components/posts/posts.component';
 import { SearchFoodShop } from './shared/components/searchfoodshop/searchfoodshop.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
             {
                 path: 'done',
                 component: HomeComponent
+            },
+            {
+                path: 'foodshoplist',
+                component: FoodShopListComponent
             }
 
         ]
@@ -50,6 +55,7 @@ const routes: Routes = [
     { path: 'records', component: RecordsComponent },
     { path: 'test', component: TestComponent },
     { path: 'search', component: SearchFoodShop },
+    { path: 'foodshoplist', component: FoodShopListComponent },
     { path: 'watch', component: WatchComponent },
     { path: '**', component: PageNoteFoundComponent },  // Wildcard route for a 404 page
 

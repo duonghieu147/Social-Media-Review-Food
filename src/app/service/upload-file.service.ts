@@ -28,7 +28,7 @@ export class UploadFilesService {
             'Something bad happened; please try again later.');
     }
 
-    upload(urls: string[]): Observable< string[]> {
+    upload(urls: string[]): Observable<string[]> {
         return this.http.post<BaseResponse<string[]>>(defaultUrl + '/api/image/upload', urls)
             .pipe( 
                 map((res: BaseResponse<string[]>) => {
