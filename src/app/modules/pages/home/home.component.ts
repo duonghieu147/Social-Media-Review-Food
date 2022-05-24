@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as cmn from 'src/app/constant/common'
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 import { ShareService } from 'src/app/service/share.service';
@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
     public postService: PostService,
     public dialog: MatDialog,
     private router: Router,
-
   ) { }
 
   ngOnInit(): void {
@@ -40,18 +39,19 @@ export class HomeComponent implements OnInit {
     }
   }
   getAllPost() {
-    this.openDialogLoading()
+    this.showLoading(true)
     this.postService.getAllPost(this.limit, this.page).subscribe(
       (data) => {
         if (data.data.length == 0) {
-          this.dialog.closeAll();
           this.isDone = true
+          this.showLoading(false)
+
           return
         }
         else {
           this.bindingPostData(data.data)
           this.isloading = false;
-          this.dialog.closeAll();
+          this.showLoading(false)
         }
       }
     )
@@ -85,20 +85,12 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(AddpostComponent, {
       width: '700px', height: 'auto'
     })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    })
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // })
   }
 
-  // handleOk(): void {
-  //   console.log('Button ok clicked!');
-  //   this.isVisible = false;
-  // }
 
-  // handleCancel(): void {
-  //   console.log('Button cancel clicked!');
-  //   this.isVisible = false;
-  // }
   getInformation() {
     var inf = []
     inf.push([
@@ -119,9 +111,15 @@ export class HomeComponent implements OnInit {
     this.getAllPost()
   }
 
-  openDialogLoading() {
-    const dialogRef = this.dialog.open(LoadingComponent, {
-    })
+  showLoading(isShow:boolean) {
+    if (isShow) { 
+      document.getElementById('showLoading').classList.remove("hidden")
+    }
+    else {
+      document.getElementById('showLoading').classList.add("hidden")
+
+    }
   }
+  
 }
 

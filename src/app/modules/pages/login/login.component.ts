@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { AddFoodShopComponent } from 'src/app/shared/components/addfoodshop/addfoodshop.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 
 
@@ -25,19 +26,16 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     if (this.myGroup.valid) {
-      this.openDialogLoading()
+      // this.openDialogLoading()
       this.authService.login(this.myGroup.value).subscribe(
         data => {
-          localStorage.setItem('loginUserId',data.id + '');
+          localStorage.setItem('loginUserId', data.id + '');
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           this.roles = this.tokenStorage.getUser().roles;
           console.log(this.roles)
           this.getDataUserById(data.id)
-          this.dialog.closeAll();
-          localStorage.setItem('isLogin','true');
-          this.router.navigate(['/home/post']);
-          this.openSnackBar('Successfully', 'Close');
+          localStorage.setItem('isLogin', 'true');
         },
         err => {
           this.errorMessage = err.error.message;
@@ -88,6 +86,13 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.saveInfoUser(data.data)
+          this.router.navigate(['/home/post']);
+          this.openSnackBar('Successfully', 'Close');
+          localStorage.setItem('isLogin', 'true');
+          if (data.data.hasFoodshop == false) {
+            this.openCreateFoodShop()
+          }
+      
         }
       }
     )
@@ -110,8 +115,20 @@ export class LoginComponent implements OnInit {
       this.isDisabled = false;
     }
   }
-  openDialogLoading(){
-    const dialogRef =this.dialog.open(LoadingComponent,{
+  openDialogLoading() {
+    this.dialog.open(LoadingComponent, {
+    })
+
+    if (localStorage.getItem('isLogin') == 'true') {
+      this.dialog.closeAll();
+    }
+  }
+
+  openCreateFoodShop() {
+    console.log("openCreateFoodShop")
+    this.dialog.open(AddFoodShopComponent, {
+      width: '600px', maxHeight: '90vh',   
+      autoFocus: false,
     })
   }
 }

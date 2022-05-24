@@ -79,6 +79,7 @@ export class AddFoodShopComponent {
         private _snackBar: MatSnackBar) { }
 
     ngOnInit(): void {
+        console.log('11111111111')
         this.formInitialization();
         this.locationService.findAllProvince().subscribe((value: Location[]) => {
             this.provinces = value;
@@ -106,7 +107,7 @@ export class AddFoodShopComponent {
     }
 
     onSubmit() {
-        this.openDialogLoading();
+        // this.openDialogLoading();
         this.uploadService.upload(this.images).pipe(
             switchMap((images: string[]) => {
                 let body = this.submitForm.getRawValue();
