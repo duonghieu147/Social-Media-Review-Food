@@ -28,9 +28,15 @@ export class AddpostComponent {
         return this.validateForm.get("description");
     }
     get tag() {
+        // console.log(this.validateForm.get("tags"))
         return this.validateForm.get("tags");
     }
+    formatTags(tags: string) {
+        console.log(tags.split(' ').filter(v=> v.startsWith('#')))
+        this.tags = tags.split(' ').filter(v=> v.startsWith('#'))
+    }
     submitForm(): void {
+        this.formatTags(this.validateForm.value.tags)
         this.openDialogLoading();
         this.uploadService.upload(this.images).pipe(
             switchMap((images: string[]) => {
@@ -38,7 +44,7 @@ export class AddpostComponent {
                     "description": this.validateForm.value.description,
                     "userId": localStorage.getItem("id"),
                     "images": images,
-                    "tags": this.validateForm.value.tag
+                    "tags": this.tags
                 })
             }),
             finalize(() => {
@@ -121,8 +127,10 @@ export class AddpostComponent {
     }
 
     openDialogLoading() {
-        const dialogRef = this.dialog.open(LoadingComponent, {
+        this.dialog.open(LoadingComponent, {
         })
     }
+
+    
 
 }
