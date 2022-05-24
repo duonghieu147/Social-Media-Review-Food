@@ -85,3 +85,12 @@
     margin-left: 40%;
     margin-right: 50%;
 }
+.showLoading{
+  position: fixed;  
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+}
+.hidden {
+  display: none;
+}

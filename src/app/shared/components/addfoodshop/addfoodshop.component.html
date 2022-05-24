@@ -1,4 +1,4 @@
-<div style="margin-left: 20.83%; width :58.34% ;background-color: #EFF0F5 ; padding: 20px; border-radius: 5px;"
+<div style=" border-radius: 5px;"
     class="container-fluid">
     <div class="header-name">
         Tạo cửa hàng
@@ -145,7 +145,11 @@
         </form>
     </ng-container>
 
-    <button style="margin-top:50px" type="button" (click)="onSubmit()" class="btn btn-default btn--m btn-primary ml-2">
+    <!-- <button style="margin-top:50px" type="button" (click)="onSubmit()" class="btn btn-default btn--m btn-primary ml-2">
         <ng-container>Tạo cửa hàng</ng-container>
-    </button>
+    </button> -->
+    <mat-dialog-actions align="end" class="btn-actions">
+        <button mat-button color="accent" >Bỏ Qua</button>
+        <button mat-button color="primary" (click)="onSubmit()">Tạo cửa hàng</button>
+    </mat-dialog-actions>
 </div>
