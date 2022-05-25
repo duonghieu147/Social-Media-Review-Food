@@ -1,10 +1,17 @@
 <div class="container" *ngIf="endLoading">
+  
   <div class="header">
     <h2 mat-dialog-title>{{this.foodItem[1]}}</h2>
-    <div class="action-edit" *ngIf='isOwner'>
-      <button mat-button color="primary">Xóa</button>
-      <button mat-button color="primary">Chỉnh Sửa</button>
-    </div>
+    <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu"
+        style="border: none; padding: 0 ;">
+        <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+      </button>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>Chỉnh Sửa</li>
+          <li nz-menu-item>Xóa</li>
+        </ul>
+      </nz-dropdown-menu>
   </div>
   <mat-dialog-content class="mat-typography">
     <!-- <nz-carousel nzAutoPlay>

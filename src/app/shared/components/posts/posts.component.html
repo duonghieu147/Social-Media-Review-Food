@@ -5,14 +5,26 @@
     </nz-card>
 
     <ng-template #coverTemplate>
-        <div class="inf">
-            <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
-            <div class="inf-header">
-                <h2 (click)="goToProfile()">{{dataPost.author}}</h2>
-                <span>{{dataPost.createdTime}}</span>
-                <!-- <span>{{dataPost.datetime}}</span> -->
+        <div class="header-inf">
+            <div class="inf">
+                <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
+                <div class="inf-header">
+                    <h2 (click)="goToProfile()">{{dataPost.author}}</h2>
+                    <span>{{dataPost.createdTime}}</span>
+                </div>
             </div>
+            <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu"
+                style="border: none; padding: 0;background-color:whitesmoke ;">
+                <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+            </button>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                    <li nz-menu-item>Báo cáo</li>
+                    <li nz-menu-item>Chặn</li>
+                </ul>
+            </nz-dropdown-menu>
         </div>
+
         <p class="content-post">{{dataPost.content}}</p>
         <div class="tags">
             <p class="tagss">Tags: </p>
@@ -22,6 +34,7 @@
                 </nz-page-header-tags>
             </div>
         </div>
+
         <div class="row-grid">
             <div *ngIf="dataPost.images && dataPost.images.length ==1" class="one">
                 <div class='image' style="background-image: url('{{dataPost.images[0]}}')"></div>
@@ -92,8 +105,9 @@
                     [show]="0" [url]="'https://twitter.com/'" [autoSetMeta]="false">
                 Share</share-buttons>
                 </div> -->
-                <share-button button="facebook" text="Share" [showText]="true" [url]="'https://rvfood.herokuapp.com/home/post'"></share-button>
-                
+                <share-button button="facebook" text="Share" [showText]="true"
+                    [url]="'https://rvfood.herokuapp.com/home/post'"></share-button>
+
             </div>
         </mat-dialog-actions>
     </ng-template>
