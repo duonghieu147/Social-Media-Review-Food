@@ -71,6 +71,7 @@ import { AddFoodShopComponent } from './shared/components/addfoodshop/addfoodsho
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { FoodShopListComponent } from './shared/components/foodshoplist/foodshoplist.component';
+import { DialogCommonComponent } from './shared/components/dialog-common/dialog-common.component';
 //
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { FoodShopListComponent } from './shared/components/foodshoplist/foodshop
     AddFoodShopComponent,
     FormControlComponent,
     UpdateProfileComponent,
-    FoodShopListComponent
+    FoodShopListComponent,
+    DialogCommonComponent
   ],
   imports: [
     BrowserModule,

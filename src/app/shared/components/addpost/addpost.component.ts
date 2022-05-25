@@ -28,7 +28,6 @@ export class AddpostComponent {
         return this.validateForm.get("description");
     }
     get tag() {
-        // console.log(this.validateForm.get("tags"))
         return this.validateForm.get("tags");
     }
     formatTags(tags: string) {

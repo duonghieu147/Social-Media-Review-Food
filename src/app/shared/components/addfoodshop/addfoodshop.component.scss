@@ -2,12 +2,12 @@
   // margin: 5% 10% 0 10%;
   background-color: #EFF0F5;
   padding: 20px;
-  width: 100%;
+  width: calc(100hv-300px);
+  padding-left:350px;
+  padding-right:150px;
+  padding-top:150px;
 }
-// .btn-actions {
-//   position: absolute;
-//   bottom: 24px;
-// }
+
 .module-sell-post .context-sell-post .bl-upload .image-upload-list {
   display: -webkit-box;
   display: -ms-flexbox;

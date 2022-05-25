@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { AddFoodShopComponent } from 'src/app/shared/components/addfoodshop/addfoodshop.component';
+import { DialogCommonComponent } from 'src/app/shared/components/dialog-common/dialog-common.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
 
 
@@ -89,7 +90,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home/post']);
           this.openSnackBar('Successfully', 'Close');
           localStorage.setItem('isLogin', 'true');
-          if (data.data.hasFoodshop == false) {
+          if (!data.data.hasFoodshop && data.data.roles[0].name== 'SHOP_MANAGER') {
             this.openCreateFoodShop()
           }
       
@@ -125,10 +126,8 @@ export class LoginComponent implements OnInit {
   }
 
   openCreateFoodShop() {
-    console.log("openCreateFoodShop")
-    this.dialog.open(AddFoodShopComponent, {
-      width: '600px', maxHeight: '90vh',   
-      autoFocus: false,
+    this.dialog.open(DialogCommonComponent, {
+      width: 'auto', height: 'auto',   
     })
   }
 }
