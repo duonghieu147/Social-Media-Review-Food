@@ -152,12 +152,14 @@ button.edit {
   height: 36px;
   margin-top: 24px;
   margin-right: 24px;
+  
 }
 
 button.edit {
-  background: #1B1D28;
+  background: #8ee0e0;
   /* margin-left: 24px; */
   color: white;
+  padding-left: 5em;
 }
 
 /* silder-right */

@@ -31,11 +31,11 @@ export class UserService {
             'Something bad happened; please try again later.');
     }
 
-    findById(id:any): Observable<User> {
-        return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id='+id)
+    findById(id: any): Observable<User> {
+        return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id=' + id)
             .pipe(
                 map((res: BaseResponse<User>) => {
-                    console.log("dasfasf "+res)
+                    console.log("dasfasf " + res)
                     if (res.data) {
                         return res.data;
                     } else {
@@ -44,5 +44,15 @@ export class UserService {
                 }),
                 catchError(this.handleError)
             );
+    }
+
+    changeAvatar(id: any, avatar: string) {
+        return this.http.post<BaseResponse<void>>(defaultUrl + '/api/user/change-avatar', { id: id, avatar: avatar })
+            .pipe(
+                map((res: BaseResponse<void>) => {
+                }),
+                catchError(this.handleError)
+            );
+
     }
 }

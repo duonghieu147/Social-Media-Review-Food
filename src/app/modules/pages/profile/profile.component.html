@@ -112,7 +112,10 @@
           </div>
           <div *ngIf="userId==userIdParams" class="content-link">
             <button class="createpost" mat-raised-button (click)="showModal()">Đăng Bài</button>
-            <button class="edit" mat-raised-button>Đổi Avatar </button>
+            <button class="edit" mat-raised-button>
+              Đổi Avatar
+              <input (change)="onSelectFile($event)" style="opacity: 0; position: relative ;" type="file" name="myfile" />
+              </button>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
     </div>
   </div>
   <mat-dialog-content class="mat-typography">
-    <nz-carousel nzAutoPlay>
+    <nz-carousel style="width:100%" nzAutoPlay>
       <div nz-carousel-content *ngFor="let index of this.foodItem[2]">
         <img nz-image nzSrc='{{ index }}' alt=""  (load)="loadImage()"/>
       </div>

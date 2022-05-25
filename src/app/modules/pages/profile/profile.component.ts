@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzIconService } from 'ng-zorro-antd/icon';
+import { finalize, switchMap } from 'rxjs/operators';
 import * as cmn from 'src/app/constant/common';
 import { FoodShopService } from 'src/app/service/foodshop.service';
 import { PostService } from 'src/app/service/post.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { UploadFilesService } from 'src/app/service/upload-file.service';
+import { UserService } from 'src/app/service/user.service';
 import { AddFoodItemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
@@ -24,7 +28,9 @@ export class ProfileComponent implements OnInit {
   postList: Array<any> = [];
   foodItemsList: Array<any> = [];
   foodItemsData: Array<any> = [];
-  foodShopData :Array<any> = [];
+  foodShopData: Array<any> = [];
+  images: string[] = [];
+  imageUrls: string[] = [];
   foodItems: any;
   shopId: string;
   page: number = 0;
@@ -37,7 +43,7 @@ export class ProfileComponent implements OnInit {
   userId: any;
   isDone = false;
   isShopManager = false;
-  information:any
+  information: any
 
   constructor(
     private iconService: NzIconService,
@@ -47,7 +53,10 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog,
     public tokenStorageService: TokenStorageService,
     private router: Router,
-    private foodShopService: FoodShopService
+    private foodShopService: FoodShopService,
+    private uploadService: UploadFilesService,
+    private userService: UserService,
+    private _snackBar: MatSnackBar
   ) {
     this.iconService.fetchFromIconfont({
       scriptUrl: 'https://at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
@@ -55,9 +64,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('modepage')){
-      localStorage.setItem('modepage','home');
-      this.modepage =localStorage.getItem('modepage')
+    if (!localStorage.getItem('modepage')) {
+      localStorage.setItem('modepage', 'home');
+      this.modepage = localStorage.getItem('modepage')
     }
 
     if (localStorage.getItem('isLogin') != 'true') {
@@ -86,8 +95,8 @@ export class ProfileComponent implements OnInit {
   }
 
   changeModeProfile(mode: string) {
-    localStorage.setItem('modepage',mode);
-    this.modepage =localStorage.getItem('modepage')
+    localStorage.setItem('modepage', mode);
+    this.modepage = localStorage.getItem('modepage')
   }
   changeFollow() {
     this.isFollow = !this.isFollow
@@ -197,8 +206,9 @@ export class ProfileComponent implements OnInit {
   dialogAddFoodItem(): void {
     const dialogRef = this.dialog.open(AddFoodItemComponent, {
       width: '700px', height: 'auto',
-      data :{shopId:this.shopId,
-        userId:this.userId,
+      data: {
+        shopId: this.shopId,
+        userId: this.userId,
       }
 
 
@@ -211,10 +221,52 @@ export class ProfileComponent implements OnInit {
   openDialogEditProfile(): void {
     const dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: 'auto', height: 'auto',
-      data :{user:this.dataUser,}
+      data: { user: this.dataUser, }
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
+  }
+
+  onSelectFile(event) {
+    let files = event.target.files;
+    if (files && files.length > 0) {
+      for (let index = 0; index < files.length; index++) {
+        this.readFile(files[index], this.images)
+      }
+
+    }
+    this.uploadAvatar();
+  }
+  readFile(file, listFile) {
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+      listFile.push(event.target.result);
+      let a = listFile;
+
+      this.openDialogLoading();
+      this.uploadService.upload(a).pipe(
+        switchMap((images: string[]) => {
+          console.log("images" + images.length)
+          return this.userService.changeAvatar(parseInt(localStorage.getItem("id")), images[0])
+        }),
+        finalize(() => {
+        })
+      ).subscribe((data) => {
+        this.openSnackBar('Successfully', 'Close')
+        location.reload();
+        //  localStorage.setItem('modepage','product');
+      });
+
+    };
+    reader.readAsDataURL(file);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, { duration: 2500 });
+  }
+
+  uploadAvatar() {
+
   }
 }
