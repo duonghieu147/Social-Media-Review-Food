@@ -15,8 +15,8 @@
 
 .mat-typography {
   display: block;
-  width: 50em;
-  height: 700px;
+  /* width: 50em;
+  height: 700px; */
 
 }
 
@@ -212,4 +212,18 @@ span {
   .write-cmt {
     width: 350px !important;
   }
+}
+
+
+
+
+
+
+::ng-deep .images{
+  object-fit: contain !important;
+
+}
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div img, .ng-image-slider .ng-image-slider-container .main .main-inner .img-div video {
+  object-fit: contain !important;
+
 }

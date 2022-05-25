@@ -7,11 +7,14 @@
     </div>
   </div>
   <mat-dialog-content class="mat-typography">
-    <nz-carousel nzAutoPlay>
+    <!-- <nz-carousel nzAutoPlay>
       <div nz-carousel-content *ngFor="let index of this.foodItem[2]">
-        <img nz-image nzSrc='{{ index }}' alt=""  (load)="loadImage()"/>
+        <img id="images" nz-image nzSrc='{{ index }}' alt=""  (load)="loadImage()"/>
       </div>
-    </nz-carousel>
+    </nz-carousel> -->
+    <ng-image-slider [images]="imageObject" #nav
+    [autoSlide]="1"
+    [imageSize]="{ width: '100%', height: '300px',borderRadius:'25px' }"></ng-image-slider>
     <div style="  border-top: 1px solid rgb(98 87 87 / 68%); padding-top : 5px" *ngIf="!isRateMode && !isModeComment">
       <h3>Price : {{this.price}} </h3>
       <h3>Điểm Đánh giá Trung Bình :{{this.ratingAverage}}</h3>

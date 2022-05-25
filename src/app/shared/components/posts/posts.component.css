@@ -180,6 +180,7 @@ nz-list {
   display: flex;
   margin-left:12px;
   margin-right: 8px;
+  /* width: 90%; */
 }
 .tags p {
   color:peru;
