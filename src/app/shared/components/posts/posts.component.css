@@ -27,41 +27,39 @@
 }
 
 .count {
-  padding-left: 8px;
-  cursor: auto;
-  width: 300px;
-}
-
-.ant-comment-rtl .count {
-  padding-right: 8px;
-  padding-left: 0;
-}
-
-.inf {
-  display: flex;
-  margin-left: 10px;
-}
-
-.inf-header {
-  text-align: left;
-  margin: 12px 24px 0 0px;
-}
-
-p.ng-star-inserted {
-  text-align: left;
-}
-
-.action {
-  display: flex;
-  text-align: center;
-}
-
-.ant-card-body {
-  padding: 0;
-}
-
-/* comment */
-/* .ant-comment-inner{
+    padding-left: 8px;
+    cursor: auto;
+    width: 300px;
+  }
+  .ant-comment-rtl .count {
+    padding-right: 8px;
+    padding-left: 0;
+  }
+  .header-inf {
+    display: flex;
+    justify-content: space-between;
+  }
+  .inf{
+    display: flex;
+    margin-left: 10px;
+  }
+  .inf-header {
+    text-align:left;
+    margin: 12px 24px 0 0px;
+  }
+  p.ng-star-inserted {
+    text-align:left;
+  }
+  .action{
+    display: flex;
+    text-align:center;
+  }
+  .ant-card-body {
+    padding:0;
+  }
+  
+  /* comment */
+  /* .ant-comment-inner{
     width:500px !important;
   } */
 p.ng-star-inserted {
@@ -219,6 +217,7 @@ nz-list {
   display: flex;
   margin-left: 12px;
   margin-right: 8px;
+  /* width: 90%; */
 }
 
 .tags p {

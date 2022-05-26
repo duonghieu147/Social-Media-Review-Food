@@ -36,6 +36,7 @@
     "express": "^4.17.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "ng-image-slider": "^2.8.0",
     "ng-zorro-antd": "^13.0.1",
     "ngx-sharebuttons": "^10.0.0",
     "promise": "^8.1.0",

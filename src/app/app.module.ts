@@ -73,6 +73,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { FoodShopListComponent } from './shared/components/foodshoplist/foodshoplist.component';
 import { DialogCommonComponent } from './shared/components/dialog-common/dialog-common.component';
 //
+import { NgImageSliderModule } from 'ng-image-slider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -139,6 +141,7 @@ import { DialogCommonComponent } from './shared/components/dialog-common/dialog-
     NgZorroAntdModule,
     // MatDialogModule,
     MaterialModule,
+    NgImageSliderModule,
     ShareButtonsModule.withConfig({
       debug: true,
     }),
