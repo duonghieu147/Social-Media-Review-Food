@@ -155,9 +155,9 @@
             (click)="dialogAddFoodItem()">Tạo sản phẩm mới</button>
         </div>
         <div class="sort">
-          <button mat-button color="primary" class="sort1" (click)="dialogAddFoodItem()">Chất Lượng</button>
-          <button mat-button color="primary" class="sort2" (click)="dialogAddFoodItem()">Giá Cả</button>
-          <button mat-button color="primary" class="sort3" (click)="dialogAddFoodItem()">Không gian</button>
+          <button mat-button color="primary" class="sort1">Chất Lượng</button>
+          <button mat-button color="primary" class="sort2" >Giá Cả</button>
+          <button mat-button color="primary" class="sort3" >Không gian</button>
         </div>
       </div>
       <div style="margin-bottom: 30px;" *ngIf="this.shopId != null">
@@ -166,7 +166,7 @@
     </div>
     <div *ngIf="modepage=='profile'">
       <button *ngIf="userId==userIdParams" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa
-        profile</button>
+        thông tin</button>
       <app-information [dataUser]='this.dataUser'></app-information>
     </div>
   </div>
