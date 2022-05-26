@@ -35,6 +35,7 @@ export class FoodShopListComponent implements OnInit {
   findAll(page: any, limit: any) {
     this.foodShopService.findAll(page, limit).subscribe((res: FoodShop[]) => {
       this.foodShop = res;
+      console.log(res)
 
     })
   }

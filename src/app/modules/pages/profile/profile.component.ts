@@ -248,12 +248,16 @@ export class ProfileComponent implements OnInit {
       this.uploadService.upload(a).pipe(
         switchMap((images: string[]) => {
           console.log("images" + images.length)
+          localStorage.removeItem("avatar");
+          localStorage.setItem("avatar", images[0])
           return this.userService.changeAvatar(parseInt(localStorage.getItem("id")), images[0])
+          
         }),
         finalize(() => {
         })
       ).subscribe((data) => {
         this.openSnackBar('Successfully', 'Close')
+        
         location.reload();
         //  localStorage.setItem('modepage','product');
       });

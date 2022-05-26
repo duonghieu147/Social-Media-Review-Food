@@ -3,24 +3,24 @@
         <p>Review Food</p>
     </div>
     <div class="example-form">
-        <input class="search-input" type="search" [(ngModel)]="query">
-            <mat-select class="mat-sl" placeholder="Province" disableOptionCentering panelClass="select"
+        <input class="search-input" type="search" placeholder="Nhập tên nhà hàng" [(ngModel)]="query">
+            <mat-select class="mat-sl" placeholder="Tỉnh/Thành phố" disableOptionCentering panelClass="select"
                 [(ngModel)]="province" (selectionChange)="onChangeProvince($event.value)">
     
                 <mat-option *ngFor="let province of provinces" [value]="province.id">
                     {{province.name}}
                 </mat-option>
             </mat-select>
-        <mat-select class="mat-sl" placeholder="District" disableOptionCentering panelClass="select"
+        <mat-select class="mat-sl" placeholder="Quận/Huyện" disableOptionCentering panelClass="select"
             [(ngModel)]="district">
             <mat-option *ngFor="let district of districts" [value]="district.id">
                 {{district.name}}
             </mat-option>
         </mat-select>
-        <mat-select class="mat-sl" placeholder="Category" disableOptionCentering panelClass="select"
+        <mat-select class="mat-sl" placeholder="Danh mục" disableOptionCentering panelClass="select"
             [(ngModel)]="categoryId">
-            <mat-option [value]="0">Food</mat-option>
-            <mat-option [value]="1">Baverage</mat-option>
+            <mat-option [value]="0">Đồ ăn</mat-option>
+            <mat-option [value]="1">Thức uống</mat-option>
         </mat-select>
         <button mat-button class="search" (click)="onSearch(query,province,district,categoryId)" >
             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -23,8 +23,8 @@
     [autoSlide]="1"
     [imageSize]="{ width: '100%', height: '300px',borderRadius:'25px' }"></ng-image-slider>
     <div style="  border-top: 1px solid rgb(98 87 87 / 68%); padding-top : 5px" *ngIf="!isRateMode && !isModeComment">
-      <h3>Price : {{this.price}} </h3>
-      <h3>Điểm Đánh giá Trung Bình :{{this.ratingAverage}}</h3>
+      <h3>Giá: {{this.price}} đ </h3>
+      <h3>Đánh giá: {{this.ratingAverage}}</h3>
       <p *ngIf="!this.foodItem[7]">Achieve the maximum speed possible on the Web Platform today, and take it further, via
         Web
         Workers and server-side rendering. Angular puts you in control over scalability. Meet huge
@@ -59,7 +59,7 @@
       </div>
   
       <div class="rating 4">
-        <label class="rating-tile">OverView</label>
+        <label class="rating-tile">Tổng quan</label>
         <label class="rating-value">{{value4}}</label>
         <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
           [thumbLabel]="thumbLabel" [tickInterval]="getSliderTickInterval()" [(ngModel)]="value4"
@@ -100,7 +100,7 @@
   <div style="border-top: 1px solid rgb(98 87 87 / 68%);">
     <mat-dialog-actions *ngIf="!isRateMode" align="center">
       <button mat-button color="accent">Thích</button>
-      <button mat-button color="primary" (click)="changeModeComment()">Comment</button>
+      <button mat-button color="primary" (click)="changeModeComment()">Bình luận</button>
       <button mat-button color="warn" (click)="changeModeRate()">Đánh Giá</button>
     </mat-dialog-actions>
   

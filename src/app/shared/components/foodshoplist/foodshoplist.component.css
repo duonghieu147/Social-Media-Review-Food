@@ -51,6 +51,7 @@
     padding: 20px 20px 10px 20px;
     object-fit: scale-down;
     border-radius: 2px;
+    min-width: 10em;
 }
 
 img {

@@ -55,7 +55,6 @@ const routes: Routes = [
     { path: 'records', component: RecordsComponent },
     { path: 'test', component: TestComponent },
     { path: 'search', component: SearchFoodShop },
-    { path: 'foodshoplist', component: FoodShopListComponent },
     { path: 'watch', component: WatchComponent },
     { path: '**', component: PageNoteFoundComponent },  // Wildcard route for a 404 page
 
