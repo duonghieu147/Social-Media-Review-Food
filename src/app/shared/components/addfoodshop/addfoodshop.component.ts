@@ -107,7 +107,7 @@ export class AddFoodShopComponent {
     }
 
     onSubmit() {
-        // this.openDialogLoading();
+        this.openDialogLoading();
         this.uploadService.upload(this.images).pipe(
             switchMap((images: string[]) => {
                 let body = this.submitForm.getRawValue();
