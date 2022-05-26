@@ -72,7 +72,6 @@ export class AddcommentComponent implements OnInit {
     console.log(this.data)
   }
   createCommentPost(postId: any, comment: any) {
-    console.log(postId)
     this.postService.createCommentPost(postId, comment).subscribe(
       (data) => {
         console.log(data)
@@ -81,7 +80,6 @@ export class AddcommentComponent implements OnInit {
   }
 
   createCommentItemFood(postId: any, comment: any) {
-    console.log(comment)
     this.foodItemService.createCommentItemFood(postId, comment).subscribe(
       (data) => {
         console.log(data)

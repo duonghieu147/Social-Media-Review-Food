@@ -22,7 +22,6 @@ export class DialogDeleteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log('detectChanges',this.data[0].options);
   }
   onNoClick(): void {
     this.dialogRef.close();

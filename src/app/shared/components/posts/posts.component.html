@@ -19,7 +19,7 @@
             </button>
             <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>
-                    <li nz-menu-item>Chỉnh sửa</li>
+                    <li nz-menu-item (click)="openDialogUpdate(dataPost,'post')">Chỉnh sửa</li>
                     <li nz-menu-item (click)="openDialogDelete(dataPost.idpost,'post')">Xóa</li>
                 </ul>
             </nz-dropdown-menu>

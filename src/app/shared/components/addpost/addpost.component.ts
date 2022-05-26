@@ -129,7 +129,4 @@ export class AddpostComponent {
         this.dialog.open(LoadingComponent, {
         })
     }
-
-    
-
 }

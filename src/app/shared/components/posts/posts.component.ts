@@ -8,6 +8,7 @@ import { Comment } from 'src/app/model/comment.interface';
 import { CommentService } from 'src/app/service/comment.service';
 import { PostService } from '../../../service/post.service';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
+import { UpdatePostComponent } from '../update-post/update-post.component';
 
 @Component({
   selector: 'app-posts',
@@ -43,7 +44,6 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginUserId = localStorage.getItem('loginUserId');
-    console.log(this.loginUserId, this.post[11]);
     if (this.loginUserId === this.post[11] + '') {
       this.isShowOptions = true
     }
@@ -158,11 +158,13 @@ export class PostsComponent implements OnInit {
     })
   }
 
-
-
-  openDialogUpdate() {
-    this.dialog.open(DialogDeleteComponent, {
+  openDialogUpdate(post: any,options: any) {
+    this.dialog.open(UpdatePostComponent, {
       width: 'auto', height: 'auto',   
+      data: {
+        post :this.dataPost,
+        options : options
+      }
     })
   }
 

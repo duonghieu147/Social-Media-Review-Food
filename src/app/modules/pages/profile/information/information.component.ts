@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { ChangepasswordComponent } from '../changepassword/changepassword.component';
 
 @Component({
@@ -10,14 +11,18 @@ import { ChangepasswordComponent } from '../changepassword/changepassword.compon
 export class InformationComponent implements OnInit {
 
   @Input() dataUser:any
+  userId: string;
+  userIdParams: any;
+  isOwner: boolean = false;
   constructor(
     public dialog: MatDialog,
-
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    console.log(this.dataUser)
-    console.log(this.dataUser.displayName)
+    this.userId = localStorage.getItem('loginUserId');
+    this.userIdParams = this.route.snapshot.paramMap.get('id');
+    this.isOwner =this.userId==this.userIdParams
   }
   changePassword(): void {
     const dialogRef =this.dialog.open(ChangepasswordComponent,{

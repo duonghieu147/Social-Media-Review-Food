@@ -16,9 +16,9 @@
     <!--extra-->
     <nz-page-header-extra>
       <button mat-button>Nhắn Tin</button>
-      <button *ngIf="userId!=userIdParams && !isFollow" mat-raised-button color="primary" (click)="changeFollow()">Theo
+      <button *ngIf="!isOwner && !isFollow" mat-raised-button color="primary" (click)="changeFollow()">Theo
         Dõi</button>
-      <button *ngIf="userId!=userIdParams && isFollow" mat-raised-button color="accent" (click)="changeFollow()">Bỏ Theo
+      <button *ngIf="!isOwner && isFollow" mat-raised-button color="accent" (click)="changeFollow()">Bỏ Theo
         Dõi</button>
 
       <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu"
@@ -110,7 +110,7 @@
         <div class="content">
           <div class="icons-list">
           </div>
-          <div *ngIf="userId==userIdParams" class="content-link">
+          <div *ngIf="isOwner" class="content-link">
             <button class="createpost" mat-raised-button (click)="showModal()">Đăng Bài</button>
             <button class="edit" mat-raised-button>Đổi Avatar </button>
           </div>
@@ -148,7 +148,7 @@
     <div *ngIf="modepage=='product'">
       <div class="action-fooditem">
         <div >
-          <button *ngIf="this.isShopManager" class="createfood" mat-button color="primary"
+          <button *ngIf="this.isShopManager && isOwner" class="createfood" mat-button color="primary"
             (click)="dialogAddFoodItem()">Tạo sản phẩm mới</button>
         </div>
         <div class="sort">
@@ -162,7 +162,7 @@
       </div>
     </div>
     <div *ngIf="modepage=='profile'">
-      <button *ngIf="userId==userIdParams" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa
+      <button *ngIf="isOwner" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa
         profile</button>
       <app-information [dataUser]='this.dataUser'></app-information>
     </div>
