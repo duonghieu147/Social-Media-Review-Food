@@ -43,7 +43,8 @@ export class ProfileComponent implements OnInit {
   userId: any;
   isDone = false;
   isShopManager = false;
-  information: any
+  information:any
+  isOwner:boolean =false;
 
   constructor(
     private iconService: NzIconService,
@@ -64,19 +65,24 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('modepage')) {
-      localStorage.setItem('modepage', 'home');
-      this.modepage = localStorage.getItem('modepage')
+    this.userId = localStorage.getItem('loginUserId');
+    this.userIdParams = this.route.snapshot.paramMap.get('id');
+
+    this.isOwner =this.userId==this.userIdParams
+    console.log(this.isOwner)
+    if (!localStorage.getItem('modepage')){
+      localStorage.setItem('modepage','home');
+      this.modepage =localStorage.getItem('modepage')
     }
 
     if (localStorage.getItem('isLogin') != 'true') {
       this.router.navigate(['/login']);
     }
     else {
-      this.userIdParams = this.route.snapshot.paramMap.get('id');
+      // this.userIdParams = this.route.snapshot.paramMap.get('id');
       this.getUserById();
       localStorage.setItem('pageCurrent', this.userIdParams)
-      this.userId = localStorage.getItem('id');
+      // this.userId = localStorage.getItem('id');
       this.getPostByUserId();
       if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
         this.isShopManager = true;
@@ -144,7 +150,8 @@ export class ProfileComponent implements OnInit {
       post.tags,
       post.commentResponses,
         shortDescription,
-      post.like
+      post.like,
+      post.userId
       ])
     }
     this.postList = this.postList.concat(list)
@@ -169,7 +176,6 @@ export class ProfileComponent implements OnInit {
     this.foodShopService.getFoodShopByUserId(userId).subscribe(
       (data) => {
         if (data.messages[0].code == "SUCCESS") {
-          // console.log(data.data.id)
           this.foodItems = data.data.foodItems
           this.shopId = data.data.id
           this.bindingFoodShopData(data.data)
@@ -210,8 +216,6 @@ export class ProfileComponent implements OnInit {
         shopId: this.shopId,
         userId: this.userId,
       }
-
-
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

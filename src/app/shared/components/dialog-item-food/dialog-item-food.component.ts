@@ -12,7 +12,6 @@ import { LoadingComponent } from '../loading/loading.component';
   styleUrls: ['./dialog-item-food.component.css']
 })
 export class DialogItemFoodComponent implements OnInit, AfterViewInit {
-  // @Input() iscommentPost: Boolean = true;
 
   isRateMode: boolean = false;
   isOwner: boolean = false;
@@ -23,20 +22,7 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
   isShowCommentReply = false;
   idReplyToShow: number = 0;
   isLike: boolean = false;
-
-  // imageObject: Array<object> = [{
-  //   image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-
-  //   thumbImage: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-
-  // }, {
-  //   image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-
-  //   thumbImage: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-
-  //   order: 1 //Optional: if you pass this key then slider images will be arrange according @input: slideOrderType
-  // }
-  // ];
+  isShowOptions : boolean = false;
 
   array = [
     'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
@@ -44,7 +30,6 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
     'https://images.pexels.com/photos/4051008/pexels-photo-4051008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   ];
-  userIdParams: any;
   // @Input() foodItem: Array<any> = [];
   foodItem: any;
   price: any;
@@ -52,6 +37,9 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
   countImg: number = 0;
   endLoading: boolean = true;
   imageObject=[];
+  loginUserId: any;
+  userIdParams: any;
+
   constructor(private route: ActivatedRoute,
     public commentService: CommentService,
     public FoodItemService: FoodItemService,
@@ -62,7 +50,9 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    // this.openDialogLoading()
+    // this.loginUserId = +localStorage.getItem('loginUserId')
+    // this.userIdParams = +this.route.snapshot.paramMap.get('id');
+    // this.isShowOptions = this.loginUserId === this.userIdParams
     this.foodItem = this.data
     this.getFoodItemById(this.foodItem[0])
     localStorage.setItem('foodItemId', this.foodItem[0])

@@ -1,12 +1,15 @@
+================================================
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
-
+================================================
 
 ng g c shared/components/dialog-common --module app
-
 ng g c modules/pages/watch/video --module app
 ng g c modules/pages/profile/update-profile --module app
 
-
+================================================
 https://rfood.herokuapp.com/swagger-ui.html#/
-
+================================================
 CSS -- ::ng-deep .classname
+================================================
+fix bug 'ng serve' not working :
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted

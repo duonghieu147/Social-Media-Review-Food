@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dialog-common.component.css']
 })
 export class DialogCommonComponent implements OnInit {
-
+  isShowOptions:boolean= false;
   constructor(
     public dialogRef: MatDialogRef<DialogCommonComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogCommonComponent,

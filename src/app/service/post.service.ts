@@ -66,7 +66,7 @@ export class PostService {
     }
 
     deletePost(postId: any): Observable<any> { //Return data = null , status = 1 create, = 2 edit, =3 delete
-        return this.http.put<Config>(defaultUrl + '/api/post?postId=' + postId, postId)
+        return this.http.put<Config>(defaultUrl + '/api/post/delete?postId=' + postId, postId)
             .pipe(
                 catchError(this.handleError)
             );

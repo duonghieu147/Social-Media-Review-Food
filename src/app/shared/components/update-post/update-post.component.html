@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="header-name">
+        Chỉnh sửa bài viết
+    </div>
+    <ng-container *ngIf="submitForm">
+        <form class="default-form" [formGroup]="validateForm">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bl-module">
+                        <app-form-control [formControlItem]="description" labelError="description" id="description">
+                            <div header>
+                                <label for="description">
+                                    Mô tả <i>*</i>
+                                </label>
+                                <textarea style="margin-bottom: 5px;" class="form-control" name="description"
+                                    formControlName="description" rows="5" cols="50" maxlength="2000"
+                                    placeholder="Nhập nội dung bài viết"></textarea>
+                            </div>
+                        </app-form-control>
+                    </div>
+
+                    <div class="bl-module">
+                        <app-form-control [formControlItem]="tags" labelError="tags" id="tags">
+                            <div header>
+                                <label for="tags">
+                                    Tag <i>*</i>
+                                </label>
+                                <div>
+                                    <small class="mb-3">
+                                        Bắt đầu bằng kí tự "#", cách nhau bằng dấu cách
+                                    </small>
+                                </div>
+                                <textarea style="margin-bottom: 5px;height: 3em;" class="form-control" name="tags"
+                                    formControlName="tags" rows="5" cols="20" maxlength="2000"
+                                    placeholder="#hashtag"></textarea>
+                            </div>
+                        </app-form-control>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="accent" (click)="cancel()">Hủy</button>
+        <button mat-button [disabled]="!validateForm.valid" color="primary" (click)="submitForm()">Đăng bài</button>
+    </mat-dialog-actions>
+</div>

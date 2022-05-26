@@ -1,6 +1,6 @@
 <div class="information">
 
- <button mat-button color="primary" (click)="changePassword()">Đổi mật khẩu</button>
+ <button *ngIf="isOwner" mat-button color="primary" (click)="changePassword()">Đổi mật khẩu</button>
   <div class="filter">
     <h2>Tên:  </h2>
     <h2> {{dataUser.displayName}}</h2>

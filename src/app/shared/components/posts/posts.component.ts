@@ -1,10 +1,14 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { addDays, formatDistance } from 'date-fns';
 import { Comment } from 'src/app/model/comment.interface';
 import { CommentService } from 'src/app/service/comment.service';
 import { PostService } from '../../../service/post.service';
+import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
+import { UpdatePostComponent } from '../update-post/update-post.component';
 
 @Component({
   selector: 'app-posts',
@@ -23,16 +27,26 @@ export class PostsComponent implements OnInit {
   isLike: boolean = false;
   isShowCommentReply = false;
   idReplyToShow: number = 0;
-
+  loginUserId: string;
+  isShowOptions: boolean = false;
 
   constructor(
     public postService: PostService,
     public commentService: CommentService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
+
 
   ) { }
   dataPost: any = [];
   ngOnInit(): void {
+
+    this.loginUserId = localStorage.getItem('loginUserId');
+    if (this.loginUserId === this.post[11] + '') {
+      this.isShowOptions = true
+    }
     this.randomNumberLike = this.post[10]
     if (this.post[8] != null) {
       this.numberCmt = this.post[8].length
@@ -47,17 +61,16 @@ export class PostsComponent implements OnInit {
       content: this.post[3],
       createdTime: this.post[4],
       images: this.post[6],
-      tags:this.post[7],
+      tags: this.post[7],
       datetime: formatDistance(new Date(), addDays(new Date(), 1)),
       like: this.post[10],
-      userId:this.post[11]
+      userId: this.post[11]
     }
   }
 
   bindingDataReply() {
     if (this.post[8] != null) {
       this.comment = this.post[8]
-      // console.log('comment', this.comment);
     }
   }
 
@@ -105,11 +118,10 @@ export class PostsComponent implements OnInit {
       })
   }
   goToProfile() {
-    this.router.navigate(['/profile/' +this.dataPost.userId ]);
+    this.router.navigate(['/profile/' + this.dataPost.userId]);
   }
 
   //Tags
-
   vegetables: Vegetable[] = [
     { name: 'tag1' },
     { name: 'coffee' },
@@ -135,6 +147,32 @@ export class PostsComponent implements OnInit {
     this.isShowCommentReply = !this.isShowCommentReply;
     this.idReplyToShow = commentId;
   }
+
+  openDialogDelete(postId: number,options: any) {
+    this.dialog.open(DialogDeleteComponent, {
+      width: 'auto', height: 'auto',   
+      data: {
+        postId :postId,
+        options : options
+      }
+    })
+  }
+
+  openDialogUpdate(post: any,options: any) {
+    this.dialog.open(UpdatePostComponent, {
+      width: 'auto', height: 'auto',   
+      data: {
+        post :this.dataPost,
+        options : options
+      }
+    })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, { duration: 2500 });
+  }
+
+
 }
 
 export interface Vegetable {
