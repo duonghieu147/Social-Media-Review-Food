@@ -135,7 +135,8 @@ export class ProfileComponent implements OnInit {
       post.tags,
       post.commentResponses,
         shortDescription,
-      post.like
+      post.like,
+      post.userId
       ])
     }
     this.postList = this.postList.concat(list)

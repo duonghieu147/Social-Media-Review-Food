@@ -74,6 +74,7 @@ import { FoodShopListComponent } from './shared/components/foodshoplist/foodshop
 import { DialogCommonComponent } from './shared/components/dialog-common/dialog-common.component';
 //
 import { NgImageSliderModule } from 'ng-image-slider';
+import { DialogDeleteComponent } from './shared/components/dialog-delete/dialog-delete.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     FormControlComponent,
     UpdateProfileComponent,
     FoodShopListComponent,
-    DialogCommonComponent
+    DialogCommonComponent,
+    DialogDeleteComponent
   ],
   imports: [
     BrowserModule,
