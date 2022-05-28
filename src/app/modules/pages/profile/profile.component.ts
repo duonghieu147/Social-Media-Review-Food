@@ -10,6 +10,7 @@ import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { AddFoodItemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { DialogRatingShopComponent } from './dialog-rating-shop/dialog-rating-shop.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @Component({
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
   postList: Array<any> = [];
   foodItemsList: Array<any> = [];
   foodItemsData: Array<any> = [];
-  foodShopData :Array<any> = [];
+  foodShopData: Array<any> = [];
   foodItems: any;
   shopId: string;
   page: number = 0;
@@ -37,8 +38,8 @@ export class ProfileComponent implements OnInit {
   userId: any;
   isDone = false;
   isShopManager = false;
-  information:any
-  isOwner:boolean =false;
+  information: any
+  isOwner: boolean = false;
 
   constructor(
     private iconService: NzIconService,
@@ -59,11 +60,11 @@ export class ProfileComponent implements OnInit {
     this.userId = localStorage.getItem('loginUserId');
     this.userIdParams = this.route.snapshot.paramMap.get('id');
 
-    this.isOwner =this.userId==this.userIdParams
+    this.isOwner = this.userId == this.userIdParams
     console.log(this.isOwner)
-    if (!localStorage.getItem('modepage')){
-      localStorage.setItem('modepage','home');
-      this.modepage =localStorage.getItem('modepage')
+    if (!localStorage.getItem('modepage')) {
+      localStorage.setItem('modepage', 'home');
+      this.modepage = localStorage.getItem('modepage')
     }
 
     if (localStorage.getItem('isLogin') != 'true') {
@@ -92,8 +93,8 @@ export class ProfileComponent implements OnInit {
   }
 
   changeModeProfile(mode: string) {
-    localStorage.setItem('modepage',mode);
-    this.modepage =localStorage.getItem('modepage')
+    localStorage.setItem('modepage', mode);
+    this.modepage = localStorage.getItem('modepage')
   }
   changeFollow() {
     this.isFollow = !this.isFollow
@@ -203,8 +204,9 @@ export class ProfileComponent implements OnInit {
   dialogAddFoodItem(): void {
     const dialogRef = this.dialog.open(AddFoodItemComponent, {
       width: '700px', height: 'auto',
-      data :{shopId:this.shopId,
-        userId:this.userId,
+      data: {
+        shopId: this.shopId,
+        userId: this.userId,
       }
     })
     dialogRef.afterClosed().subscribe(result => {
@@ -215,10 +217,17 @@ export class ProfileComponent implements OnInit {
   openDialogEditProfile(): void {
     const dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: 'auto', height: 'auto',
-      data :{user:this.dataUser,}
+      data: { user: this.dataUser, }
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  openDialogRatingShop(): void {
+    this.dialog.open(DialogRatingShopComponent, {
+      width: '300px', height: 'auto',
+      data: { rating:5, }
     })
   }
 }

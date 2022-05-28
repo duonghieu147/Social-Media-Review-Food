@@ -82,8 +82,7 @@ export class UpdatePostComponent implements OnInit {
   }
   formInitialization() {
     for (let i = 0; i < this.post.post.tags.length; i++) {
-      console.log(this.post.post.tags[i])
-      this.stringTags = this.stringTags + this.post.post.tags[i]
+      this.stringTags = this.stringTags +' '+ this.post.post.tags[i]
     }
     console.log(this.stringTags)
 

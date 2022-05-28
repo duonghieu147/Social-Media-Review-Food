@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user.interface';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
 import { AddpostComponent } from '../addpost/addpost.component';
+import { MiniProfileComponent } from '../mini-profile/mini-profile.component';
 
 @Component({
   selector: 'app-chat',
@@ -43,6 +44,16 @@ export class ChatComponent implements OnInit {
   onclick(){
       this.router.navigate(['/profile/'+this.tokenStorage.getUser().id]);
 
+  }
+
+  openDialogMiniProfile( ) {
+    // this.dialog.open(MiniProfileComponent, {
+    //   width: 'auto', height: 'auto',   
+    // })
+  }
+
+  closeDialogMiniProfile( ) {
+    // console.log( 'closeDialogMiniProfile')
   }
 
 }

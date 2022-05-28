@@ -9,13 +9,29 @@
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+.header {
+    text-align: center;
+    font-weight :bold;
+}
+.content {
+    display: flex;
+    justify-content:space-around;
+}
+.filters {
+    display: flex;
+    flex-direction: column;
+}
 .filter{
 	display: flex;
-	margin-left:12px;
-	margin-top: 12px;
+	margin: 12px;
 }
 .filter h2 {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: blue;
+}
+.filter :nth-child(2) {
+    color:black;
 }
 
 /* Icons */
@@ -27,8 +43,49 @@
 svg {
     height: 36px;
     width: 36px;
+    margin-right: 8px;
 }
 .icon-svg {
     display: flex;
     margin: 24px;
 }
+a {
+    color: blue;
+    font-weight: bold;
+    font-size:14px;
+}
+
+@media (max-width: 425px) {
+    .filter {
+        margin: 8px;
+        font-size:12px;
+
+    }
+    svg {
+        height:16px;
+        height:16px;
+    }
+    .icon-svg {
+        margin:8px;
+    }
+    a {
+        font-size:12px;
+    }
+  }
+  @media (max-width: 768px) {
+    .filter {
+        margin: 8px;
+        font-size:12px
+
+    }
+    svg {
+        height:24px;
+        height:24px;
+    }
+    .icon-svg {
+        margin:12px 0;
+    }
+    a {
+        font-size:14px;
+    }
+  }

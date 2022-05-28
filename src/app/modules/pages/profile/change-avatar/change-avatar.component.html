@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="header-name">
+        Đổi avatar
+    </div>
+    <ng-container >
+        <form class="default-form" >
+            <div class="row">
+                <div class="col-12">
+                    <div class="bl-module">
+                        <h3 class="mb-2">Ảnh <i>*</i></h3>
+                        <small class="mb-3">
+                             Dung lượng tối đa 1 Mb. Định dạng .jpg, .png
+                        </small>
+                        <div class="img-list">
+                            <ul style="padding-left: 0; display: flex;">
+                                <li class="li-style-none" *ngFor="let url of images; index as i">
+                                    <img style="width: 120px;height: 120px;" [src]="url" alt="product-image">
+                                    <a class="func-remove" (click)="removeImage(i)">
+                                        <div class="icz icz-trash"></div>
+                                    </a>
+                                </li>
+                                <li class="li-style-none" *ngIf="isLoadImg">
+                                    <a class="img-upload">
+                                        <i class="fa-solid fa-circle-plus icon-plus"></i>
+                                        <input style="width: 120px; height: 120px; opacity: 0; position: absolute;"
+                                            type="file" accept="image/png, image/jpeg, image/jpg" id="images"
+                                            name="images" multiple (change)="onSelectFile($event)">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="accent" (click)="cancel()">Hủy</button>
+        <button mat-button color="primary" (click)="submitForm()">Xác nhận</button>
+    </mat-dialog-actions>
+</div>

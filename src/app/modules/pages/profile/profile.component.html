@@ -15,7 +15,7 @@
 
     <!--extra-->
     <nz-page-header-extra>
-      <button mat-button>Nhắn Tin</button>
+      <button mat-button (click)="openDialogRatingShop()">Đánh giá</button>
       <button *ngIf="!isOwner && !isFollow" mat-raised-button color="primary" (click)="changeFollow()">Theo
         Dõi</button>
       <button *ngIf="!isOwner && isFollow" mat-raised-button color="accent" (click)="changeFollow()">Bỏ Theo
@@ -119,16 +119,16 @@
     </nz-page-header-content>
 
   </nz-page-header>
-  <div style="margin-top:10px;" *ngIf="dataUser.roles[0].name=='SHOP_MANAGER' && slideImage">
+  <div style="margin-top:10px;" class="slide-img" *ngIf="dataUser.roles[0].name=='SHOP_MANAGER' && slideImage">
     <nz-carousel nzAutoPlay style="width:80% ; background-color:aqua ">
       <div nz-carousel-content *ngFor="let index of slideImage">
         <img style="object-fit: contain ;margin:auto" nz-image nzSrc='{{ index }}' alt="" />
       </div>
     </nz-carousel>
   </div>
-  <nz-page-header-footer
-    style="margin: 1px auto 5px auto;width: 80%; border-top :1px solid rgb(179, 176, 176) ;border-bottom:1px solid rgb(179, 176, 176); 
-    background-color: rgb(168, 226, 236); border-radius: 8px;">
+  <nz-page-header-footer class="boder-background ">
+    <!-- style="margin: 24px auto 5px auto;width: 80%; border-top :1px solid rgb(179, 176, 176) ;border-bottom:1px solid rgb(179, 176, 176); 
+    background-color: rgb(168, 226, 236); border-radius: 10px;"> -->
     <nz-tabset [nzSelectedIndex]="0" nzSize="large">
       <nz-tab nzTitle="Bài viết" (nzClick)="changeModeProfile('home')"></nz-tab>
       <nz-tab *ngIf="dataUser.roles[0].name == 'SHOP_MANAGER'" nzTitle="Sản phẩm"
@@ -164,7 +164,10 @@
     <div *ngIf="modepage=='profile'">
       <button *ngIf="isOwner" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa
         profile</button>
+        <div class="app-profile">
       <app-information [dataUser]='this.dataUser'></app-information>
+
+        </div>
     </div>
   </div>
 

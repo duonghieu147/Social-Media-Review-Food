@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { ChangeAvatarComponent } from '../change-avatar/change-avatar.component';
 import { ChangepasswordComponent } from '../changepassword/changepassword.component';
 
 @Component({
@@ -33,4 +34,10 @@ export class InformationComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     })
   }
+  openDialogAvatar() {
+    this.dialog.open(ChangeAvatarComponent,{
+      width:'500px',height:'auto',
+    })
+  }
+
 }

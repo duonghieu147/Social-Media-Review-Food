@@ -31,17 +31,24 @@ export class UserService {
             'Something bad happened; please try again later.');
     }
 
-    findById(id:any): Observable<User> {
-        return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id='+id)
+    findById(id: any): Observable<User> {
+        return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id=' + id)
             .pipe(
                 map((res: BaseResponse<User>) => {
-                    console.log("dasfasf "+res)
+                    console.log("dasfasf " + res)
                     if (res.data) {
                         return res.data;
                     } else {
                         throw "error";
                     }
                 }),
+                catchError(this.handleError)
+            );
+    }
+
+    changeAvatar(data: any): Observable<any> {
+        return this.http.post<BaseResponse<User>>(defaultUrl + '/api/user/change-avatar', data)
+            .pipe(
                 catchError(this.handleError)
             );
     }

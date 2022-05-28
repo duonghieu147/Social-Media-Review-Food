@@ -2,8 +2,8 @@
     <div class="friends" (click)="onclick()">
         <!-- <label nz-radio-button nzValue="large">Bạn Bè 1 </label>
         <span>Bạn Bè 1 </span> -->
-        <nz-avatar [nzSize]="64" nzSrc="{{user.avatar}}"></nz-avatar>
-        <h4 nz-typography>{{user.displayName}}</h4>
+        <nz-avatar [nzSize]="64" nzSrc="{{user.avatar}}" (mouseover)="openDialogMiniProfile()" (mouseout)="closeDialogMiniProfile()" ></nz-avatar>
+        <h4 nz-typography (mouseover)="openDialogMiniProfile()" (mouseout)="closeDialogMiniProfile()">{{user.displayName}}</h4>
         <!-- <button class="edit" mat-raised-button>Chỉnh sửa thông tin </button> -->
     </div>
     <div class="social">
