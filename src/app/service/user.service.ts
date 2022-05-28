@@ -45,6 +45,13 @@ export class UserService {
             );
     }
 
+    changeAvatar(data: any): Observable<any> {
+        return this.http.post<BaseResponse<User>>(defaultUrl + '/api/user/change-avatar', data)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
     changeAvatar(id: any, avatar: string) {
         return this.http.post<BaseResponse<void>>(defaultUrl + '/api/user/change-avatar', { id: id, avatar: avatar })
             .pipe(

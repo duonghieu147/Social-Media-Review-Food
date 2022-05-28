@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { addDays, formatDistance } from 'date-fns';
@@ -8,6 +8,7 @@ import { Comment } from 'src/app/model/comment.interface';
 import { CommentService } from 'src/app/service/comment.service';
 import { PostService } from '../../../service/post.service';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
+import { MiniProfileComponent } from '../mini-profile/mini-profile.component';
 import { UpdatePostComponent } from '../update-post/update-post.component';
 
 @Component({
@@ -17,8 +18,10 @@ import { UpdatePostComponent } from '../update-post/update-post.component';
 })
 export class PostsComponent implements OnInit {
 
-  comment: Comment[] = [];
+  @ViewChild("avatar", {read: ElementRef}) avatar: ElementRef;
+  @ViewChild("author", {read: ElementRef}) author: ElementRef;
 
+  comment: Comment[] = [];
   @Input() post: Array<any> = [];
   isWritenCmt: boolean = false;
   randomNumberLike: number = 0;
@@ -37,7 +40,7 @@ export class PostsComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     public snackBar: MatSnackBar,
-
+    public dialogRef: MatDialogRef<MiniProfileComponent>
 
   ) { }
   dataPost: any = [];
@@ -170,6 +173,26 @@ export class PostsComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, { duration: 2500 });
+  }
+
+  hanldHover() : void {
+    console.log(this.avatar.nativeElement)
+    console.log(this.author.nativeElement)
+  }
+
+  openDialogMiniProfile( ) {
+    this.dialog.open(MiniProfileComponent, {
+      width: 'auto', height: 'auto',   
+      // data: {
+      //   post :this.dataPost,
+      //   options : options
+      // }
+    })
+  }
+
+  closeDialogMiniProfile( ) {
+    // this.dialogRef.close();
+    console.log( 'closeDialogMiniProfile')
   }
 
   onclickTag(tag: string) {

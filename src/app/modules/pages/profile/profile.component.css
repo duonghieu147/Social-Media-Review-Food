@@ -27,6 +27,7 @@
   margin-top: 64px;
   margin-left: 300px;
   background-color: rgb(247, 247, 247);
+  height: 100%;
 }
 
 [nz-icon] {
@@ -77,8 +78,7 @@ nz-carousel {
   height: 320px;
   width: 90%;
   margin: auto;
-  margin-top: 48
-  px;
+  margin-top: 48 px;
   margin-bottom: 48px;
   border-radius: 20px;
 
@@ -106,9 +106,19 @@ h3 {
 }
 
 /* Nav */
+.app-profile {
+  margin: 24px 0 48px;
+}
+
 ::ng-deep.ant-tabs-tab-btn {
+  /* margin-top :24px; */
+  color: white;
   width: 18em !important;
   text-align: center !important;
+}
+
+::ng-deep.ant-tabs-tab-active {
+  color: whitesmoke
 }
 
 ::ng-deep.ant-tabs-nav-wrap {
@@ -230,41 +240,65 @@ button.edit {
 
 @media only screen and (max-width: 425px) {
   .silderbar-left {
-    width:0px;
-    display:none;
+    width: 0px;
+    display: none;
   }
-  .profile{
-    margin-left: 24px;
-  }
-  nz-carousel{
-    height:280px;
-  }
-  .action-fooditem .sort3,.sort1,.sort2 {
-    padding:0;
-    font-size:12px;
-    width:auto !important;
-  }
-}
-@media only screen and (max-width: 675px) {
-  .silderbar-left {
-    width:0px;
-    display:none;
-  }
-  .profile{
+
+  .profile {
     margin-left: 24px;
   }
 
-  nz-carousel{
-    height:280px;
+  nz-carousel {
+    height: 280px;
   }
-  .action-fooditem .sort3,.sort1,.sort2 {
-    padding:0;
-    font-size:12px;
-    width:auto !important;
+
+  .action-fooditem .sort3,
+  .sort1,
+  .sort2 {
+    padding: 0;
+    font-size: 12px;
+    width: auto !important;
   }
-  .post-section{
+}
+
+@media only screen and (max-width: 675px) {
+  .silderbar-left {
+    width: 0px;
+    display: none;
+  }
+
+  .profile {
+    margin-left: 24px;
+  }
+
+  nz-carousel {
+    height: 280px;
+  }
+
+  .action-fooditem .sort3,
+  .sort1,
+  .sort2 {
+    padding: 0;
+    font-size: 12px;
+    width: auto !important;
+  }
+
+  .post-section {
     margin-right: 100px;
     padding: 30%;
   }
 
+}
+
+.boder-background {
+  width: 80%;
+  margin: 24px auto 5px auto;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgb(102,101,128);
+background: linear-gradient(90deg, rgba(102,101,128,1) 36%, rgba(73,73,172,1) 57%, rgba(0,249,255,0.6895133053221288) 100%);
 }

@@ -14,6 +14,7 @@ import { UserService } from 'src/app/service/user.service';
 import { AddFoodItemComponent } from 'src/app/shared/components/addfooditem/addfooditem.component';
 import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
+import { DialogRatingShopComponent } from './dialog-rating-shop/dialog-rating-shop.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @Component({
@@ -252,6 +253,13 @@ export class ProfileComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  openDialogRatingShop(): void {
+    this.dialog.open(DialogRatingShopComponent, {
+      width: '300px', height: 'auto',
+      data: { rating:5, }
     })
   }
 

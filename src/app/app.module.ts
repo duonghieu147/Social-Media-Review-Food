@@ -76,6 +76,9 @@ import { DialogCommonComponent } from './shared/components/dialog-common/dialog-
 import { NgImageSliderModule } from 'ng-image-slider';
 import { DialogDeleteComponent } from './shared/components/dialog-delete/dialog-delete.component';
 import { UpdatePostComponent } from './shared/components/update-post/update-post.component';
+import { MiniProfileComponent } from './shared/components/mini-profile/mini-profile.component';
+import { DialogRatingShopComponent } from './modules/pages/profile/dialog-rating-shop/dialog-rating-shop.component';
+import { ChangeAvatarComponent } from './modules/pages/profile/change-avatar/change-avatar.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +118,10 @@ import { UpdatePostComponent } from './shared/components/update-post/update-post
     FoodShopListComponent,
     DialogCommonComponent,
     DialogDeleteComponent,
-    UpdatePostComponent
+    UpdatePostComponent,
+    MiniProfileComponent,
+    DialogRatingShopComponent,
+    ChangeAvatarComponent
   ],
   imports: [
     BrowserModule,

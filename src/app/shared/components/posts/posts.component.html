@@ -7,9 +7,9 @@
     <ng-template #coverTemplate>
         <div class="header-inf">
             <div class="inf">
-                <nz-avatar nzSrc={{dataPost.avatar}}></nz-avatar>
+                <nz-avatar #avatar onmouseover="openDialogMiniProfile(this)" onmouseout="closeDialogMiniProfile(this)" nzSrc={{dataPost.avatar}}></nz-avatar>
                 <div class="inf-header">
-                    <h2 (click)="goToProfile()">{{dataPost.author}}</h2>
+                    <h2 #author (click)="goToProfile()">{{dataPost.author}}</h2>
                     <span>{{dataPost.createdTime}}</span>
                 </div>
             </div>

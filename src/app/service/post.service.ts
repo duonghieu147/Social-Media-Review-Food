@@ -64,6 +64,13 @@ export class PostService {
             );
     }
 
+    updatePost(post: any): Observable<any> { //Return data = null , status = 1 create, = 2 edit, =3 delete
+        return this.http.post<Config>(defaultUrl + '/api/post/create', post)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
     deletePost(postId: any): Observable<any> { //Return data = null , status = 1 create, = 2 edit, =3 delete
         return this.http.put<Config>(defaultUrl + '/api/post/delete?postId=' + postId, postId)
             .pipe(

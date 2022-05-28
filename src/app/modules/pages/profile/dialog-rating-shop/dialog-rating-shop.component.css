@@ -1,0 +1,7 @@
+.dialog-rating-shop{
+    display: flex;
+    flex-direction: column;
+}
+.rating_index {
+    display: flex;
+}
