@@ -63,3 +63,20 @@ h1{
   font-size: 14px;
   padding-bottom: 2px;
 }
+.boder-common {
+  box-shadow: 0 8px 8px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.background-line-common {
+  background: rgb(184,184,184);
+  background: linear-gradient(90deg, rgba(184,184,184,1) 5%, rgba(235,201,201,1) 40%, rgba(111,184,199,1) 88%);
+}
+
+.background-radial-common{
+  background: rgb(184,184,184);
+  background: radial-gradient(circle, rgba(184,184,184,1) 5%, rgba(235,201,201,1) 40%, rgba(111,184,199,1) 88%);
+}

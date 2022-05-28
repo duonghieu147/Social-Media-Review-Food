@@ -1,63 +1,92 @@
 @import url(https://fonts.googleapis.com/css?family=Pacifico);
-*{
+
+* {
   font-family: 'Pacifico' !important;
 }
-*{font-family: Tahoma, sans-serif !important;
-}
-.chat{
-    display: flex;
-    flex-direction: column;
-    right: 0;
-    bottom: 0;
-    min-width:320px;
-    border-radius:20px 20px 20px 20px ;
-    background-color:lightgray;
-    position: fixed;
-    margin-bottom: 10px;
-    padding: 10px 0px 10px 0px;
-}
-.friends{
-    margin-bottom:5px;
+
+* {
+  font-family: Tahoma, sans-serif !important;
 }
 
-.social{
-    display: flex;
-    padding-left: 2.5em;
+.chat {
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  bottom: 0;
+  min-width: 320px;
+  border-radius: 20px 20px 20px 20px;
+  background-color: lightgray;
+  position: fixed;
+  margin-bottom: 10px;
+  padding: 10px 0px 10px 0px;
+
 }
+
+.friends {
+  margin-bottom: 5px;
+}
+
+.social {
+  display: flex;
+  padding-left: 2.5em;
+}
+
 svg {
-    height: 36px;
-    width: 36px;
+  height: 36px;
+  width: 36px;
 }
+
 .icon-svg {
-    display: flex;
-    margin: 24px;
+  display: flex;
+  margin: 24px;
 }
 
 /*btn action*/
-button.createpost ,button.edit{
-    background: linear-gradient(99.27deg, #FF1CF6 -35.3%, rgba(253, 96, 28, 0.74) 66.33%, #DE2442 138.45%);
-    min-width:200px;
-    height:36px;
-    /* margin-top:24px; */
-  }
-  button.edit{
-    background: #1B1D28;
-    color: white;
-  }
-
-
-  /* friend */
-  .friend{
-      display: flex;
-  }
-  .friend nz-avatar {
-    margin:12px 0 0 24px ;
-  }
-  .friend p {
-    margin-top:12px ;
-    margin-right: 24px;
+button.createpost,
+button.edit {
+  background: linear-gradient(99.27deg, #FF1CF6 -35.3%, rgba(253, 96, 28, 0.74) 66.33%, #DE2442 138.45%);
+  min-width: 200px;
+  height: 36px;
+  /* margin-top:24px; */
 }
-.load-more-button{
+
+button.edit {
+  background: #1B1D28;
+  color: white;
+}
+
+
+/* friend */
+.friend {
+  display: flex;
+}
+
+.friend nz-avatar {
+  margin: 12px 0 0 24px;
+}
+
+.friend p {
+  margin-top: 12px;
+  margin-right: 24px;
+}
+
+.load-more-button {
   background-color: aqua;
   color: rgb(252, 252, 252);
+}
+
+.gradient-background {
+  background: rgb(184, 184, 184);
+  background: linear-gradient(90deg, rgba(184, 184, 184, 1) 0%, rgba(235, 235, 235, 1) 35%, rgba(160, 223, 236, 1) 100%);
+
+  background: rgb(184, 184, 184);
+  background: radial-gradient(circle, rgba(184, 184, 184, 1) 0%, rgba(235, 235, 235, 1) 35%, rgba(160, 223, 236, 1) 100%);
+}
+
+.boder-common {
+  box-shadow: 0 8px 8px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }

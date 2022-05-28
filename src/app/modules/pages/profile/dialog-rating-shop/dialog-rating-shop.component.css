@@ -1,7 +1,23 @@
-.dialog-rating-shop{
+.dialog-rating-shop {
     display: flex;
     flex-direction: column;
 }
+
 .rating_index {
     display: flex;
+}
+
+pre {
+    font-size: 16px;
+}
+
+.header {
+    align-items: center;
+    font-weight: bold;
+}
+
+::ng-deep .rating-index span {
+    color: blue;
+    font-size: 18px;
+
 }

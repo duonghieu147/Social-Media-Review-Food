@@ -257,9 +257,10 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialogRatingShop(): void {
+    console.log('shopID',this.shopId);
     this.dialog.open(DialogRatingShopComponent, {
-      width: '300px', height: 'auto',
-      data: { rating:5, }
+      width: '400px', height: 'auto',
+      data: { shopId: this.shopId }
     })
   }
 

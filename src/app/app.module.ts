@@ -79,6 +79,7 @@ import { UpdatePostComponent } from './shared/components/update-post/update-post
 import { MiniProfileComponent } from './shared/components/mini-profile/mini-profile.component';
 import { DialogRatingShopComponent } from './modules/pages/profile/dialog-rating-shop/dialog-rating-shop.component';
 import { ChangeAvatarComponent } from './modules/pages/profile/change-avatar/change-avatar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -156,6 +157,7 @@ import { ChangeAvatarComponent } from './modules/pages/profile/change-avatar/cha
       debug: true,
     }),
     ShareIconsModule,
+    NgbModule,
   
   ],
   providers: [],

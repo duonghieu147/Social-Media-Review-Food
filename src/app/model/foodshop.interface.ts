@@ -1,4 +1,3 @@
-import { Rating } from "./fooditem.interface";
 
 export interface FoodShop {
     id:number;
@@ -12,4 +11,13 @@ export interface FoodShop {
     avatar: string;
     description:string;
     userId:number;
+  }
+
+  export interface Rating {
+    overall:number,
+    quality:number,
+    service:number,
+    price:number,
+    space:number,
+    location:number
   }

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { FoodShop } from '../model/foodshop.interface';
 import { FoodShopSuggestion } from '../model/foodshopsuggest.interface';
 import { ListDTO } from '../model/listdto.interface';
+import { Rating } from '../model/foodshop.interface';
 import { FoodShopRequest } from '../model/request/foodshop';
 import { BaseResponse } from '../model/response.interface';
 
@@ -48,10 +49,10 @@ export class FoodShopService {
         if (categoryId > 0) {
             params['categoryId'] = categoryId;
         }
-        if(page!=null){
+        if (page != null) {
             params['page'] = page;
         }
-        if(limit!=null){
+        if (limit != null) {
             params['limit'] = limit;
         }
         return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/search', {
@@ -70,12 +71,12 @@ export class FoodShopService {
             );
     }
 
-    findAll( page: number, limit: number): Observable<FoodShop[]> {
+    findAll(page: number, limit: number): Observable<FoodShop[]> {
         let params = {};
-        if(page!=null){
+        if (page != null) {
             params['page'] = page;
         }
-        if(limit!=null){
+        if (limit != null) {
             params['limit'] = limit;
         }
         return this.http.get<BaseResponse<ListDTO<FoodShop>>>(defaultUrl + '/api/foodshop/all', {
@@ -94,20 +95,20 @@ export class FoodShopService {
             );
     }
 
-    createFoodShop(body: FoodShopRequest):Observable<any>{
+    createFoodShop(body: FoodShopRequest): Observable<any> {
         return this.http.post<BaseResponse<FoodShopRequest>>(defaultUrl + '/api/foodshop', body);
     }
 
     getFoodShopByUserId(userId: any): Observable<any> {
         return this.http.get(defaultUrl + '/api/foodshop/findbyuserid?userId=' + userId)
-          .pipe(
-            catchError(this.handleError)
-          );
-      }
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
 
-      findAllSuggestion(keyword:string): Observable<FoodShopSuggestion[]> {
+    findAllSuggestion(keyword: string): Observable<FoodShopSuggestion[]> {
         let params = {};
-        if(keyword!=null){
+        if (keyword != null) {
             params['keyword'] = keyword;
         }
         return this.http.get<BaseResponse<FoodShopSuggestion[]>>(defaultUrl + '/api/foodshop/suggestion', {
@@ -124,4 +125,13 @@ export class FoodShopService {
                 catchError(this.handleError)
             );
     }
+
+    ratingShopFood(shopId: any,rating:Rating): Observable<any> {
+        return this.http.post<any>(defaultUrl + '/api/foodshop/rate?id=' + shopId, rating)
+            .pipe(
+                catchError(this.handleError)
+            );
+      
+    }
+    
 }
