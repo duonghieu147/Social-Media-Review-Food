@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { finalize, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { finalize, map, startWith, switchMap } from 'rxjs/operators';
+import { FoodShopSuggestion } from 'src/app/model/foodshopsuggest.interface';
+import { FoodShopService } from 'src/app/service/foodshop.service';
 import { PostService } from 'src/app/service/post.service';
 import { UploadFilesService } from 'src/app/service/upload-file.service';
 import { LoadingComponent } from '../loading/loading.component';
@@ -20,10 +23,13 @@ export class AddpostComponent {
     suggestions = ['Coffee', 'Douong', 'highland', 'duonghieu147 ', 'reivew', 'sanpham'];
 
     validateForm!: FormGroup;
+    myControl = new FormControl();
     tags: any;
     images: string[] = [];
     imageUrls: string[] = [];
     isLoading: boolean = true;
+    options: FoodShopSuggestion[];
+    filteredOptions: Observable<FoodShopSuggestion[]>;
     get description() {
         return this.validateForm.get("description");
     }
@@ -31,8 +37,8 @@ export class AddpostComponent {
         return this.validateForm.get("tags");
     }
     formatTags(tags: string) {
-        console.log(tags.split(' ').filter(v=> v.startsWith('#')))
-        this.tags = tags.split(' ').filter(v=> v.startsWith('#'))
+        console.log(tags.split(' ').filter(v => v.startsWith('#')))
+        this.tags = tags.split(' ').filter(v => v.startsWith('#'))
     }
     submitForm(): void {
         this.formatTags(this.validateForm.value.tags)
@@ -70,11 +76,22 @@ export class AddpostComponent {
         private router: Router,
         public dialogRef: MatDialogRef<AddpostComponent>,
         private uploadService: UploadFilesService,
-        public dialog: MatDialog) { }
+        public dialog: MatDialog,
+        public foodShopService: FoodShopService) { }
 
     ngOnInit(): void {
         this.formInitialization()
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+            startWith(''),
+            map(value => this._filter(value)),
+          );
     }
+
+    private _filter(value: string): FoodShopSuggestion[] {
+        const filterValue = value.toLowerCase();
+    
+        return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+      }
     formInitialization() {
         this.validateForm = this.fb.group({
             description: [null],
@@ -82,6 +99,8 @@ export class AddpostComponent {
             tags: [null],
         });
     }
+
+
     onChange(value: string): void {
         console.log(value);
         this.tags = value.trim().split(" ")
@@ -127,6 +146,12 @@ export class AddpostComponent {
 
     openDialogLoading() {
         this.dialog.open(LoadingComponent, {
+        })
+    }
+
+    findAllFoodShopSuggestion() {
+        return this.foodShopService.findAllSuggestion(null).subscribe((res) => {
+            this.options = res;
         })
     }
 }

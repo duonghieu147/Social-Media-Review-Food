@@ -29,6 +29,10 @@ const routes: Routes = [
                 component: HomeComponent
             },
             {
+                path: 'tag',
+                component: HomeComponent
+            },
+            {
                 path: 'search',
                 component: SearchFoodShop
             },

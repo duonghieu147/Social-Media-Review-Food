@@ -19,6 +19,22 @@
                         </app-form-control>
                     </div>
                     <div class="bl-module">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Number</mat-label>
+                            <input type="text"
+                                   placeholder="Pick one"
+                                   aria-label="Number"
+                                   matInput
+                                   [formControl]="myControl"
+                                   [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                    </div>
+                    <div class="bl-module">
                         <h3 class="mb-2">Ảnh <i>*</i></h3>
                         <small class="mb-3">
                             Tối đa 10 ảnh. Dung lượng tối đa 1 Mb. Định dạng .jpg, .png

@@ -148,22 +148,22 @@ export class PostsComponent implements OnInit {
     this.idReplyToShow = commentId;
   }
 
-  openDialogDelete(postId: number,options: any) {
+  openDialogDelete(postId: number, options: any) {
     this.dialog.open(DialogDeleteComponent, {
-      width: 'auto', height: 'auto',   
+      width: 'auto', height: 'auto',
       data: {
-        postId :postId,
-        options : options
+        postId: postId,
+        options: options
       }
     })
   }
 
-  openDialogUpdate(post: any,options: any) {
+  openDialogUpdate(post: any, options: any) {
     this.dialog.open(UpdatePostComponent, {
-      width: 'auto', height: 'auto',   
+      width: 'auto', height: 'auto',
       data: {
-        post :this.dataPost,
-        options : options
+        post: this.dataPost,
+        options: options
       }
     })
   }
@@ -172,7 +172,9 @@ export class PostsComponent implements OnInit {
     this._snackBar.open(message, action, { duration: 2500 });
   }
 
-
+  onclickTag(tag: string) {
+    this.router.navigate(['/home/post'], { queryParams: { tag: tag, isTag: true } })
+  }
 }
 
 export interface Vegetable {

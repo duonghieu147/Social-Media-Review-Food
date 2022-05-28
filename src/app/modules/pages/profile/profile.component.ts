@@ -43,8 +43,8 @@ export class ProfileComponent implements OnInit {
   userId: any;
   isDone = false;
   isShopManager = false;
-  information:any
-  isOwner:boolean =false;
+  information: any
+  isOwner: boolean = false;
 
   constructor(
     private iconService: NzIconService,
@@ -68,11 +68,11 @@ export class ProfileComponent implements OnInit {
     this.userId = localStorage.getItem('loginUserId');
     this.userIdParams = this.route.snapshot.paramMap.get('id');
 
-    this.isOwner =this.userId==this.userIdParams
+    this.isOwner = this.userId == this.userIdParams
     console.log(this.isOwner)
-    if (!localStorage.getItem('modepage')){
-      localStorage.setItem('modepage','home');
-      this.modepage =localStorage.getItem('modepage')
+    if (!localStorage.getItem('modepage')) {
+      localStorage.setItem('modepage', 'home');
+      this.modepage = localStorage.getItem('modepage')
     }
 
     if (localStorage.getItem('isLogin') != 'true') {
@@ -89,6 +89,9 @@ export class ProfileComponent implements OnInit {
         this.getFoodShopByUserId(this.userIdParams);
       }
     }
+    this.userService.isFollower(this.userId, this.userIdParams).subscribe((res) => {
+      this.isFollow = res;
+    })
 
   }
   showModal(): void {
@@ -104,7 +107,27 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem('modepage', mode);
     this.modepage = localStorage.getItem('modepage')
   }
-  changeFollow() {
+  follow() {
+    this.userService.follow(this.userId, this.userIdParams).subscribe(
+      (data) => {
+        if (data.messages[0].code == "SUCCESS") {
+        }
+        else {
+          console.log("err like", data.messages[0].code)
+        }
+      })
+    this.isFollow = !this.isFollow
+  }
+
+  unfollow() {
+    this.userService.unfollow(this.userId, this.userIdParams).subscribe(
+      (data) => {
+        if (data.messages[0].code == "SUCCESS") {
+        }
+        else {
+          console.log("err like", data.messages[0].code)
+        }
+      })
     this.isFollow = !this.isFollow
   }
   loadNextPage() {
@@ -255,13 +278,13 @@ export class ProfileComponent implements OnInit {
           localStorage.removeItem("avatar");
           localStorage.setItem("avatar", images[0])
           return this.userService.changeAvatar(parseInt(localStorage.getItem("id")), images[0])
-          
+
         }),
         finalize(() => {
         })
       ).subscribe((data) => {
         this.openSnackBar('Successfully', 'Close')
-        
+
         location.reload();
         //  localStorage.setItem('modepage','product');
       });

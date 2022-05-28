@@ -16,9 +16,9 @@
     <!--extra-->
     <nz-page-header-extra>
       <button mat-button>Nhắn Tin</button>
-      <button *ngIf="!isOwner && !isFollow" mat-raised-button color="primary" (click)="changeFollow()">Theo
+      <button *ngIf="userId!=userIdParams && !isFollow" mat-raised-button color="primary" (click)="follow()">Theo
         Dõi</button>
-      <button *ngIf="!isOwner && isFollow" mat-raised-button color="accent" (click)="changeFollow()">Bỏ Theo
+      <button *ngIf="userId!=userIdParams && isFollow" mat-raised-button color="accent" (click)="unfollow()">Bỏ Theo
         Dõi</button>
 
       <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu"

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as cmn from 'src/app/constant/common'
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
-import { LoadingComponent } from 'src/app/shared/components/loading/loading.component';
-import { ShareService } from 'src/app/service/share.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as cmn from 'src/app/constant/common';
 import { PostService } from 'src/app/service/post.service';
-import { Router } from '@angular/router';
+import { ShareService } from 'src/app/service/share.service';
+import { AddpostComponent } from 'src/app/shared/components/addpost/addpost.component';
 
 
 @Component({
@@ -21,31 +20,60 @@ export class HomeComponent implements OnInit {
   postData: Array<any> = [];
   postList: Array<any> = [];
   page: number = 0;
-  limit: number = 5;
+  limit: number = 3;
   inputValue = 'Search'
+  tag: string;
+  isTag: boolean = false;
+  userId: number;
   constructor(
     public shareService: ShareService,
     public postService: PostService,
     public dialog: MatDialog,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.tag = params['tag'];
+      this.isTag = params['isTag']
+    });
     if (localStorage.getItem('isLogin') != 'true') {
       this.router.navigate(['/login']);
     }
     else {
-      this.getAllPost()
+      if (this.isTag) {
+        this.getAllPostByTag()
+      } else {
+        this.getAllPost()
+      }
     }
   }
   getAllPost() {
     this.showLoading(true)
-    this.postService.getAllPost(this.limit, this.page).subscribe(
+    this.userId = parseInt(localStorage.getItem('id')) == null ? null : parseInt(localStorage.getItem('id'));
+    this.postService.getAllPost(this.userId, this.limit, this.page).subscribe(
       (data) => {
         if (data.data.length == 0) {
           this.isDone = true
           this.showLoading(false)
-
+          return
+        }
+        else {
+          this.bindingPostData(data.data)
+          this.isloading = false;
+          this.showLoading(false)
+        }
+      }
+    )
+  }
+  getAllPostByTag() {
+    this.showLoading(true)
+    this.postService.findByTag(this.tag, this.page, this.limit).subscribe(
+      (data) => {
+        if (data.data.length == 0) {
+          this.isDone = true
+          this.showLoading(false)
           return
         }
         else {
@@ -106,11 +134,15 @@ export class HomeComponent implements OnInit {
 
   loadNextPage() {
     this.page = this.page + 1;
-    this.getAllPost()
+    if (this.isTag) {
+      this.getAllPostByTag
+    } else {
+      this.getAllPost()
+    }
   }
 
-  showLoading(isShow:boolean) {
-    if (isShow) { 
+  showLoading(isShow: boolean) {
+    if (isShow) {
       document.getElementById('showLoading').classList.remove("hidden")
     }
     else {
@@ -118,6 +150,6 @@ export class HomeComponent implements OnInit {
 
     }
   }
-  
+
 }
 

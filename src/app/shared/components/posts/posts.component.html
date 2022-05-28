@@ -30,7 +30,7 @@
             <p class="tagss">Tags: </p>
             <div *ngFor="let tag of dataPost.tags">
                 <nz-page-header-tags>
-                    <nz-tag [nzColor]="'blue'">{{tag}}</nz-tag>
+                    <nz-tag (click)=onclickTag(tag) [nzColor]="'blue'">{{tag}}</nz-tag>
                 </nz-page-header-tags>
             </div>
         </div>

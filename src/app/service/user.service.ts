@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
@@ -35,7 +35,6 @@ export class UserService {
         return this.http.get<BaseResponse<User>>(defaultUrl + '/api/user?id=' + id)
             .pipe(
                 map((res: BaseResponse<User>) => {
-                    console.log("dasfasf " + res)
                     if (res.data) {
                         return res.data;
                     } else {
@@ -54,5 +53,51 @@ export class UserService {
                 catchError(this.handleError)
             );
 
+    }
+
+    follow(id: number, targetId: number): Observable<any> {
+        const params = new HttpParams()
+            .set('userId', id)
+            .set('targetId', targetId);
+        return this.http.post(defaultUrl + '/api/user/follow', {}, { params }).pipe(
+            map((res: BaseResponse<User>) => {
+                if (res.data) {
+                    return res.data;
+                } else {
+                    throw "error";
+                }
+            }),
+            catchError(this.handleError)
+        );
+    }
+    unfollow(id: number, targetId: number): Observable<any> {
+        const params = new HttpParams()
+            .set('userId', id)
+            .set('targetId', targetId);
+        return this.http.post(defaultUrl + '/api/user/unfollow', {}, { params }).pipe(
+            map((res: BaseResponse<User>) => {
+                if (res.data) {
+                    return res.data;
+                } else {
+                    throw "error";
+                }
+            }),
+            catchError(this.handleError)
+        );
+    }
+    isFollower(id: number, targetId: number): Observable<any> {
+        const params = new HttpParams()
+            .set('userId', id)
+            .set('targetId', targetId);
+        return this.http.get(defaultUrl + '/api/user/check-follow', { params }).pipe(
+            map((res: BaseResponse<Boolean>) => {
+                if (res.data) {
+                    return res.data;
+                } else {
+                    throw "error";
+                }
+            }),
+            catchError(this.handleError)
+        );
     }
 }

@@ -1,8 +1,7 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
+import { catchError } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 
 const defaultUrl = `${environment.API_PATH}`;
@@ -46,8 +45,8 @@ export class PostService {
                 catchError(this.handleError)
             );
     }
-    getAllPost(limit: any, page: any): Observable<any> { //page start 0
-        return this.http.get<Config>(defaultUrl + '/api/post/findall?limit=' + limit + '&page=' + page)
+    getAllPost(userId: number, limit: any, page: any): Observable<any> { //page start 0
+        return this.http.get<Config>(defaultUrl + '/api/post/findall?limit=' + limit + '&page=' + page + '&userId=' + userId)
             .pipe(
                 catchError(this.handleError)
             );
@@ -85,6 +84,13 @@ export class PostService {
     }
     dislikePost(postId: any): Observable<any> {
         return this.http.put<Config>(defaultUrl + '/api/post/dislike?postId=' + postId, postId)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    findByTag(tag: string, page: number, limit: number): Observable<any> {
+        return this.http.get<Config>(defaultUrl + '/api/post/findall?limit=' + limit + '&page=' + page + '&tag=' + tag)
             .pipe(
                 catchError(this.handleError)
             );
