@@ -71,7 +71,9 @@ export class HeaderComponent implements OnInit {
     }
     home() {
         this.router.navigate(
-            ['']
-        );
+            ['/home/post']
+        ).then(_ => {
+            window.location.reload();
+        });
     }
 }

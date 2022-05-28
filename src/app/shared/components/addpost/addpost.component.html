@@ -19,21 +19,37 @@
                         </app-form-control>
                     </div>
                     <div class="bl-module">
+                        <div>
+                            <label for="tags">
+                                Cửa hàng
+                            </label>
+                        </div>
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Number</mat-label>
-                            <input type="text"
-                                   placeholder="Pick one"
-                                   aria-label="Number"
-                                   matInput
-                                   [formControl]="myControl"
-                                   [matAutocomplete]="auto">
-                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                {{option}}
-                              </mat-option>
+                            <input type="text" placeholder="Chọn cửa hàng" aria-label="Number" matInput
+                                [formControl]="shopControl" [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                                [displayWith]="displayCustomer" (optionSelected)='onSelectShop($event)'>
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option.name}}
+                                </mat-option>
                             </mat-autocomplete>
-                          </mat-form-field>
+                        </mat-form-field>
                     </div>
+                    <div class="bl-module">
+                        <app-form-control [formControlItem]="item" labelError="item" id="item">
+                            <label header class="fs--m" for="item">Món ăn/thức uống</label>
+                            <div body class="wrap-select">
+                                <mat-select class="form-control" disableOptionCentering formControlName="item"
+                                    panelClass="myPanelClass">
+                                    <mat-option value="">Chọn sản phẩm</mat-option>
+                                    <mat-option *ngFor="let item of foodItems" [value]="item.id">
+                                        {{ item.name }}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </app-form-control>
+                    </div>
+
                     <div class="bl-module">
                         <h3 class="mb-2">Ảnh <i>*</i></h3>
                         <small class="mb-3">

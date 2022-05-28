@@ -39,8 +39,7 @@ export class PostsComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    public snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<MiniProfileComponent>
+    public snackBar: MatSnackBar
 
   ) { }
   dataPost: any = [];
@@ -57,6 +56,7 @@ export class PostsComponent implements OnInit {
 
     this.randomNumberShare = this.getRandomNumber(10)
     this.bindingDataReply()
+    console.log(this.post)
     this.dataPost = {
       idpost: this.post[0],
       author: this.post[2],
@@ -67,7 +67,12 @@ export class PostsComponent implements OnInit {
       tags: this.post[7],
       datetime: formatDistance(new Date(), addDays(new Date(), 1)),
       like: this.post[10],
-      userId: this.post[11]
+      userId: this.post[11],
+      foodShopId:this.post[12],
+      foodShopName:this.post[13],
+      foodItemId:this.post[14],
+      foodItemName:this.post[15],
+      userIdOfShop:this.post[16]
     }
   }
 
@@ -196,7 +201,15 @@ export class PostsComponent implements OnInit {
   }
 
   onclickTag(tag: string) {
-    this.router.navigate(['/home/post'], { queryParams: { tag: tag, isTag: true } })
+    this.router.navigate(['/home/post'], { 
+      queryParams: { tag: tag, isTag: true }
+     }).then(_ => {
+       window.location.reload();
+     })
+  }
+  goToShop(){
+    console.log(this.dataPost.userIdOfShop)
+    this.router.navigate(['/profile/' + this.dataPost.userIdOfShop]);
   }
 }
 
