@@ -32,27 +32,27 @@ export class ChangeAvatarComponent implements OnInit {
     this.loginUserId = +localStorage.getItem('loginUserId')
   }
   submitForm(): void {
-    console.log(this.images)
-    this.uploadService.upload(this.images).pipe(
-      switchMap((images: string[]) => {
-        return this.userService.changeAvatar({
-          "avatar": images[0]+'',
-          "id": this.loginUserId
-        })
-      }),
-      finalize(() => {
-        // this.isLoading = false;
-        // this.dialog.closeAll();
-      })
-    ).subscribe(data => {
-      if (data) {
-        console.log(data)
-      }
-      else {
-        this.openSnackBar('Change Avatar Error', 'Close')
+    // console.log(this.images)
+    // this.uploadService.upload(this.images).pipe(
+    //   switchMap((images: string[]) => {
+    //     return this.userService.changeAvatar({
+    //       "avatar": images[0]+'',
+    //       "id": this.loginUserId
+    //     })
+    //   }),
+    //   finalize(() => {
+    //     // this.isLoading = false;
+    //     // this.dialog.closeAll();
+    //   })
+    // ).subscribe(data => {
+    //   if (data) {
+    //     console.log(data)
+    //   }
+    //   else {
+    //     this.openSnackBar('Change Avatar Error', 'Close')
 
-      }
-    })
+    //   }
+    // })
 
   }
 
