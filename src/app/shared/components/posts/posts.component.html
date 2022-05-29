@@ -7,13 +7,28 @@
     <ng-template #coverTemplate>
         <div class="header-inf">
             <div class="inf">
-                <nz-avatar #avatar onmouseover="openDialogMiniProfile(this)" onmouseout="closeDialogMiniProfile(this)" nzSrc={{dataPost.avatar}}></nz-avatar>
+                <nz-avatar #avatar nzSrc={{dataPost.avatar}}></nz-avatar>
                 <div class="inf-header">
-                    <h2 #author (click)="goToProfile()">{{dataPost.author}}</h2>
+                    <h2 #author (click)="goToProfile()" (mouseover)="openDialogMiniProfile(dataPost.userId)"
+                        (mouseout)="closeDialogMiniProfile()">{{dataPost.author}}</h2>
                     <span>{{dataPost.createdTime}}</span>
+                    <div *ngIf="isShowPopover" class="inf-popper" #popper>
+                        <div *ngIf="isdataPopper">
+                            <pre *ngIf="isdataPopper" class="pre-header">❁◕ ‿ ◕❁</pre>
+                            <pre *ngIf="isdataPopper &&Poverall">Rating : {{Poverall}} ★ </pre>
+                            <pre *ngIf="isdataPopper &&Popen">Mở Cửa : {{Popen}} h --- Đóng Cửa: {{Pclose}} h</pre>
+                            <pre *ngIf="isdataPopper && Plocation">Location : {{Plocation}}</pre>
+                        </div>
+                        <div *ngIf="!isdataPopper">
+                            <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+                        </div>
+
+                    </div>
                 </div>
-                <span class ="span-loc"*ngIf="dataPost.foodItemName"> <span style="font-size: 16px">đang dùng </span> <span class ="shop-name"> {{dataPost.foodItemName}}</span></span>
-                <span class ="span-loc"*ngIf="dataPost.foodShopName"> <span style="font-size: 16px">tại </span> <a (click)="goToShop()" class ="shop-name"> {{dataPost.foodShopName}}</a></span>
+                <span class="span-loc" *ngIf="dataPost.foodItemName"> <span style="font-size: 16px">đang dùng </span>
+                    <span class="shop-name"> {{dataPost.foodItemName}}</span></span>
+                <span class="span-loc" *ngIf="dataPost.foodShopName"> <span style="font-size: 16px">tại </span> <a
+                        (click)="goToShop()" class="shop-name"> {{dataPost.foodShopName}}</a></span>
             </div>
             <button *ngIf="isShowOptions" nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu"
                 style="border: none; padding: 0;background-color:whitesmoke ;">
