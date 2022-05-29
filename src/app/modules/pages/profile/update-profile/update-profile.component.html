@@ -2,10 +2,6 @@
     <div class="login" [formGroup]="myGroup" (change)="checkValue()">
       <h1>Chỉnh sửa thông tin cá nhân</h1>
       <br><br />
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="text" class="example-right-align" placeholder="" formControlName="email" >
-      </mat-form-field>
   
       <div class="info-name">
         <mat-form-field appearance="fill">
@@ -19,11 +15,11 @@
         </mat-form-field>
       </div>
   
-      <mat-form-field appearance="fill">
+      <!-- <mat-form-field appearance="fill">
         <mat-label>Avatar</mat-label>
         <input matInput type="text" class="example-right-align" placeholder="" formControlName="avatar" >
       </mat-form-field>
-  
+   -->
       <mat-form-field appearance="fill">
         <mat-label>Số điện thoại</mat-label>
         <input matInput type="text" class="example-right-align" placeholder="" formControlName="phone" >
@@ -32,6 +28,11 @@
       <mat-form-field appearance="fill">
         <mat-label>Địa chỉ</mat-label>
         <input matInput type="text" class="example-right-align" placeholder="" formControlName="address" >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" class="example-right-align" placeholder="" formControlName="email" >
       </mat-form-field>
   
       <div class="actions">

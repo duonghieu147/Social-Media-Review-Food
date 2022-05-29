@@ -1,11 +1,12 @@
-import { Component, OnInit ,Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { ShareService } from 'src/app/service/share.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from 'src/app/service/user.service';
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -47,32 +48,49 @@ export class UpdateProfileComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public userService: UserService
 
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.myGroup = new FormGroup({
-      email: new FormControl(this.data.user.email, [Validators.required,Validators.email]),
-      firstName: new FormControl('', [Validators.required,]),
-      lastName: new FormControl('', [Validators.required,]),
-      phone: new FormControl(this.data.user.phoneNumber, [Validators.required,Validators.maxLength(11),]),
-      address: new FormControl(this.data.user.address, [Validators.required,]),
-      avatar: new FormControl(this.data.user.avatar, [Validators.required,]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      firstName: new FormControl(this.data.firstName, [Validators.required,]),
+      lastName: new FormControl(this.data.lastName, [Validators.required,]),
+      phone: new FormControl(this.data.phoneNumber, [Validators.required, Validators.maxLength(11),]),
+      address: new FormControl(this.data.address, [Validators.required,]),
+      id: new FormControl(this.data.loginUserId, [Validators.required,]),
+      // id: new FormControl(localStorage.getItem('loginUserId'), [Validators.required,]),
     });
-    console.log('ss',this.data.user)
   }
-  checkValue( ) {
-    if(this.myGroup.valid) {
+  checkValue() {
+    if (this.myGroup.valid) {
       this.isDisabled = false;
     }
   }
   updateProfile() {
-    this.submitForm()
+    // this.submitForm()
+    const user = this.myGroup.value
+    // user.push( {id:this.data.loginUserId})
+    console.log (user)
+    this.userService.updateProfile(user).subscribe(
+      (res) => {
+        if (res) {
+          this.openSnackBar('Cập nhật thành công', 'close')
+          this.getDataUserById(this.data.loginUserId)
+        }
+        else {
+          this.openSnackBar('Cập nhật thành công', 'close')
+
+        }
+      }
+    )
   }
   back() {
     const idUser = localStorage.getItem('id')
-    this.router.navigate(['/home/post/'+idUser]);
+    this.router.navigate(['/home/post/' + idUser]);
   }
 
   openSnackBar(message: string, action: string) {
@@ -81,7 +99,7 @@ export class UpdateProfileComponent implements OnInit {
   getDataUserById(userId: any) {
     this.shareService.getUserById(userId).subscribe(
       (data) => {
-        if(data.data.length==0){
+        if (data.data.length == 0) {
           return
         }
         else {
@@ -91,21 +109,21 @@ export class UpdateProfileComponent implements OnInit {
       }
     )
   }
-  saveInfoUser(data:any){
-    localStorage.setItem('id',data.id)
-    localStorage.setItem('name',data.firstName)
-    localStorage.setItem('firstName',data.firstName)
-    localStorage.setItem('lastName',data.lastName)
-    localStorage.setItem('phoneNumber',data.phoneNumber)
-    localStorage.setItem('avatar',data.avatar)
-    localStorage.setItem('biography',data.avatar)
-    localStorage.setItem('address',data.address)
-    if(data.id !=3){
-      localStorage.setItem('types','user')
+  saveInfoUser(data: any) {
+    localStorage.setItem('id', data.id)
+    localStorage.setItem('name', data.firstName)
+    localStorage.setItem('firstName', data.firstName)
+    localStorage.setItem('lastName', data.lastName)
+    localStorage.setItem('phoneNumber', data.phoneNumber)
+    localStorage.setItem('avatar', data.avatar)
+    localStorage.setItem('biography', data.avatar)
+    localStorage.setItem('address', data.address)
+    if (data.id != 3) {
+      localStorage.setItem('types', 'user')
     }
     else {
-      if(data.id ==3){
-        localStorage.setItem('types','shop')
+      if (data.id == 3) {
+        localStorage.setItem('types', 'shop')
       }
     }
   }

@@ -163,7 +163,7 @@
       </div>
     </div>
     <div *ngIf="modepage=='profile'">
-      <!-- <button *ngIf="isOwner" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa profile</button> -->
+      <button *ngIf="isOwner" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa profile</button>
         <div class="app-profile">
       <app-information [dataUser]='this.dataUser'></app-information>
 

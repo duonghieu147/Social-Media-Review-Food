@@ -101,4 +101,19 @@ export class UserService {
             catchError(this.handleError)
         );
     }
+
+    updateProfile(user: any): Observable<any> {
+        return this.http.post<Config>(defaultUrl + '/api/user/update', user)
+            .pipe(
+                catchError(this.handleError)
+            );
+
+    }
+}
+
+
+export interface Config {
+    id: string;
+    nasme: string;
+    description: string;
 }

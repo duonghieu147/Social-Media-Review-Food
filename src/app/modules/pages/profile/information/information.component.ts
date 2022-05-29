@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ChangeAvatarComponent } from '../change-avatar/change-avatar.component';
 import { ChangepasswordComponent } from '../changepassword/changepassword.component';
+import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 
 @Component({
   selector: 'app-information',
@@ -38,6 +39,28 @@ export class InformationComponent implements OnInit {
     this.dialog.open(ChangeAvatarComponent,{
       width:'500px',height:'auto',
     })
+  }
+  changeUpdateProfile():void {
+    const phoneNumber = localStorage.getItem('phoneNumber')
+    const displayName = localStorage.getItem('displayName')
+    const loginUserId = localStorage.getItem('loginUserId')
+    const address = localStorage.getItem('address')
+    const stringName =displayName.split(" ")
+    const firstName = stringName[0]
+    const lastName = stringName[1]
+
+    console.log('stringNamestringNamestringName' ,stringName)
+    this.dialog.open(UpdateProfileComponent,{
+      width: '500px',height:'auto',
+      data :{
+        phoneNumber,
+        displayName,
+        loginUserId,
+        address,
+        firstName,
+        lastName
+      }
+  })
   }
 
 }

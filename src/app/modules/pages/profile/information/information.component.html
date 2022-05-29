@@ -5,16 +5,22 @@
 
     </div>
 
-    <h1 class="header"> Thông tin cá nhân</h1>
-    <button *ngIf="isOwner" mat-button color="warn" (click)="changePassword()">Đổi mật khẩu</button>
+    <div class="header">
+        <h1 class="header"> Thông tin cá nhân</h1>
+        <mat-dialog-actions align="center" class="btn-actions">
+            <button *ngIf="isOwner" mat-button color="warn" (click)="changeUpdateProfile()">Chỉnh sửa</button>
+            <button *ngIf="isOwner" mat-button color="primary" (click)="changePassword()">Đổi mật khẩu</button>
+        </mat-dialog-actions>
+
+    </div>
     <div class="content">
        <div class="filters">
         <div class="filter">
-            <h2>Tên :</h2>
+            <h2>Tên : </h2>
             <h2> {{dataUser.displayName}}</h2>
         </div>
         <div class="filter">
-            <h2>Ngày Sinh :</h2>
+            <h2>Ngày Sinh : </h2>
             <h2> 04/02/1999</h2>
         </div>
         <!-- <div class="filter">
@@ -22,11 +28,11 @@
             <h2>{{dataUser.email}}</h2>
         </div> -->
         <div class="filter">
-            <h2>Địa Chỉ :</h2>
+            <h2>Địa Chỉ : </h2>
             <h2>{{dataUser.address}}</h2>
         </div>
         <div class="filter">
-            <h2>Số điện thoại :</h2>
+            <h2>Số điện thoại : </h2>
             <h2>{{dataUser.phoneNumber}}</h2>
         </div>
         <div class="filter">
