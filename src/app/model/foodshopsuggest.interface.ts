@@ -1,4 +1,4 @@
-export interface FoodShopSuggestion {
+export interface FoodSuggestion {
     id:number;
     name:string;
   }

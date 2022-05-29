@@ -97,7 +97,9 @@ export class PostService {
     }
 
     findByTag(tag: string, page: number, limit: number): Observable<any> {
-        return this.http.get<Config>(defaultUrl + '/api/post/findall?limit=' + limit + '&page=' + page + '&tag=' + tag)
+        console.log(tag);
+        const encodeUrl: string = defaultUrl + '/api/post/findbytag?limit=' + limit + '&page=' + page + '&tag=' + encodeURIComponent(tag);
+        return this.http.get<Config>(encodeUrl)
             .pipe(
                 catchError(this.handleError)
             );

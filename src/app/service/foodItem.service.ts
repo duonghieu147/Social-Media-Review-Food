@@ -5,6 +5,8 @@ import { catchError, map } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 import { Rating } from '../model/fooditem.interface';
 import { environment } from 'src/environments/environment';
+import { FoodSuggestion } from '../model/foodshopsuggest.interface';
+import { BaseResponse } from '../model/response.interface';
 
 const defaultUrl = `${environment.API_PATH}`;
 export interface Config { 
@@ -75,4 +77,24 @@ export class FoodItemService {
             catchError(this.handleError)
         );
   }
+  
+  findAllSuggestion(foodShopId:number): Observable<FoodSuggestion[]> {
+    let params = {};
+    if(foodShopId!=null){
+        params['foodShopId'] = foodShopId;
+    }
+    return this.http.get<BaseResponse<FoodSuggestion[]>>(defaultUrl + '/api/fooditem/suggestion', {
+        params: params
+    })
+        .pipe(
+            map((res: BaseResponse<FoodSuggestion[]>) => {
+                if (res.data) {
+                    return res.data;
+                } else {
+                    throw "error";
+                }
+            }),
+            catchError(this.handleError)
+        );
+}
 }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { addDays, formatDistance } from 'date-fns';
 import { Comment } from 'src/app/model/comment.interface';
 import { CommentService } from 'src/app/service/comment.service';
+import { FoodShopService } from 'src/app/service/foodshop.service';
 import { PostService } from '../../../service/post.service';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { UpdatePostComponent } from '../update-post/update-post.component';
@@ -17,8 +18,10 @@ import { UpdatePostComponent } from '../update-post/update-post.component';
 })
 export class PostsComponent implements OnInit {
 
-  @ViewChild("avatar", {read: ElementRef}) avatar: ElementRef;
-  @ViewChild("author", {read: ElementRef}) author: ElementRef;
+  @ViewChild("avatar", { read: ElementRef }) avatar: ElementRef;
+  @ViewChild("author") author: ElementRef;
+  @ViewChild("popper", { read: ElementRef }) popper: HTMLHeadingElement;
+
 
   comment: Comment[] = [];
   @Input() post: Array<any> = [];
@@ -31,9 +34,22 @@ export class PostsComponent implements OnInit {
   idReplyToShow: number = 0;
   loginUserId: string;
   isShowOptions: boolean = false;
+  isShowPopover = false;
+  dataPopper: DataPopper
+  isdataPopper = false;
 
+  Plocation: string;
+  Poverall: any;
+  Popen: any;
+  Pclose: any;
+  Pdescription: any;
+  PcategoryId: any;
+  PprovinceId: any;
+  PdistrictId: any;
   constructor(
     public postService: PostService,
+    public foodShopService: FoodShopService,
+
     public commentService: CommentService,
     private router: Router,
     public dialog: MatDialog,
@@ -43,7 +59,7 @@ export class PostsComponent implements OnInit {
   ) { }
   dataPost: any = [];
   ngOnInit(): void {
-
+    console.log('ssss', this.dataPopper)
     this.loginUserId = localStorage.getItem('loginUserId');
     if (this.loginUserId === this.post[11] + '') {
       this.isShowOptions = true
@@ -55,6 +71,7 @@ export class PostsComponent implements OnInit {
 
     this.randomNumberShare = this.getRandomNumber(10)
     this.bindingDataReply()
+    console.log(this.post)
     this.dataPost = {
       idpost: this.post[0],
       author: this.post[2],
@@ -65,7 +82,12 @@ export class PostsComponent implements OnInit {
       tags: this.post[7],
       datetime: formatDistance(new Date(), addDays(new Date(), 1)),
       like: this.post[10],
-      userId: this.post[11]
+      userId: this.post[11],
+      foodShopId: this.post[12],
+      foodShopName: this.post[13],
+      foodItemId: this.post[14],
+      foodItemName: this.post[15],
+      userIdOfShop: this.post[16]
     }
   }
 
@@ -133,8 +155,6 @@ export class PostsComponent implements OnInit {
     moveItemInArray(this.vegetables, event.previousIndex, event.currentIndex);
   }
   //Tags
-
-
   //comment
   likeComment(commentId: any) {
     this.commentService.like(commentId);
@@ -173,16 +193,68 @@ export class PostsComponent implements OnInit {
     this._snackBar.open(message, action, { duration: 2500 });
   }
 
-  hanldHover() : void {
-    console.log(this.avatar.nativeElement)
-    console.log(this.author.nativeElement)
+  onclickTag(tag: string) {
+    this.router.navigate(['/home/post'], {
+      queryParams: { tag: tag, isTag: true }
+    }).then(_ => {
+      window.location.reload();
+    })
+  }
+  goToShop() {
+    console.log(this.dataPost.userIdOfShop)
+    this.router.navigate(['/profile/' + this.dataPost.userIdOfShop]);
   }
 
-  onclickTag(tag: string) {
-    this.router.navigate(['/home/post'], { queryParams: { tag: tag, isTag: true } })
+  openDialogMiniProfile(userId: number) {
+    if (!this.isdataPopper) {
+      this.foodShopService.getFoodShopByUserId(userId).subscribe(
+        (data) => {
+          if (data.data) {
+            console.log(data.data.location)
+            // this.dataPopper.location = data.data.location
+            // this.dataPopper.overall = data.data.rating.overall
+            // this.dataPopper.open = data.data.open
+            // this.dataPopper.close = data.data.close
+            // this.dataPopper.description = data.data.description
+
+            // this.dataPopper.categoryId = data.data.categoryId
+            // this.dataPopper.provinceId = data.data.provinceId
+            // this.dataPopper.districtId = data.data.districtId
+
+            this.Plocation = data.data.location
+            this.Poverall = data.data.rating.overall.toFixed(1)
+            this.Popen = data.data.open
+            this.Pclose = data.data.close
+            this.Pdescription = data.data.description
+
+            this.PcategoryId = data.data.categoryId
+            this.PprovinceId = data.data.provinceId
+            this.PdistrictId = data.data.districtId
+            this.isdataPopper = true;
+          }
+          else {
+
+          }
+        }
+      )
+    }
+    this.isShowPopover = true;
+  }
+  closeDialogMiniProfile() {
+    this.isShowPopover = false;
   }
 }
 
 export interface Vegetable {
   name: string;
+}
+export interface DataPopper {
+  location: string;
+  overall: any;
+  open: any;
+  close: any;
+  description: any;
+  categoryId: any;
+  provinceId: any;
+  districtId: any;
 }

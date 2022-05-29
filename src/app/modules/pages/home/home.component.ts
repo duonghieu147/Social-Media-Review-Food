@@ -33,11 +33,17 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.tag = params['tag'];
-      this.isTag = params['isTag']
-    });
+  ngOnInit(): void { 
+    console.log('init')
+    this.route.queryParams.subscribe((queryParam) => {
+      if (queryParam['isTag'] && queryParam['tag']) {
+        console.log(queryParam);
+        this.isTag = true;
+        this.tag = queryParam['tag'];
+        this.getAllPostByTag();
+      }
+      
+    })
     if (localStorage.getItem('isLogin') != 'true') {
       this.router.navigate(['/login']);
     }
@@ -69,6 +75,7 @@ export class HomeComponent implements OnInit {
   }
   getAllPostByTag() {
     this.showLoading(true)
+    console.log(this.tag)
     this.postService.findByTag(this.tag, this.page, this.limit).subscribe(
       (data) => {
         if (data.data.length == 0) {
@@ -101,7 +108,12 @@ export class HomeComponent implements OnInit {
       post.commentResponses,
         shortDescription,
       post.like,
-      post.userId
+      post.userId,
+      post.foodShopId,
+      post.foodShopName,
+      post.foodItemId,
+      post.foodItemName,
+      post.userIdOfShop
       ])
     }
     this.postList = this.postList.concat(list)

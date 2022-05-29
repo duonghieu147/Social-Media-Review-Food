@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
 import { FoodShop } from '../model/foodshop.interface';
-import { FoodShopSuggestion } from '../model/foodshopsuggest.interface';
+import { FoodSuggestion } from '../model/foodshopsuggest.interface';
 import { ListDTO } from '../model/listdto.interface';
 import { Rating } from '../model/foodshop.interface';
 import { FoodShopRequest } from '../model/request/foodshop';
@@ -106,16 +106,16 @@ export class FoodShopService {
             );
     }
 
-    findAllSuggestion(keyword: string): Observable<FoodShopSuggestion[]> {
+      findAllSuggestion(keyword:string): Observable<FoodSuggestion[]> {
         let params = {};
         if (keyword != null) {
             params['keyword'] = keyword;
         }
-        return this.http.get<BaseResponse<FoodShopSuggestion[]>>(defaultUrl + '/api/foodshop/suggestion', {
+        return this.http.get<BaseResponse<FoodSuggestion[]>>(defaultUrl + '/api/foodshop/suggestion', {
             params: params
         })
             .pipe(
-                map((res: BaseResponse<FoodShopSuggestion[]>) => {
+                map((res: BaseResponse<FoodSuggestion[]>) => {
                     if (res.data) {
                         return res.data;
                     } else {
