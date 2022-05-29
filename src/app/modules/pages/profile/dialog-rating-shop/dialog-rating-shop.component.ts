@@ -36,12 +36,12 @@ export class DialogRatingShopComponent implements OnInit {
   submitForm(): void {
     console.log(this.currentRate ,this.data.shopId)
     const rate = {
-      overall: this.currentRate[0],
-      quality: this.currentRate[1],
-      service: this.currentRate[2],
-      price: this.currentRate[3],
+      overall: 0,
+      location: this.currentRate[0],
+      quality: this.currentRate[2],
+      service: this.currentRate[3],
+      price: this.currentRate[1],
       space: this.currentRate[4],
-      location: this.currentRate[5]
     }
     this.foodShopService.ratingShopFood(this.data.shopId,rate).subscribe((data) => {
       if (data) {

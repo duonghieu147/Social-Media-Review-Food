@@ -227,3 +227,17 @@ span {
   object-fit: contain !important;
 
 }
+.rating_index {
+  display: flex;
+}
+
+pre {
+  font-size: 16px;
+}
+
+
+::ng-deep .rating-index span {
+  color: blue;
+  font-size: 18px;
+
+}

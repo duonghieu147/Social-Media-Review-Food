@@ -15,7 +15,7 @@
 
     <!--extra-->
     <nz-page-header-extra>
-      <button mat-button (click)="openDialogRatingShop()">Đánh giá</button>
+      <button class="btn-rating" mat-raised-button (click)="openDialogRatingShop()">Đánh giá</button>
       <button *ngIf="!isOwner && !isFollow" mat-raised-button color="primary" (click)="follow()">Theo
         Dõi</button>
       <button *ngIf="!isOwner && isFollow" mat-raised-button color="accent" (click)="unfollow()">Bỏ Theo

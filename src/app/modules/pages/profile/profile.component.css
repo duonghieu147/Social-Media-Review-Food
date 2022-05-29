@@ -171,7 +171,9 @@ button.edit {
   color: white;
   padding-left: 5em;
 }
-
+.btn-rating {
+  margin-right:8px;
+}
 /* silder-right */
 .silder-right {
   position: fixed;

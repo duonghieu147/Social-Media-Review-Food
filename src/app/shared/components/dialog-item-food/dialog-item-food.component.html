@@ -31,7 +31,7 @@
         data requirements by building data models on RxJS, Immutable.js or another <span>see more</span></p>
       <p *ngIf="this.foodItem[7]">{{this.foodItem[7]}}</p>
     </div>
-    <div class="ratings" *ngIf="isRateMode">
+    <!-- <div class="ratings" *ngIf="isRateMode">
       <div class="rating 1">
         <label class="rating-tile">Giá Cả</label>
         <label class="rating-value">{{value1}}</label>
@@ -66,9 +66,44 @@
           aria-labelledby="example-name-label">
         </mat-slider>
       </div>
+    </div> -->
+  
+    <div class="ratings" *ngIf="isRateMode" >
+      <!-- <div class="rating-index" id="">
+        <pre>Vị trí : <b>{{currentRate[0]}}</b></pre>
+    
+        <ngb-rating [(rate)]="currentRate[0]"></ngb-rating>
+        <hr>
+      </div> -->
+    
+      <div class="rating-index" id="">
+        <pre>Giá cả : <b>{{currentRate[0]}}</b></pre>
+    
+        <ngb-rating [(rate)]="currentRate[0]"></ngb-rating>
+        <hr>
+      </div>
+    
+      <div class="rating-index" id="">
+        <pre>Chất lượng : <b>{{currentRate[1]}}</b></pre>
+    
+        <ngb-rating [(rate)]="currentRate[1]"></ngb-rating>
+        <hr>
+      </div>
+    
+      <div class="rating-index" id="">
+        <pre>Trang trí : <b>{{currentRate[2]}}</b></pre>
+    
+        <ngb-rating [(rate)]="currentRate[2]"></ngb-rating>
+        <hr>
+      </div>
+    
+      <!-- <div class="rating-index" id="">
+        <pre>Tổng quan : <b>{{currentRate[3]}}</b></pre>
+    
+        <ngb-rating [(rate)]="currentRate[3]"></ngb-rating>
+        <hr>
+      </div> -->
     </div>
-  
-  
   
   
     <div class="comment" *ngIf="!isRateMode && isModeComment">

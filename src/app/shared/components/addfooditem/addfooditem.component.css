@@ -1,0 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+*{
+  font-family: 'Pacifico' !important;
+}
+*{font-family: Tahoma, sans-serif !important;
+}
+.form-create-post{
+  display:flex;
+  flex-direction: column;
+}
+nz-form-item {
+  margin-top:24px;
+}

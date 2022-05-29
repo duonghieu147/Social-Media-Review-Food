@@ -39,6 +39,7 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
   imageObject=[];
   loginUserId: any;
   userIdParams: any;
+  currentRate = [0, 0, 0, 0, 0, 0];
 
   constructor(private route: ActivatedRoute,
     public commentService: CommentService,
@@ -50,9 +51,7 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    // this.loginUserId = +localStorage.getItem('loginUserId')
-    // this.userIdParams = +this.route.snapshot.paramMap.get('id');
-    // this.isShowOptions = this.loginUserId === this.userIdParams
+
     this.foodItem = this.data
     this.getFoodItemById(this.foodItem[0])
     localStorage.setItem('foodItemId', this.foodItem[0])
@@ -128,10 +127,10 @@ export class DialogItemFoodComponent implements OnInit, AfterViewInit {
   }
   ratingFoodItem(value1: any, value2: any, value3: any, value4: any) {
     this.FoodItemService.ratingItemFood(this.foodItem[0], {
-      decoration: value1,
-      overall: value2,
-      price: value3,
-      quality: value4
+      price: this.currentRate[0],
+      quality: this.currentRate[1],
+      decoration: this.currentRate[2],
+      overall: 0,
     }).subscribe(
       (data) => {
         if (data.messages[0].code == "SUCCESS") {
