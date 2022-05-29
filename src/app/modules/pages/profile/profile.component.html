@@ -154,11 +154,6 @@
           <button *ngIf="this.isShopManager && isOwner" class="createfood" mat-button color="primary"
             (click)="dialogAddFoodItem()">Tạo sản phẩm mới</button>
         </div>
-        <div class="sort">
-          <button mat-button color="primary" class="sort1">Chất Lượng</button>
-          <button mat-button color="primary" class="sort2" >Giá Cả</button>
-          <button mat-button color="primary" class="sort3" >Không gian</button>
-        </div>
       </div>
       <div style="margin-bottom: 30px;" *ngIf="this.shopId != null">
         <app-gallery [shopId]="this.shopId"></app-gallery>

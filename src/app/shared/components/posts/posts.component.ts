@@ -39,6 +39,7 @@ export class PostsComponent implements OnInit {
   isdataPopper = false;
 
   Plocation: string;
+  Pname: string;
   Poverall: any;
   Popen: any;
   Pclose: any;
@@ -226,6 +227,7 @@ export class PostsComponent implements OnInit {
             this.Popen = data.data.open
             this.Pclose = data.data.close
             this.Pdescription = data.data.description
+            this.Pname=data.data.name
 
             this.PcategoryId = data.data.categoryId
             this.PprovinceId = data.data.provinceId

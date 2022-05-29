@@ -14,10 +14,10 @@
                     <span>{{dataPost.createdTime}}</span>
                     <div *ngIf="isShowPopover" class="inf-popper" #popper>
                         <div *ngIf="isdataPopper">
-                            <pre *ngIf="isdataPopper" class="pre-header">❁◕ ‿ ◕❁</pre>
-                            <pre *ngIf="isdataPopper &&Poverall">Rating : {{Poverall}} ★ </pre>
-                            <pre *ngIf="isdataPopper &&Popen">Mở Cửa : {{Popen}} h --- Đóng Cửa: {{Pclose}} h</pre>
-                            <pre *ngIf="isdataPopper && Plocation">Location : {{Plocation}}</pre>
+                            <pre *ngIf="isdataPopper" class="pre-header"><b>{{Pname}}</b></pre>
+                            <pre *ngIf="isdataPopper &&Poverall">Đánh giá : {{Poverall}} ★ </pre>
+                            <pre *ngIf="isdataPopper &&Popen">Mở Cửa : {{Popen}} h - {{Pclose}} h</pre>
+                            <pre *ngIf="isdataPopper && Plocation">Địa chỉ : {{Plocation}}</pre>
                         </div>
                         <div *ngIf="!isdataPopper">
                             <nz-spin nzSimple [nzSize]="'large'"></nz-spin>

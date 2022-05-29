@@ -17,7 +17,7 @@ pre {
 }
 
 ::ng-deep .rating-index span {
-    color: blue;
+    color: rgb(245, 232, 57);
     font-size: 18px;
 
 }

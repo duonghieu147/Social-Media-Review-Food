@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     }
     else {
       if (this.isTag) {
-        this.getAllPostByTag()
+
       } else {
         this.getAllPost()
       }
