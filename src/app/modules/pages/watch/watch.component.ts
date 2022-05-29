@@ -19,7 +19,6 @@ export class WatchComponent implements OnInit {
   ]
   
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -28,6 +27,9 @@ export class WatchComponent implements OnInit {
   create() {
     this.inputCamera.nativeElement.value = null;
     this.inputCamera.nativeElement.click();
+    // if (this.inputCamera.nativeElement.value) {
+    //   this.scrollTop()
+    // }
   }
   actionVideo(event :any) {
     const video = event.target
@@ -49,6 +51,7 @@ export class WatchComponent implements OnInit {
     const videourl = URL.createObjectURL(file);
     this.video.nativeElement.src= videourl 
     this.isHidden = false;
+    this.scrollTop()
     // const inputFile = document.getElementById("file");
     // const video = document.getElementById("video");
     
@@ -59,4 +62,13 @@ export class WatchComponent implements OnInit {
     //     video.play();
     // })
   }
+  
+  scrollTop():void {
+    window.scroll({
+      top: 100,
+      left: 100,
+      behavior: 'smooth'
+    });
+  }
+
 }

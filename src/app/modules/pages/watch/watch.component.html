@@ -1,10 +1,10 @@
-<div class="watch-container">
+<div class="watch-container" >
     <div class="action__create">
         <button mat-raised-button color="primary" (click)="create()" class="btn__create">Tạo Video</button>
         <input class="inputCamera" hidden="true" type="file" #inputCamera accept="video/*" capture (change)="onChangeInput()"/>
     </div>
     <!-- <video id="video" #video></video> -->
-    <div class="app__videos">
+    <div class="app__videos" id="watch-container">
     
         <!-- Create video  -->
         <div class="app__videos__create" [hidden] = 'isHidden'>
