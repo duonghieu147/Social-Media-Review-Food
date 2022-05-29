@@ -75,12 +75,11 @@ html {
 }
 .videoFooter {
     position:relative;
-    bottom:150px;
+    bottom:50px;
     margin-left: 20;
-    color: wheat;
+    color: black;
     display: flex;
     background:none;
-
 }
 .btn__create {
     position: fixed;
@@ -108,19 +107,22 @@ html {
 }
 .videoFooter__text {
     flex: 1;
+    background:whitesmoke;
+
 }
 .videoFooter__text h3,pre {
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     margin-left:24px;
     color:blue;
     font-weight: bold;
     font-size: 18px;
+
 }
 .btn-action {
     /* margin-top:24px; */
     display: flex;
     justify-content: space-around;
-    color:brown
+    color:brown 
 }
 .videoFooter__icon {
     position: absolute;
@@ -142,9 +144,9 @@ html {
 }
 @media (max-width:425px){
     .app_videos {
-        width:100%;
+        /* width:100%; */
         height:100%;
-        max-width: 100%;
+        /* max-width: 100%; */
         border-radius:0;
     }
 }
