@@ -12,9 +12,12 @@ export class VideoComponent implements OnInit {
   @Input() srcVideo ;
   isHidden: boolean=true;
   isloading: boolean = true;
+  name= 'Dương Văn Hiếu';
   constructor() { }
 
   ngOnInit(): void {
+    this.name = localStorage.getItem('displayName')
+
   }
   create() {
     this.inputCamera.nativeElement.value = null;

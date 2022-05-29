@@ -9,7 +9,7 @@ export class WatchComponent implements OnInit {
   @ViewChild('inputCamera') inputCamera: ElementRef;
   @ViewChild('video') video: ElementRef;
   isHidden: boolean=true;
-
+  name='Dương Văn Hiếu'
   srcVideo =[
     "https://v16-webapp.tiktok.com/2b6bd9e6b0a21a324cfcfb51f1596599/62939abf/video/tos/useast2a/tos-useast2a-pve-0037-aiso/a1c6eb16e6994ac7b24a86ac75d0483e/?a=1988&ch=0&cr=0&dr=0&lr=tiktok&cd=0%7C0%7C1%7C0&cv=1&br=2598&bt=1299&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Z.1aSwe2NKlhml7Gb&mime_type=video_mp4&qs=0&rc=PDozOWZpNGdkOWdkNTszOUBpMzk7PDY6ZjZxPDMzZjgzM0BiMWFiMzQtNjYxL15fXl9gYSNncDZfcjQwbTNgLS1kL2Nzcw%3D%3D&l=202205291009020102440422431F49C927",
     "https://v16-webapp.tiktok.com/206ccefc19443ede5a4935f58f6a4e90/62939b8a/video/tos/useast2a/tos-useast2a-pve-0037-aiso/dc452de426d64a7880fc8d5fda4c2930/?a=1988&ch=0&cr=0&dr=0&lr=tiktok&cd=0%7C0%7C1%7C0&cv=1&br=4052&bt=2026&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8ZIUaSwe2NWehml7Gb&mime_type=video_mp4&qs=0&rc=aTRmNWg1Ozw6ZDo2aDU4NkBpamVycWc6Znd4OzMzZjgzM0AvNF8yMy40Ni4xMS0xLjAuYSNtNXI2cjRnYDFgLS1kL2Nzcw%3D%3D&l=20220529101158010245245003164970D5",
@@ -23,6 +23,7 @@ export class WatchComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('srcVideo',this.srcVideo)
+    this.name = localStorage.getItem('displayName')
   }
   create() {
     this.inputCamera.nativeElement.value = null;

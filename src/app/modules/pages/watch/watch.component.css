@@ -1,7 +1,7 @@
 *{
     margin: 0;
     box-sizing:  border-box;
-    background: rgba(255, 255, 255, 0.25);
+    /* background: rgba(255, 255, 255, 0.25); */
 
 }
 html {
@@ -59,7 +59,7 @@ html {
     height: 100%;
 }
 .videoSidebar{
-    position: absolute;
+    position: relative;
     top: 48%;
     right:10px;
 }
@@ -79,6 +79,8 @@ html {
     margin-left: 20;
     color: wheat;
     display: flex;
+    background:none;
+
 }
 .btn__create {
     position: fixed;
@@ -107,8 +109,18 @@ html {
 .videoFooter__text {
     flex: 1;
 }
-.videoFooter__text h3 {
+.videoFooter__text h3,pre {
     padding-bottom: 20px;
+    margin-left:24px;
+    color:blue;
+    font-weight: bold;
+    font-size: 18px;
+}
+.btn-action {
+    /* margin-top:24px; */
+    display: flex;
+    justify-content: space-around;
+    color:brown
 }
 .videoFooter__icon {
     position: absolute;

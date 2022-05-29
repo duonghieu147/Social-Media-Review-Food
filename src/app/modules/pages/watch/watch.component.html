@@ -1,21 +1,22 @@
-<div class="watch-container" >
+<div class="watch-container">
     <div class="action__create">
         <button mat-raised-button color="primary" (click)="create()" class="btn__create">Tạo Video</button>
-        <input class="inputCamera" hidden="true" type="file" #inputCamera accept="video/*" capture (change)="onChangeInput()"/>
+        <input class="inputCamera" hidden="true" type="file" #inputCamera accept="video/*" capture
+            (change)="onChangeInput()" />
     </div>
     <!-- <video id="video" #video></video> -->
     <div class="app__videos" id="watch-container">
-    
+
         <!-- Create video  -->
-        <div class="app__videos__create" [hidden] = 'isHidden'>
+        <div class="app__videos__create" [hidden]='isHidden'>
             <!-- video start -->
             <div class="video__container">
-                <div class="video" (click)="actionVideo($event)" >
+                <div class="video" (click)="actionVideo($event)">
                     <video id="video" class="video__player" #video></video>
                 </div>
             </div>
             <!-- sidebar -->
-            <div class="videoSidebar">
+            <!-- <div class="videoSidebar">
                 <div class="videoSidebar__button">
                     <span class="material-icons">favorite_border</span>
                     <p>0</p>
@@ -28,20 +29,25 @@
                     <span class="material-icons">share</span>
                     <p>0</p>
                 </div>
-            </div>
+            </div> -->
             <!-- footer -->
             <div class="videoFooter">
                 <div class="videoFooter__text">
-                    <h3>Dương Văn Hiếu</h3>
-                    <p class="videoFooter__description">Mô Tả</p>
+                    <pre> @{{name}}</pre>
+                    <div class="btn-action">
+                        <span class="material-icons">favorite_border</span>
+                    <span class="material-icons">chat</span>
+                    <span class="material-icons">share</span>
+                    </div>
+                    <!-- <p class="videoFooter__description">Mô Tả</p>
                     <div class="videoFooter__ticker">
                         <span class="material-icons videoFooter__icon">music_note</span>
                         <marquee>Song Name</marquee>
-                    </div>
+                    </div> -->
                 </div>
-                <img class="videoFooter__record"
+                <!-- <img class="videoFooter__record"
                     src="https://scontent.fhan3-4.fna.fbcdn.net/v/t1.6435-9/166014380_1392790014404846_1341965397669879252_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=capBI25qGwgAX_HO9l5&_nc_ht=scontent.fhan3-4.fna&oh=00_AT_ryWa51AQi-T_GuC6js3Ciw-zMOppbOORVHfBbC-3hpQ&oe=62A1B716"
-                    alt="">
+                    alt=""> -->
             </div>
             <!-- video end -->
         </div>
