@@ -1,1 +1,41 @@
-<p>video works!</p>
+<div>
+    <!-- video start -->
+    <div class="video__container">
+        <div class="video" (click)="actionVideo($event)" >
+            <video #video [src]="srcVideo" class="video__player" (loadeddata)="load()"></video>
+            <div *ngIf ='isloading'>
+                <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar -->
+    <div class="videoSidebar">
+        <div class="videoSidebar__button">
+            <span class="material-icons">favorite_border</span>
+            <p>12</p>
+        </div>
+        <div class="videoSidebar__button">
+            <span class="material-icons">chat</span>
+            <p>3</p>
+        </div>
+        <div class="videoSidebar__button">
+            <span class="material-icons">share</span>
+            <p>1</p>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="videoFooter">
+        <div class="videoFooter__text">
+            <h3>Dương Văn Hiếu</h3>
+            <p class="videoFooter__description">Mô Tả</p>
+            <div class="videoFooter__ticker">
+                <span class="material-icons videoFooter__icon">music_note</span>
+                <marquee>Song Name</marquee>
+            </div>
+        </div>
+        <img class="videoFooter__record"
+            src="https://v16-webapp.tiktok.com/43c8e2c832b7948bfb961de18bda6e1c/627f78c0/video/tos/useast2a/tos-useast2a-pve-0037-aiso/dc452de426d64a7880fc8d5fda4c2930/?a=1988&br=4052&bt=2026&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=eXd.6Hk_Myq8Z1TEqwe2NLfJrl7Gb&l=202205140338120102450571842019E9F1&lr=tiktok&mime_type=video_mp4&net=0&pl=0&qs=0&rc=amVycWc6Znd4OzMzZjgzM0ApNTplODk0Ojw0NzczNzQ2NGdtNXI2cjRnYDFgLS1kL2Nzc2MuYC9iLzU2NF40MGIvMjA6Yw%3D%3D&vl=&vr="
+            alt="">
+    </div>
+    <!-- video end -->
+</div>
