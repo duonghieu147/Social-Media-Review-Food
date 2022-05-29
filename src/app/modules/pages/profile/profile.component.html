@@ -10,12 +10,15 @@
     <nz-avatar [nzSize]="80" nz-page-header-avatar nzSrc={{dataUser.avatar}}></nz-avatar>
 
     <!--title-->
-    <nz-page-header-title>{{dataUser.displayName}}</nz-page-header-title>
+    <nz-page-header-title>{{dataUser.displayName}} </nz-page-header-title>
 
+    <nz-page-header-tags>
+      <nz-tag [nzColor]="'yellow'" *ngIf="!isOwner && dataUser.roles[0].name=='SHOP_MANAGER'" >{{averageRate}} ☆</nz-tag>
+    </nz-page-header-tags>
 
     <!--extra-->
     <nz-page-header-extra>
-      <button class="btn-rating" mat-raised-button (click)="openDialogRatingShop()">Đánh giá</button>
+      <button *ngIf="!isOwner && dataUser.roles[0].name=='SHOP_MANAGER'" class="btn-rating" mat-raised-button (click)="openDialogRatingShop()">Đánh giá</button>
       <button *ngIf="!isOwner && !isFollow" mat-raised-button color="primary" (click)="follow()">Theo
         Dõi</button>
       <button *ngIf="!isOwner && isFollow" mat-raised-button color="accent" (click)="unfollow()">Bỏ Theo
@@ -160,8 +163,7 @@
       </div>
     </div>
     <div *ngIf="modepage=='profile'">
-      <button *ngIf="isOwner" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa
-        profile</button>
+      <!-- <button *ngIf="isOwner" mat-button color="primary" (click)="openDialogEditProfile()">Chỉnh sửa profile</button> -->
         <div class="app-profile">
       <app-information [dataUser]='this.dataUser'></app-information>
 

@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
   isShopManager = false;
   information: any
   isOwner: boolean = false;
+  averageRate: any;
 
   constructor(
     private iconService: NzIconService,
@@ -80,14 +81,13 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     else {
-      // this.userIdParams = this.route.snapshot.paramMap.get('id');
       this.getUserById();
       localStorage.setItem('pageCurrent', this.userIdParams)
-      // this.userId = localStorage.getItem('id');
       this.getPostByUserId();
+      this.getFoodShopByUserId(this.userIdParams);
       if (this.tokenStorageService.getUser().roles.includes('SHOP_MANAGER')) {
         this.isShopManager = true;
-        this.getFoodShopByUserId(this.userIdParams);
+        // this.getFoodShopByUserId(this.userIdParams);
       }
     }
     this.userService.isFollower(this.userId, this.userIdParams).subscribe((res) => {
@@ -197,11 +197,14 @@ export class ProfileComponent implements OnInit {
 
   //FoodShop 
   getFoodShopByUserId(userId: any) {
+    console.log(userId)
     this.foodShopService.getFoodShopByUserId(userId).subscribe(
       (data) => {
+        console.log(data)
         if (data.messages[0].code == "SUCCESS") {
           this.foodItems = data.data.foodItems
           this.shopId = data.data.id
+          this.averageRate = data.data.rating.overall.toFixed(1)
           this.bindingFoodShopData(data.data)
           this.slideImage = data.data.images;
         }
@@ -257,7 +260,7 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialogRatingShop(): void {
-    console.log('shopID',this.shopId);
+    console.log('shopID', this.shopId);
     this.dialog.open(DialogRatingShopComponent, {
       width: '400px', height: 'auto',
       data: { shopId: this.shopId }

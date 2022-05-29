@@ -60,7 +60,6 @@ export class PostsComponent implements OnInit {
   ) { }
   dataPost: any = [];
   ngOnInit(): void {
-    console.log('ssss', this.dataPopper)
     this.loginUserId = localStorage.getItem('loginUserId');
     if (this.loginUserId === this.post[11] + '') {
       this.isShowOptions = true

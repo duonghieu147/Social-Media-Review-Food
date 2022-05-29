@@ -56,7 +56,10 @@ nz-page-header,
 .profile-inf p {
   margin-right: 24px;
 }
-
+nz-tag.ant-tag.ant-tag-yellow.ng-star-inserted {
+  font-weight: bold;
+  font-size:16px;
+}
 /* Icons */
 .social {
   display: flex;
