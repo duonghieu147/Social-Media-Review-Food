@@ -65,7 +65,7 @@ export class PostService {
     }
 
     updatePost(post: any): Observable<any> { //Return data = null , status = 1 create, = 2 edit, =3 delete
-        return this.http.post<Config>(defaultUrl + '/api/post/create', post)
+        return this.http.put<Config>(defaultUrl + '/api/post/update', post)
             .pipe(
                 catchError(this.handleError)
             );

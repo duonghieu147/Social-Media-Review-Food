@@ -38,31 +38,28 @@ export class UpdatePostComponent implements OnInit {
   }
   submitForm(): void {
     this.formatTags(this.validateForm.value.tags)
+    // console.log('Submit',this.validateForm.value)
+    const postData = {
+      description: this.validateForm.value.description,
+      tags: this.tags,
+      id: this.post.post.idpost,
+      userId: this.post.post.userId
+    }
     this.openDialogLoading();
-    // this.uploadService.upload(this.images).pipe(
-    //     switchMap((images: string[]) => {
-    //         return this.postService.createPost({
-    //             "description": this.validateForm.value.description,
-    //             "userId": localStorage.getItem("id"),
-    //             // "images": images,
-    //             "tags": this.tags
-    //         })
-    //     }),
-    //     finalize(() => {
-    //         this.isLoading = false;
-    //         this.dialog.closeAll();
-    //     })
-    // ).subscribe((data) => {
-    //     if (data) {
-    //         console.log(data)
-    //         this.openSnackBar('Successfully', 'Close')
-    //         this.router.navigate(['/home/done']);
-    //         this.dialogRef.close();
-    //     }
-    //     else {
-    //         this.openSnackBar('Create Post Error', 'Close')
-    //     }
-    // });
+    this.postService.updatePost(postData).subscribe(
+        (data) => {
+          console.log('update post', data);
+          if (data) {
+            this.openSnackBar('Successfully', 'Close')
+          this.dialog.closeAll();
+          }
+          else {
+            this.openSnackBar('Update error', 'Close')
+            this.dialog.closeAll();
+          }
+        } 
+    )
+
   }
 
   constructor(
@@ -82,7 +79,7 @@ export class UpdatePostComponent implements OnInit {
   }
   formInitialization() {
     for (let i = 0; i < this.post.post.tags.length; i++) {
-      this.stringTags = this.stringTags +' '+ this.post.post.tags[i]
+      this.stringTags = this.stringTags + ' ' + this.post.post.tags[i]
     }
     console.log(this.stringTags)
 
