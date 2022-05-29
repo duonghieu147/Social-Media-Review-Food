@@ -8,7 +8,6 @@ import { Comment } from 'src/app/model/comment.interface';
 import { CommentService } from 'src/app/service/comment.service';
 import { PostService } from '../../../service/post.service';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
-import { MiniProfileComponent } from '../mini-profile/mini-profile.component';
 import { UpdatePostComponent } from '../update-post/update-post.component';
 
 @Component({
@@ -40,7 +39,6 @@ export class PostsComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     public snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<MiniProfileComponent>
 
   ) { }
   dataPost: any = [];
@@ -178,21 +176,6 @@ export class PostsComponent implements OnInit {
   hanldHover() : void {
     console.log(this.avatar.nativeElement)
     console.log(this.author.nativeElement)
-  }
-
-  openDialogMiniProfile( ) {
-    this.dialog.open(MiniProfileComponent, {
-      width: 'auto', height: 'auto',   
-      // data: {
-      //   post :this.dataPost,
-      //   options : options
-      // }
-    })
-  }
-
-  closeDialogMiniProfile( ) {
-    // this.dialogRef.close();
-    console.log( 'closeDialogMiniProfile')
   }
 
   onclickTag(tag: string) {
