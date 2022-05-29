@@ -1,12 +1,12 @@
 <div class="information">
     <div class="btn-actions">
-        <button *ngIf="isOwner" mat-button color="accent"accent (click)="openDialogAvatar()">Đổi avatar</button>
-        <button *ngIf="isOwner" mat-button color="primary" (click)="changePassword()">Chỉnh sửa</button>
-        <button *ngIf="isOwner" mat-button color="warn" (click)="changePassword()">Đổi mật khẩu</button>
+        <!-- <button *ngIf="isOwner" mat-button color="accent"accent (click)="openDialogAvatar()">Đổi avatar</button> -->
+        <!-- <button *ngIf="isOwner" mat-button color="primary" (click)="changePassword()">Chỉnh sửa</button> -->
 
     </div>
 
     <h1 class="header"> Thông tin cá nhân</h1>
+    <button *ngIf="isOwner" mat-button color="warn" (click)="changePassword()">Đổi mật khẩu</button>
     <div class="content">
        <div class="filters">
         <div class="filter">
